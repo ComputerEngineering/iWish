@@ -1,4 +1,5 @@
-package iWishActivity;
+package iWish_Activity;
+
 
 import android.app.Activity;
 
