@@ -24,7 +24,8 @@ public final class R {
         public static final int app_name=0x7f040000;
         public static final int loading=0x7f040001;
     }
-    public static final class style {
+
+     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -52,4 +53,6 @@ public final class R {
          */
         public static final int AppTheme=0x7f050001;
     }
+
+
 }
