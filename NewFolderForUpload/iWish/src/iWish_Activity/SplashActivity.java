@@ -12,7 +12,7 @@ import com.progect.iwish.R;
 
 public class SplashActivity extends Activity{
 	private static final int PROGRESS = 0x1;
-	private String casa;
+    private static final int ANTONIO  = 3 ;
 	
 	private ProgressBar mProgress;
 	private int mProgressStatus = 0;
