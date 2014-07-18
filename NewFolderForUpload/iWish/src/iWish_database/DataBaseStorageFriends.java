@@ -1,5 +1,7 @@
 package iWish_database;
-/**Raffaella*/
+/**Michela???*/
+
+
 public class DataBaseStorageFriends {
 
 }
