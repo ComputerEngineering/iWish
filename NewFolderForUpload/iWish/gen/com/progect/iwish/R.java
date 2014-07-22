@@ -28,7 +28,7 @@ public final class R {
     }
     public static final class layout {
         public static final int popup_adv3=0x7f030000;
-        public static final int popup_badge_vinta=0x7f030001;
+        public static final int popup_badge_vinta1=0x7f030001;
         public static final int popup_complimenti=0x7f030002;
         public static final int splash=0x7f030003;
         public static final int tutorial=0x7f030004;
