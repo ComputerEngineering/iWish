@@ -22,7 +22,7 @@
             android:name="iWish_Activity.CalendarActivity">
         </activity>
         <activity 
-            android:name="iWish_Activity.Challengectivity">
+            android:name="iWish_Activity.ChallengeActivity">
         </activity>
         <activity 
             android:name="iWish_Activity.CongratulationActivity">
