@@ -26,7 +26,7 @@ public class TutorialActivity extends Activity {
     TextView testo;
 
     // Array of Image IDs to Show In ImageSwitcher
-    int imageIds[]={R.drawable.image1,R.drawable.image2,R.drawable.image3,R.drawable.image4,R.drawable.image5,R.drawable.image6,};
+    int imageIds[]={R.drawable.tuto01,R.drawable.tuto3,R.drawable.tuto4,R.drawable.tuto5,R.drawable.tuto6,R.drawable.tuto7,R.drawable.tuto8,R.drawable.tuto9,R.drawable.tuto10,};
     int messageCount=imageIds.length;
     // to keep current Index of ImageID array
     int currentIndex=-1;
@@ -63,8 +63,9 @@ public class TutorialActivity extends Activity {
         Animation out = AnimationUtils.loadAnimation(this,android.R.anim.slide_out_right);
 
         // set the animation type to imageSwitcher
-        imageSwitcher.setInAnimation(in);
         imageSwitcher.setOutAnimation(out);
+        imageSwitcher.setInAnimation(in);
+
 
 
         // ClickListener for NEXT button
