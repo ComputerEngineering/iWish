@@ -1,6 +1,5 @@
 package iWish_Activity;
 /**Michela*/
-
-public class CalendarActivity {
+public class StatisticsActivity {
 
 }
