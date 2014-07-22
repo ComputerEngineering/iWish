@@ -26,6 +26,7 @@ public class TutorialActivity extends Activity {
     TextView testo;
 
     // Array of Image IDs to Show In ImageSwitcher
+    
     int imageIds[]={R.drawable.tuto01,R.drawable.tuto3,R.drawable.tuto4,R.drawable.tuto5,R.drawable.tuto6,R.drawable.tuto7,R.drawable.tuto8,R.drawable.tuto9,R.drawable.tuto10,};
     int messageCount=imageIds.length;
     // to keep current Index of ImageID array
