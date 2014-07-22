@@ -58,7 +58,7 @@
             android:name="iWish_Activity.PopUpADV2Activity">
         </activity>
         <activity 
-            android:name=".PopUpADV3Activity">
+            android:name="iWish_Activity.PopUpADV3Activity">
         </activity>
         <activity 
             android:name="iWish_Activity.PopUpBadgeVinta1Activity">
