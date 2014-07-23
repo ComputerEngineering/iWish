@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:src="@drawable/iconaINDIETRO" />
+        android:src="@drawable/indietro" />
 
     <ImageButton
         android:id="@+id/bt_cerca"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="230dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/iconaCERCA" />
+        android:src="@drawable/cerca" />
 
     <LinearLayout
         android:layout_width="fill_parent"
