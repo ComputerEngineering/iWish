@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="65dp"
-    android:background="@drawable/friends1"
+    android:background="@drawable/title_friends1"
     android:orientation="horizontal" >
 
     <ImageButton
@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:src="@drawable/indietro" />
+        android:src="@drawable/bt_back" />
 
     <ImageButton
         android:id="@+id/bt_cerca"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="230dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/cerca" />
+        android:src="@drawable/bt_search" />
 
     <LinearLayout
         android:layout_width="fill_parent"
