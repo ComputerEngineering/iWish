@@ -3,7 +3,7 @@ package iWish_Activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.FrameLayout;
+
 import android.widget.ImageSwitcher;
 import android.view.View;
 import android.view.animation.Animation;
@@ -28,7 +28,7 @@ public class TutorialActivity extends Activity {
 
     // Array of Image IDs to Show In ImageSwitcher
 
-   int imageIds[] ={R.drawable.tuto01,R.drawable.tuto3,R.drawable.tuto4,R.drawable.tuto5,R.drawable.tuto6,R.drawable.tuto7,R.drawable.tuto8,R.drawable.tuto9,R.drawable.tuto10,};
+   int imageIds[] ={R.drawable.tut1,R.drawable.tut2,R.drawable.tut3,R.drawable.tut4,R.drawable.tut5,R.drawable.tut6,R.drawable.tut7,R.drawable.tut8,R.drawable.tut9,};
     int messageCount=imageIds.length;
     // to keep current Index of ImageID array
     int currentIndex=-1;
