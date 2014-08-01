@@ -1,43 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#39E565">
-
-    <ImageSwitcher
-        android:id="@+id/imageSwitcher1"
-
-
-
-        android:layout_width="400dp"
-        android:layout_height="450dp"
-        android:layout_centerHorizontal="true"
-        >
-        </ImageSwitcher>
-
-    <Button
-        android:id="@+id/buttonNext"
-        android:layout_marginTop="450dp"
+    android:layout_height="match_parent"   
+    android:background="#39E565"
+    android:orientation="vertical" >
+    
+ <android.support.v4.view.ViewPager
+ 	 xmlns:android="http://schemas.android.com/apk/res/android"
+ 	 android:id="@+id/view_pager"
+     android:layout_marginTop="50dp"
+ 	 android:layout_width="match_parent"
+	 android:layout_height="400dp" 
+	 android:layout_centerHorizontal="true"
+ 	 android:background="#39E565" />
+ 
+ <com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/indicator"
+        android:padding="10dip"
+        android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="NEXT"
+        android:layout_marginTop="450dp"
+        app:radius="4dp"
+        app:fillColor="#FFFFFF"
+        app:pageColor="#99FF99"
+        app:strokeWidth="0dp"
+      
         />
-
-    <TextView
+  
+  <TextView
+        android:text="@string/salta"
         android:id="@+id/andiamo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="let's go!"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="#1FBA4F"
-        android:textSize="20dp"
-         android:enabled="false"
+        android:textSize="@dimen/andiamooo"
+   		android:layout_marginTop="500dp"
+		android:textColor="#1FBA4F"
+        android:enabled="true"
         android:gravity="center_horizontal"
         android:clickable="true"
-        android:layout_marginBottom="20dp"></TextView>
-
+        android:layout_marginBottom="20dp"
+       ></TextView>
 
 </RelativeLayout>
+
