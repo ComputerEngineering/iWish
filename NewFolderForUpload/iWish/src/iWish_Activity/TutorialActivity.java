@@ -3,11 +3,13 @@ package iWish_Activity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.progect.iwish.R;
 import com.viewpagerindicator.CirclePageIndicator;
@@ -18,6 +20,9 @@ public class TutorialActivity extends Activity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.tutorial);
+    
+
+    
 
     ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
     ImagePagerAdapter adapter = new ImagePagerAdapter();
@@ -27,10 +32,21 @@ public class TutorialActivity extends Activity {
     //Bind the title indicator to the adapter
     CirclePageIndicator titleIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
     titleIndicator.setViewPager(viewPager);
-   
     
-  }
+    final TextView saltaTutorial = (TextView) findViewById(R.id.andiamo);
+    saltaTutorial.setOnClickListener(new View.OnClickListener() {
 
+      @Override
+      public void onClick(View v) {
+        // request your webservice here. Possible use of AsyncTask and ProgressDialog
+        // show the result here - dialog or Toast
+    	  startActivity(new Intent(TutorialActivity.this,AvatarActivity.class ));
+      }
+
+    });	
+       
+  }
+  
   private class ImagePagerAdapter extends PagerAdapter {
 	    private int[] mImages = new int[] {
 	    		R.drawable.p1,
@@ -68,4 +84,8 @@ public class TutorialActivity extends Activity {
       ((ViewPager) container).removeView((ImageView) object);
     }
   }
+  
+
+  
+  
 }

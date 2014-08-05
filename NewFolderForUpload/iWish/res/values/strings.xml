@@ -6,5 +6,7 @@
     <string name="salta">lets go!</string>
     <string name="next">NEXT</string>
     <string name="avatar">Avatar</string>
+    <string name="scrittaAvatar">Hi, ....... </string>
+    <string name="scrittaAvatar2">tell me more about you.</string>
 
 </resources>
