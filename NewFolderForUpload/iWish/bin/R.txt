@@ -1,39 +1,39 @@
-int attr border 0x7f010000
-int attr border_color 0x7f010002
-int attr border_width 0x7f010001
-int attr centered 0x7f01000b
-int attr circularImageViewStyle 0x7f010004
-int attr clipPadding 0x7f010016
-int attr fadeDelay 0x7f010022
-int attr fadeLength 0x7f010023
-int attr fades 0x7f010021
-int attr fillColor 0x7f01000f
-int attr footerColor 0x7f010017
-int attr footerIndicatorHeight 0x7f01001a
-int attr footerIndicatorStyle 0x7f010019
-int attr footerIndicatorUnderlinePadding 0x7f01001b
-int attr footerLineHeight 0x7f010018
-int attr footerPadding 0x7f01001c
-int attr gapWidth 0x7f010015
-int attr linePosition 0x7f01001d
-int attr lineWidth 0x7f010014
-int attr pageColor 0x7f010010
-int attr radius 0x7f010011
-int attr selectedBold 0x7f01001e
-int attr selectedColor 0x7f01000c
-int attr shadow 0x7f010003
-int attr snap 0x7f010012
-int attr strokeColor 0x7f010013
-int attr strokeWidth 0x7f01000d
-int attr titlePadding 0x7f01001f
-int attr topPadding 0x7f010020
-int attr unselectedColor 0x7f01000e
-int attr vpiCirclePageIndicatorStyle 0x7f010005
-int attr vpiIconPageIndicatorStyle 0x7f010006
-int attr vpiLinePageIndicatorStyle 0x7f010007
-int attr vpiTabPageIndicatorStyle 0x7f010009
-int attr vpiTitlePageIndicatorStyle 0x7f010008
-int attr vpiUnderlinePageIndicatorStyle 0x7f01000a
+int attr border 0x7f01001f
+int attr border_color 0x7f010021
+int attr border_width 0x7f010020
+int attr centered 0x7f010006
+int attr circularImageViewStyle 0x7f010023
+int attr clipPadding 0x7f010011
+int attr fadeDelay 0x7f01001d
+int attr fadeLength 0x7f01001e
+int attr fades 0x7f01001c
+int attr fillColor 0x7f01000a
+int attr footerColor 0x7f010012
+int attr footerIndicatorHeight 0x7f010015
+int attr footerIndicatorStyle 0x7f010014
+int attr footerIndicatorUnderlinePadding 0x7f010016
+int attr footerLineHeight 0x7f010013
+int attr footerPadding 0x7f010017
+int attr gapWidth 0x7f010010
+int attr linePosition 0x7f010018
+int attr lineWidth 0x7f01000f
+int attr pageColor 0x7f01000b
+int attr radius 0x7f01000c
+int attr selectedBold 0x7f010019
+int attr selectedColor 0x7f010007
+int attr shadow 0x7f010022
+int attr snap 0x7f01000d
+int attr strokeColor 0x7f01000e
+int attr strokeWidth 0x7f010008
+int attr titlePadding 0x7f01001a
+int attr topPadding 0x7f01001b
+int attr unselectedColor 0x7f010009
+int attr vpiCirclePageIndicatorStyle 0x7f010000
+int attr vpiIconPageIndicatorStyle 0x7f010001
+int attr vpiLinePageIndicatorStyle 0x7f010002
+int attr vpiTabPageIndicatorStyle 0x7f010004
+int attr vpiTitlePageIndicatorStyle 0x7f010003
+int attr vpiUnderlinePageIndicatorStyle 0x7f010005
 int bool default_circle_indicator_centered 0x7f060000
 int bool default_circle_indicator_snap 0x7f060001
 int bool default_line_indicator_centered 0x7f060002
@@ -357,7 +357,7 @@ int style Theme_PageIndicatorDefaults 0x7f090000
 int style Widget 0x7f090001
 int style Widget_IconPageIndicator 0x7f090004
 int style Widget_TabPageIndicator 0x7f090002
-int[] styleable CirclePageIndicator { 0x010100c4, 0x010100d4, 0x7f01000b, 0x7f01000d, 0x7f01000f, 0x7f010010, 0x7f010011, 0x7f010012, 0x7f010013 }
+int[] styleable CirclePageIndicator { 0x010100c4, 0x010100d4, 0x7f010006, 0x7f010008, 0x7f01000a, 0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e }
 int styleable CirclePageIndicator_android_background 1
 int styleable CirclePageIndicator_android_orientation 0
 int styleable CirclePageIndicator_centered 2
@@ -367,12 +367,12 @@ int styleable CirclePageIndicator_radius 6
 int styleable CirclePageIndicator_snap 7
 int styleable CirclePageIndicator_strokeColor 8
 int styleable CirclePageIndicator_strokeWidth 3
-int[] styleable CircularImageView { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003 }
+int[] styleable CircularImageView { 0x7f01001f, 0x7f010020, 0x7f010021, 0x7f010022 }
 int styleable CircularImageView_border 0
 int styleable CircularImageView_border_color 2
 int styleable CircularImageView_border_width 1
 int styleable CircularImageView_shadow 3
-int[] styleable LinePageIndicator { 0x010100d4, 0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f010014, 0x7f010015 }
+int[] styleable LinePageIndicator { 0x010100d4, 0x7f010006, 0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000f, 0x7f010010 }
 int styleable LinePageIndicator_android_background 0
 int styleable LinePageIndicator_centered 1
 int styleable LinePageIndicator_gapWidth 6
@@ -380,9 +380,9 @@ int styleable LinePageIndicator_lineWidth 5
 int styleable LinePageIndicator_selectedColor 2
 int styleable LinePageIndicator_strokeWidth 3
 int styleable LinePageIndicator_unselectedColor 4
-int[] styleable Theme { 0x7f010004 }
+int[] styleable Theme { 0x7f010023 }
 int styleable Theme_circularImageViewStyle 0
-int[] styleable TitlePageIndicator { 0x01010095, 0x01010098, 0x010100d4, 0x7f01000c, 0x7f010016, 0x7f010017, 0x7f010018, 0x7f010019, 0x7f01001a, 0x7f01001b, 0x7f01001c, 0x7f01001d, 0x7f01001e, 0x7f01001f, 0x7f010020 }
+int[] styleable TitlePageIndicator { 0x01010095, 0x01010098, 0x010100d4, 0x7f010007, 0x7f010011, 0x7f010012, 0x7f010013, 0x7f010014, 0x7f010015, 0x7f010016, 0x7f010017, 0x7f010018, 0x7f010019, 0x7f01001a, 0x7f01001b }
 int styleable TitlePageIndicator_android_background 2
 int styleable TitlePageIndicator_android_textColor 1
 int styleable TitlePageIndicator_android_textSize 0
@@ -398,13 +398,13 @@ int styleable TitlePageIndicator_selectedBold 12
 int styleable TitlePageIndicator_selectedColor 3
 int styleable TitlePageIndicator_titlePadding 13
 int styleable TitlePageIndicator_topPadding 14
-int[] styleable UnderlinePageIndicator { 0x010100d4, 0x7f01000c, 0x7f010021, 0x7f010022, 0x7f010023 }
+int[] styleable UnderlinePageIndicator { 0x010100d4, 0x7f010007, 0x7f01001c, 0x7f01001d, 0x7f01001e }
 int styleable UnderlinePageIndicator_android_background 0
 int styleable UnderlinePageIndicator_fadeDelay 3
 int styleable UnderlinePageIndicator_fadeLength 4
 int styleable UnderlinePageIndicator_fades 2
 int styleable UnderlinePageIndicator_selectedColor 1
-int[] styleable ViewPagerIndicator { 0x7f010005, 0x7f010006, 0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000a }
+int[] styleable ViewPagerIndicator { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005 }
 int styleable ViewPagerIndicator_vpiCirclePageIndicatorStyle 0
 int styleable ViewPagerIndicator_vpiIconPageIndicatorStyle 1
 int styleable ViewPagerIndicator_vpiLinePageIndicatorStyle 2
