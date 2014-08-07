@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"   
     android:background="#39E565"
-    android:orientation="vertical" >
+ >
     
  <android.support.v4.view.ViewPager
  	 xmlns:android="http://schemas.android.com/apk/res/android"
  	 android:id="@+id/view_pager"
-     android:layout_marginTop="50dp"
+     android:layout_marginTop="100dp"
  	 android:layout_width="match_parent"
-	 android:layout_height="400dp" 
+	 android:layout_height="450dp" 
 	 android:layout_centerHorizontal="true"
  	 android:background="#39E565" />
  
@@ -21,7 +21,7 @@
         android:padding="10dip"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="535dp"
         app:radius="4dp"
         app:fillColor="#FFFFFF"
         app:pageColor="#99FF99"
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/andiamooo"
-   		android:layout_marginTop="500dp"
+   		android:layout_marginTop="570dp"
 		android:textColor="#1FBA4F"
         android:enabled="true"
         android:gravity="center_horizontal"

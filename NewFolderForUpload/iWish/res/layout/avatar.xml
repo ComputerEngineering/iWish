@@ -1,4 +1,4 @@
- <LinearLayout
+ <RelativeLayout
     
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,113 +6,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sfondo_avatar"
-    android:orientation="vertical"
-
 >
 
-     <LinearLayout 
-             android:orientation="horizontal"
-             android:layout_width="match_parent"
-    		 android:layout_height="wrap_content"
+      <ImageView 
+		android:id="@+id/testa_avatar"
+		android:src="@drawable/testa_avatar"
+        android:layout_width="match_parent"
+    	android:layout_height="275dp"
 
-         >
-
-     <ImageButton 
+	  />
+      
+      <ImageButton 
         android:id="@+id/freccia_verde_sin"
         android:src="@drawable/freccia_verde_sin"
         android:background="#39E565"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          />
       
-      <TextView
-          android:id="@+id/avatar"
-          android:layout_marginTop="20dp"
-          android:clickable="true"
-          android:enabled="true"
-          android:text="@string/avatar"
-          android:textColor="#1FBA4F"
-          android:textSize="@dimen/andiamooo" 
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:gravity="center"
-          >
-</TextView>
+     <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/cerchio"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="72dp"
+        android:layout_gravity="left"
+        android:src="@drawable/hysen"
+        app:border_color="#034419"
+        app:border_width="1dp"
+        app:shadow="true" />
       
-    </LinearLayout>
-    
-     <RelativeLayout 
-            android:layout_width="match_parent"
-    		android:layout_height="wrap_content"
->
-         
-     <android.widget.ImageView
-        android:id="@+id/imm_cerchio"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-       android:layout_gravity="left"
-       
-       />
-      
-       <TextView
-        android:text="@string/scrittaAvatar"
-        android:id="@+id/scrittaAvatar"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="110dp"
-        android:textSize="15sp"           
- 		android:textColor="#034419"
- 		android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-       ></TextView>     
 
-       <ImageView 
-		android:id="@+id/step1"
-		android:src="@drawable/step1"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="300dp"
-        android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-
-	  />
-       
-	<TextView
-        android:text="@string/scrittaAvatar2"
-        android:id="@+id/scrittaAvatar2"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="110dp"
-        android:textSize="15sp"           
- 		android:textColor="#034419"
- 		android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-       ></TextView>           
-       
-     </RelativeLayout>
-     
-
-      <ImageView
-          android:id="@+id/scritta_how_feel"
-	  	  android:layout_width="match_parent"
-	  	  android:layout_height="135dp"
-          android:src="@drawable/scritta_how_feel6"
-			/>	
-
-           <RelativeLayout 
-            android:layout_width="match_parent"
-    		android:layout_height="wrap_content"
-			>			
-
-         
      <android.support.v4.view.ViewPager
  	 	xmlns:android="http://schemas.android.com/apk/res/android"
 		android:id="@+id/view_pager_avatar"
  		android:layout_width="match_parent"
- 		android:layout_height="300dp" 
-
-
+ 		android:layout_height="fill_parent" 
+ 		android:layout_marginTop="287dp"
         />
      
      <com.viewpagerindicator.CirclePageIndicator
@@ -120,16 +52,12 @@
         android:padding="10dip"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="550dp"
         app:radius="4dp"
         app:fillColor="#FFFFFF"
         app:pageColor="#E0E0E0"
         app:strokeWidth="0dp" />
      
-     
+
      </RelativeLayout>
- 
-
- </LinearLayout>    
-
  

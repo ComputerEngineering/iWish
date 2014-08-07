@@ -3,14 +3,14 @@
      android:background="@drawable/sfondo_popup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+ >
 
     
    <ImageView
          android:id="@+id/img_badge_smile"
          android:layout_width="150dp"
          android:layout_height="150dp"
-	     android:layout_marginTop="75dp"
+	     android:layout_marginTop="150dp"
          android:layout_centerHorizontal="true"
          android:src="@drawable/img_badge_smile" />
     
@@ -21,15 +21,16 @@
          android:id="@+id/scritta_grazie"
          android:layout_width="match_parent"
          android:layout_height="150dp"
-         android:layout_marginTop="225dp"
+         android:layout_marginTop="300dp"
          android:src="@drawable/scritta_grazie" />
 
      <ImageButton
          android:id="@+id/bot_grazie"
-         android:layout_width="202dp"
-         android:layout_height="47dp"
-         android:layout_marginTop="400dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="475dp"
          android:layout_centerHorizontal="true"
+         android:background="#EEEEEE"
          android:src="@drawable/bot_grazie" />
 
 </RelativeLayout>

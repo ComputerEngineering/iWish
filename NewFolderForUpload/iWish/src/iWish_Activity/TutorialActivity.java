@@ -1,4 +1,5 @@
 package iWish_Activity;
+/** Michela */
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -14,16 +15,12 @@ import android.widget.TextView;
 import com.progect.iwish.R;
 import com.viewpagerindicator.CirclePageIndicator;
 
-
 public class TutorialActivity extends Activity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.tutorial);
-    
-
-    
-
+ 
     ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
     ImagePagerAdapter adapter = new ImagePagerAdapter();
     viewPager.setAdapter(adapter);
@@ -40,7 +37,7 @@ public class TutorialActivity extends Activity {
       public void onClick(View v) {
         // request your webservice here. Possible use of AsyncTask and ProgressDialog
         // show the result here - dialog or Toast
-    	  startActivity(new Intent(TutorialActivity.this,AvatarActivity.class ));
+    	  startActivity(new Intent(TutorialActivity.this,LoginRegActivity.class ));
       }
 
     });	
@@ -84,8 +81,5 @@ public class TutorialActivity extends Activity {
       ((ViewPager) container).removeView((ImageView) object);
     }
   }
-  
-
-  
-  
+ 
 }

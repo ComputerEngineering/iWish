@@ -10,8 +10,6 @@ import android.widget.Button;
 
 import com.progect.iwish.R;
 
-
-
 public class SplashActivity extends Activity{
 	 /** Called when the activity is first created. */
 
@@ -26,7 +24,7 @@ public class SplashActivity extends Activity{
 		
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(SplashActivity.this,TutorialActivity.class ));
+				startActivity(new Intent(SplashActivity.this, TutorialActivity.class ));
 			}
 		});
 	}
