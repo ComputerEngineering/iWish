@@ -1,45 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:background="@drawable/sfondo_popup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
->
+    android:background="@drawable/sfondo_popup" >
 
-    
-   <ImageView
-         android:id="@+id/img_orologio"
-         android:layout_width="150dp"
-         android:layout_height="150dp"
-	     android:layout_marginTop="150dp"
-         android:layout_centerHorizontal="true"
-         android:src="@drawable/img_orologio" />
-    
-    
-    
-     <ImageView
-         
-         android:id="@+id/scritta_ora"
-         android:layout_width="match_parent"
-         android:layout_height="150dp"
-         android:layout_marginTop="300dp"
-         android:src="@drawable/scritta_ora" />
+    <ImageView
+        android:id="@+id/scritta_ora"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/img_orologio"
+        android:src="@drawable/scritta_ora" />
 
-     <ImageButton
-         android:id="@+id/bot_oh_yes"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="475dp"
-         android:layout_centerHorizontal="true"
-         android:background="#EEEEEE"
-         android:src="@drawable/bot_oh_yes" />
-     
-      <ImageButton
-         android:id="@+id/bot_not_today"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="525dp"
-         android:layout_centerHorizontal="true"
-         android:background="#EEEEEE"
-         android:src="@drawable/bot_not_today" />
+    <ImageView
+        android:id="@+id/img_orologio"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="126dp"
+        android:src="@drawable/img_orologio" />
+
+    <ImageButton
+        android:id="@+id/bot_not_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:background="#EEEEEE"
+        android:src="@drawable/bot_not_today" />
+
+    <ImageButton
+        android:id="@+id/bot_oh_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bot_not_today"
+        android:layout_alignLeft="@+id/bot_not_today"
+        android:layout_marginBottom="16dp"
+        android:background="#EEEEEE"
+        android:src="@drawable/bot_oh_yes" />
 
 </RelativeLayout>

@@ -9,5 +9,9 @@
     <string name="scrittaAvatar">Hi, ....... </string>
     <string name="scrittaAvatar2">tell me more about you.</string>
     <string name="starting">Starting</string>
+    <string name="register_name">Name</string>
+    <string name="register_surname">Surname</string>
+    <string name="register_birthday">Your birthday</string>
+    <string name="register_city">Your city</string>
 
 </resources>
