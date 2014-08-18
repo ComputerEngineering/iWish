@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 /**Alessandro*/
 
@@ -19,7 +19,7 @@ public class ForgotPswActivity extends Activity{
 	    setContentView(R.layout.forgotpsw);
 	    
 	    
-		ImageButton chiudi = (ImageButton)findViewById(R.id.chiudi_verde);
+		Button chiudi = (Button)findViewById(R.id.bt_oksend);
 		chiudi.setOnClickListener(new OnClickListener() {
 		
 			@Override

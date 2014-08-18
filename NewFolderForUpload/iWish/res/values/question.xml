@@ -1,0 +1,10 @@
+<resources>
+        
+        <string-array name="question">
+    		<item>Nome di tua madre</item>
+    		<item>Film preferito</item>
+    		<item>Paese di nascita</item>
+    		<item>Frase preferita</item>
+		</string-array>
+		
+    </resources>
