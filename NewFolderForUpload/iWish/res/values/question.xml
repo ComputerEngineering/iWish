@@ -6,5 +6,13 @@
     		<item>Paese di nascita</item>
     		<item>Frase preferita</item>
 		</string-array>
+        <string-array name="questions_register">
+            <item >What is your preferred musical gener?</item>
+            <item >waht was the name of your hight school?</item>
+            <item >Who was your childhood hero?</item>
+            <item >What was your dream job as a child?</item>
+            <item >What was the name of your first dog?</item>
+            waht was the name of your hight school?waht was the name of your hight school?
+        </string-array>
 		
     </resources>
