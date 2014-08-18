@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -26,7 +27,10 @@ public class RegisterActivity extends Activity{
 	private EditText edt_password;
 	private EditText edt_rp_password;
 	private EditText edt_answer_register;
-	private Spinner questions_register;
+	private Spinner sp_questions_register;
+	private ArrayAdapter<String> adapter;
+	private ArrayAdapter<String> arrayAdapter;
+	private String[] data;
 
 
 	@Override
@@ -34,15 +38,27 @@ public class RegisterActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
 
-
 		bt_close = (ImageButton)findViewById(R.id.chiudi_verde);
-		bt_close.setOnClickListener(new OnClickListener() {
+		bt_change = (ImageButton)findViewById(R.id.bott_modifica);
+		bt_go_ok = (ImageButton)findViewById(R.id.bt_go_ok);
 
+		adapter = createSpinnerAdapter();
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		sp_questions_register = (Spinner)findViewById(R.id.spinner1);
+		sp_questions_register.setAdapter(adapter);
+
+		bt_close.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(RegisterActivity.this,AvatarActivity.class ));
 			}
 		});
+
 	}
 
+	private ArrayAdapter<String> createSpinnerAdapter(){
+		data = getResources().getStringArray(R.array.questions_register);
+		arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, data );
+		return arrayAdapter;
+	}
 }
