@@ -331,6 +331,7 @@ int id testata_register 0x7f040055
 int id testata_starting 0x7f040063
 int id testata_statistics 0x7f040066
 int id testata_weight 0x7f04006e
+int id textView1 0x7f040070
 int id textView_level_profile 0x7f04004d
 int id textView_name 0x7f04004a
 int id textView_points_profile 0x7f04004b
