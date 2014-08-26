@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:background="@drawable/splash_screen"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal" >
-
-    <Button
-        android:id="@+id/bt_splash"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-       android:layout_gravity="bottom"
-        android:text="@string/loading" />"
-   
+    
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/splash_screen"
+        android:src="@drawable/splash_screen"/>   
 </LinearLayout>
