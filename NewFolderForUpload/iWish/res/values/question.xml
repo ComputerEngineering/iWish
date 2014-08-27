@@ -1,10 +1,10 @@
 <resources>
         
         <string-array name="question">
-    		<item>Nome di tua madre</item>
-    		<item>Film preferito</item>
-    		<item>Paese di nascita</item>
-    		<item>Frase preferita</item>
+    		<item>Name of your mother</item>
+    		<item>Favorite Movies</item>
+    		<item>Country of birth</item>
+    		<item>Favorite phrase</item>
 		</string-array>
         <string-array name="questions_register">
             <item >What is your preferred musical gener?</item>
