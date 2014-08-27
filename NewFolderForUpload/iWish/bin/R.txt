@@ -1,5 +1,4 @@
 int array question 0x7f0a0000
-int array questions_register 0x7f0a0001
 int attr border 0x7f01001f
 int attr border_color 0x7f010021
 int attr border_width 0x7f010020

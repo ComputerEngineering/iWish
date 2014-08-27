@@ -93,7 +93,7 @@ public class RegisterActivity extends Activity{
 	}
 
 	private ArrayAdapter<String> createSpinnerAdapter(){
-		data = getResources().getStringArray(R.array.questions_register);
+		data = getResources().getStringArray(R.array.question);
 		arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, data );
 		return arrayAdapter;
 	}
