@@ -12,25 +12,20 @@ import android.widget.ImageButton;
 /** Raffaella */
 
 public class PopUpComplimentiActivity extends Activity{
-
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
+	private ImageButton bt_nextPopUpComplimenti;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.popup_complimenti);
 		
-		
-		ImageButton avanti = (ImageButton)findViewById(R.id.bt_awesome1);
-		avanti.setOnClickListener(new OnClickListener() {
+		bt_nextPopUpComplimenti = (ImageButton)findViewById(R.id.bt_awesome1);
+		bt_nextPopUpComplimenti.setOnClickListener(new OnClickListener() {
 		
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(PopUpComplimentiActivity.this,PopUpGrandeActivity.class ));
 			}
 		});
-		
 	}
-
 }

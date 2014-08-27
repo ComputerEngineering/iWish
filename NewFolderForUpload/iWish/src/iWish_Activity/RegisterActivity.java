@@ -62,7 +62,6 @@ public class RegisterActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
 			}
 		});
 		
@@ -89,7 +88,6 @@ public class RegisterActivity extends Activity{
 				startActivity(new Intent(RegisterActivity.this,AvatarActivity.class ));
 			}
 		});
-
 	}
 
 	private ArrayAdapter<String> createSpinnerAdapter(){

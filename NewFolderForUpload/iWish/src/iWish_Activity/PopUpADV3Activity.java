@@ -12,27 +12,20 @@ import android.widget.ImageButton;
 /** Raffaella*/
 
 public class PopUpADV3Activity extends Activity {
+	private ImageButton bt_nextPopUpADV3;
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.popup_adv3);
-		
-		
-		ImageButton avanti = (ImageButton)findViewById(R.id.bt_thanks1);
-		avanti.setOnClickListener(new OnClickListener() {
-		
+
+		bt_nextPopUpADV3 = (ImageButton)findViewById(R.id.bt_thanks1);
+		bt_nextPopUpADV3.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(PopUpADV3Activity.this,PopUpADV1Activity.class ));
 			}
 		});	
-		
-		
-		
 	}
-
 }

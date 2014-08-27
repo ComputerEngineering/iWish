@@ -12,13 +12,15 @@ import com.progect.iwish.R;
 /** Raffaella*/
 
 public class CongratulationActivity extends Activity {
+	private ImageView shortcut;
 	  @Override
 	  public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.congratulation);
 	    
-	    ImageView scorciatoia = (ImageView)findViewById(R.id.cerchio);
-	    scorciatoia.setOnClickListener(new OnClickListener() {
+	    shortcut = (ImageView)findViewById(R.id.cerchio);
+	    
+	    shortcut.setOnClickListener(new OnClickListener() {
 	  		
 	  		@Override
 	  		public void onClick(View v) {
