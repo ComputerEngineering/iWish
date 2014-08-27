@@ -28,7 +28,7 @@ public class UtenteDao {
 		DataBaseStorageUtente.COLUMN_CITY,
 		DataBaseStorageUtente.COLUMN_EMAIL,
 		DataBaseStorageUtente.COLUMN_PASSWORD,
-		DataBaseStorageUtente.COLUMN_QUESTION,
+		DataBaseStorageUtente.COLUMN_QUESTION
 		//DataBaseStorageUtenteCOLUMN_PHOTO
 	};
 	
@@ -125,9 +125,9 @@ public class UtenteDao {
 		return  utente;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#finalize()
-	 */
+	/**Invoked when the garbage collector has detected that this instance is no longer 
+	 * reachable. The default implementation does nothing, but this method can be overridden 
+	 * to free resources */
 	@Override
 	protected void finalize() throws Throwable {
 		close();
