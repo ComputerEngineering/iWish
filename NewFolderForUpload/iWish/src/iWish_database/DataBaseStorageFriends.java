@@ -1,9 +1,10 @@
 package iWish_database;
+/** Raffaella*/
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-/**Alessandro - Raffaella*/
+
 import android.util.Log;
 
 /**This class is responsible for creating the database.
