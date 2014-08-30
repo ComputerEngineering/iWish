@@ -25,7 +25,7 @@ public class ContextiWish {
 		return istanz;
 	}
 	
-	public Context geContext(){
+	public Context getContext(){
 		return c;
 	}
 	
