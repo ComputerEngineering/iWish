@@ -106,8 +106,7 @@ public class Utente implements MyUtente{
 		return "Utente [keyUtente=" + keyUtente + ", name=" + name
 				+ ", surname=" + surname + ", birthday=" + birthday + ", city="
 				+ city + ", email=" + email + ", password=" + password
-				+ ", question=" + question + ", answer=" + answer + ", c=" + c
-				+ "]";
+				+ ", question=" + question + ", answer=" + answer + "]";
 	}
 	
 }

@@ -2,14 +2,12 @@ package iWish_Network;
 /**Raffaella*/
 
 import iWish_Context.ContextiWish;
-import iWish_Control.ControlConnection;
 import iWish_ControlServer.CheckConnection;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,7 +29,6 @@ import org.json.JSONObject;
 
 import _iWish.MyUtente;
 import android.content.Context;
-import android.content.IntentSender.SendIntentException;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Handler;
