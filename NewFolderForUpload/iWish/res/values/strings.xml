@@ -13,5 +13,6 @@
     <string name="register_surname">Surname</string>
     <string name="register_birthday">Your birthday</string>
     <string name="register_city">Your city</string>
-
+    <string name="username">username</string>
+    <string name="insert_username">insert username</string>
 </resources>
