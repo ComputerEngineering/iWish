@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-/**Antonio funge*/
+/**Antonio */
 
 public class LoginRegActivity extends Activity{
 	private EditText edt_username;
