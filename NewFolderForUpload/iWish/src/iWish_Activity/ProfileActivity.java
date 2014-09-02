@@ -27,12 +27,12 @@ public class ProfileActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profile);
-		bt_statics = (ImageButton)findViewById(R.id.imageButton1);
-		bt_friends = (ImageButton)findViewById(R.id.imageButton2);
-		bt_wishlist = (ImageButton)findViewById(R.id.imageButton3);
-		bt_calendar= (ImageButton)findViewById(R.id.imageButton4);
-		bt_option = (ImageButton)findViewById(R.id.imageButton5);
-		bt_allarme= (ImageButton)findViewById(R.id.imageButton6);
+		bt_statics = (ImageButton)findViewById(R.id.bot_statistics);
+		bt_friends = (ImageButton)findViewById(R.id.bot_friends);
+		bt_wishlist = (ImageButton)findViewById(R.id.bot_wishlist);
+		bt_calendar= (ImageButton)findViewById(R.id.bot_calendar);
+		bt_option = (ImageButton)findViewById(R.id.bot_ruota);
+		bt_allarme= (ImageButton)findViewById(R.id.bot_campana);
 		bt_make_new_wish_profile = (ImageButton)findViewById(R.id.imageUser_profile);
 		tv_userName = (TextView)findViewById(R.id.textView_name);
 		tv_wishes = (TextView)findViewById(R.id.textView_wishes_profile);

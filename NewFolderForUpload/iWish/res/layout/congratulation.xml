@@ -1,100 +1,94 @@
-<RelativeLayout
-    
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sfondo_gender"
->
+    android:background="@drawable/sfondo_gender" >
 
-      <ImageView 
-		android:id="@+id/testa_congratulation"
-		android:src="@drawable/testa_congratulation4"
+    <ImageView
+        android:id="@+id/testa_congratulation"
         android:layout_width="match_parent"
-    	android:layout_height="275dp"
+        android:layout_height="275dp"
+        android:src="@drawable/testa_congratulation4" />
 
-	  />
-      
-      <ImageButton 
+    <ImageButton
         android:id="@+id/freccia_verde_sin"
-        android:src="@drawable/freccia_verde_sin"
-        android:background="@color/sfondo"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         />
-      
-     <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="35dp"
+        android:background="@color/sfondo"
+        android:src="@drawable/freccia_verde_sin" />
+
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/civ_cerchio"
         android:layout_width="101dp"
         android:layout_height="101dp"
-        android:layout_marginTop="72dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
         android:src="@drawable/hysen"
         app:border_color="@color/verde_scuro"
         app:border_width="1dp"
         app:shadow="true" />
 
-     <ImageView
-         android:id="@+id/imgv_body_congratulation"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentBottom="true"
-         android:layout_below="@+id/testa_congratulation"
-         android:layout_centerHorizontal="true"
-         android:src="@drawable/body_congratulation" />
+    <ImageView
+        android:id="@+id/imgv_body_congratulation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/testa_congratulation"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/body_congratulation" />
 
-     <ImageButton
-         android:id="@+id/img_bt_expressWish"
-         android:layout_width="wrap_content"
-         android:layout_height="57dp"
-         android:layout_alignParentBottom="true"
-         android:layout_alignParentLeft="true"
-         android:src="@drawable/bt_exp_your_wish" />
+    <ImageButton
+        android:id="@+id/img_bt_expressWish"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/bt_exp_your_wish" />
 
-     <com.mikhaellopez.circularimageview.CircularImageView
-         android:id="@+id/civ_bmi"
-         android:layout_width="70dp"
-         android:layout_height="70dp"
-         android:layout_above="@+id/img_bt_expressWish"
-         android:layout_marginBottom="55dp"
-         android:layout_toRightOf="@+id/freccia_verde_sin"
-         android:src="@drawable/hysen"
-         app:border_color="@color/verde_scuro"
-         app:border_width="1dp"
-         app:shadow="true" />
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/civ_bmi"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/img_bt_expressWish"
+        android:layout_marginBottom="55dp"
+        android:layout_toRightOf="@+id/freccia_verde_sin"
+        android:src="@drawable/hysen"
+        app:border_color="@color/verde_scuro"
+        app:border_width="1dp"
+        app:shadow="true" />
 
-     <com.mikhaellopez.circularimageview.CircularImageView
-         android:id="@+id/civ_type"
-         android:layout_width="70dp"
-         android:layout_height="70dp"
-         android:layout_alignLeft="@+id/civ_bmi"
-         android:layout_alignTop="@+id/imgv_body_congratulation"
-         android:layout_marginTop="51dp"
-         android:src="@drawable/hysen"
-         app:border_color="@color/verde_scuro"
-         app:border_width="1dp"
-         app:shadow="true" />
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/civ_type"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignLeft="@+id/civ_bmi"
+        android:layout_alignTop="@+id/imgv_body_congratulation"
+        android:layout_marginTop="51dp"
+        android:src="@drawable/hysen"
+        app:border_color="@color/verde_scuro"
+        app:border_width="1dp"
+        app:shadow="true" />
 
-     <TextView
-         android:id="@+id/textView1"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_centerVertical="true"
-         android:layout_marginLeft="28dp"
-         android:layout_toRightOf="@+id/civ_type"
-         android:text="Medium Text"
-         android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="28dp"
+        android:layout_toRightOf="@+id/civ_type"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-     <TextView
-         android:id="@+id/TextView01"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_above="@+id/civ_bmi"
-         android:layout_alignLeft="@+id/textView1"
-         android:text="Medium Text"
-         android:textAppearance="?android:attr/textAppearanceMedium" />
-     
-      </RelativeLayout>
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/civ_bmi"
+        android:layout_alignLeft="@+id/textView1"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>
