@@ -8,7 +8,7 @@
     android:layout_alignParentRight="true"
     android:layout_alignParentTop="true"
     android:background="@drawable/testa_profile"
-    android:gravity="right" >
+    android:gravity="fill_horizontal" >
 
     <ImageButton
         android:id="@+id/imageUser_profile"
@@ -36,35 +36,6 @@
         android:layout_centerHorizontal="true"
         android:text="TextView" />
 
-    <TextView
-        android:id="@+id/textView_level_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView_points_profile"
-        android:layout_alignBottom="@+id/textView_points_profile"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="56dp"
-        android:text="TextView" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageButton1"
-        android:layout_marginBottom="37dp"
-        android:layout_toLeftOf="@+id/textView_level_profile"
-        android:src="@drawable/bt_wishlist"
-        android:background="#39E565" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageButton3"
-        android:layout_alignRight="@+id/imageButton1"
-        android:src="@drawable/bt_calendar" 
-        android:background="#39E565"/>
-
     <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
@@ -74,15 +45,6 @@
         android:layout_toRightOf="@+id/textView_wishes_profile"
         android:background="#39E565"
         android:src="@drawable/bt_statistics" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton3"
-        android:layout_toLeftOf="@+id/imageButton5"
-        android:background="#39E565"
-        android:src="@drawable/bt_friends" />
 
     <TextView
         android:id="@+id/textView_name"
@@ -95,26 +57,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageButton6"
-        android:layout_marginLeft="32dp"
-        android:layout_toRightOf="@+id/imageButton3"
-        android:background="#39E565"
-        android:src="@drawable/bt_options" />
-
-    <TextView
-        android:id="@+id/textView_wishes_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageButton4"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="44dp"
-        android:layout_marginLeft="20dp"
-        android:text="TextView" />
-
-    <ImageButton
         android:id="@+id/imageButton6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,5 +65,64 @@
         android:layout_marginBottom="17dp"
         android:background="#39E565"
         android:src="@drawable/bt_sounds" />
+
+    <TextView
+        android:id="@+id/textView_wishes_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageButton6"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="56dp"
+        android:text="TextView" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButton1"
+        android:layout_marginBottom="66dp"
+        
+        android:layout_toLeftOf="@+id/textView_level_profile"
+        android:background="#39E565"
+        android:src="@drawable/bt_wishlist" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageButton3"
+        android:layout_toRightOf="@+id/imageButton6"
+        android:background="#39E565"
+        android:src="@drawable/bt_calendar" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/imageButton5"
+        android:layout_alignTop="@+id/imageButton1"
+        android:background="#39E565"
+        android:src="@drawable/bt_friends" />
+
+    <TextView
+        android:id="@+id/textView_level_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_points_profile"
+        android:layout_alignBottom="@+id/textView_points_profile"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="24dp"
+        android:text="TextView" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageButton6"
+        android:layout_toRightOf="@+id/imageButton3"
+        android:layout_marginRight="15dp"
+        android:background="#39E565"
+        android:src="@drawable/bt_options" />
 
 </RelativeLayout>

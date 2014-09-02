@@ -321,12 +321,12 @@ int id edtx_username 0x7f050029
 int id femmina 0x7f05001f
 int id freccia_verde_sin 0x7f050006
 int id icon 0x7f05008c
-int id imageButton1 0x7f05005d
-int id imageButton2 0x7f050061
-int id imageButton3 0x7f05005c
-int id imageButton4 0x7f05005e
-int id imageButton5 0x7f050060
-int id imageButton6 0x7f05005f
+int id imageButton1 0x7f05005b
+int id imageButton2 0x7f050060
+int id imageButton3 0x7f05005d
+int id imageButton4 0x7f05005f
+int id imageButton5 0x7f050061
+int id imageButton6 0x7f05005c
 int id imageUser_profile 0x7f050056
 int id img_adv3 0x7f050037
 int id img_adv_nike 0x7f050032
@@ -397,7 +397,7 @@ int id testata_starting 0x7f05007c
 int id testata_statistics 0x7f05007f
 int id testata_weight 0x7f050089
 int id textView1 0x7f05008b
-int id textView_level_profile 0x7f05005b
+int id textView_level_profile 0x7f05005e
 int id textView_name 0x7f050058
 int id textView_points_profile 0x7f050059
 int id textView_wishes_profile 0x7f05005a
