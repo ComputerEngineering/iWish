@@ -17,14 +17,14 @@ public class PopUpTemporaleActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.popup_temporale);
 		
-		ImageButton avanti = (ImageButton)findViewById(R.id.bot_indoor);
+/*		ImageButton avanti = (ImageButton)findViewById(R.id.bot_indoor);
 		avanti.setOnClickListener(new OnClickListener() {
 		
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(PopUpTemporaleActivity.this,CalendarActivity.class ));
 			}
-		});		
+		});		*/
 		
 		
 		

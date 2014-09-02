@@ -19,7 +19,7 @@
       <ImageButton 
         android:id="@+id/freccia_verde_sin"
         android:src="@drawable/freccia_verde_sin"
-        android:background="#39E565"
+        android:background="@color/sfondo"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
       <ImageButton 
         android:id="@+id/chiudi_verde2"
         android:src="@drawable/icona_chiudi2"
-        android:background="#39E565"
+        android:background="@color/sfondo"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="310dp"
         android:layout_width="wrap_content"
@@ -51,8 +51,8 @@
         android:layout_width="fill_parent"
         android:layout_marginTop="550dp"
         app:radius="4dp"
-        app:fillColor="#FFFFFF"
-        app:pageColor="#E0E0E0"
+        app:fillColor="@color/bianco"
+        app:pageColor="@color/sfondo_ind_grigio"
         app:strokeWidth="0dp" />
      
 

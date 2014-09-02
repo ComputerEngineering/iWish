@@ -1,12 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:background="@drawable/splash_screen" >
     
-    <ImageView 
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/splash_screen"
-        android:src="@drawable/splash_screen"/>   
-</LinearLayout>
+      
+  <ProgressBar
+         android:id="@+id/progress_bar"
+         android:layout_width="fill_parent"
+		 android:layout_marginTop="630dp"
+         style="@style/ProgressBarStyle"
+     
+   />
+    
+    
+      <TextView
+         android:id="@+id/loading"
+         android:layout_marginTop="565dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:textSize="35sp"
+         android:textColor="@color/verde_scuro"
+   />
+      
+      <TextView
+         android:id="@+id/percentuale"
+         android:layout_marginTop="585dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_toRightOf="@id/loading"
+         android:textColor="@color/verde_scuro"
+         android:text="@string/perCento"
+   />
+          
+          
+   
+      
+    <TextView
+         android:id="@+id/completato"
+         android:layout_marginTop="605dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:textColor="@color/verde_scuro"
+   />       
+   
+       <TextView
+         android:id="@+id/incompleto"
+         android:layout_marginTop="605dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:textColor="@color/verde_scuro"
+   />    
+       
+    
+</RelativeLayout>
+
+

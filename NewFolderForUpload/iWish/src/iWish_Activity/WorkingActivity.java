@@ -1,5 +1,7 @@
 package iWish_Activity;
 
+import com.progect.iwish.R;
+
 import android.app.Activity;
 import android.media.Image;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ public class WorkingActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+	    setContentView(R.layout.working);
 	}
 	
 	

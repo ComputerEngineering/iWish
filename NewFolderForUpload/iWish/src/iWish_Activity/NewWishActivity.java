@@ -23,7 +23,7 @@ public class NewWishActivity extends Activity{
 		
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(NewWishActivity.this,PopUpCalendarioActivity.class ));
+				startActivity(new Intent(NewWishActivity.this,ProfileActivity.class ));
 			}
 		});
 	    

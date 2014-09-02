@@ -37,6 +37,7 @@ public class TutorialActivity extends Activity {
       public void onClick(View v) {
         // request your webservice here. Possible use of AsyncTask and ProgressDialog
         // show the result here - dialog or Toast
+    	  saltaTutorial.setTextColor(getResources().getColor(R.color.bianco));
     	  startActivity(new Intent(TutorialActivity.this,LoginRegActivity.class ));
       }
 

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"   
-    android:background="#39E565"
+    android:background="@color/sfondo"
  >
     
  <android.support.v4.view.ViewPager
@@ -14,7 +14,7 @@
  	 android:layout_width="match_parent"
 	 android:layout_height="450dp" 
 	 android:layout_centerHorizontal="true"
- 	 android:background="#39E565" />
+ 	 android:background="@color/sfondo" />
  
  <com.viewpagerindicator.CirclePageIndicator
         android:id="@+id/indicator"
@@ -23,20 +23,20 @@
         android:layout_width="fill_parent"
         android:layout_marginTop="535dp"
         app:radius="4dp"
-        app:fillColor="#FFFFFF"
-        app:pageColor="#99FF99"
+        app:fillColor="@color/bianco"
+        app:pageColor="@color/sfondo_ind_verde"
         app:strokeWidth="0dp"
       
         />
   
   <TextView
-        android:text="@string/salta"
+        android:text="@string/letsgo"
         android:id="@+id/andiamo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/andiamooo"
+        android:textSize="@dimen/letsgo"
    		android:layout_marginTop="570dp"
-		android:textColor="#1FBA4F"
+		android:textColor="@color/letsgo"
         android:enabled="true"
         android:gravity="center_horizontal"
         android:clickable="true"

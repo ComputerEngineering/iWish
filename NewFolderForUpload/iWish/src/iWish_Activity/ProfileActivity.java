@@ -4,7 +4,9 @@ package iWish_Activity;
 import com.progect.iwish.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -36,5 +38,18 @@ public class ProfileActivity extends Activity{
 		tv_wishes = (TextView)findViewById(R.id.textView_wishes_profile);
 		tv_points = (TextView)findViewById(R.id.textView_points_profile);
 		tv_level = (TextView)findViewById(R.id.textView_level_profile);
+		
+		
+		bt_make_new_wish_profile.setOnClickListener(new View.OnClickListener() {
+
+		      @Override
+		      public void onClick(View v) {
+		        // request your webservice here. Possible use of AsyncTask and ProgressDialog
+		        // show the result here - dialog or Toast
+		    	  startActivity(new Intent(ProfileActivity.this,CalendarActivity.class ));
+		      }
+
+		    });	
+		
 	}
 }

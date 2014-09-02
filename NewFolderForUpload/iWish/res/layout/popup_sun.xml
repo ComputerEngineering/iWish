@@ -29,7 +29,7 @@
          android:layout_height="wrap_content"
          android:layout_marginTop="475dp"
          android:layout_centerHorizontal="true"
-         android:background="#EEEEEE"
+         android:background="@color/bot_grazie"
          android:src="@drawable/bot_oh_yes" />
      
       <ImageButton
@@ -38,7 +38,7 @@
          android:layout_height="wrap_content"
          android:layout_marginTop="525dp"
          android:layout_centerHorizontal="true"
-         android:background="#EEEEEE"
+         android:background="@color/bot_grazie"
          android:src="@drawable/bot_not_today" />
 
 </RelativeLayout>

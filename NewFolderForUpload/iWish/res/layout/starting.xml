@@ -18,7 +18,7 @@
       <ImageButton 
         android:id="@+id/freccia_verde_sin"
         android:src="@drawable/freccia_verde_sin"
-        android:background="#39E565"
+        android:background="@color/sfondo"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
       <ImageButton 
         android:id="@+id/chiudi_verde2"
         android:src="@drawable/icona_chiudi2"
-        android:background="#39E565"
+        android:background="@color/sfondo"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="310dp"
         android:layout_width="wrap_content"
@@ -65,70 +65,3 @@
     
 </RelativeLayout>
         
-
-
-<!-- 
-
-      <TextView
-          android:id="@+id/starting"
-          android:layout_marginTop="20dp"
-           android:layout_marginLeft="120dp"         
-          android:text="@string/starting"
-          android:textColor="#1FBA4F"
-          android:textSize="@dimen/andiamooo" 
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:gravity="center_horizontal"
-          ></TextView>
-       
-      <ImageButton 
-        android:id="@+id/chiudi_verde2"
-        android:src="@drawable/icona_chiudi2"
-        android:background="#39E565"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="310dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
-    
-    
-     <ImageView 
-		android:id="@+id/testata_starting"
-		android:src="@drawable/testata_starting"
-        android:layout_width="match_parent"
-    	android:layout_height="215dp"
-    	android:layout_marginTop="60dp"
-
-	  />
-     
-     <ImageButton
-                android:id="@+id/ready"
-                android:layout_width="250dp"
-                android:layout_height="125dp"
-                android:layout_marginTop="295dp"
-                android:clickable="true" 
-                android:src="@drawable/ready"
-                android:layout_centerHorizontal="true" />
-     
-          <ImageButton
-                android:id="@+id/other_day"
-                android:layout_width="250dp"
-                android:layout_height="125dp"
-                android:layout_marginTop="430dp"
-                android:clickable="true" 
-                android:src="@drawable/other_day"
-                android:layout_centerHorizontal="true" />
-          
-         <ImageButton
-                android:id="@+id/done"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="577dp"
-       	
-                android:src="@drawable/botton_done"
-                android:layout_centerHorizontal="true" />
-    
-
-
-
- -->

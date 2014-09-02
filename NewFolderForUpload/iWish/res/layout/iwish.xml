@@ -19,7 +19,7 @@
      <ImageButton 
         android:id="@+id/chiudi_verde"
         android:src="@drawable/chiudi_verde2b"
-        android:background="#39E565"
+        android:background="@color/sfondo"
         android:layout_marginTop="120dp"
         android:layout_marginLeft="260dp"
         android:layout_width="wrap_content"

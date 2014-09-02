@@ -19,7 +19,7 @@ public class PopUpComplimentiActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.popup_complimenti);
 		
-		bt_nextPopUpComplimenti = (ImageButton)findViewById(R.id.bt_awesome1);
+		bt_nextPopUpComplimenti = (ImageButton)findViewById(R.id.bot_awesome);
 		bt_nextPopUpComplimenti.setOnClickListener(new OnClickListener() {
 		
 			@Override

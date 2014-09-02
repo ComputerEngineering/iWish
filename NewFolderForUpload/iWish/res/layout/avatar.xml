@@ -19,7 +19,7 @@
       <ImageButton 
         android:id="@+id/freccia_verde_sin"
         android:src="@drawable/freccia_verde_sin"
-        android:background="#39E565"
+        android:background="@color/sfondo"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
         android:layout_marginTop="72dp"
         android:layout_gravity="left"
         android:src="@drawable/hysen"
-        app:border_color="#034419"
+        app:border_color="@color/cerchio_imm"
         app:border_width="1dp"
         app:shadow="true" />
       
@@ -54,8 +54,8 @@
         android:layout_width="fill_parent"
         android:layout_marginTop="550dp"
         app:radius="4dp"
-        app:fillColor="#FFFFFF"
-        app:pageColor="#E0E0E0"
+        app:fillColor="@color/bianco"
+        app:pageColor="@color/sfondo_ind_grigio"
         app:strokeWidth="0dp" />
      
 

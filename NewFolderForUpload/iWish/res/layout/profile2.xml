@@ -1,0 +1,134 @@
+<RelativeLayout
+    
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sfondo_gender"
+>
+
+      <ImageView 
+		android:id="@+id/testa_profile_ok"
+		android:src="@drawable/testa_profile_ok"
+        android:layout_width="match_parent"
+    	android:layout_height="275dp"
+
+	  />
+      
+     <ImageButton
+            android:id="@+id/bot_ruota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="120dp"
+            android:background="@color/sfondo"
+            android:src="@drawable/bot_ruota" />
+
+        <ImageButton
+            android:id="@+id/bot_campana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="120dp"
+            android:background="@color/sfondo"
+            android:src="@drawable/bot_campana" />
+      
+     <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/cerchio"
+        android:layout_width="101dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="72dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/hysen"
+        app:border_color="@color/verde_scuro"
+        app:border_width="1dp"
+        app:shadow="true" />
+     
+     <TextView
+        android:id="@+id/textView_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="Nome utente"
+        android:textSize="30sp"
+        android:textColor="@color/letsgo"
+         />
+     
+  <TextView
+        android:id="@+id/textView_wishes_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="210dp"
+        android:text="9"
+        android:textSize="25sp"
+        android:textColor="@color/bot_deselezionati" />
+    
+    
+    <TextView
+        android:id="@+id/textView_points_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:layout_centerHorizontal="true"
+        android:text="22"
+        android:textSize="25sp"
+        android:textColor="@color/bot_deselezionati" />
+
+    <TextView
+        android:id="@+id/textView_level_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="210dp"
+        android:text="2"
+        android:textSize="25sp"
+        android:textColor="@color/bot_deselezionati" />
+
+  
+  <ImageButton
+        android:id="@+id/bot_calendar"
+        android:layout_width="145dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="290dp"  
+        android:layout_marginLeft="35dp"   
+        android:src="@drawable/bot_calendar" 
+/>
+    
+    <ImageButton
+        android:id="@+id/bot_wishlist"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="290dp"    
+        android:src="@drawable/bot_wishlist"
+        android:layout_toRightOf="@id/bot_calendar"
+ 		/>
+
+
+
+    <ImageButton
+        android:id="@+id/bot_statistics"
+        android:layout_width="145dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="425dp"
+        android:layout_marginLeft="35dp"  
+        android:src="@drawable/bot_statistics" />
+
+    <ImageButton
+        android:id="@+id/bot_friends"
+        android:layout_width="145dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="425dp"
+        android:src="@drawable/bot_friends"
+        android:layout_toRightOf="@id/bot_statistics" />
+  
+    <ImageButton
+        android:id="@+id/imageUser_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="577dp"  
+		android:src="@drawable/bot_make_new_wish"/>
+     
+      </RelativeLayout>

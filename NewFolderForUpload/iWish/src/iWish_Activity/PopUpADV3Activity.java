@@ -19,7 +19,7 @@ public class PopUpADV3Activity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.popup_adv3);
 
-		bt_nextPopUpADV3 = (ImageButton)findViewById(R.id.bt_thanks1);
+		bt_nextPopUpADV3 = (ImageButton)findViewById(R.id.bot_grazie);
 		bt_nextPopUpADV3.setOnClickListener(new OnClickListener() {
 
 			@Override

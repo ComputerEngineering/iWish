@@ -19,7 +19,7 @@ public class PopUpBadgeVinta1Activity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.popup_badge_vinta1);
 		
-		bt_nextPopUpBadgeVinta1= (ImageButton)findViewById(R.id.bt_thanks2);
+		bt_nextPopUpBadgeVinta1= (ImageButton)findViewById(R.id.bot_grazie);
 		bt_nextPopUpBadgeVinta1.setOnClickListener(new OnClickListener() {
 		
 			@Override

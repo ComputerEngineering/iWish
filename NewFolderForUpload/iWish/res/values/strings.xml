@@ -1,11 +1,8 @@
 <resources>
 
     <string name="app_name">iWish</string>
-    <string name="loading">Loading</string>
     <string name="thanks">thanks</string>
-    <string name="salta">let\u0027s go!</string>
-    <string name="next">NEXT</string>
-    <string name="avatar">Avatar</string>
+    <string name="letsgo">let\u0027s go!</string>
     <string name="scrittaAvatar">Hi, ....... </string>
     <string name="scrittaAvatar2">tell me more about you.</string>
     <string name="starting">Starting</string>
@@ -13,6 +10,16 @@
     <string name="register_surname">Surname</string>
     <string name="register_birthday">Your birthday</string>
     <string name="register_city">Your city</string>
-    <string name="username">username</string>
-    <string name="insert_username">insert username</string>
+    <string name="perCento">\u0020 %</string>
+    
+    
+    
+   <string name="app_name2">DatePickerDialogEditTextClickEvent</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    
+
 </resources>

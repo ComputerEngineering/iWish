@@ -1,0 +1,14 @@
+<resources>
+
+    <color name="verde_scuro">#034419</color>
+    <color name="sfondo">#39E565</color>
+    <color name="bianco">#FFFFFF</color>
+    <color name="letsgo">#1FBA4F</color>
+    <color name="sfondo_ind_verde">#99FF99</color>
+    <color name="sfondo_ind_grigio">#E0E0E0</color>
+    <color name="cerchio_imm">#034419</color>
+    <color name="bot_grazie">#EEEEEE</color>
+    <color name="bot_deselezionati">#7CC48F</color>
+    
+
+</resources>
