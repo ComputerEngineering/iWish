@@ -271,7 +271,6 @@ int drawable vs_friends 0x7f0200b6
 int drawable vs_friends2 0x7f0200b7
 int drawable vs_myself 0x7f0200b8
 int drawable vs_myself2 0x7f0200b9
-int id TextView01 0x7f05001b
 int id andiamo 0x7f050087
 int id bot_activity 0x7f050081
 int id bot_awesome 0x7f05004c
@@ -308,7 +307,7 @@ int id completato 0x7f05007a
 int id corpo_forgot 0x7f05001d
 int id corpo_login 0x7f05002f
 int id corpo_register 0x7f05006c
-int id description 0x7f05008d
+int id description 0x7f05008e
 int id dieci_km 0x7f050029
 int id dito_iwish 0x7f05002d
 int id done 0x7f050013
@@ -326,7 +325,7 @@ int id edtx_password 0x7f050031
 int id edtx_username 0x7f050030
 int id femmina 0x7f050026
 int id freccia_verde_sin 0x7f050006
-int id icon 0x7f05008b
+int id icon 0x7f05008c
 int id imageUser_profile 0x7f050068
 int id img_adv3 0x7f05003e
 int id img_adv_nike 0x7f050039
@@ -397,7 +396,7 @@ int id testata_register 0x7f05006a
 int id testata_starting 0x7f05007c
 int id testata_statistics 0x7f05007f
 int id testata_weight 0x7f050089
-int id textView1 0x7f05001a
+int id textView1 0x7f05008b
 int id textView_level_profile 0x7f050063
 int id textView_name 0x7f050060
 int id textView_points_profile 0x7f050062
@@ -406,8 +405,10 @@ int id textView_working 0x7f05008a
 int id today 0x7f05000c
 int id top 0x7f050004
 int id triangle 0x7f050001
+int id tv_bmi 0x7f05001b
+int id tv_type 0x7f05001a
 int id underline 0x7f050002
-int id value 0x7f05008c
+int id value 0x7f05008d
 int id view_pager 0x7f050085
 int id view_pager_avatar 0x7f050008
 int id vs_friends 0x7f050012
