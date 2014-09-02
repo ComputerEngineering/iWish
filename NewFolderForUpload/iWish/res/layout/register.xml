@@ -40,15 +40,17 @@
             android:id="@+id/corpo_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/testata_register"
             android:src="@drawable/corpo_register" />
 
         <ImageButton
             android:id="@+id/bt_go_ok"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="305dp"
+            android:layout_below="@+id/corpo_register"
             android:background="@color/sfondo"
             android:src="@drawable/bt_ok_go" />
 
