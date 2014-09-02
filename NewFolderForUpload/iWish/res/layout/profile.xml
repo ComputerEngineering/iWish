@@ -13,7 +13,7 @@
     <ImageButton
         android:id="@+id/imageUser_profile"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:src="@drawable/bt_profile"
@@ -66,24 +66,6 @@
         android:background="#39E565"/>
 
     <ImageButton
-        android:id="@+id/imageButton6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView_wishes_profile"
-        android:layout_alignLeft="@+id/textView_wishes_profile"
-        android:background="#39E565"
-        android:src="@drawable/bt_sounds" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageButton6"
-        android:layout_toRightOf="@+id/imageButton3"
-        android:background="#39E565"
-        android:src="@drawable/bt_options" />
-
-    <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,19 +89,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="28dp"
-        android:layout_toRightOf="@+id/imageButton4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageButton6"
+        android:layout_marginLeft="32dp"
+        android:layout_toRightOf="@+id/imageButton3"
+        android:background="#39E565"
+        android:src="@drawable/bt_options" />
 
     <TextView
         android:id="@+id/textView_wishes_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButton4"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/quickContactBadge_profile"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginBottom="44dp"
+        android:layout_marginLeft="20dp"
         android:text="TextView" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/quickContactBadge_profile"
+        android:layout_alignLeft="@+id/textView_wishes_profile"
+        android:layout_marginBottom="17dp"
+        android:background="#39E565"
+        android:src="@drawable/bt_sounds" />
 
 </RelativeLayout>
