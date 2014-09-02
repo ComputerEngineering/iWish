@@ -1,7 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scw_friends"
+    android:id="@+id/scv_friends"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
@@ -9,17 +9,70 @@
     android:layout_alignParentTop="true" >
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/testata_friends"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:src="@drawable/testa_friends" />
+
+        <ImageView
+            android:id="@+id/corpo_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/testata_friends"
+            android:src="@drawable/body_friends" />
+
+        <ImageButton
+            android:id="@+id/imgbt_searcByName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/testata_friends"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            
+            android:src="@drawable/sort_by_name" />
+
+        <ImageButton
+            android:id="@+id/imgbt_searcByLatest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/testata_friends"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/sort_by_latest" />
+
+        <ImageButton
+            android:id="@+id/imgbt_searcByPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/corpo_friends"
+            android:layout_alignLeft="@+id/imgbt_searcByLatest"
+            android:layout_marginLeft="270dp"
+            
+            android:src="@drawable/sort_by_points" />
 
         <ListView
-            android:id="@+id/listView_friends"
+            android:id="@+id/lstv_friends"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/corpo_friends"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp" >
+             >
         </ListView>
-"
-    </RelativeLayout>
 
+        <SearchView
+            android:id="@+id/searc_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/imgbt_searcByPoints"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp" >
+        </SearchView>
+        
+    </RelativeLayout>
+  
 </ScrollView>

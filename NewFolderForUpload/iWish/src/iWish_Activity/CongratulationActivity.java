@@ -19,26 +19,26 @@ public class CongratulationActivity extends Activity {
 	private com.mikhaellopez.circularimageview.CircularImageView civ_bmi;
 	private TextView tv_type;
 	private TextView tv_bmi;
-	
-	  @Override
-	  public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.congratulation);
-	    
-	    civ_bmi = (com.mikhaellopez.circularimageview.CircularImageView)findViewById(R.id.civ_bmi);
-	    civ_type = (com.mikhaellopez.circularimageview.CircularImageView)findViewById(R.id.civ_type);
-	    civ_user = (com.mikhaellopez.circularimageview.CircularImageView)findViewById(R.id.civ_cerchio);
-	    imgbt_expressWish = (ImageView)findViewById(R.id.img_bt_expressWish);
-	    tv_bmi = (TextView)findViewById(R.id.tv_type);
-	    tv_bmi = (TextView)findViewById(R.id.tv_bmi);
-	   
-	    imgbt_expressWish.setOnClickListener(new OnClickListener() {
-	  		
-	  		@Override
-	  		public void onClick(View v) {
-	  			startActivity(new Intent(CongratulationActivity.this,iWishActivity.class ));
-	  		}
-	  	});
-	    
-	  }
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.congratulation);
+
+		civ_bmi = (com.mikhaellopez.circularimageview.CircularImageView)findViewById(R.id.civ_bmi);
+		civ_type = (com.mikhaellopez.circularimageview.CircularImageView)findViewById(R.id.civ_type);
+		civ_user = (com.mikhaellopez.circularimageview.CircularImageView)findViewById(R.id.civ_cerchio);
+		imgbt_expressWish = (ImageView)findViewById(R.id.img_bt_expressWish);
+		tv_bmi = (TextView)findViewById(R.id.tv_type);
+		tv_bmi = (TextView)findViewById(R.id.tv_bmi);
+
+		imgbt_expressWish.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(CongratulationActivity.this,iWishActivity.class ));
+			}
+		});
+
+	}
 }
