@@ -41,7 +41,7 @@ public class LoginRegActivity extends Activity{
 
 			@Override
 			public void onClick(View v) {
-				
+				startActivity(new Intent(LoginRegActivity.this, AvatarActivity.class ));
 			}
 		});
 				
