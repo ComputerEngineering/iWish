@@ -20,6 +20,10 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 	static final String COLUMN_NAME="nome";
 	static final String COLUMN_SURNAME="surname";
 	static final String COLUMN_BIRTHDAY="birthday";
+	static final String COLUMN_SEX="sex";
+	static final String COLUMN_TYPEUSER="type";
+	static final String COLUMN_HEIGHT="height";
+	static final String COLUMN_WEIGHT="weight";
 	static final String COLUMN_CITY="city";
 	static final String COLUMN_EMAIL="email";
 	static final String COLUMN_PASSWORD="password";
@@ -32,12 +36,16 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 	static final int COLUMN_NAME_INDEX=1;
 	static final int COLUMN_SURNAME_INDEX=2;
 	static final int COLUMN_BIRTHDAY_INDEX=3;
-	static final int COLUMN_CITY_INDEX=4;
-	static final int COLUMN_EMAIL_INDEX=5;
-	static final int COLUMN_PASSWORD_INDEX=6;
-	static final int COLUMN_QUESTION_INDEX=7;
-	static final int COLUMN_ANSWER_INDEX=8;
-	//static final int COLUMN_ANSWER_PHOTO=9;
+	static final int COLUMN_SEX_INDEX=4;
+	static final int COLUMN_TYPEUSER_INDEX=5;
+	static final int COLUMN_HEIGHT_INDEX=6;
+	static final int COLUMN_WEIGHT_INDEX=7;
+	static final int COLUMN_CITY_INDEX=8;
+	static final int COLUMN_EMAIL_INDEX=9;
+	static final int COLUMN_PASSWORD_INDEX=10;
+	static final int COLUMN_QUESTION_INDEX=11;
+	static final int COLUMN_ANSWER_INDEX=12;
+	//static final int COLUMN_ANSWER_PHOTO=13;
 
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
@@ -51,6 +59,10 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 			+ COLUMN_NAME + " vachar(15) NOT NULL,"
 			+ COLUMN_SURNAME + " vachar(15) NOT NULL,"
 			+ COLUMN_BIRTHDAY + " numeric(8) NOT NULL,"
+			+ COLUMN_SEX + " vachar(2) NOT NULL,"
+			+ COLUMN_TYPEUSER + " vachar(25) NOT NULL,"
+			+ COLUMN_HEIGHT + " numeric(6) NOT NULL,"
+			+ COLUMN_WEIGHT + " numeric(6) NOT NULL,"
 			+ COLUMN_CITY + " vachar(15) NOT NULL,"
 			+ COLUMN_EMAIL + " vachar(15) NOT NULL,"
 			+ COLUMN_PASSWORD + " vachar(15) NOT NULL,"

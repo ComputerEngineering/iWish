@@ -25,6 +25,10 @@ public class UtenteDao {
 		DataBaseStorageUtente.COLUMN_NAME,
 		DataBaseStorageUtente.COLUMN_SURNAME,
 		DataBaseStorageUtente.COLUMN_BIRTHDAY,
+		DataBaseStorageUtente.COLUMN_SEX,
+		DataBaseStorageUtente.COLUMN_TYPEUSER,
+		DataBaseStorageUtente.COLUMN_HEIGHT,
+		DataBaseStorageUtente.COLUMN_WEIGHT,
 		DataBaseStorageUtente.COLUMN_CITY,
 		DataBaseStorageUtente.COLUMN_EMAIL,
 		DataBaseStorageUtente.COLUMN_PASSWORD,
@@ -59,6 +63,10 @@ public class UtenteDao {
 		values.put(DataBaseStorageUtente.COLUMN_NAME,"" + mUtente.getName() + "");
 		values.put(DataBaseStorageUtente.COLUMN_SURNAME, "" + mUtente.getSurname() + "");
 		values.put(DataBaseStorageUtente.COLUMN_BIRTHDAY,""+ mUtente.getBirthday() + "");
+		values.put(DataBaseStorageUtente.COLUMN_SEX,""+ mUtente.getSex() + "");
+		values.put(DataBaseStorageUtente.COLUMN_TYPEUSER,""+ mUtente.getTypeUser() + "");
+		values.put(DataBaseStorageUtente.COLUMN_HEIGHT,""+ mUtente.getHeight() + "");
+		values.put(DataBaseStorageUtente.COLUMN_WEIGHT,""+ mUtente.getWeight() + "");
 		values.put(DataBaseStorageUtente.COLUMN_CITY,""+ mUtente.getCity() + "");
 		values.put(DataBaseStorageUtente.COLUMN_EMAIL,""+ mUtente.getEmail() + "");
 		values.put(DataBaseStorageUtente.COLUMN_PASSWORD,""+ mUtente.getPassword() + "");
@@ -105,23 +113,18 @@ public class UtenteDao {
 		Utente utente = new Utente();
 		
 		utente.setKeyUtente(cursor.getString(DataBaseStorageUtente.COLUMN_ID_INDEX));
-		
 		utente.setName(cursor.getString(DataBaseStorageUtente.COLUMN_NAME_INDEX));
-
 		utente.setSurname(cursor.getString(DataBaseStorageUtente.COLUMN_SURNAME_INDEX));
-		
-	//	utente.setBirthday(cursor.getString(DataBaseStorageUtente.COLUMN_BIRTHDAY_INDEX));
-		
+		//utente.setBirthday(cursor.getString(DataBaseStorageUtente.COLUMN_BIRTHDAY_INDEX));
+		utente.setSex(cursor.getString(DataBaseStorageUtente.COLUMN_SEX_INDEX));
+		utente.setTypeUser(cursor.getString(DataBaseStorageUtente.COLUMN_TYPEUSER_INDEX));
+		utente.setHeight(cursor.getDouble(DataBaseStorageUtente.COLUMN_HEIGHT_INDEX));
+		utente.setWeight(cursor.getDouble(DataBaseStorageUtente.COLUMN_WEIGHT_INDEX));
 		utente.setCity(cursor.getString(DataBaseStorageUtente.COLUMN_CITY_INDEX));
-		
-	//	utente.setEmail(cursor.getString(DataBaseStorageUtente.COLUMN_EMAIL_INDEX));
-		
-	//	utente.setPassword(cursor.getString(DataBaseStorageUtente.COLUMN_PASSWORD_INDEX));
-		
+		utente.setEmail(cursor.getString(DataBaseStorageUtente.COLUMN_EMAIL_INDEX));
+		utente.setPassword(cursor.getString(DataBaseStorageUtente.COLUMN_PASSWORD_INDEX));
 		utente.setQuestion(cursor.getString(DataBaseStorageUtente.COLUMN_QUESTION_INDEX));
-		
 		utente.setAnswer(cursor.getString(DataBaseStorageUtente.COLUMN_ANSWER_INDEX));
-
 		return  utente;
 	}
 

@@ -11,9 +11,13 @@ public class Utente implements MyUtente{
 	private String name;
 	private String surname;
 	private Date birthday;
+	private String sex;
+	private String typeUser;
+	private double height;
+	private double weight;
 	private String city;
-	private char email;
-	private char password;
+	private String email;
+	private String password;
 	private String question;
 	private String answer;
 	private Context c;
@@ -43,11 +47,11 @@ public class Utente implements MyUtente{
 		return city;
 	}
 	@Override
-	public char getEmail() {
+	public String getEmail() {
 		return email;
 	}
 	@Override
-	public char getPassword() {
+	public String getPassword() {
 		return password;
 	}
 	@Override
@@ -57,6 +61,22 @@ public class Utente implements MyUtente{
 	@Override
 	public String getAnswer() {
 		return answer;
+	}
+	@Override
+	public String getSex() {
+		return sex;
+	}
+	@Override
+	public String getTypeUser() {
+		return typeUser;
+	}
+	@Override
+	public double getHeight() {
+		return height;
+	}
+	@Override
+	public double getWeight() {
+		return weight;
 	}
 	@Override
 	public void setName(String name) {
@@ -74,14 +94,7 @@ public class Utente implements MyUtente{
 	public void setCity(String city) {
 		this.city=city;
 	}
-	@Override
-	public void setEmail(char email) {
-		this.email=email;
-	}
-	@Override
-	public void setPassword(char password) {
-		this.password=password;
-	}
+	
 	@Override
 	public void setQuestion(String question) {
 	this.question=question;
@@ -93,10 +106,34 @@ public class Utente implements MyUtente{
 	public void setC(Context c) {
 		this.c = c;
 	}
+	@Override
+	public void setSex(String sex) {
+		this.sex=sex;
+	}
+	@Override
+	public void setHeight(double height) {
+		this.height=height;
+	}
+	@Override
+	public void setWeight(double weight) {
+		this.weight=weight;
+	}
+	@Override
+	public void setTypeUser(String typeUser) {
+		this.typeUser=typeUser;
+	}
 	
 	@Override
 	public void setKeyUtente(String keyUtente) {
 		this.keyUtente=keyUtente;
+	}
+	@Override
+	public void setEmail(String  email) {
+		this.email=email;
+	}
+	@Override
+	public void setPassword(String  password) {
+		this.password=password;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -104,9 +141,11 @@ public class Utente implements MyUtente{
 	@Override
 	public String toString() {
 		return "Utente [keyUtente=" + keyUtente + ", name=" + name
-				+ ", surname=" + surname + ", birthday=" + birthday + ", city="
-				+ city + ", email=" + email + ", password=" + password
-				+ ", question=" + question + ", answer=" + answer + "]";
+				+ ", surname=" + surname + ", birthday=" + birthday + ", sex="
+				+ sex + ", typeUser=" + typeUser + ", height=" + height
+				+ ", weight=" + weight + ", city=" + city + ", email=" + email
+				+ ", password=" + password + ", question=" + question
+				+ ", answer=" + answer + "]";
 	}
 	
 }

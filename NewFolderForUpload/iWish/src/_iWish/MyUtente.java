@@ -10,8 +10,12 @@ public interface MyUtente {
 	String getSurname();
 	Date getBirthday();
 	String getCity();
-	char getEmail();
-	char getPassword();
+	String getSex();
+	String getTypeUser();
+	double getHeight();
+	double getWeight();
+	String getEmail();
+	String getPassword();
 	String getQuestion();
 	String getAnswer();
 	void setKeyUtente(String keyUtente);
@@ -19,8 +23,12 @@ public interface MyUtente {
 	void setSurname(String surname);
 	void setBirthday(Date birthday);
 	void setCity(String city);
-	void setEmail(char email);
-	void setPassword(char password);
+	void setEmail(String  email);
+	void setSex(String sex);
+	void setHeight(double height);
+	void setWeight(double weight);
+	void setTypeUser(String typeUser);
+	void setPassword(String  password);
 	void setQuestion(String question);
 	void setAnswer(String answer);
 	
