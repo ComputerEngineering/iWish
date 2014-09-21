@@ -90,7 +90,8 @@ public class SplashActivity extends Activity{
 
 	public void onContinue() {
 	     // perform any final actions here
-
 		startActivity(new Intent(SplashActivity.this, LoginRegActivity.class ));
+		// affinché non si possa più rientrare in splash inseriamo:
+		finish();
 	   }
 	}

@@ -46,10 +46,49 @@ public class ProfileActivity extends Activity{
 		      public void onClick(View v) {
 		        // request your webservice here. Possible use of AsyncTask and ProgressDialog
 		        // show the result here - dialog or Toast
-		    	  startActivity(new Intent(ProfileActivity.this,CalendarActivity.class ));
+		    	  startActivity(new Intent(ProfileActivity.this,WantToDoActivity.class ));
 		      }
 
 		    });	
 		
+		bt_calendar.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Stub di metodo generato automaticamente
+				startActivity(new Intent(ProfileActivity.this, CalendarActivity.class ));
+			}
+		});
+		
+/*		bt_wishlist.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Stub di metodo generato automaticamente
+				startActivity(new Intent(ProfileActivity.this, WishListActivity.class ));
+			}
+		});
+*/		
+		bt_statics.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Stub di metodo generato automaticamente
+				startActivity(new Intent(ProfileActivity.this, StatisticsActivity.class ));
+			}
+		});
+/*
+		bt_friends.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Stub di metodo generato automaticamente
+				startActivity(new Intent(ProfileActivity.this, FriendsActivity.class ));
+			}
+		});
+*/		
+		
+		
 	}
 }
+

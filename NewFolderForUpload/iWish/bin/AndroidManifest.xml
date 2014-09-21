@@ -6,6 +6,8 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
+    
+    <!-- 
     <permission android:name="android.permission.READ_PHONE_STATE"></permission>
     <permission android:name="android.permission.ACCESS_NETWORK_STATE"></permission>
     <permission android:name="android.permission.ACCESS_WIFI_STATE"></permission>
@@ -14,6 +16,8 @@
     <permission android:name="android.permission.BLUETOOTH_ADMIN"></permission>
     <permission android:name="android.permission.DELETE_CACHE_FILES"></permission>
     <permission android:name="android.permission.HARDWARE_TEST"></permission>
+     -->
+    
 
     <application
         android:allowBackup="true"

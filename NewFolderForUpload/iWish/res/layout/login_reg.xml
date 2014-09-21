@@ -1,4 +1,4 @@
-    <RelativeLayout
+      <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
     	xmlns:tools="http://schemas.android.com/tools"
     	xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,14 +11,107 @@
             android:layout_height="199dp"
             android:src="@drawable/testa_log_reg" />
         
-       <ImageButton 
-        	android:id="@+id/chiudi_verde"
-        	android:src="@drawable/chiudi_verde2b"
-        	android:background="@color/sfondo"
-        	android:layout_marginTop="120dp"
-        	android:layout_marginLeft="260dp"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content" />
+       
+        <ImageView
+            android:id="@+id/corpo_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        	android:layout_below="@id/testata_login"
+            android:src="@drawable/body_login2" />
+        
+        <EditText
+            android:id="@+id/edtx_username"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="240dp"
+            android:layout_marginLeft="70dp"
+            android:ems="10"
+            android:inputType="textEmailAddress" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/edtx_password"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="313dp"
+            android:layout_marginLeft="70dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <ImageButton
+            android:id="@+id/imgbt_ok_go"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/edtx_password"
+            android:layout_marginTop="13dp"
+            android:src="@drawable/m_bot_ok_letsgo" />
+
+        <ImageButton
+            android:id="@+id/imgbt_forgot_psw"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/imgbt_ok_go"
+            android:src="@drawable/m_bot_forgot_psw" />
+
+        <ImageButton
+            android:id="@+id/imgbt_fb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgbt_forgot_psw"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="27dp"
+            android:background="#39E565"
+            android:src="@drawable/bt_fb" />
+   
+        <ImageButton
+            android:id="@+id/imgbt_register_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="577dp"
+            android:background="#39E565"
+            android:src="@drawable/m_bot_register" />
+
+
+    </RelativeLayout>
+    
+    <!-- 
+    
+    
+            <ImageButton
+            android:id="@+id/imgbt_tw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/imgbt_fb"
+            android:layout_centerHorizontal="true"
+            android:background="#39E565"
+            android:src="@drawable/bt_tw" />
+
+        <ImageButton
+            android:id="@+id/imgbt_gm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/imgbt_fb"
+            android:layout_marginLeft="265dp"
+            android:background="#39E565"
+            android:src="@drawable/bt_gm" />    
+
+  
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:tools="http://schemas.android.com/tools"
+    	xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/testata_login"
+            android:layout_width="match_parent"
+            android:layout_height="199dp"
+            android:src="@drawable/testa_log_reg" />
         
         <ImageView
             android:id="@+id/corpo_login"
@@ -104,3 +197,5 @@
             android:src="@drawable/bt_register" />
 
     </RelativeLayout>
+
+    -->
