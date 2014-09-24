@@ -22,10 +22,12 @@
         <EditText
             android:id="@+id/edtx_username"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="37dp"
             android:layout_marginTop="240dp"
             android:layout_marginLeft="70dp"
             android:ems="10"
+            android:hint="mymail@mail.com"
+        	android:textColorHint="@color/placeholder"
             android:inputType="textEmailAddress" >
 
             <requestFocus />
@@ -34,10 +36,12 @@
         <EditText
             android:id="@+id/edtx_password"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="37dp"
             android:layout_marginTop="313dp"
             android:layout_marginLeft="70dp"
             android:ems="10"
+            android:hint="your password"
+        	android:textColorHint="@color/placeholder"
             android:inputType="textPassword" />
 
         <ImageButton

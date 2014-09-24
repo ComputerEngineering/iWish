@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+
 /**Alessandro*/
 
 public class ForgotPswActivity extends Activity{
@@ -26,9 +27,7 @@ public class ForgotPswActivity extends Activity{
 			public void onClick(View v) {
 				startActivity(new Intent(ForgotPswActivity.this,LoginRegActivity.class ));
 			}
-		});
-	    
-	    
+		});  
 	
 	}
 	

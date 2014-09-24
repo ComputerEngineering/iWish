@@ -9,6 +9,7 @@
     <color name="cerchio_imm">#034419</color>
     <color name="bot_grazie">#EEEEEE</color>
     <color name="bot_deselezionati">#7CC48F</color>
+    <color name="placeholder">#8BC49C</color>
     
 
 </resources>

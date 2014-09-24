@@ -33,6 +33,7 @@
         <item name="android:shadowColor">@color/verde_scuro</item>
 
     </style>
+    
 
 </resources>
 
