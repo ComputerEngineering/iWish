@@ -18,12 +18,12 @@ public class NewWishActivity extends Activity{
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.new_wish);
 	    
-		ImageButton ok = (ImageButton)findViewById(R.id.m_letsgo);
-		ok.setOnClickListener(new OnClickListener() {
+		ImageButton chiudi = (ImageButton)findViewById(R.id.chiudi_verde2);
+		chiudi.setOnClickListener(new OnClickListener() {
 		
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(NewWishActivity.this,WorkingActivity.class ));
+				startActivity(new Intent(NewWishActivity.this,ProfileActivity.class ));
 			}
 		});
 	    

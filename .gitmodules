@@ -4,6 +4,3 @@
 [submodule "NewFolderForUpload/libImmagineCircolare"]
 	path = NewFolderForUpload/libImmagineCircolare
 	url = https://github.com/lopspower/CircularImageView.git
-[submodule "NewFolderForUpload/android-spinnerwheel"]
-	path = NewFolderForUpload/android-spinnerwheel
-	url = https://github.com/ai212983/android-spinnerwheel.git

@@ -65,7 +65,7 @@ public class CalendarActivity extends Activity {
 		
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(CalendarActivity.this,ProfileActivity.class ));
+				startActivity(new Intent(CalendarActivity.this,StatisticsActivity.class ));
 			}
 		});
 	    

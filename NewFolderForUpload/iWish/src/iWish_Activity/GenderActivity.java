@@ -40,7 +40,7 @@ public class GenderActivity extends Activity{
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
-        	ButtonFemmina.setImageResource(R.drawable.femmina3); 
+        	ButtonFemmina.setImageResource(R.drawable.femmina); 
         	ButtonMaschio.setImageResource(R.drawable.maschio); 
         	ButtonDone.setImageResource(R.drawable.botton_done2); 
         	ButtonDone.setTag(true);

@@ -24,7 +24,7 @@ public class ForgotPswActivity extends Activity{
 		
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(ForgotPswActivity.this,LoginRegActivity.class ));
+				startActivity(new Intent(ForgotPswActivity.this,RegisterActivity.class ));
 			}
 		});
 	    
