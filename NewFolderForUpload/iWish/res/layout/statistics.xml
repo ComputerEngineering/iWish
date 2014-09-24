@@ -54,7 +54,8 @@
         android:clickable="true" 
         android:src="@drawable/bot_badges"
          />
-    
+<!-- parte relativa ad ACTIVITY -->    
+
 <LinearLayout 
     android:id="@+id/layout_list"
  android:layout_marginTop="273dp"
@@ -74,4 +75,189 @@
  
 </LinearLayout>
 
+<!-- parte relativa a BODY -->    
+
+<RelativeLayout 
+    android:id="@+id/layout_body"
+ android:layout_marginTop="270dp"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:background="@drawable/statistics_body6" 
+  android:visibility="invisible" >
+
+ <ImageView
+   android:id="@+id/omino_avatar"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:layout_marginTop="50dp"
+   android:layout_marginLeft="30dp"
+   android:src="@drawable/omino_avatar_attivo2" />
+    
+ <ImageView 
+	android:id="@+id/imm_level"
+	android:src="@drawable/statistics_body_level1"
+	android:layout_marginTop="40dp"
+	android:layout_marginLeft="120dp"
+    android:layout_width="220dp"
+    android:layout_height="100dp" />
+ 
+    <TextView
+        android:id="@+id/levelMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69dp"
+        android:layout_marginLeft="145dp"
+        android:text="8"
+        android:textSize="25sp"
+        android:textColor="@color/bianco"/>
+    
+   <TextView
+        android:id="@+id/levelMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69dp"
+        android:layout_marginLeft="290dp"
+        android:text="9"
+        android:textSize="25sp"
+        android:textColor="@color/bianco" />
+   
+   <!-- per livello 10 inserire marginLeft 283dp -->
+   
+      <TextView
+        android:id="@+id/punti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="63dp"
+        android:layout_marginLeft="202dp"
+        android:text="84"
+        android:textSize="15sp"
+        android:textColor="@color/verde_scuro" />
+
+ 
+ <ImageView
+    android:id="@+id/sfondo_bmi"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="195dp"
+    android:layout_marginLeft="30dp"
+    android:src="@drawable/sfondo_bmi5" />    
+        
+    <TextView
+        android:id="@+id/bmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:layout_marginLeft="42dp"
+        android:text="24,5"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="@color/bianco"/>
+ 
+     <TextView
+        android:id="@+id/alt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="217dp"
+        android:layout_marginLeft="139dp"
+        android:text="193"
+        android:textSize="20sp"
+        android:textColor="@color/bianco"/>
+    
+   <TextView
+        android:id="@+id/pes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="217dp"
+        android:layout_marginLeft="252dp"
+        android:text="85"
+        android:textSize="20sp"
+        android:textColor="@color/bianco" />
+   
+      <!-- sopra i 99kg inserire marginLeft 247dp -->
+   
+ <ImageButton
+  android:id="@+id/bot_change_weight"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginTop="313dp"
+  android:src="@drawable/m_bot_change_weight"/>
+ 
 </RelativeLayout>
+
+<!-- parte relativa a BADGE -->    
+
+<LinearLayout 
+    android:id="@+id/layout_badge"
+ 	android:layout_marginTop="273dp"
+ 	android:layout_width="match_parent"
+ 	android:layout_height="match_parent"
+ 	android:orientation="vertical"
+ 	android:visibility="invisible" >
+ 
+<TextView
+    android:id="@+id/scritta_badge_won"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="30dp"
+    android:text="Badges won"
+    android:textSize="20sp"
+    android:textColor="@color/verde_scuro" />   
+
+<ListView
+ 	android:id="@+id/list_badge_won"
+ 	android:layout_width="fill_parent"
+ 	android:layout_height="146dp"
+ 	android:layout_marginTop="5dp"
+ 	android:layout_gravity="center"
+ 	android:background="@color/bianco" />
+
+<TextView
+    android:id="@+id/scritta_badge_to_win"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="30dp"
+    android:text="Badges to win"
+    android:textSize="20sp"
+    android:textColor="@color/verde_scuro" />   
+
+<ListView
+ android:id="@+id/list_badge_to_win"
+ android:layout_width="fill_parent"
+ android:layout_height="146dp"
+ android:layout_marginTop="5dp"
+ android:layout_gravity="center"
+ android:divider="#DDDDDD"
+ android:dividerHeight="0dip"
+ android:background="@color/bianco" />
+ 
+</LinearLayout>
+
+
+</RelativeLayout>
+
+
+<!-- 
+
+<HorizontalScrollView
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/horizontalScrollView1">
+
+<LinearLayout 
+    android:id="@+id/layout_badge_list1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+ 	android:orientation="horizontal">
+ 	
+<ListView
+ android:id="@+id/list_badge_won"
+ android:layout_width="match_parent"
+ android:layout_height="wrap_content"
+ android:background="@color/bianco" />
+</LinearLayout>
+</HorizontalScrollView>
+
+ -->

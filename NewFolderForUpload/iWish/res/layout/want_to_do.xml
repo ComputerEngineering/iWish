@@ -14,34 +14,14 @@
         android:layout_width="match_parent"
     	android:layout_height="275dp"
 
-	  />
-      
-      <ImageButton 
-        android:id="@+id/freccia_verde_sin"
-        android:src="@drawable/freccia_verde_sin"
-        android:background="@color/sfondo"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
-      
-      <ImageButton 
-        android:id="@+id/chiudi_verde2"
-        android:src="@drawable/icona_chiudi2"
-        android:background="@color/sfondo"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="310dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-      />       
+	  />  
 
      <android.support.v4.view.ViewPager
  	 	xmlns:android="http://schemas.android.com/apk/res/android"
-		android:id="@+id/view_pager_avatar"
+		android:id="@+id/view_pager_to_do"
  		android:layout_width="match_parent"
- 		android:layout_height="fill_parent" 
- 		android:layout_marginTop="287dp"
+ 		android:layout_height="300dp" 
+ 		android:layout_marginTop="279dp"
         />
      
      <com.viewpagerindicator.CirclePageIndicator
@@ -55,5 +35,13 @@
         app:pageColor="@color/sfondo_ind_grigio"
         app:strokeWidth="0dp" />
      
+     <ImageButton
+        android:id="@+id/done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="577dp"  
+		android:src="@drawable/botton_done"/>
+     
 
      </RelativeLayout>
+     

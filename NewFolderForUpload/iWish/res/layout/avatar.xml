@@ -16,15 +16,6 @@
 
 	  />
       
-      <ImageButton 
-        android:id="@+id/freccia_verde_sin"
-        android:src="@drawable/freccia_verde_sin"
-        android:background="@color/sfondo"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
       
      <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/cerchio"
@@ -43,8 +34,8 @@
  	 	xmlns:android="http://schemas.android.com/apk/res/android"
 		android:id="@+id/view_pager_avatar"
  		android:layout_width="match_parent"
- 		android:layout_height="fill_parent" 
- 		android:layout_marginTop="287dp"
+ 		android:layout_height="300dp" 
+ 		android:layout_marginTop="279dp"
         />
      
      <com.viewpagerindicator.CirclePageIndicator
@@ -52,12 +43,47 @@
         android:padding="10dip"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="548dp"
         app:radius="4dp"
         app:fillColor="@color/bianco"
         app:pageColor="@color/sfondo_ind_grigio"
         app:strokeWidth="0dp" />
      
+           <ImageButton
+        android:id="@+id/done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="577dp"  
+		android:src="@drawable/botton_done"/>
+   
 
      </RelativeLayout>
+     
+ <!-- 
+ 
+           
+           
+      <TextView
+        android:id="@+id/prova"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="50dp"    
+        android:textSize="30sp"
+        android:text=""
+        android:textColor="@color/verde_scuro"
+         />
+ 
+ 
+       <ImageButton 
+        android:id="@+id/freccia_verde_sin"
+        android:src="@drawable/freccia_verde_sin"
+        android:background="@color/sfondo"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
+ 
+  -->
  

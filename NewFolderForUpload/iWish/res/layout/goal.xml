@@ -15,27 +15,6 @@
 
 	  />
      
-      <ImageButton 
-        android:id="@+id/freccia_verde_sin"
-        android:src="@drawable/freccia_verde_sin"
-        android:background="@color/sfondo"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
-      
-      <ImageButton 
-        android:id="@+id/chiudi_verde2"
-        android:src="@drawable/icona_chiudi2"
-        android:background="@color/sfondo"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="310dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-      />    
-     
-     
      <ImageButton
                 android:id="@+id/cinque_km"
                 android:layout_width="250dp"

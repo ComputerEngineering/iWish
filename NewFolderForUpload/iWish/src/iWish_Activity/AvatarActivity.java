@@ -11,7 +11,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.progect.iwish.R;
 import com.viewpagerindicator.CirclePageIndicator;
@@ -24,7 +26,7 @@ public class AvatarActivity extends Activity {
     setContentView(R.layout.avatar);
   
     
-  ViewPager viewPager2 = (ViewPager) findViewById(R.id.view_pager_avatar);
+  final ViewPager viewPager2 = (ViewPager) findViewById(R.id.view_pager_avatar);
   ImagePagerAdapter adapter = new ImagePagerAdapter();
   viewPager2.setAdapter(adapter);
   
@@ -41,14 +43,32 @@ public class AvatarActivity extends Activity {
 			startActivity(new Intent(AvatarActivity.this,GenderActivity.class ));
 		}
 	});
+  
+  final ImageButton fatto = (ImageButton)findViewById(R.id.done);
+//  final TextView proviamoci = (TextView)findViewById(R.id.prova);
+  fatto.setOnClickListener(new OnClickListener() {
+	
+	@Override
+	public void onClick(View v) {
+		// TODO Stub di metodo generato automaticamente
+		
+//		if(viewPager2.getCurrentItem()==0) proviamoci.setText("I'm lazy");
+//		else proviamoci.setText("I'm active");
+		
+		fatto.setImageResource(R.drawable.botton_done2);
+		startActivity(new Intent(AvatarActivity.this,GenderActivity.class ));
+	}
+});
     
 }
 
 private class ImagePagerAdapter extends PagerAdapter {
 	    private int[] mImages = new int[] {
-	    		R.drawable.lazy1b,
-	    		R.drawable.lazy2,
-	    		R.drawable.lazy3
+	    		R.drawable.short_lazy_ok,
+	    		R.drawable.short_active_ok,
+	//    		R.drawable.lazy1b,
+	//    		R.drawable.lazy2,
+	//    		R.drawable.lazy3
 	 
 	        };
 

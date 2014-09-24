@@ -6,6 +6,8 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
+    
+    <!-- 
     <permission android:name="android.permission.READ_PHONE_STATE"></permission>
     <permission android:name="android.permission.ACCESS_NETWORK_STATE"></permission>
     <permission android:name="android.permission.ACCESS_WIFI_STATE"></permission>
@@ -14,6 +16,8 @@
     <permission android:name="android.permission.BLUETOOTH_ADMIN"></permission>
     <permission android:name="android.permission.DELETE_CACHE_FILES"></permission>
     <permission android:name="android.permission.HARDWARE_TEST"></permission>
+     -->
+    
 
     <application
         android:allowBackup="true"
@@ -24,100 +28,104 @@
              
         <activity 
             android:name="iWish_Activity.AvatarActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.CalendarActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.ChallengeActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.CongratulationActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.ForgotPswActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.FrinedsActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.GenderActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.GoalActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.HeightActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+        
+        <activity 
+            android:name="iWish_Activity.HeightChangeActivity"
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.iWishActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.LoginRegActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.NewWishActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
          <activity 
             android:name="iWish_Activity.PopUpADV1Activity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.PopUpADV2Activity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.PopUpADV3Activity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.PopUpBadgeVinta1Activity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.PopUpBadgeVinta2Activity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.PopUpBadgeVinta3Activity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.PopUpCalendarioActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.PopUpComplimentiActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
          <activity 
             android:name="iWish_Activity.PopUpGenioActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.PopUpGrandeActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
         <activity 
             android:name="iWish_Activity.PopUpSunActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity 
+            android:screenOrientation="portrait"/>
+            
+       <activity 
             android:name="iWish_Activity.PopUpTemporaleActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
          <activity 
             android:name="iWish_Activity.PopUpOraActivity"
             android:screenOrientation="portrait"/>
@@ -127,8 +135,9 @@
             android:screenOrientation="portrait"/>
 
         <activity 
-            android:name="iWish_Activity.RegisterActivity">
-        </activity>
+            android:name="iWish_Activity.RegisterActivity"
+            android:screenOrientation="portrait"/>>
+
         <activity 
             android:name="iWish_Activity.SplashActivity"
             android:screenOrientation="portrait">
@@ -142,34 +151,43 @@
             </intent-filter> 
             
         </activity>
+        
         <activity 
-            android:name="iWish_Activity.StartingActivity">
-        </activity>        
+            android:name="iWish_Activity.StartingActivity"
+            android:screenOrientation="portrait"/>
+        
         <activity 
-            android:name="iWish_Activity.StatisticsActivity">
+            android:name="iWish_Activity.StatisticsActivity"
+            android:screenOrientation="portrait"/>      
+               
+        <activity
+            android:name="iWish_Activity.TutorialActivity"
+        	android:screenOrientation="portrait"/>  
+        	
+        <activity 
+            android:name="iWish_Activity.TheEndActivity"
+            android:screenOrientation="portrait"/>  >
+        
+        <activity 
+            android:name="iWish_Activity.WantToBeActivity"
+            android:screenOrientation="portrait"/>  
             
-        </activity>
+        <activity 
+            android:name="iWish_Activity.WantToDoActivity"
+        	android:screenOrientation="portrait"/>  
+        	
+        <activity 
+            android:name="iWish_Activity.WeightActivity"
+        	android:screenOrientation="portrait"/>  
+        	
+         <activity 
+            android:name="iWish_Activity.WeightChangeActivity"
+            android:screenOrientation="portrait"/>  />    
         
                
         <activity
-            android:name="iWish_Activity.TutorialActivity"/>
-        
-        <activity 
-            android:name="iWish_Activity.TheEndActivity">
-        </activity>
-        <activity 
-            android:name="iWish_Activity.WantToBeActivity">
-        </activity>
-        <activity 
-            android:name="iWish_Activity.WantToDoActivity">
-        </activity>
-        <activity 
-            android:name="iWish_Activity.WeightActivity">
-        </activity>
-        
-               
-        <activity
-            android:name="iWish_Activity.WorkingActivity"/>
+            android:name="iWish_Activity.WorkingActivity"
+            android:screenOrientation="portrait"/>  />
         
     </application>
 

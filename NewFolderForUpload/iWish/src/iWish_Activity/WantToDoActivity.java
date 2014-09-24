@@ -24,33 +24,35 @@ public class WantToDoActivity extends Activity {
 	    setContentView(R.layout.want_to_do);
    
 	    
-	  ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager_avatar);
+	  ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager_to_do);
 	  ImagePagerAdapter adapter = new ImagePagerAdapter();
-	  viewPager.setAdapter(adapter);
-	  
+	  viewPager.setAdapter(adapter);	  
 	  
 	  //Bind the title indicator to the adapter
 	  CirclePageIndicator titleIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
 	  titleIndicator.setViewPager(viewPager);
-	  
-		ImageButton chiudi = (ImageButton)findViewById(R.id.chiudi_verde2);
-		chiudi.setOnClickListener(new OnClickListener() {
-		
+	  		
+		  final ImageButton fatto = (ImageButton)findViewById(R.id.done);
+		  fatto.setOnClickListener(new OnClickListener() {
+			
 			@Override
 			public void onClick(View v) {
+				// TODO Stub di metodo generato automaticamente
+				
+				fatto.setImageResource(R.drawable.botton_done2);
 				startActivity(new Intent(WantToDoActivity.this,GoalActivity.class ));
 			}
-		});  
+		});
+		
 	  
 	}
 
 	private class ImagePagerAdapter extends PagerAdapter {
 		    private int[] mImages = new int[] {
-		    		R.drawable.run,
-		    		R.drawable.ride,
-		    		R.drawable.rise,
-		    		R.drawable.swim
-		 
+		    		R.drawable.to_do_run_ok,
+		    		R.drawable.to_do_ride_ok,
+		    		R.drawable.to_do_rise_ok,
+		    		R.drawable.to_do_swim_ok		 
 		        };
 
 	  @Override

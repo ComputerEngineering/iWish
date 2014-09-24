@@ -39,7 +39,7 @@ public class RegisterActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
 
-		bt_close = (ImageButton)findViewById(R.id.chiudi_verde);
+	//	bt_close = (ImageButton)findViewById(R.id.chiudi_verde);
 		bt_change = (ImageButton)findViewById(R.id.bott_modifica);
 		bt_go_ok = (ImageButton)findViewById(R.id.bt_go_ok);
 		edt_name = (EditText)findViewById(R.id.editText1);
@@ -79,15 +79,19 @@ public class RegisterActivity extends Activity{
 				Editable tx_rp_password = edt_rp_password.getText();
 				Editable tx_rp_email = edt_rp_email.getText();
 				Editable tx_answer_register = edt_answer_register.getText();
+				
+				startActivity(new Intent(RegisterActivity.this, AvatarActivity.class ));
 			}
 		});
 
-		bt_close.setOnClickListener(new OnClickListener() {
+/*		bt_close.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(RegisterActivity.this,AvatarActivity.class ));
+				startActivity(new Intent(RegisterActivity.this, AvatarActivity.class ));
 			}
 		});
+*/		
+		
 	}
 
 	private ArrayAdapter<String> createSpinnerAdapter(){
@@ -96,3 +100,4 @@ public class RegisterActivity extends Activity{
 		return arrayAdapter;
 	}
 }
+

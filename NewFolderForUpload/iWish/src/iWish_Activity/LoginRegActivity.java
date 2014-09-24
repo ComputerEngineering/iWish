@@ -33,15 +33,15 @@ public class LoginRegActivity extends Activity{
 		bt_ok_go = (ImageButton)findViewById(R.id.imgbt_ok_go);
 		bt_forgot_psw = (ImageButton)findViewById(R.id.imgbt_forgot_psw);
 		bt_fb = (ImageButton)findViewById(R.id.imgbt_fb);
-		bt_tw = (ImageButton)findViewById(R.id.imgbt_tw);
-		bt_gm = (ImageButton)findViewById(R.id.imgbt_gm);
+//		bt_tw = (ImageButton)findViewById(R.id.imgbt_tw);
+//		bt_gm = (ImageButton)findViewById(R.id.imgbt_gm);
 		bt_register = (ImageButton)findViewById(R.id.imgbt_register_done);
 
 		bt_ok_go.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(LoginRegActivity.this, AvatarActivity.class ));
+				startActivity(new Intent(LoginRegActivity.this, ProfileActivity.class ));
 			}
 		});
 				
@@ -61,7 +61,7 @@ public class LoginRegActivity extends Activity{
 			}
 		});
         
-		bt_tw.setOnClickListener(new OnClickListener() {
+/*		bt_tw.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -76,7 +76,7 @@ public class LoginRegActivity extends Activity{
 			//TODO mettere il collegamento alla activity
 			}
 		});
-		
+*/		
 		bt_register.setOnClickListener(new OnClickListener() {
 
 			@Override
