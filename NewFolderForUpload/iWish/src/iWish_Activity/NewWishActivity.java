@@ -23,7 +23,7 @@ public class NewWishActivity extends Activity{
 		
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(NewWishActivity.this,WorkingActivity.class ));
+				startActivity(new Intent(NewWishActivity.this, ProgressActivity.class ));
 			}
 		});
 	    

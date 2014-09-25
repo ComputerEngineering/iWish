@@ -91,7 +91,7 @@
    android:layout_height="wrap_content"
    android:layout_marginTop="50dp"
    android:layout_marginLeft="30dp"
-   android:src="@drawable/omino_avatar_attivo2" />
+   android:src="@drawable/omino_avatar_attivo" />
     
  <ImageView 
 	android:id="@+id/imm_level"

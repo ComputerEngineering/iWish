@@ -42,55 +42,13 @@
         android:clickable="true"/>
    
   
-            <ImageButton
-                android:id="@+id/done"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="579dp"  
-				android:src="@drawable/botton_done"
-                />
+   <ImageButton
+        android:id="@+id/done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="583dp"  
+		android:src="@drawable/botton_done"/>
     
     
     </RelativeLayout>
     
-<!-- 
-
-
-
-
-      <ImageButton
-         android:id="@+id/seleziona_peso"
-         android:layout_width="match_parent"
-         android:layout_height="250dp"
-         android:layout_marginTop="250dp"/>
-
-      <ImageButton 
-        android:id="@+id/freccia_verde_sin"
-        android:src="@drawable/freccia_verde_sin"
-        android:background="@color/sfondo"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
-         
-         
-         
-              <ImageView 
-		android:id="@+id/testata_weight"
-		android:src="@drawable/testa_weight"
-        android:layout_width="match_parent"
-    	android:layout_height="199dp"
-
-	  />
-         
-         
-         
-             <ImageView 
-		android:id="@+id/corpo_weight"
-		android:src="@drawable/corpo_weight"
-		android:layout_marginTop="199dp"
-        android:layout_width="match_parent"
-    	android:layout_height="380dp" />
-         
- -->

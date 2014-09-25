@@ -47,7 +47,11 @@
             android:screenOrientation="portrait"/>
 
         <activity 
-            android:name="iWish_Activity.FrinedsActivity"
+            android:name="iWish_Activity.FriendsActivity"
+            android:screenOrientation="portrait"/>
+        
+        <activity 
+            android:name="iWish_Activity.Friends2Activity"
             android:screenOrientation="portrait"/>
 
         <activity 
@@ -133,6 +137,10 @@
        <activity 
             android:name="iWish_Activity.ProfileActivity"
             android:screenOrientation="portrait"/>
+       
+       <activity 
+            android:name="iWish_Activity.ProgressActivity"
+            android:screenOrientation="portrait"/>
 
         <activity 
             android:name="iWish_Activity.RegisterActivity"
@@ -182,12 +190,15 @@
         	
          <activity 
             android:name="iWish_Activity.WeightChangeActivity"
-            android:screenOrientation="portrait"/>  />    
-        
+            android:screenOrientation="portrait"/>    
+             
+          <activity 
+            android:name="iWish_Activity.WishListActivity"
+            android:screenOrientation="portrait"/>         
                
         <activity
             android:name="iWish_Activity.WorkingActivity"
-            android:screenOrientation="portrait"/>  />
+            android:screenOrientation="portrait"/>  
         
     </application>
 

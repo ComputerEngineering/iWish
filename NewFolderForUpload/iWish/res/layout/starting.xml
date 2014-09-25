@@ -4,17 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"   
-    android:background="@drawable/sfondo_starting"
-  >
-        
-     <ImageView 
-		android:id="@+id/testata_starting"
-		android:src="@drawable/testa_starting"
-        android:layout_width="match_parent"
-    	android:layout_height="275dp"
-
-	  />
-     
+    android:background="@drawable/sfondo_starting2" >
+ 
      <ImageButton
                 android:id="@+id/ready"
                 android:layout_width="250dp"
@@ -37,7 +28,7 @@
                 android:id="@+id/done"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="577dp"  
+                android:layout_marginTop="583dp"  
 				android:src="@drawable/botton_done"
                 />
  

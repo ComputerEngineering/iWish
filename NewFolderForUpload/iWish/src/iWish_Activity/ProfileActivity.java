@@ -60,7 +60,7 @@ public class ProfileActivity extends Activity{
 			}
 		});
 		
-/*		bt_wishlist.setOnClickListener(new View.OnClickListener() {
+		bt_wishlist.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -68,7 +68,7 @@ public class ProfileActivity extends Activity{
 				startActivity(new Intent(ProfileActivity.this, WishListActivity.class ));
 			}
 		});
-*/		
+		
 		bt_statics.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -77,16 +77,16 @@ public class ProfileActivity extends Activity{
 				startActivity(new Intent(ProfileActivity.this, StatisticsActivity.class ));
 			}
 		});
-/*
+
 		bt_friends.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Stub di metodo generato automaticamente
-				startActivity(new Intent(ProfileActivity.this, FriendsActivity.class ));
+				startActivity(new Intent(ProfileActivity.this, Friends2Activity.class ));
 			}
 		});
-*/		
+		
 		
 		
 	}

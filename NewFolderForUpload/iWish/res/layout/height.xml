@@ -47,28 +47,8 @@
         android:id="@+id/done"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="579dp"  
+        android:layout_marginTop="583dp"  
 		android:src="@drawable/botton_done"/>
     
     </RelativeLayout>
     
-<!-- 
-     <ImageView 
-		android:id="@+id/testata_height"
-		android:src="@drawable/testa_height"
-        android:layout_width="match_parent"
-    	android:layout_height="199dp"
-
-	  />
-    
-      <ImageButton 
-        android:id="@+id/freccia_verde_sin"
-        android:src="@drawable/freccia_verde_sin"
-        android:background="@color/sfondo"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
-
- -->

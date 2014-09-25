@@ -4,6 +4,109 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"   
+    android:background="@drawable/sfondo_new_wish2"
+  >
+        
+   <ImageView
+        android:id="@+id/omino_attivita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="315dp"
+        android:layout_marginLeft="23dp"
+        android:src="@drawable/omino_run" /> 
+        
+   <!--  altre icone attività
+   android:src="@drawable/omino_run"
+   android:src="@drawable/omino_ride"
+   android:src="@drawable/omino_rise"
+   android:src="@drawable/omino_swim"
+    -->
+        
+   <TextView
+        android:id="@+id/scritta_attivita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="295dp"
+        android:layout_marginLeft="111dp"
+        android:text="Running 10km"
+         android:textSize="30sp"
+        android:textColor="@color/verde_scuro"/>
+    
+    
+   <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/cerchio"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="443dp"
+        android:layout_marginLeft="21dp"
+        android:src="@drawable/hysen"
+        app:border_color="@color/blu_man"
+        app:border_width="2dp"
+        app:shadow="false" />
+   
+   <TextView
+        android:id="@+id/scritta_utente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="430dp"
+        android:layout_marginLeft="111dp"
+        android:text="Hysen"
+        android:textSize="30sp"
+        android:textColor="@color/verde_scuro"/>
+   
+    <TextView
+        android:id="@+id/scritta_punti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="489dp"
+        android:layout_marginLeft="125dp"
+        android:text="99"
+        android:textSize="20sp"
+        android:textColor="@color/placeholder"/>   
+     <TextView
+        android:id="@+id/scritta_winner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="489dp"
+        android:layout_marginLeft="192dp"
+        android:text="60"
+        android:textSize="20sp"
+        android:textColor="@color/placeholder"/>   
+     <TextView
+        android:id="@+id/scritta_loser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="489dp"
+        android:layout_marginLeft="261dp"
+        android:text="40"
+        android:textSize="20sp"
+        android:textColor="@color/placeholder"/>                 
+    
+
+    <ImageButton
+       android:id="@+id/m_letsgo"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="585dp"  
+	   android:src="@drawable/m_bot_letsgo"/>
+      
+  
+    
+</RelativeLayout>
+
+<!-- 
+
+
+
+
+
+
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"   
     android:background="@drawable/sfondo_gender"
   >
         
@@ -25,3 +128,6 @@
     
 </RelativeLayout>
 
+
+
+ -->

@@ -5,17 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sfondo_gender"
->
-
-      <ImageView 
-		android:id="@+id/testa_profile_ok"
-		android:src="@drawable/testa_profile_ok"
-        android:layout_width="match_parent"
-    	android:layout_height="275dp"
-
-	  />
-      
+    android:background="@drawable/sfondo_profile">
+     
      <ImageButton
             android:id="@+id/bot_ruota"
             android:layout_width="wrap_content"
@@ -128,7 +119,8 @@
         android:id="@+id/imageUser_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="577dp"  
+        android:layout_marginTop="585dp"  
 		android:src="@drawable/bot_make_new_wish"/>
      
       </RelativeLayout>
+      

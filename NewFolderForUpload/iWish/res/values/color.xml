@@ -10,6 +10,8 @@
     <color name="bot_grazie">#EEEEEE</color>
     <color name="bot_deselezionati">#7CC48F</color>
     <color name="placeholder">#8BC49C</color>
-    
+    <color name="blu_man">#3B92E0</color>
+    <color name="pink_woman">#FF8B96</color>
+    <color name="giallo">#FEC524</color>
 
 </resources>

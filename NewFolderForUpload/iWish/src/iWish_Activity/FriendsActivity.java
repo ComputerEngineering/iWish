@@ -14,7 +14,7 @@ import com.progect.iwish.R;
 
 /** Raffaella*/
 
-public class FrinedsActivity extends ListActivity{
+public class FriendsActivity extends ListActivity{
 	private ImageButton bt_search;
 	private ImageButton bt_cancel;
 	private ImageButton bt_sortByName;

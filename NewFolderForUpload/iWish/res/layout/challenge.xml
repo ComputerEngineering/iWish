@@ -4,17 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"   
-    android:background="@drawable/sfondo_starting"
+    android:background="@drawable/sfondo_challenge"
   >
         
-     <ImageView 
-		android:id="@+id/testata_challenge"
-		android:src="@drawable/testa_challenge"
-        android:layout_width="match_parent"
-    	android:layout_height="275dp"
-
-	  />
-
      <ImageButton
                 android:id="@+id/vs_myself"
                 android:layout_width="250dp"
@@ -37,7 +29,7 @@
                 android:id="@+id/done"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="577dp"  
+                android:layout_marginTop="583dp"  
 				android:src="@drawable/botton_done"
                 />
  
@@ -45,14 +37,11 @@
 </RelativeLayout>
 
 <!-- 
+     <ImageView 
+		android:id="@+id/testata_challenge"
+		android:src="@drawable/testa_challenge"
+        android:layout_width="match_parent"
+    	android:layout_height="275dp"
 
-      <ImageButton 
-        android:id="@+id/chiudi_verde2"
-        android:src="@drawable/icona_chiudi2"
-        android:background="@color/sfondo"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="310dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-      />    
+	  />
  -->

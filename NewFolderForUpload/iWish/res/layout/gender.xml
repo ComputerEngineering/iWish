@@ -5,16 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sfondo_gender"
+    android:background="@drawable/sfondo_gender2"
 >
-
-      <ImageView 
-		android:id="@+id/testa_gender"
-		android:src="@drawable/testa_gender"
-        android:layout_width="match_parent"
-    	android:layout_height="275dp"
-
-	  />
       
      <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/cerchio"
@@ -50,11 +42,12 @@
           
          <ImageButton
                 android:id="@+id/done"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="577dp"  
+                android:layout_marginTop="585dp"  
 				android:src="@drawable/botton_done"
                 />
      
 
      </RelativeLayout>
+     

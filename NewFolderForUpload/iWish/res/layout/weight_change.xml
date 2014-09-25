@@ -33,7 +33,7 @@
         android:id="@+id/done"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="579dp"  
+        android:layout_marginTop="583dp"  
 		android:src="@drawable/botton_done"/>
     
     </RelativeLayout>

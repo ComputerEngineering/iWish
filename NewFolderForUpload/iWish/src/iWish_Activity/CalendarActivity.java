@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class CalendarActivity extends Activity {
 
@@ -17,9 +18,9 @@ public class CalendarActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.calendar);
 	    
-		final ImageButton ButtonToday = (ImageButton)findViewById(R.id.today);
-		final ImageButton ButtonWeek = (ImageButton)findViewById(R.id.week);
-		final ImageButton ButtonMonth = (ImageButton)findViewById(R.id.month);
+		final TextView ButtonToday = (TextView)findViewById(R.id.today);
+		final TextView ButtonWeek = (TextView)findViewById(R.id.week);
+		final TextView ButtonMonth = (TextView)findViewById(R.id.month);
 	    
 	    
 		ButtonToday.setOnClickListener(new OnClickListener() {
@@ -27,9 +28,9 @@ public class CalendarActivity extends Activity {
 	        @Override
 	        public void onClick(View v) {
 	            // TODO Auto-generated method stub
-	        	ButtonToday.setImageResource(R.drawable.bot_today2); 
-	        	ButtonWeek.setImageResource(R.drawable.bot_week); 
-	        	ButtonMonth.setImageResource(R.drawable.bott_month); 
+	        	ButtonToday.setTextColor(getResources().getColor(R.color.verde_scuro));
+	        	ButtonWeek.setTextColor(getResources().getColor(R.color.placeholder));
+	        	ButtonMonth.setTextColor(getResources().getColor(R.color.placeholder));
 	        }    
 	    }); 
 		
@@ -38,9 +39,9 @@ public class CalendarActivity extends Activity {
 	        @Override
 	        public void onClick(View v) {
 	            // TODO Auto-generated method stub
-	        	ButtonToday.setImageResource(R.drawable.bot_today); 
-	        	ButtonWeek.setImageResource(R.drawable.bot_week2); 
-	        	ButtonMonth.setImageResource(R.drawable.bott_month); 
+	        	ButtonToday.setTextColor(getResources().getColor(R.color.placeholder));
+	        	ButtonWeek.setTextColor(getResources().getColor(R.color.verde_scuro));
+	        	ButtonMonth.setTextColor(getResources().getColor(R.color.placeholder));
 
 	         }    
 	    }); 
@@ -51,15 +52,13 @@ public class CalendarActivity extends Activity {
 	        public void onClick(View v) {
 	            // TODO Auto-generated method stub
 	        	
-	        	ButtonToday.setImageResource(R.drawable.bot_today); 
-	        	ButtonWeek.setImageResource(R.drawable.bot_week); 
-	        	ButtonMonth.setImageResource(R.drawable.bott_month2); 
-
+	        	ButtonToday.setTextColor(getResources().getColor(R.color.placeholder));
+	        	ButtonWeek.setTextColor(getResources().getColor(R.color.placeholder));
+	        	ButtonMonth.setTextColor(getResources().getColor(R.color.verde_scuro));
 	        	
 	          }
 	        }); 
-		
-		
+				
 		ImageButton avanti = (ImageButton)findViewById(R.id.bott_omino);
 		avanti.setOnClickListener(new OnClickListener() {
 		

@@ -27,7 +27,7 @@ public class WorkingActivity extends Activity{
 	    setContentView(R.layout.working);
 	
 	
-	ImageButton ok = (ImageButton)findViewById(R.id.m_letsgo2);
+	ImageButton ok = (ImageButton)findViewById(R.id.m_bot_stop);
 	ok.setOnClickListener(new OnClickListener() {
 	
 		@Override
