@@ -3,6 +3,8 @@ package _iWish;
 
 import java.util.Date;
 
+import android.content.Context;
+
 public interface MyUtente {
 	
 	String getKeyUtente();
@@ -18,6 +20,8 @@ public interface MyUtente {
 	String getPassword();
 	String getQuestion();
 	String getAnswer();
+	Context getC();
+	void setC(Context c);
 	void setKeyUtente(String keyUtente);
 	void setName(String name);
 	void setSurname(String surname);

@@ -1,5 +1,7 @@
 package iWish_Control;
 
+import java.util.List;
+
 import iWish_Utente.Utente;
 import iWish_database.UtenteDao;
 
@@ -36,12 +38,36 @@ public class ControlUser {
 
 		}
 	}
-	
+
 	public void deleteOnDbOneUtente(Utente mUtente){
 		try {
 			mUtenteDao.deleteOnDbOneUtente(mUtente);
 		} catch (Exception e) {
-			
+
+		}
+	}
+
+	public void deleteOnDbSomeUtente(List<Utente> mUtente){
+		try {
+			mUtenteDao.deleteOnDbSomeUtente(mUtente);
+		} catch (Exception e) {
+
+		}
+	}
+
+	public List<Utente> getOnDbAllUtente(){
+		try {
+			return mUtenteDao.getAllUtente();
+		} catch (Exception e) {
+
+		}
+		return null;
+	}
+
+	public void ConnectionUtente(){
+		try {
+			//	ControlConnection.getIstanceControlConnection().Utente();
+		} catch (Exception e) {
 		}
 	}
 

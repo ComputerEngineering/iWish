@@ -49,7 +49,7 @@ public class FriendsDao {
 		}
 	}
 	
-	public void insertOnDbUtente(Friends mFriends)throws Exception{
+	public void insertOnDbFriends(Friends mFriends)throws Exception{
 		Log.d("myapp", mFriends.getKeyFriend());
 		ContentValues values = new ContentValues();
 		values.put(DataBaseStorageFriends.COLUMN_ID,"" + mFriends.getKeyFriend() + "");
@@ -59,7 +59,7 @@ public class FriendsDao {
 		long insertId = database.insert(DataBaseStorageFriends.TABLE_FRIENDS, null, values);
 	}
 	
-	public void deleteOnDbAllUtente(){
+	public void deleteOnDbAllFriends(){
 		database.delete(DataBaseStorageFriends.TABLE_FRIENDS, null,null);
 	}
 	

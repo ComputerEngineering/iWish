@@ -1,6 +1,7 @@
 package iWish_Friends;
 /**Raffaella*/
 
+import android.content.Context;
 import _iWish.MyFriends;
 
 
@@ -9,6 +10,7 @@ public class Friends implements MyFriends{
 	private String name;
 	private String surname;
 	private int point;
+	private Context c;
 	//TODO manca il campo photo
 
 	@Override
@@ -26,6 +28,10 @@ public class Friends implements MyFriends{
 	@Override
 	public int getPoint() {
 		return point;
+	}
+	@Override
+	public Context getC() {
+		return c;
 	}
 	@Override
 	public void setKeyFriend(String keyUtente) {
@@ -47,5 +53,9 @@ public class Friends implements MyFriends{
 	public String toString() {
 		return "Friends [keyFriends=" + keyFriends + ", name=" + name
 				+ ", surname=" + surname + ", point=" + point + "]";
+	}
+	@Override
+	public void setC(Context C) {
+		this.c=c;
 	}
 }

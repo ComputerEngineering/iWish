@@ -1,5 +1,77 @@
 package iWish_Control;
 
+import java.util.List;
+
+import android.database.SQLException;
+import iWish_Friends.Friends;
+import iWish_database.FriendsDao;
+
 public class ControlFriends {
 
+	private FriendsDao mFriendsDao;
+	private static ControlFriends instance = null;
+
+
+	private ControlFriends(){}
+
+	public static synchronized ControlFriends getIstanceControlUser(){
+		if(instance==null){
+			instance = new ControlFriends();
+		}
+		return instance;
+	};
+
+	public void saveOnDbFriends(Friends mFriends)throws Exception{
+		try {
+			mFriendsDao= new FriendsDao(mFriends.getC());
+			mFriendsDao.open();
+			mFriendsDao.insertOnDbFriends(mFriends);
+		} catch (SQLException e) {
+
+		}
+	}
+
+	public void deleteOnDbFriedsAll(){
+		try {
+			mFriendsDao.deleteOnDbAllFriends();
+		} catch (Exception e) {
+
+		}
+	}
+
+	public void deleteOnDBOneFriends(Friends mFriends){
+		try {
+			//TODO
+		} catch (Exception e) {
+
+		}
+
+	}
+
+	public void deteteOnDbSomeFriends(List<Friends> mFriends){
+		try {
+			mFriendsDao.deleteOnDbSomeFriends(mFriends);
+		} catch (Exception e) {
+
+		}
+	}
+
+	public List<Friends> getOnDbAllFriends(){
+		try {
+			return mFriendsDao.getAllFriends();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return null;
+	}
+
+
+	public void ConnectionFriends(){
+		try {
+			ControlConnection.getIstanceControlConnection().onInsertFriends();
+		} catch (Exception e) {
+		}
+	}
+	
 }
