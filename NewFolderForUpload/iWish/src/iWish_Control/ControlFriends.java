@@ -41,7 +41,7 @@ public class ControlFriends {
 
 	public void deleteOnDBOneFriends(Friends mFriends){
 		try {
-			//TODO
+			mFriendsDao.deleteOnDbOneFriends(mFriends);
 		} catch (Exception e) {
 
 		}
@@ -73,5 +73,5 @@ public class ControlFriends {
 		} catch (Exception e) {
 		}
 	}
-	
+
 }
