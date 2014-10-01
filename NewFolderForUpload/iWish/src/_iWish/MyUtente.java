@@ -9,6 +9,7 @@ import android.content.Context;
 public interface MyUtente {
 	
 	String getKeyUtente();
+	long getTimeStamp();
 	String getName();
 	String getSurname();
 	Date getBirthday();
@@ -24,6 +25,7 @@ public interface MyUtente {
 	Context getC();
 	List<Double> getListWeight();
 	void setC(Context c);
+	void setTimeStamp(long timeStamp);
 	void setKeyUtente(String keyUtente);
 	void setName(String name);
 	void setSurname(String surname);

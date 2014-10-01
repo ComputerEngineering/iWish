@@ -9,6 +9,7 @@ import _iWish.MyUtente;
 
 public class Utente implements MyUtente{
 	private String keyUtente;
+	private long timeStamp;
 	private String name;
 	private String surname;
 	private Date birthday;
@@ -85,6 +86,14 @@ public class Utente implements MyUtente{
 		return weight;
 	}
 	@Override
+	public long getTimeStamp() {
+		return timeStamp;
+	}
+	@Override
+	public void setTimeStamp(long timeStamp) {
+		this.timeStamp=timeStamp;
+	}
+	@Override
 	public void setName(String name) {
 		this.name=name;
 	}
@@ -157,6 +166,7 @@ public class Utente implements MyUtente{
 				+ ", password=" + password + ", question=" + question
 				+ ", answer=" + answer + "]";
 	}
+
 	
 	
 	
