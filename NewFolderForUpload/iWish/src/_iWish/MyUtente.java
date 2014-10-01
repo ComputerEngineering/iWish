@@ -2,6 +2,7 @@ package _iWish;
 /**Raffaella*/
 
 import java.util.Date;
+import java.util.List;
 
 import android.content.Context;
 
@@ -21,6 +22,7 @@ public interface MyUtente {
 	String getQuestion();
 	String getAnswer();
 	Context getC();
+	List<Double> getListWeight();
 	void setC(Context c);
 	void setKeyUtente(String keyUtente);
 	void setName(String name);
@@ -35,5 +37,6 @@ public interface MyUtente {
 	void setPassword(String  password);
 	void setQuestion(String question);
 	void setAnswer(String answer);
+	void setListWeight(Double weight);
 	
 }

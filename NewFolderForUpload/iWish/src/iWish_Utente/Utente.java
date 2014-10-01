@@ -2,6 +2,7 @@ package iWish_Utente;
 /**Raffaella*/
 
 import java.util.Date;
+import java.util.List;
 
 import android.content.Context;
 import _iWish.MyUtente;
@@ -14,7 +15,8 @@ public class Utente implements MyUtente{
 	private String sex;
 	private String typeUser;
 	private double height;
-	private double weight;
+	private double weightFirst;
+	private List<Double> weight;
 	private String city;
 	private String email;
 	private String password;
@@ -76,6 +78,10 @@ public class Utente implements MyUtente{
 	}
 	@Override
 	public double getWeight() {
+		return weightFirst;
+	}
+	@Override
+	public List<Double> getListWeight() {
 		return weight;
 	}
 	@Override
@@ -116,7 +122,7 @@ public class Utente implements MyUtente{
 	}
 	@Override
 	public void setWeight(double weight) {
-		this.weight=weight;
+		this.weightFirst=weight;
 	}
 	@Override
 	public void setTypeUser(String typeUser) {
@@ -135,6 +141,10 @@ public class Utente implements MyUtente{
 	public void setPassword(String  password) {
 		this.password=password;
 	}
+	@Override
+	public void setListWeight(Double weight) {
+		//TODO DA FARE
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -143,9 +153,11 @@ public class Utente implements MyUtente{
 		return "Utente [keyUtente=" + keyUtente + ", name=" + name
 				+ ", surname=" + surname + ", birthday=" + birthday + ", sex="
 				+ sex + ", typeUser=" + typeUser + ", height=" + height
-				+ ", weight=" + weight + ", city=" + city + ", email=" + email
+				+ ", weight=" + weightFirst + ", city=" + city + ", email=" + email
 				+ ", password=" + password + ", question=" + question
 				+ ", answer=" + answer + "]";
 	}
+	
+	
 	
 }
