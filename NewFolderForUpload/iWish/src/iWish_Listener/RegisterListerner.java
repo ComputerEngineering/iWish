@@ -4,6 +4,7 @@ package iWish_Listener;
 
 import com.progect.iwish.R;
 
+import iWish_Activity.AvatarActivity;
 import iWish_Control.ControlConnection;
 import iWish_Control.ControlUser;
 import iWish_Utente.Utente;
@@ -37,7 +38,7 @@ public class RegisterListerner implements OnClickListener {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void onClick(View v) {
-		//Intent open_activity= new Intent(c,);
+		Intent open_activity= new Intent(c,AvatarActivity.class);
 		switch (v.getId()){
 		case R.id.bt_go_ok:
 			if((edt_name.getText().equals(""))&&(edt_surname.getText().equals(""))
