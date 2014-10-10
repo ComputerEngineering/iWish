@@ -112,12 +112,27 @@ public class RegisterActivity extends Activity{
 					}
 					else{
 						if(!edt_email.getText().equals(edt_rp_email.getText())){
-							
+							alertDialog = new AlertDialog.Builder(c).create();
+							alertDialog.setTitle("Warning");
+							alertDialog.setMessage("You don't have write all information"); 
+							alertDialog.setIcon(R.drawable.bt_ok_go);  
+							alertDialog.setButton("OK", new DialogInterface.OnClickListener() {  
+								public void onClick(DialogInterface dialog, int which) {  
+									return;  
+								} });  
+							alertDialog.show();
 						}
 						if (!edt_email.getText().equals(edt_email.getText())){
-							
+							alertDialog = new AlertDialog.Builder(c).create();
+							alertDialog.setTitle("Warning");
+							alertDialog.setMessage("You don't have write all information"); 
+							alertDialog.setIcon(R.drawable.bt_ok_go);  
+							alertDialog.setButton("OK", new DialogInterface.OnClickListener() {  
+								public void onClick(DialogInterface dialog, int which) {  
+									return;  
+								} });  
+							alertDialog.show();
 						}
-						alertDialog.show();
 						intent.putExtra(pkg + " .Utente ", createUser());
 					}
 				}
