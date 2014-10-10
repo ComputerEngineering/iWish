@@ -50,8 +50,8 @@ public class RegisterActivity extends Activity{
 	private String firstQuestionsSelected="Select Question";
 	private Utente mUser ;
 	private Intent intent;
-	
-	
+
+
 
 
 	@Override
@@ -64,10 +64,10 @@ public class RegisterActivity extends Activity{
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sp_questions_register = (Spinner)findViewById(R.id.spinner1);
 		sp_questions_register.setAdapter(adapter);
-		
+
 		intent=new Intent(this, AvatarActivity.class);
 		final String pkg=getPackageName();
-		
+
 
 		//cliccando sul cerchietto si sceglie la propria immagine di profilo tra le foto in memoria nel cel
 		selectPhoto.setOnClickListener(new OnClickListener() {
@@ -114,26 +114,46 @@ public class RegisterActivity extends Activity{
 						alertDialog.show();
 					}
 					else{
+						if(!edt_email.getText().equals(edt_rp_email.getText())){
+							alertDialog = new AlertDialog.Builder(c).create();
+							alertDialog.setTitle("Warning");
+							alertDialog.setMessage("You have wrong you email");
+							alertDialog.setIcon(R.drawable.bt_ok_go);
+							alertDialog.setButton("OK", new DialogInterface.OnClickListener() {  
+								public void onClick(DialogInterface dialog, int which) {  
+									return;  
+								} }); 
+						}
+						if (!edt_email.getText().equals(edt_email.getText())){
+							alertDialog = new AlertDialog.Builder(c).create();
+							alertDialog.setTitle("Warning");
+							alertDialog.setMessage("You have wrong you password");
+							alertDialog.setIcon(R.drawable.bt_ok_go);
+							alertDialog.setButton("OK", new DialogInterface.OnClickListener() {  
+								public void onClick(DialogInterface dialog, int which) {  
+									return;  
+								} }); 
+						}
+						alertDialog.show();
 						intent.putExtra(pkg + " .Utente ", createUser());
 					}
 				}
 				startActivity(intent);
 			}
-
-			private Utente createUser() {
-				mUser = new Utente();
-				mUser.setName(edt_name.getText().toString());
-				mUser.setSurname(edt_surname.getText().toString());
-				mUser.setBirthday(edt_birthday.getText().toString());
-				mUser.setCity(edt_city.getText().toString());
-				mUser.setEmail(edt_email.getText().toString());
-				mUser.setPassword(edt_password.getText().toString());
-				mUser.setAnswer(edt_answer_register.getText().toString());
-				mUser.setQuestion(sp_questions_register.toString());
-				mUser.setC(getC());
-				return mUser;
-			}
 		});
+	}
+	public Utente createUser() {
+		mUser = new Utente();
+		mUser.setName(edt_name.getText().toString());
+		mUser.setSurname(edt_surname.getText().toString());
+		mUser.setBirthday(edt_birthday.getText().toString());
+		mUser.setCity(edt_city.getText().toString());
+		mUser.setEmail(edt_email.getText().toString());
+		mUser.setPassword(edt_password.getText().toString());
+		mUser.setAnswer(edt_answer_register.getText().toString());
+		mUser.setQuestion(sp_questions_register.toString());
+		mUser.setC(getC());
+		return mUser;
 	}
 
 	private void setUpViews() {
