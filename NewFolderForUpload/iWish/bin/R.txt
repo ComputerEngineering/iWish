@@ -499,8 +499,8 @@ int id imgbt_fb 0x7f050037
 int id imgbt_forgot_psw 0x7f050036
 int id imgbt_ok_go 0x7f050035
 int id imgbt_register_done 0x7f050038
-int id imgbt_searcByLatest 0x7f050020
-int id imgbt_searcByName 0x7f05001f
+int id imgbt_searcByLatest 0x7f050023
+int id imgbt_searcByName 0x7f050022
 int id imgbt_searcByPoints 0x7f050021
 int id imm_level 0x7f050096
 int id incompleto 0x7f05008c
@@ -515,7 +515,7 @@ int id list 0x7f050094
 int id list_badge_to_win 0x7f0500a2
 int id list_badge_won 0x7f0500a0
 int id loading 0x7f050089
-int id lstv_friends 0x7f050022
+int id lstv_friends 0x7f05001f
 int id m_bot_stop 0x7f0500b2
 int id m_lets_start 0x7f050078
 int id m_letsgo 0x7f05003f
@@ -564,7 +564,7 @@ int id scritta_week 0x7f050073
 int id scritta_winner 0x7f05003d
 int id scrollView1 0x7f05007b
 int id scv_friends 0x7f05001c
-int id searc_friends 0x7f050023
+int id searc_friends 0x7f050020
 int id sfondo_bmi 0x7f05009a
 int id sfondo_bmi2 0x7f050012
 int id spinner1 0x7f050085
