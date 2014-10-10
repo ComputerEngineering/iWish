@@ -1,8 +1,13 @@
 package iWish_Activity;
 /** Raffaella*/
+import iWish_Utente.Utente;
+
 import java.io.File;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -21,10 +26,8 @@ import android.widget.Spinner;
 
 import com.progect.iwish.R;
 
-
-
 public class RegisterActivity extends Activity{
-	
+	public Context c;
 	private ImageButton bt_change=null;
 	private ImageButton bt_go_ok=null;
 	private EditText edt_name=null;
@@ -43,15 +46,97 @@ public class RegisterActivity extends Activity{
 	private ImageView selectPhoto=null;
 	private static final int SELECT_PICTURE = 1;
 	private String selectedImagePath=null;
-
-
+	private AlertDialog alertDialog;
+	private String firstQuestionsSelected="Select Question";
+	private Utente mUser ;
+	private Intent intent;
+	
+	
 
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
+		setUpViews();
 
+		adapter = createSpinnerAdapter();
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		sp_questions_register = (Spinner)findViewById(R.id.spinner1);
+		sp_questions_register.setAdapter(adapter);
+		
+		intent=new Intent(this, AvatarActivity.class);
+		final String pkg=getPackageName();
+		
+
+		//cliccando sul cerchietto si sceglie la propria immagine di profilo tra le foto in memoria nel cel
+		selectPhoto.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				// in onCreate or any event where your want the user to select a file
+				Intent intentPhoto = new Intent();
+				intentPhoto.setType("image/*");
+				intentPhoto.setAction(Intent.ACTION_GET_CONTENT);
+				startActivityForResult(Intent.createChooser(intentPhoto,"Select Picture"), SELECT_PICTURE);
+			}
+		});
+
+		bt_go_ok.setOnClickListener(new OnClickListener() {
+
+			@SuppressWarnings("deprecation")
+			@Override
+			public void onClick(View v) {
+				if((edt_name.getText().equals(""))||(edt_surname.getText().equals(""))
+						||(edt_birthday.getText().equals(""))||(edt_city.getText().equals(""))
+						||(edt_email.getText().equals(""))||(edt_rp_email.getText().equals(""))
+						||(edt_password.getText().equals(""))||(edt_rp_password.getText().equals(""))
+						||(edt_answer_register.getText().equals(""))){
+					alertDialog = new AlertDialog.Builder(c).create();
+					alertDialog.setTitle("Warning");
+					alertDialog.setMessage("You don't have write all information"); 
+					alertDialog.setIcon(R.drawable.bt_ok_go);  
+					alertDialog.setButton("OK", new DialogInterface.OnClickListener() {  
+						public void onClick(DialogInterface dialog, int which) {  
+							return;  
+						} });  
+					alertDialog.show();
+				}else{
+					if(sp_questions_register.toString().equalsIgnoreCase(firstQuestionsSelected)){
+						alertDialog = new AlertDialog.Builder(c).create();  
+						alertDialog.setTitle("Warning");
+						alertDialog.setMessage("If you want register your account you must chose a question");
+						//alertDialog.setIcon(R.drawable.);
+						alertDialog.setButton2("OK", new DialogInterface.OnClickListener() {  
+							public void onClick(DialogInterface dialog, int which) {  
+								return;  
+							} });   
+						alertDialog.show();
+					}
+					else{
+						intent.putExtra(pkg + " .Utente ", createUser());
+					}
+				}
+				startActivity(intent);
+			}
+
+			private Utente createUser() {
+				mUser = new Utente();
+				mUser.setName(edt_name.getText().toString());
+				mUser.setSurname(edt_surname.getText().toString());
+				mUser.setBirthday(edt_birthday.getText().toString());
+				mUser.setCity(edt_city.getText().toString());
+				mUser.setEmail(edt_email.getText().toString());
+				mUser.setPassword(edt_password.getText().toString());
+				mUser.setAnswer(edt_answer_register.getText().toString());
+				mUser.setQuestion(sp_questions_register.toString());
+				mUser.setC(getC());
+				return mUser;
+			}
+		});
+	}
+
+	private void setUpViews() {
 		bt_change = (ImageButton)findViewById(R.id.bott_modifica);
 		bt_go_ok = (ImageButton)findViewById(R.id.bt_go_ok);
 		edt_name = (EditText)findViewById(R.id.editText1);
@@ -63,39 +148,7 @@ public class RegisterActivity extends Activity{
 		edt_password = (EditText)findViewById(R.id.editText7);
 		edt_rp_password = (EditText)findViewById(R.id.editText8);
 		edt_answer_register = (EditText)findViewById(R.id.editText9);
-
 		selectPhoto = (ImageView)findViewById(R.id.foto);
-
-		adapter = createSpinnerAdapter();
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		sp_questions_register = (Spinner)findViewById(R.id.spinner1);
-		sp_questions_register.setAdapter(adapter);
-
-
-		bt_go_ok.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				startActivity(new Intent(RegisterActivity.this, AvatarActivity.class ));
-			}
-		});
-
-		//cliccando sul cerchietto si sceglie la propria immagine di profilo tra le foto in memoria nel cel
-
-		selectPhoto.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-
-				// in onCreate or any event where your want the user to select a file
-				Intent intent = new Intent();
-				intent.setType("image/*");
-				intent.setAction(Intent.ACTION_GET_CONTENT);
-				startActivityForResult(Intent.createChooser(intent,"Select Picture"), SELECT_PICTURE);
-			}
-		});
-
 	}
 
 	private ArrayAdapter<String> createSpinnerAdapter(){
@@ -169,6 +222,9 @@ public class RegisterActivity extends Activity{
 			return myBitmap;
 		}
 		return null;
+	}
+	private Context getC() {
+		return c;
 	}
 
 }

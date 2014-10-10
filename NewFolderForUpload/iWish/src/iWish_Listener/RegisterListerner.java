@@ -41,11 +41,11 @@ public class RegisterListerner implements OnClickListener {
 		Intent open_activity= new Intent(c,AvatarActivity.class);
 		switch (v.getId()){
 		case R.id.bt_go_ok:
-			if((edt_name.getText().equals(""))&&(edt_surname.getText().equals(""))
-					&&(edt_birthday.getText().equals(""))&&(edt_city.getText().equals(""))
-					&&(edt_email.getText().equals(""))&&(edt_rp_email.getText().equals(""))
-					&&(edt_password.getText().equals(""))&&(edt_rp_password.getText().equals(""))
-					&&(edt_answer_register.getText().equals(""))){
+			if((edt_name.getText().equals(""))||(edt_surname.getText().equals(""))
+					||(edt_birthday.getText().equals(""))||(edt_city.getText().equals(""))
+					||(edt_email.getText().equals(""))||(edt_rp_email.getText().equals(""))
+					||(edt_password.getText().equals(""))||(edt_rp_password.getText().equals(""))
+					||(edt_answer_register.getText().equals(""))){
 				alertDialog = new AlertDialog.Builder(c).create();
 				alertDialog.setTitle("Warning");
 				alertDialog.setMessage("You don't have write all information"); 
@@ -76,7 +76,7 @@ public class RegisterListerner implements OnClickListener {
 
 	private void createUser(){
 		mUser = new Utente();
-		mUser.setTimeStamp(getTimeStamp());
+		
 		mUser.setName(edt_name.getText().toString());
 		mUser.setSurname(edt_surname.getText().toString());
 		//mUser.setBirthday(edt_birthday.getText().toString());
@@ -84,7 +84,7 @@ public class RegisterListerner implements OnClickListener {
 		mUser.setEmail(edt_email.getText().toString());
 		mUser.setPassword(edt_password.getText().toString());
 		mUser.setAnswer(edt_answer_register.getText().toString());
-		mUser.setKeyUtente(createKeyUser());
+		
 		mUser.setQuestion(questions.toString());
 		mUser.setC(getC());
 		try {

@@ -1,11 +1,11 @@
 package iWish_database;
 /**Raffaella*/
 
+import iWish_Friends.Friends;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import iWish_Friends.Friends;
-import iWish_Utente.Utente;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -91,6 +91,7 @@ public class FriendsDao {
 				cursor.close();
 				return listFriends;
 	}
+	
 
 	
 	private Friends cursorsFriends(Cursor cursor) {

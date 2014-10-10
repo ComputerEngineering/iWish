@@ -1,5 +1,7 @@
 package iWish_Activity;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import iWish_Friends.Friends;
@@ -21,6 +23,7 @@ public class FriendsActivity extends ListActivity{
 	private ImageButton bt_sortByLatest;
 	private ImageButton bt_sortByPoints;
 	private FriendsDao datasource_friends;
+	List<Friends> mFriends =null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +33,16 @@ public class FriendsActivity extends ListActivity{
 		datasource_friends = new FriendsDao(this);
 		datasource_friends.open();
 		
-		List<Friends> mFriends = datasource_friends.getAllFriends();
+		mFriends = datasource_friends.getAllFriends();
+		
 		
 		// use the SimpleCursorAdapter to show the elements in a ListView
 	   ArrayAdapter<Friends> adapter = new ArrayAdapter<Friends>(this,android.R.layout.simple_list_item_1);
 	   setListAdapter(adapter);
 	}
 	
+
+
 	// Will be called via the onClick attribute
 	 public void onClick(View view){
 		 ArrayAdapter<Friends> adapter = (ArrayAdapter<Friends>)getListAdapter();

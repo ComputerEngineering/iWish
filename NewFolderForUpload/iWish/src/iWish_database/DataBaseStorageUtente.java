@@ -55,7 +55,7 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 	/** this 's the query that we use for create the table
 	 *  Android use the _id  for identify the element's key **/
 	private static final String DATABASE_CREATE = "create table" + TABLE_UTENTE + "("
-			+ COLUMN_ID + " _id vachar(45) PRIMARY KEY, "
+			+ COLUMN_ID + " _id integer PRIMARY KEY AUTOINCREMENT UNIQUE,"
 			+ COLUMN_NAME + " vachar(15) NOT NULL,"
 			+ COLUMN_SURNAME + " vachar(15) NOT NULL,"
 			+ COLUMN_BIRTHDAY + " numeric(8) NOT NULL,"

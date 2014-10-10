@@ -1,18 +1,19 @@
 package iWish_Utente;
 /**Raffaella*/
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import android.content.Context;
 import _iWish.MyUtente;
 
-public class Utente implements MyUtente{
-	private String keyUtente;
-	private long timeStamp;
+public class Utente implements MyUtente,Serializable{
+
+	private long keyUtente;
 	private String name;
 	private String surname;
-	private Date birthday;
+	private String birthday;
 	private String sex;
 	private String typeUser;
 	private double height;
@@ -26,9 +27,9 @@ public class Utente implements MyUtente{
 	private Context c;
 	//TODO devo aggiungere l'attributo PHOTO
 	
-	@Override
-	public String getKeyUtente() {
+	public long getKeyUtente(){
 		return keyUtente;
+		
 	}
 	public Context getC() {
 		return c;
@@ -42,7 +43,7 @@ public class Utente implements MyUtente{
 		return surname;
 	}
 	@Override
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 	@Override
@@ -85,13 +86,8 @@ public class Utente implements MyUtente{
 	public List<Double> getListWeight() {
 		return weight;
 	}
-	@Override
-	public long getTimeStamp() {
-		return timeStamp;
-	}
-	@Override
-	public void setTimeStamp(long timeStamp) {
-		this.timeStamp=timeStamp;
+	public void setKeyUtente(long keyUtente){
+		this.keyUtente=keyUtente;
 	}
 	@Override
 	public void setName(String name) {
@@ -102,7 +98,7 @@ public class Utente implements MyUtente{
 		this.surname=surname;
 	}
 	@Override
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday=birthday;
 	}
 	@Override
@@ -139,10 +135,6 @@ public class Utente implements MyUtente{
 	}
 	
 	@Override
-	public void setKeyUtente(String keyUtente) {
-		this.keyUtente=keyUtente;
-	}
-	@Override
 	public void setEmail(String  email) {
 		this.email=email;
 	}
@@ -159,15 +151,14 @@ public class Utente implements MyUtente{
 	 */
 	@Override
 	public String toString() {
-		return "Utente [keyUtente=" + keyUtente + ", name=" + name
+		return "Utente [name=" + name
 				+ ", surname=" + surname + ", birthday=" + birthday + ", sex="
 				+ sex + ", typeUser=" + typeUser + ", height=" + height
 				+ ", weight=" + weightFirst + ", city=" + city + ", email=" + email
 				+ ", password=" + password + ", question=" + question
 				+ ", answer=" + answer + "]";
 	}
+	
+	
 
-	
-	
-	
 }

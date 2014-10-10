@@ -57,9 +57,9 @@ public class UtenteDao {
 	}
 
 	public void insertOnDbUtente(Utente mUtente)throws Exception{
-		Log.d("myapp", mUtente.getKeyUtente());
+		//Log.d("myapp", mUtente.getKeyUtente());
 		ContentValues values = new ContentValues();
-		values.put(DataBaseStorageUtente.COLUMN_ID,"" + mUtente.getKeyUtente() + "");
+		//values.put(DataBaseStorageUtente.COLUMN_ID,"" + mUtente.getKeyUtente() + "");
 		values.put(DataBaseStorageUtente.COLUMN_NAME,"" + mUtente.getName() + "");
 		values.put(DataBaseStorageUtente.COLUMN_SURNAME, "" + mUtente.getSurname() + "");
 		values.put(DataBaseStorageUtente.COLUMN_BIRTHDAY,""+ mUtente.getBirthday() + "");
@@ -80,7 +80,7 @@ public class UtenteDao {
 	}
 	
 	public void deleteOnDbOneUtente(Utente mUtente){
-		String guid = mUtente.getKeyUtente();
+		String guid = mUtente.getEmail();
 		System.out.print("Key Utente that we have delete is : " + guid);
 		database.delete(DataBaseStorageUtente.TABLE_UTENTE, DataBaseStorageUtente.COLUMN_ID +"='" + guid+ "'" , null);
 	}
@@ -89,7 +89,7 @@ public class UtenteDao {
 		String guid=null;
 		int db=-1;
 		for(Utente utente: mUtente){
-			guid=utente.getKeyUtente();
+			guid=utente.getEmail();
 			db=database.delete(DataBaseStorageUtente.TABLE_UTENTE, DataBaseStorageUtente.COLUMN_ID+ "='" + guid+ "'", null);
 		}return db;
 	}
@@ -112,7 +112,7 @@ public class UtenteDao {
 	private Utente cursorsUtente(Cursor cursor) {
 		Utente utente = new Utente();
 		
-		utente.setKeyUtente(cursor.getString(DataBaseStorageUtente.COLUMN_ID_INDEX));
+		utente.setKeyUtente(cursor.getLong(DataBaseStorageUtente.COLUMN_ID_INDEX));
 		utente.setName(cursor.getString(DataBaseStorageUtente.COLUMN_NAME_INDEX));
 		utente.setSurname(cursor.getString(DataBaseStorageUtente.COLUMN_SURNAME_INDEX));
 		//utente.setBirthday(cursor.getString(DataBaseStorageUtente.COLUMN_BIRTHDAY_INDEX));

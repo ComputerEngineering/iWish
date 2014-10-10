@@ -25,6 +25,7 @@ public class WorkingActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.working);
+	    setUpViews();
 	
 	
 	ImageButton ok = (ImageButton)findViewById(R.id.m_bot_stop);
@@ -36,6 +37,11 @@ public class WorkingActivity extends Activity{
 		}
 	});
 	
+	}
+
+	private void setUpViews() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

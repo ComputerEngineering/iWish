@@ -55,7 +55,7 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	private HttpClient httpclient;
 	private List<NameValuePair> nameValuePairs;
 	private HashMap<String, MyUtente> obj;
-	private String key;
+	private long key;
 	/**A JSONObject is an unordered collection of name/value pairs. A JSONObject constructor can be used 
 	 * to convert an external form JSON text into an internal form whose values can be retrieved with 
 	 * the get and opt methods, or to convert values into a JSON text using the put and toString methods. 
@@ -121,7 +121,7 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 
 	/**into this method we send the file User to the server*/
 	private HttpResponse SendUser(HashMap<String, MyUtente> obj2) {
-		String s = (obj2.get(key)).getKeyUtente();
+		long s = (obj2.get(key)).getKeyUtente();
 		//First we create a JsonObject
 		try {
 			json.put("KeyUser", (obj2.get(key)).getKeyUtente());

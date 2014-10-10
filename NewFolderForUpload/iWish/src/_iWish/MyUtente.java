@@ -7,12 +7,11 @@ import java.util.List;
 import android.content.Context;
 
 public interface MyUtente {
-	
-	String getKeyUtente();
-	long getTimeStamp();
+
+	long getKeyUtente();
 	String getName();
 	String getSurname();
-	Date getBirthday();
+	String getBirthday();
 	String getCity();
 	String getSex();
 	String getTypeUser();
@@ -24,12 +23,11 @@ public interface MyUtente {
 	String getAnswer();
 	Context getC();
 	List<Double> getListWeight();
+	void setKeyUtente(long keyUtente);
 	void setC(Context c);
-	void setTimeStamp(long timeStamp);
-	void setKeyUtente(String keyUtente);
 	void setName(String name);
 	void setSurname(String surname);
-	void setBirthday(Date birthday);
+
 	void setCity(String city);
 	void setEmail(String  email);
 	void setSex(String sex);
@@ -40,5 +38,6 @@ public interface MyUtente {
 	void setQuestion(String question);
 	void setAnswer(String answer);
 	void setListWeight(Double weight);
+	void setBirthday(String birthday);
 	
 }

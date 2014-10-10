@@ -27,18 +27,7 @@ public class ProfileActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profile);
-		bt_statics = (ImageButton)findViewById(R.id.bot_statistics);
-		bt_friends = (ImageButton)findViewById(R.id.bot_friends);
-		bt_wishlist = (ImageButton)findViewById(R.id.bot_wishlist);
-		bt_calendar= (ImageButton)findViewById(R.id.bot_calendar);
-		bt_option = (ImageButton)findViewById(R.id.bot_ruota);
-		bt_allarme= (ImageButton)findViewById(R.id.bot_campana);
-		bt_make_new_wish_profile = (ImageButton)findViewById(R.id.imageUser_profile);
-		tv_userName = (TextView)findViewById(R.id.textView_name);
-		tv_wishes = (TextView)findViewById(R.id.textView_wishes_profile);
-		tv_points = (TextView)findViewById(R.id.textView_points_profile);
-		tv_level = (TextView)findViewById(R.id.textView_level_profile);
-		
+		setUpViews();
 		
 		bt_make_new_wish_profile.setOnClickListener(new View.OnClickListener() {
 
@@ -89,6 +78,20 @@ public class ProfileActivity extends Activity{
 		
 		
 		
+	}
+
+	private void setUpViews() {
+		bt_statics = (ImageButton)findViewById(R.id.bot_statistics);
+		bt_friends = (ImageButton)findViewById(R.id.bot_friends);
+		bt_wishlist = (ImageButton)findViewById(R.id.bot_wishlist);
+		bt_calendar= (ImageButton)findViewById(R.id.bot_calendar);
+		bt_option = (ImageButton)findViewById(R.id.bot_ruota);
+		bt_allarme= (ImageButton)findViewById(R.id.bot_campana);
+		bt_make_new_wish_profile = (ImageButton)findViewById(R.id.imageUser_profile);
+		tv_userName = (TextView)findViewById(R.id.textView_name);
+		tv_wishes = (TextView)findViewById(R.id.textView_wishes_profile);
+		tv_points = (TextView)findViewById(R.id.textView_points_profile);
+		tv_level = (TextView)findViewById(R.id.textView_level_profile);
 	}
 }
 

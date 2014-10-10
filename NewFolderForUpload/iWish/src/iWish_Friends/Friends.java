@@ -1,11 +1,13 @@
 package iWish_Friends;
 /**Raffaella*/
 
+import java.io.Serializable;
+
 import android.content.Context;
 import _iWish.MyFriends;
 
 
-public class Friends implements MyFriends{
+public class Friends implements MyFriends,Serializable{
 	private String keyFriends;
 	private String name;
 	private String surname;
