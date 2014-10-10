@@ -51,9 +51,6 @@ public class RegisterActivity extends Activity{
 	private Utente mUser ;
 	private Intent intent;
 
-
-
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -115,24 +112,10 @@ public class RegisterActivity extends Activity{
 					}
 					else{
 						if(!edt_email.getText().equals(edt_rp_email.getText())){
-							alertDialog = new AlertDialog.Builder(c).create();
-							alertDialog.setTitle("Warning");
-							alertDialog.setMessage("You have wrong you email");
-							alertDialog.setIcon(R.drawable.bt_ok_go);
-							alertDialog.setButton("OK", new DialogInterface.OnClickListener() {  
-								public void onClick(DialogInterface dialog, int which) {  
-									return;  
-								} }); 
+							
 						}
 						if (!edt_email.getText().equals(edt_email.getText())){
-							alertDialog = new AlertDialog.Builder(c).create();
-							alertDialog.setTitle("Warning");
-							alertDialog.setMessage("You have wrong you password");
-							alertDialog.setIcon(R.drawable.bt_ok_go);
-							alertDialog.setButton("OK", new DialogInterface.OnClickListener() {  
-								public void onClick(DialogInterface dialog, int which) {  
-									return;  
-								} }); 
+							
 						}
 						alertDialog.show();
 						intent.putExtra(pkg + " .Utente ", createUser());
