@@ -23,11 +23,12 @@ import com.progect.iwish.R;
 /**Alessandro*/
 
 public class HeightActivity extends Activity{
-	private Intent intent;
-	private Utente mUser;
-	private ImageView scorciatoia;
+
+	private ImageView scorciatoia; //scorciatoia lo lascio perchè in futuro ci servirà per cambiare il valore dell'immagine
 	private int height;
 
+	private Utente mUser;
+	private TextView stampaNome;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,27 +38,45 @@ public class HeightActivity extends Activity{
 		scorciatoia = (ImageView)findViewById(R.id.cerchio);
 		final ImageButton fatto = (ImageButton)findViewById(R.id.done);
 		final AbstractWheel altezza = (AbstractWheel) findViewById(R.id.height_horizontal);
-		final String pkg=getPackageName(); 
-		intent=getIntent();
-		mUser = (Utente)intent.getSerializableExtra(pkg+".myUtente");
-		intent=new Intent(getApplicationContext(),WeightActivity.class);
+		
+		stampaNome = (TextView)findViewById(R.id.nomeUtente);
+		
+		// Prendiamo l'intent passato da Gender
+		Intent intent = getIntent();
 
-		NumericWheelAdapter altezzaAdapter = new NumericWheelAdapter(this, 0, 220, "%02d");
+		// Prendiamo l'oggetto Utente passato tramite intent
+		mUser = (Utente)intent.getSerializableExtra("u");
+		
+		// Stampiamo il nome dell'utente passato  
+	    	stampaNome.setText(mUser.getName());
+
+		NumericWheelAdapter altezzaAdapter = new NumericWheelAdapter(this, 90, 220, "%02d");
 		altezzaAdapter.setItemResource(R.xml.wheel_text_centered);
 		altezzaAdapter.setItemTextResource(R.id.text);
 		altezza.setViewAdapter(altezzaAdapter); 
-		
-		height=altezzaAdapter.getItemResource();
 
 		fatto.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-			
-				mUser.setHeight(height);
-				intent.putExtra(pkg + " .Utente ", mUser);
+			//	height= altezza.getCurrentItem();
+			//	stampaNome.setText(""+height+"");
+				
+				//cambiamo il colore al bottone
 				fatto.setImageResource(R.drawable.botton_done2);
-				startActivity(intent);
+				
+				// Creiamo un nuovo intent passando il nome dell'intent (ma si poteva fare anche passando il nome della classe) 
+				Intent intent2 = new Intent("iWish_Activity.WEIGHT");
+				
+				//aggiorniamo i dati utente con il campo "height"
+				mUser.setHeight(altezza.getCurrentItem()+90);
+				
+				//aggiungiamo questa nuova informazione nel nostro intent
+				intent2.putExtra("u", mUser);
+				
+				//facciamo partire l'intent GENDER
+				startActivity(intent2);			
+
 			}
 		});
 

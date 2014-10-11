@@ -7,7 +7,16 @@
     android:layout_height="match_parent"
     android:background="@drawable/sfondo_avatar2">
       
-      
+    <TextView
+        android:id="@+id/nomeUtente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:layout_marginLeft="125dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/verde_scuro"/>
+          
      <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/cerchio"
         android:layout_width="71dp"

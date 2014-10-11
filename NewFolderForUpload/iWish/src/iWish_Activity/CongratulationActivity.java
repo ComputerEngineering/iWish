@@ -1,5 +1,8 @@
 package iWish_Activity;
 
+import java.math.BigDecimal;
+
+import iWish_Utente.Utente;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,25 +16,75 @@ import com.progect.iwish.R;
 /** Raffaella*/
 
 public class CongratulationActivity extends Activity {
+
+	private ImageView cerchioFoto; //lo metto per in futuro aggiornare con la foto di profilo
 	private ImageView imgbt_expressWish;
-	private com.mikhaellopez.circularimageview.CircularImageView civ_user;
-	private com.mikhaellopez.circularimageview.CircularImageView civ_type;
-	private com.mikhaellopez.circularimageview.CircularImageView civ_bmi;
-	private TextView tv_type;
-	private TextView tv_bmi;
+	private ImageView ominoUtentePigro;
+	private ImageView ominoUtenteAttivo;
+	private ImageView scrittaUtentePigro;
+	private ImageView scrittaUtenteAttivo;
+	private TextView valoreBmi;
+	
+	private double alt;
+	private double pes;
+	private double bmi;
+	private double bmi2;
+	
+	private TextView stampaNome;
+	private Utente mUser;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.congratulation);
 
-//		civ_bmi = (com.mikhaellopez.circularimageview.CircularImageView)findViewById(R.id.civ_bmi);
-//		civ_type = (com.mikhaellopez.circularimageview.CircularImageView)findViewById(R.id.civ_type);
-		civ_user = (com.mikhaellopez.circularimageview.CircularImageView)findViewById(R.id.civ_cerchio);
+		cerchioFoto = (ImageView)findViewById(R.id.civ_cerchio);
 		imgbt_expressWish = (ImageView)findViewById(R.id.img_bt_expressWish);
-//		tv_bmi = (TextView)findViewById(R.id.tv_type);
-//		tv_bmi = (TextView)findViewById(R.id.tv_bmi);
+		ominoUtentePigro = (ImageView)findViewById(R.id.omino_avatar);
+		ominoUtenteAttivo = (ImageView)findViewById(R.id.omino_avatar2);
+		scrittaUtentePigro = (ImageView)findViewById(R.id.scritta_omino);
+		scrittaUtenteAttivo = (ImageView)findViewById(R.id.scritta_omino2);
+		stampaNome = (TextView)findViewById(R.id.nomeUtente);
+		valoreBmi = (TextView)findViewById(R.id.bmi);
 
+		// Prendiamo l'intent passato da Gender
+		Intent intent = getIntent();
+
+		// Prendiamo l'oggetto Utente passato tramite intent
+		mUser = (Utente)intent.getSerializableExtra("u");
+		
+		//verifica typeUser
+//		int prova = (int)mUser.getHeight();
+		String tipologiaUtente = mUser.getTypeUser();
+		stampaNome.setText(tipologiaUtente); //per testare che fin qua ci arriva il tipo di utente
+	
+		if(tipologiaUtente=="lazy") {
+
+			ominoUtentePigro.setVisibility(0);
+			scrittaUtentePigro.setVisibility(0);
+//			ominoUtente.setImageDrawable(getResources().getDrawable(R.drawable.omino_avatar_pigro2));
+//			scrittaUtente.setImageDrawable(getResources().getDrawable(R.drawable.scritta_pigro));
+		}
+		else{
+			
+			ominoUtenteAttivo.setVisibility(0);
+			scrittaUtenteAttivo.setVisibility(0);
+//			ominoUtente.setImageDrawable(getResources().getDrawable(R.drawable.omino_avatar_attivo));
+//			scrittaUtente.setImageDrawable(getResources().getDrawable(R.drawable.scritta_attivo));			
+			
+		}
+		
+		alt = mUser.getHeight()/100;
+		pes = mUser.getWeight();
+		
+		bmi = pes/(Math.pow(alt, 2));
+		
+		bmi2 = new BigDecimal(bmi).setScale(1 , BigDecimal.ROUND_UP).doubleValue();
+		
+		valoreBmi.setText(""+bmi2+"");
+		
+		//da fare invio di tutti i dati al db
+		
 		imgbt_expressWish.setOnClickListener(new OnClickListener() {
 
 			@Override

@@ -21,13 +21,14 @@ import com.viewpagerindicator.CirclePageIndicator;
 
 
 public class AvatarActivity extends Activity {
+	
 	private final String LAZY = "lazy";
 	private final String ACTIVE = "active";
 	private ViewPager viewPager2;
 	private ImagePagerAdapter adapter;
-	private Intent intent;
-	private Intent intent2;
+
 	private Utente mUser;
+	private TextView stampaNome;
 
 
 	@Override
@@ -38,37 +39,55 @@ public class AvatarActivity extends Activity {
 		viewPager2 = (ViewPager) findViewById(R.id.view_pager_avatar);
 		adapter = new ImagePagerAdapter();
 		viewPager2.setAdapter(adapter);
-		intent=getIntent();
-		final String pkg=getPackageName();
-	//	mUser = (Utente)intent.getSerializableExtra(pkg+".myUtente");
-		intent2=new Intent(getApplicationContext(), GenderActivity.class);
+		
+		stampaNome = (TextView)findViewById(R.id.nomeUtente);
+		
+		// Prendiamo l'intent passato da Register
+		Intent intent = getIntent();
 
+		// Prendiamo l'oggetto Utente passato tramite intent
+		mUser = (Utente)intent.getSerializableExtra("u");
+		
+		// Stampiamo il nome dell'utente passato  
+		stampaNome.setText(mUser.getName());
+	
 
 		//Bind the title indicator to the adapter
 		CirclePageIndicator titleIndicator = (CirclePageIndicator)findViewById(R.id.indicator2);
 		titleIndicator.setViewPager(viewPager2);
 
-		ImageView scorciatoia = (ImageView)findViewById(R.id.cerchio);
+//		ImageView scorciatoia = (ImageView)findViewById(R.id.cerchio);
 
 		final ImageButton fatto = (ImageButton)findViewById(R.id.done);
-		//  final TextView proviamoci = (TextView)findViewById(R.id.prova);
 		fatto.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				typeUser();
-				intent2.putExtra(pkg + " .Utente ", mUser);
+				
+				//cambiamo il colore al bottone
 				fatto.setImageResource(R.drawable.botton_done2);
+		
+				// Creiamo un nuovo intent passando il nome dell'intent (ma si poteva fare anche passando il nome della classe) 
+				Intent intent2 = new Intent("iWish_Activity.GENDER");
+				
+				//aggiorniamo i dati utente con il campo "typeUser"
+				typeUser();
+				
+				//aggiungiamo questa nuova informazione nel nostro intent
+				intent2.putExtra("u", mUser);
+				
+				//facciamo partire l'intent GENDER
 				startActivity(intent2);
 			}
 
 			private void typeUser() {
 				if(viewPager2.getCurrentItem()==0){
-					mUser.setTypeUser("lazy");
+					mUser.setTypeUser(LAZY);
 				}else {
-					mUser.setTypeUser("active");
+					mUser.setTypeUser(ACTIVE);
 				}
 			}
+			
 		});
 	}
 

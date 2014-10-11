@@ -60,10 +60,8 @@
             android:ems="10"
             android:hint="Name"
             android:textColorHint="@color/placeholder"
-            android:inputType="textPersonName" >
-
-            <requestFocus />
-        </EditText>
+            android:inputType="textPersonName"/>
+      
 
         <EditText
             android:id="@+id/editText2"

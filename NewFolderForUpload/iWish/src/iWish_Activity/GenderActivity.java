@@ -8,15 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.progect.iwish.R;
 
 public class GenderActivity extends Activity{
-	private Intent intent;
-	private Utente mUser;
+
 	private final String WOMAN = "w"; //value sex 1
 	private final String MEN = "m"; //value sex 0
 	private int sex ;
+	
+	private Utente mUser;
+	private TextView stampaNome;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -26,13 +29,23 @@ public class GenderActivity extends Activity{
 		final ImageButton ButtonMaschio = (ImageButton)findViewById(R.id.maschio);
 		final ImageButton ButtonFemmina = (ImageButton)findViewById(R.id.femmina);
 		final ImageButton ButtonDone = (ImageButton)findViewById(R.id.done);
-
-		intent=getIntent();
-		final String pkg=getPackageName();
-		mUser = (Utente)intent.getSerializableExtra(pkg+".myUtente");
-		intent=new Intent(getApplicationContext(), HeightActivity.class);
-
 		ButtonDone.setTag(false);
+		
+		stampaNome = (TextView)findViewById(R.id.nomeUtente);
+		
+		// Prendiamo l'intent passato da Avatar
+		Intent intent = getIntent();
+		
+		// Prendiamo l'oggetto Utente passato tramite intent
+		mUser = (Utente)intent.getSerializableExtra("u");
+		
+		// Stampiamo il nome dell'utente passato  
+		stampaNome.setText(mUser.getName());
+		
+		
+//		intent=new Intent(getApplicationContext(), HeightActivity.class);
+
+		
 
 		ButtonMaschio.setOnClickListener(new OnClickListener() {
 
@@ -65,9 +78,18 @@ public class GenderActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				if (ButtonDone.getTag()==(Boolean)true){
+					
+					// Creaiamo un nuovo intent passando il nome dell'intent (ma si poteva fare anche passando il nome della classe) 
+					Intent intent2 = new Intent("iWish_Activity.HEIGHT");
+					
+					//aggiorniamo i dati utente con il campo "sex"
 					sexUser();
-					intent.putExtra(pkg + " .Utente ", mUser);
-					startActivity(intent);
+					
+					//aggiungiamo questa nuova informazione nel nostro intent
+					intent2.putExtra("u", mUser);
+					
+					//facciamo partire l'intent HEIGHT
+					startActivity(intent2);
 				}  
 			}
 			

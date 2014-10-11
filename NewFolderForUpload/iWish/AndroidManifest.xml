@@ -28,8 +28,15 @@
              
         <activity 
             android:name="iWish_Activity.AvatarActivity"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait">
+        
+          <intent-filter>
+                <action android:name="iWish_Activity.AVATAR" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+        </activity>
+        
         <activity 
             android:name="iWish_Activity.CalendarActivity"
             android:screenOrientation="portrait"/>
@@ -40,7 +47,14 @@
 
         <activity 
             android:name="iWish_Activity.CongratulationActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+                 
+		<intent-filter>
+                <action android:name="iWish_Activity.CONGRATULATION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+        </activity>
 
         <activity 
             android:name="iWish_Activity.ForgotPswActivity"
@@ -56,7 +70,14 @@
 
         <activity 
             android:name="iWish_Activity.GenderActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+
+		<intent-filter>
+                <action android:name="iWish_Activity.GENDER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+        </activity>
 
         <activity 
             android:name="iWish_Activity.GoalActivity"
@@ -64,7 +85,14 @@
 
         <activity 
             android:name="iWish_Activity.HeightActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+        
+		<intent-filter>
+                <action android:name="iWish_Activity.HEIGHT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+        </activity>
         
         <activity 
             android:name="iWish_Activity.HeightChangeActivity"
@@ -144,7 +172,14 @@
 
         <activity 
             android:name="iWish_Activity.RegisterActivity"
-            android:screenOrientation="portrait"/>>
+            android:screenOrientation="portrait">
+        
+           <intent-filter>
+                <action android:name="iWish_Activity.REGISTER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        
+                </activity>
 
         <activity 
             android:name="iWish_Activity.SplashActivity"
@@ -186,7 +221,14 @@
         	
         <activity 
             android:name="iWish_Activity.WeightActivity"
-        	android:screenOrientation="portrait"/>  
+        	android:screenOrientation="portrait"> 
+        	        
+		<intent-filter>
+                <action android:name="iWish_Activity.WEIGHT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            
+        </activity> 
         	
          <activity 
             android:name="iWish_Activity.WeightChangeActivity"

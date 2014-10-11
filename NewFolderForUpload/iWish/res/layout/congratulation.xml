@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     android:background="@drawable/sfondo_congratulation" >
 
+    <TextView
+        android:id="@+id/nomeUtente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="125dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/verde_scuro"/>
+    
  <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/civ_cerchio"
         android:layout_width="101dp"
@@ -23,7 +33,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="315dp"
         android:layout_marginLeft="30dp"
-        android:src="@drawable/omino_avatar_attivo" />
+        android:visibility="invisible"
+        android:src="@drawable/omino_avatar_attivo" />  
+        
+        <ImageView
+        android:id="@+id/omino_avatar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="315dp"
+        android:layout_marginLeft="30dp"
+        android:visibility="invisible"
+        android:src="@drawable/omino_avatar_pigro2" />  
     
     <!-- 
     android:src="@drawable/omino_avatar_pigro2"
@@ -35,7 +55,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="255dp"
         android:layout_marginLeft="110dp"
+        android:visibility="invisible"
         android:src="@drawable/scritta_attivo" /> 
+        
+   <ImageView
+        android:id="@+id/scritta_omino2"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="255dp"
+        android:layout_marginLeft="110dp"
+        android:visibility="invisible"
+        android:src="@drawable/scritta_pigro" /> 
 <!-- 
     android:src="@drawable/scritta_pigro" 
  -->       
@@ -55,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="465dp"
         android:layout_marginLeft="42dp"
-        android:text="24,5"
+        android:text="99"
         android:textStyle="bold"
         android:textSize="30sp"
         android:textColor="@color/bianco"
