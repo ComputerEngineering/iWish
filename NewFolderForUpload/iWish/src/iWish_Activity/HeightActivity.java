@@ -23,32 +23,29 @@ import com.progect.iwish.R;
 /**Alessandro*/
 
 public class HeightActivity extends Activity{
-
-	private ImageView scorciatoia; //scorciatoia lo lascio perchè in futuro ci servirà per cambiare il valore dell'immagine
+	//scorciatoia lo lascio perchè in futuro ci servir� per cambiare il valore dell'immagine
+	private ImageView scorciatoia; 
 	private int height;
 
 	private Utente mUser;
 	private TextView stampaNome;
-
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.height);
 
 		scorciatoia = (ImageView)findViewById(R.id.cerchio);
+		stampaNome = (TextView)findViewById(R.id.nomeUtente);
 		final ImageButton fatto = (ImageButton)findViewById(R.id.done);
 		final AbstractWheel altezza = (AbstractWheel) findViewById(R.id.height_horizontal);
-		
-		stampaNome = (TextView)findViewById(R.id.nomeUtente);
-		
+
 		// Prendiamo l'intent passato da Gender
 		Intent intent = getIntent();
-
 		// Prendiamo l'oggetto Utente passato tramite intent
 		mUser = (Utente)intent.getSerializableExtra("u");
-		
 		// Stampiamo il nome dell'utente passato  
-	    	stampaNome.setText(mUser.getName());
+		stampaNome.setText(mUser.getName());
 
 		NumericWheelAdapter altezzaAdapter = new NumericWheelAdapter(this, 90, 220, "%02d");
 		altezzaAdapter.setItemResource(R.xml.wheel_text_centered);
@@ -59,30 +56,20 @@ public class HeightActivity extends Activity{
 
 			@Override
 			public void onClick(View v) {
-			//	height= altezza.getCurrentItem();
-			//	stampaNome.setText(""+height+"");
-				
+				//	height= altezza.getCurrentItem();
+				//	stampaNome.setText(""+height+"");
+
 				//cambiamo il colore al bottone
 				fatto.setImageResource(R.drawable.botton_done2);
-				
 				// Creiamo un nuovo intent passando il nome dell'intent (ma si poteva fare anche passando il nome della classe) 
 				Intent intent2 = new Intent("iWish_Activity.WEIGHT");
-				
 				//aggiorniamo i dati utente con il campo "height"
 				mUser.setHeight(altezza.getCurrentItem()+90);
-				
 				//aggiungiamo questa nuova informazione nel nostro intent
 				intent2.putExtra("u", mUser);
-				
 				//facciamo partire l'intent GENDER
 				startActivity(intent2);			
-
 			}
 		});
-
-
-
 	}
-
-
 }

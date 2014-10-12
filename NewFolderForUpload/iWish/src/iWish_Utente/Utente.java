@@ -16,9 +16,9 @@ public class Utente implements MyUtente,Serializable{
 	private String birthday;
 	private String sex;
 	private String typeUser;
-	private double height;
-	private double weightFirst;
-	private List<Double> weight;
+	private int height;
+	private int weightFirst;
+	private List<Integer> weight;
 	private String city;
 	private String email;
 	private String password;
@@ -75,15 +75,15 @@ public class Utente implements MyUtente,Serializable{
 		return typeUser;
 	}
 	@Override
-	public double getHeight() {
+	public int getHeight() {
 		return height;
 	}
 	@Override
-	public double getWeight() {
+	public int getWeight() {
 		return weightFirst;
 	}
 	@Override
-	public List<Double> getListWeight() {
+	public List<Integer> getListWeight() {
 		return weight;
 	}
 	public void setKeyUtente(long keyUtente){
@@ -122,11 +122,11 @@ public class Utente implements MyUtente,Serializable{
 		this.sex=sex;
 	}
 	@Override
-	public void setHeight(double height) {
+	public void setHeight(int height) {
 		this.height=height;
 	}
 	@Override
-	public void setWeight(double weight) {
+	public void setWeight(int weight) {
 		this.weightFirst=weight;
 	}
 	@Override
@@ -143,21 +143,13 @@ public class Utente implements MyUtente,Serializable{
 		this.password=password;
 	}
 	@Override
-	public void setListWeight(Double weight) {
+	public void setListWeight(int weight) {
 		//TODO DA FARE
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
-	public String toString() {
-		return "Utente [name=" + name
-				+ ", surname=" + surname + ", birthday=" + birthday + ", sex="
-				+ sex + ", typeUser=" + typeUser + ", height=" + height
-				+ ", weight=" + weightFirst + ", city=" + city + ", email=" + email
-				+ ", password=" + password + ", question=" + question
-				+ ", answer=" + answer + "]";
-	}
+	
 	
 	
 

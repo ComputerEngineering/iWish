@@ -115,11 +115,11 @@ public class UtenteDao {
 		utente.setKeyUtente(cursor.getLong(DataBaseStorageUtente.COLUMN_ID_INDEX));
 		utente.setName(cursor.getString(DataBaseStorageUtente.COLUMN_NAME_INDEX));
 		utente.setSurname(cursor.getString(DataBaseStorageUtente.COLUMN_SURNAME_INDEX));
-		//utente.setBirthday(cursor.getString(DataBaseStorageUtente.COLUMN_BIRTHDAY_INDEX));
+		utente.setBirthday(cursor.getString(DataBaseStorageUtente.COLUMN_BIRTHDAY_INDEX));
 		utente.setSex(cursor.getString(DataBaseStorageUtente.COLUMN_SEX_INDEX));
 		utente.setTypeUser(cursor.getString(DataBaseStorageUtente.COLUMN_TYPEUSER_INDEX));
-		utente.setHeight(cursor.getDouble(DataBaseStorageUtente.COLUMN_HEIGHT_INDEX));
-		utente.setWeight(cursor.getDouble(DataBaseStorageUtente.COLUMN_WEIGHT_INDEX));
+		utente.setHeight(cursor.getInt(DataBaseStorageUtente.COLUMN_HEIGHT_INDEX));
+		utente.setWeight(cursor.getInt(DataBaseStorageUtente.COLUMN_WEIGHT_INDEX));
 		utente.setCity(cursor.getString(DataBaseStorageUtente.COLUMN_CITY_INDEX));
 		utente.setEmail(cursor.getString(DataBaseStorageUtente.COLUMN_EMAIL_INDEX));
 		utente.setPassword(cursor.getString(DataBaseStorageUtente.COLUMN_PASSWORD_INDEX));

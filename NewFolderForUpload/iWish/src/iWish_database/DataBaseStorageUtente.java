@@ -58,7 +58,7 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 			+ COLUMN_ID + " _id integer PRIMARY KEY AUTOINCREMENT UNIQUE,"
 			+ COLUMN_NAME + " vachar(15) NOT NULL,"
 			+ COLUMN_SURNAME + " vachar(15) NOT NULL,"
-			+ COLUMN_BIRTHDAY + " numeric(8) NOT NULL,"
+			+ COLUMN_BIRTHDAY + " vachar(15) NOT NULL,"
 			+ COLUMN_SEX + " vachar(2) NOT NULL,"
 			+ COLUMN_TYPEUSER + " vachar(25) NOT NULL,"
 			+ COLUMN_HEIGHT + " numeric(6) NOT NULL,"

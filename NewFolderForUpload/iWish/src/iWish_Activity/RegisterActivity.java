@@ -60,7 +60,6 @@ public class RegisterActivity extends Activity{
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sp_questions_register = (Spinner)findViewById(R.id.spinner1);
 		sp_questions_register.setAdapter(adapter);
-		
 
 		//cliccando sul cerchietto si sceglie la propria immagine di profilo tra le foto in memoria nel cel
 		selectPhoto.setOnClickListener(new OnClickListener() {
@@ -80,64 +79,29 @@ public class RegisterActivity extends Activity{
 			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
-				
+
 				if((edt_name.getText().equals(""))||(edt_surname.getText().equals(""))
 						||(edt_birthday.getText().equals(""))||(edt_city.getText().equals(""))
 						||(edt_email.getText().equals(""))||(edt_rp_email.getText().equals(""))
 						||(edt_password.getText().equals(""))||(edt_rp_password.getText().equals(""))
 						||(edt_answer_register.getText().equals(""))){
-					
-					alertDialog = new AlertDialog.Builder(c).create();
-					alertDialog.setTitle("Warning");
-					alertDialog.setMessage("You don't have write all information"); 
-					alertDialog.setIcon(R.drawable.bt_ok_go);  
-					alertDialog.setButton("OK", new DialogInterface.OnClickListener() {  
-						public void onClick(DialogInterface dialog, int which) {  
-							return;  
-						} });  
-					alertDialog.show();
+
+
 				}else{
 					if(sp_questions_register.toString().equalsIgnoreCase(firstQuestionsSelected)){
-						alertDialog = new AlertDialog.Builder(c).create();  
-						alertDialog.setTitle("Warning");
-						alertDialog.setMessage("If you want register your account you must chose a question");
-						//alertDialog.setIcon(R.drawable.);
-						alertDialog.setButton2("OK", new DialogInterface.OnClickListener() {  
-							public void onClick(DialogInterface dialog, int which) {  
-								return;  
-							} });   
-						alertDialog.show();
+
 					}
 					else{
-						
 						// Creiamo un nuovo intent passando il nome dell'intent successivo (ma si poteva fare anche passando il nome della classe) 
-						 Intent intent = new Intent("iWish_Activity.AVATAR");
-						
-						 //creiamo un utente u con tutte le info inserite
+						Intent intent = new Intent("iWish_Activity.AVATAR");
+						//creiamo un utente u con tutte le info inserite
 						Utente u = createUser();
-						
 						//aggiungiamo il tutto al nostro intent
 						intent.putExtra("u", u);
-						
 						//facciamo partire l'intent AVATAR
 						startActivity(intent);
 					}
 				}
-				
-			}
-
-			private Utente createUser() {
-				mUser = new Utente();
-				mUser.setName(edt_name.getText().toString());
-				mUser.setSurname(edt_surname.getText().toString());
-				mUser.setBirthday(edt_birthday.getText().toString());
-				mUser.setCity(edt_city.getText().toString());
-				mUser.setEmail(edt_email.getText().toString());
-				mUser.setPassword(edt_password.getText().toString());
-				mUser.setAnswer(edt_answer_register.getText().toString());
-				mUser.setQuestion(sp_questions_register.toString());
-				mUser.setC(getC());
-				return mUser;
 			}
 		});
 	}
@@ -155,6 +119,20 @@ public class RegisterActivity extends Activity{
 		edt_rp_password = (EditText)findViewById(R.id.editText8);
 		edt_answer_register = (EditText)findViewById(R.id.editText9);
 		selectPhoto = (ImageView)findViewById(R.id.foto);
+	}
+
+	private Utente createUser() {
+		mUser = new Utente();
+		mUser.setName(edt_name.getText().toString());
+		mUser.setSurname(edt_surname.getText().toString());
+		mUser.setBirthday(edt_birthday.getText().toString());
+		mUser.setCity(edt_city.getText().toString());
+		mUser.setEmail(edt_email.getText().toString());
+		mUser.setPassword(edt_password.getText().toString());
+		mUser.setAnswer(edt_answer_register.getText().toString());
+		mUser.setQuestion(sp_questions_register.toString());
+		mUser.setC(getC());
+		return mUser;
 	}
 
 	private ArrayAdapter<String> createSpinnerAdapter(){
@@ -232,6 +210,5 @@ public class RegisterActivity extends Activity{
 	private Context getC() {
 		return c;
 	}
-
 }
 
