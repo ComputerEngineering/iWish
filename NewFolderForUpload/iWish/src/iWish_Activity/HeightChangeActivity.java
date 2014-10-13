@@ -5,14 +5,11 @@ package iWish_Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import antistatic.spinnerwheel.*;
-import antistatic.spinnerwheel.adapters.*;
+import antistatic.spinnerwheel.AbstractWheel;
+import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 
 import com.progect.iwish.R;
 

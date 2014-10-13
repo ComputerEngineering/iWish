@@ -1,11 +1,10 @@
 package iWish_Activity;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
 import iWish_Friends.Friends;
 import iWish_database.FriendsDao;
+
+import java.util.List;
+
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
