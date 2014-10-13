@@ -23,7 +23,7 @@ public class FriendsActivity extends ListActivity{
 	private ImageButton bt_sortByLatest;
 	private ImageButton bt_sortByPoints;
 	private FriendsDao datasource_friends;
-	List<Friends> mFriends =null;
+	List<Friends> mFriends = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

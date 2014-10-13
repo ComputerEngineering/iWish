@@ -93,27 +93,31 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	//contiene la logica del del task
 	@Override
 	protected String doInBackground(String... params) {
-		c=ContextiWish.getIstance().getContext();
-		httpclient= new DefaultHttpClient();// inizializziamo con il costruttore di default
-		httppost = new HttpPost(uri); // creiamo un oggetto di tipo HttpPost
-		resonseHandler = new BasicResponseHandler();
-		json = new JSONObject();
-		obj=new HashMap<Long, Utente>();
+		try {
+			c=ContextiWish.getIstance().getContext();
+			httpclient= new DefaultHttpClient();// inizializziamo con il costruttore di default
+			httppost = new HttpPost(uri); // creiamo un oggetto di tipo HttpPost
+			resonseHandler = new BasicResponseHandler();
+			json = new JSONObject();
+			obj=new HashMap<Long, Utente>();
 
-		takeListUtente();
+			takeListUtente();
 
-		if(count==0){
-			re=SendUser(obj);
-			res=readResponseFromServer(re);
-		}else{
-			do{
-				count++;
-				try {
-					connection();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}	
-			}while (res==null && count!=5);
+			if(count==0){
+				re=SendUser(obj);
+				res=readResponseFromServer(re);
+			}else{
+				do{
+					count++;
+					try {
+						connection();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}	
+				}while (res==null && count!=5);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return res;
 	}
@@ -299,11 +303,11 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	private void connection(){
 		try {
 			if(NetworkUtente.isConnected()){
-				//Toast.makeText(c, "The server is connected ",Toast.LENGTH_LONG).show();
+				Toast.makeText(c, "The server is connected ",Toast.LENGTH_LONG).show();
 				re= SendUser(obj);
 				res=readResponseFromServer(re);
 			}else{
-				//Toast.makeText(c, "The server isn't connected ",Toast.LENGTH_LONG).show();
+				Toast.makeText(c, "The server isn't connected ",Toast.LENGTH_LONG).show();
 				checkMobile();
 				re= SendUser(obj);
 				res=readResponseFromServer(re);
