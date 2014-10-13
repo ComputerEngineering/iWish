@@ -2,6 +2,7 @@ package iWish_Activity;
 
 /**Alessandro  --- Miki */
 
+import iWish_Control.ControlConnection;
 import iWish_Control.ControlUser;
 import iWish_Utente.Utente;
 import android.app.Activity;
@@ -70,7 +71,8 @@ public class WeightActivity extends Activity{
 					Log.i("WeightActivity", "PRIMA DI INSERIRE NEL DB");
 					ControlUser.getIstanceControlUser().saveOnDbUtente(mUser);
 					Log.i("WeightActivity", "DOPO L'INSERIMENTO NEL DB");
-			//		ControlConnection.getIstanceControlConnection().onInsertUtente();
+					ControlConnection.getIstanceControlConnection().onInsertUtente();
+					Log.i("WeightActivity", "DOPO L'INSERIMENTO online");
 				} catch (Exception e) {
 					//Toast.makeText(c ,"errore di salvataggio", Toast.LENGTH_LONG).show();
 					Log.i("WeightActivity", "errore INSERIMENTO NEL DB");

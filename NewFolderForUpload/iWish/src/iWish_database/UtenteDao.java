@@ -39,15 +39,16 @@ public class UtenteDao {
 	public UtenteDao(Context context){
 		dbHelper = new DataBaseStorageUtente(context);
 	}
+
 	
 	public void open() throws SQLException{
-		// if the database is already open return directly
-		if((database != null) && (database.isOpen())){
-			return;
-		}else{
-			// we use getWritableDatabase() if we want insert, upload and delete
-			database = dbHelper.getWritableDatabase();
-		}
+			// if the database is already open return directly
+			if((database != null) && (database.isOpen())){
+				return;
+			}else{
+				// we use getWritableDatabase() if we want insert, upload and delete
+				database = dbHelper.getWritableDatabase();
+			}
 	}
 	
 	public void close(){
@@ -59,7 +60,7 @@ public class UtenteDao {
 	public void insertOnDbUtente(Utente mUtente)throws Exception{
 		//Log.d("myapp", mUtente.getKeyUtente());
 		ContentValues values = new ContentValues();
-		//values.put(DataBaseStorageUtente.COLUMN_ID,"" + mUtente.getKeyUtente() + "");
+		values.put(DataBaseStorageUtente.COLUMN_ID,"" + mUtente.getKeyUtente() + "");
 		values.put(DataBaseStorageUtente.COLUMN_NAME,"" + mUtente.getName() + "");
 		values.put(DataBaseStorageUtente.COLUMN_SURNAME, "" + mUtente.getSurname() + "");
 		values.put(DataBaseStorageUtente.COLUMN_BIRTHDAY,""+ mUtente.getBirthday() + "");

@@ -29,7 +29,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import _iWish.MyUtente;
 import android.content.Context;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -44,7 +43,7 @@ import android.widget.Toast;
  * operations and publish results on the UI thread without having to manipulate threads and/or handlers**/
 
 public class NetworkUtente extends AsyncTask<String, Void,  String> {
-	private static final String uri= "http://....."; //devo sapere l'uri
+	private static final String uri= "http://10.1.25.189/insert/user.php"; 
 	/**Describes the state of any Wi-fi connection that is active or is in the process of being set up.*/
 	private NetworkInfo mWifi,mMobile,mEthernet,mBluetooth;
 	/**The POST method is used to request that the origin server accept the entity enclosed in the request 
@@ -142,21 +141,21 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 		long s = (obj2.get(key)).getKeyUtente();
 		//First we create a JsonObject
 		try {
-			json.put("KeyUser", (obj2.get(key)).getKeyUtente());
-			json.put("NameUser", (obj2.get(key)).getName());
-			json.put("SurnameUser", (obj2.get(key)).getSurname());
-			json.put("BirthdayUser",(obj2.get(key)).getBirthday());
-			json.put("CityUser", (obj2.get(key)).getCity());
-			json.put("EmailUser", (obj2.get(key)).getEmail());
-			json.put("SexUser", (obj2.get(key)).getSex());
-			json.put("TypesSer", (obj2.get(key)).getTypeUser());
-			json.put("HeightUser", (obj.get(key)).getHeight());
-			json.put("WeightUser", (obj2.get(key)).getWeight());
-			json.put("PasswordUser", (obj2.get(key)).getPassword());
-			json.put("QuestionsUser", (obj2.get(key)).getQuestion());
-			json.put("AnswerUser", (obj2.get(key)).getAnswer());
+			json.put("eMail", (obj2.get(key)).getEmail());
+			json.put("id", (obj2.get(key)).getKeyUtente());
+			json.put("name", (obj2.get(key)).getName());
+			json.put("surname", (obj2.get(key)).getSurname());
+			json.put("birthday",(obj2.get(key)).getBirthday());
+			json.put("city", (obj2.get(key)).getCity());
+			json.put("password", (obj2.get(key)).getPassword());
+			json.put("altezza", (obj.get(key)).getHeight());
+			json.put("tipoUser", (obj2.get(key)).getTypeUser());
+			json.put("sex", (obj2.get(key)).getSex());
+			json.put("answar", (obj2.get(key)).getAnswer());
+			json.put("question", (obj2.get(key)).getQuestion());
+			//TODO inserire i point
 			Map<String, String> user = new HashMap<String, String>();
-			user.put("user registration", json.toString());
+			user.put("user", json.toString());
 			nameValuePairs= new ArrayList<NameValuePair>(user.size());
 			String k,v;
 			Iterator<String> itKeys= user.keySet().iterator();

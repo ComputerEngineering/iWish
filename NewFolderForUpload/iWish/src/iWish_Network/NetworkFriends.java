@@ -15,7 +15,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import _iWish.MyFriends;
-import _iWish.MyUtente;
 import android.content.Context;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
