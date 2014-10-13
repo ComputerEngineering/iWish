@@ -32,7 +32,8 @@ public class UtenteDao {
 		DataBaseStorageUtente.COLUMN_CITY,
 		DataBaseStorageUtente.COLUMN_EMAIL,
 		DataBaseStorageUtente.COLUMN_PASSWORD,
-		DataBaseStorageUtente.COLUMN_QUESTION
+		DataBaseStorageUtente.COLUMN_QUESTION,
+		DataBaseStorageUtente.COLUMN_ANSWER
 		//DataBaseStorageUtenteCOLUMN_PHOTO
 	};
 
