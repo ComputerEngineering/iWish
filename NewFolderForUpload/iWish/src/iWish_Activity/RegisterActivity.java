@@ -130,7 +130,6 @@ public class RegisterActivity extends Activity{
 		mUser.setPassword(edt_password.getText().toString());
 		mUser.setAnswer(edt_answer_register.getText().toString());
 		mUser.setQuestion(sp_questions_register.toString());
-		mUser.setC(getC());
 		return mUser;
 	}
 
@@ -205,10 +204,6 @@ public class RegisterActivity extends Activity{
 			return myBitmap;
 		}
 		return null;
-	}
-	private Context getC() {
-		c=this;
-		return c;
 	}
 }
 
