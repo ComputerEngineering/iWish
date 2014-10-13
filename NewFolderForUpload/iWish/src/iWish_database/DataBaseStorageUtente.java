@@ -54,8 +54,8 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 	private static final String DATABASE_NAME= "Utente.db";
 	/** this 's the query that we use for create the table
 	 *  Android use the _id  for identify the element's key **/
-	private static final String DATABASE_CREATE = "create table" + TABLE_UTENTE + "("
-			+ COLUMN_ID + " _id integer PRIMARY KEY AUTOINCREMENT UNIQUE,"
+	private static final String DATABASE_CREATE = "create table " + TABLE_UTENTE + "("
+			+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
 			+ COLUMN_NAME + " vachar(15) NOT NULL,"
 			+ COLUMN_SURNAME + " vachar(15) NOT NULL,"
 			+ COLUMN_BIRTHDAY + " vachar(15) NOT NULL,"
@@ -67,7 +67,7 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 			+ COLUMN_EMAIL + " vachar(15) NOT NULL,"
 			+ COLUMN_PASSWORD + " vachar(15) NOT NULL,"
 			+ COLUMN_QUESTION + " vachar(30) NOT NULL,"
-			+ COLUMN_ANSWER + " vachar(15) NOT NULL,"
+			+ COLUMN_ANSWER + " vachar(15) NOT NULL"
 			//TODO vedere come definire l'attributo photo
 		//	+ COLUMN_PHOTO + " ......."
 			+ ");";
