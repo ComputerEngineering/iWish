@@ -2,7 +2,9 @@ package iWish_Network;
 /**Raffaella*/
 
 import iWish_Context.ContextiWish;
+import iWish_Control.ControlUser;
 import iWish_ControlServer.CheckConnection;
+import iWish_Utente.Utente;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,8 +55,9 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	 * connection management, state management, authentication and redirect handling up to individual 
 	 * implementations.*/
 	private HttpClient httpclient;
+	/**This class comforms to the generic grammar and formatting rules */
 	private List<NameValuePair> nameValuePairs;
-	private HashMap<String, MyUtente> obj;
+	private HashMap<Long, Utente> obj;
 	private long key;
 	/**A JSONObject is an unordered collection of name/value pairs. A JSONObject constructor can be used 
 	 * to convert an external form JSON text into an internal form whose values can be retrieved with 
@@ -63,17 +66,15 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	 * An opt method returns a default value instead of throwing an exception, and so is useful for 
 	 * obtaining optional values.*/
 	private JSONObject json;
-	/**
-	 * I will setting "resending to true when I have send the file but it has not been delivered  **/
+	/**I will setting "resending to true when I have send the file but it has not been delivered  **/
 	private boolean resending= false; 
 	/**The HTTP::Response class encapsulates HTTP style responses. A response consists of a response line, 
 	 * some headers, and a content body*/
 	private HttpResponse response;
 	private String result=null;
-
 	/**A ResponseHandler that returns the response body as a String for successful (2xx) responses. If the 
 	 * response code was >= 300, the response body is consumed and an HttpResponseException is thrown.*/
-	private ResponseHandler <String> resonseHandler;
+	private ResponseHandler <String> resonseHandler; //Handler that encapsulates the process of generating a response object from a HttpResponse.
 	private Context c;
 	private static Boolean status =  true;
 	private final String a="The server is connected but the Device not send registration";
@@ -83,19 +84,21 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	private String res=null;
 
 	/**Runs on the UI thread before doInBackground(Params...).**/
+	//metodo indicato prima dell'esecuzione del task
 	@Override
 	protected void onPreExecute() {
 		Log.i("AsyncTask", "onPreExecute");
 	}
 
+	//contiene la logica del del task
 	@Override
 	protected String doInBackground(String... params) {
 		c=ContextiWish.getIstance().getContext();
-		httpclient= new DefaultHttpClient();
-		httppost = new HttpPost(uri);
+		httpclient= new DefaultHttpClient();// inizializziamo con il costruttore di default
+		httppost = new HttpPost(uri); // creiamo un oggetto di tipo HttpPost
 		resonseHandler = new BasicResponseHandler();
 		json = new JSONObject();
-		obj=new HashMap<String, MyUtente>();
+		obj=new HashMap<Long, Utente>();
 
 		takeListUtente();
 
@@ -105,22 +108,33 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 		}else{
 			do{
 				count++;
-				//TODO creare un errore per l'user
-				connection();	
+				try {
+					connection();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	
 			}while (res==null && count!=5);
 		}
 		return res;
 	}
 
 	/**I will take the list User that we have insert on db */
-	private HashMap<String, MyUtente> takeListUtente() {
+	private HashMap<Long,Utente> takeListUtente() {
 		//Take the file to send at DbUser
-		//TODO da finire
+		List<Utente> mUser = ControlUser.getIstanceControlUser().getOnDbAllUtente();
+		if(mUser!=null){
+			Long k;
+			for (Utente user : mUser){
+				k = user.getKeyUtente();
+				obj.put(k, user);
+			}
+		}
+		key=(mUser.get(mUser.size()-1)).getKeyUtente();
 		return obj;
 	}
 
 	/**into this method we send the file User to the server*/
-	private HttpResponse SendUser(HashMap<String, MyUtente> obj2) {
+	private HttpResponse SendUser(HashMap<Long,Utente> obj2) {
 		long s = (obj2.get(key)).getKeyUtente();
 		//First we create a JsonObject
 		try {
@@ -129,7 +143,11 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			json.put("SurnameUser", (obj2.get(key)).getSurname());
 			json.put("BirthdayUser",(obj2.get(key)).getBirthday());
 			json.put("CityUser", (obj2.get(key)).getCity());
-			json.put("EmailEmail", (obj2.get(key)).getEmail());
+			json.put("EmailUser", (obj2.get(key)).getEmail());
+			json.put("SexUser", (obj2.get(key)).getSex());
+			json.put("TypesSer", (obj2.get(key)).getTypeUser());
+			json.put("HeightUser", (obj.get(key)).getHeight());
+			json.put("WeightUser", (obj2.get(key)).getWeight());
 			json.put("PasswordUser", (obj2.get(key)).getPassword());
 			json.put("QuestionsUser", (obj2.get(key)).getQuestion());
 			json.put("AnswerUser", (obj2.get(key)).getAnswer());
@@ -192,6 +210,7 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 
 	/**Runs on the UI thread after doInBackground(Params...). The specified result is the value returned
 	 *  by doInBackground(Params...).This method won't be invoked if the task was cancelled.**/
+	//utilizzo del risultato del task
 	@Override
 	protected void onPostExecute(String result) {
 		if (result != null){
@@ -278,15 +297,19 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 		}.start();
 	}
 	private void connection(){
-		if(NetworkUtente.isConnected()){
-			//Toast.makeText(c, "The server is connected ",Toast.LENGTH_LONG).show();
-			re= SendUser(obj);
-			res=readResponseFromServer(re);
-		}else{
-			//Toast.makeText(c, "The server isn't connected ",Toast.LENGTH_LONG).show();
-			checkMobile();
-			re= SendUser(obj);
-			res=readResponseFromServer(re);
+		try {
+			if(NetworkUtente.isConnected()){
+				//Toast.makeText(c, "The server is connected ",Toast.LENGTH_LONG).show();
+				re= SendUser(obj);
+				res=readResponseFromServer(re);
+			}else{
+				//Toast.makeText(c, "The server isn't connected ",Toast.LENGTH_LONG).show();
+				checkMobile();
+				re= SendUser(obj);
+				res=readResponseFromServer(re);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

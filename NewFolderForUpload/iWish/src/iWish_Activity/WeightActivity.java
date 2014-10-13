@@ -2,7 +2,6 @@ package iWish_Activity;
 
 /**Alessandro  --- Miki */
 
-import iWish_Control.ControlConnection;
 import iWish_Control.ControlUser;
 import iWish_Utente.Utente;
 import android.app.Activity;
@@ -15,7 +14,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import antistatic.spinnerwheel.AbstractWheel;
 import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
 
