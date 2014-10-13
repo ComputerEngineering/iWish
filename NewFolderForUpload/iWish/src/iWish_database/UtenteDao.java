@@ -35,22 +35,22 @@ public class UtenteDao {
 		DataBaseStorageUtente.COLUMN_QUESTION
 		//DataBaseStorageUtenteCOLUMN_PHOTO
 	};
-	
+
 	public UtenteDao(Context context){
 		dbHelper = new DataBaseStorageUtente(context);
 	}
 
-	
+
 	public void open() throws SQLException{
-			// if the database is already open return directly
-			if((database != null) && (database.isOpen())){
-				return;
-			}else{
-				// we use getWritableDatabase() if we want insert, upload and delete
-				database = dbHelper.getWritableDatabase();
-			}
+		// if the database is already open return directly
+		if((database != null) && (database.isOpen())){
+			return;
+		}else{
+			// we use getWritableDatabase() if we want insert, upload and delete
+			database = dbHelper.getWritableDatabase();
+		}
 	}
-	
+
 	public void close(){
 		if(database.isOpen()){
 			dbHelper.close();
@@ -75,17 +75,17 @@ public class UtenteDao {
 		values.put(DataBaseStorageUtente.COLUMN_ANSWER,""+ mUtente.getAnswer() + "");
 		long insertId = database.insert(DataBaseStorageUtente.TABLE_UTENTE, null, values);
 	}
-	
+
 	public void deleteOnDbAllUtente(){
 		database.delete(DataBaseStorageUtente.TABLE_UTENTE, null,null);
 	}
-	
+
 	public void deleteOnDbOneUtente(Utente mUtente){
 		String guid = mUtente.getEmail();
 		System.out.print("Key Utente that we have delete is : " + guid);
 		database.delete(DataBaseStorageUtente.TABLE_UTENTE, DataBaseStorageUtente.COLUMN_ID +"='" + guid+ "'" , null);
 	}
-	
+
 	public int deleteOnDbSomeUtente(List<Utente> mUtente){
 		String guid=null;
 		int db=-1;
@@ -94,7 +94,7 @@ public class UtenteDao {
 			db=database.delete(DataBaseStorageUtente.TABLE_UTENTE, DataBaseStorageUtente.COLUMN_ID+ "='" + guid+ "'", null);
 		}return db;
 	}
-	
+
 	public List<Utente> getAllUtente(){
 		List<Utente> listUtente = new ArrayList<Utente>();
 		Cursor cursor = database.query(DataBaseStorageUtente.TABLE_UTENTE, allColumns, null, null, null, null, null);
@@ -105,14 +105,14 @@ public class UtenteDao {
 			cursor.moveToNext();
 		}
 		// Make sure to close the cursor
-				cursor.close();
-				return listUtente;
+		cursor.close();
+		return listUtente;
 	}
 
 	//TODO controllare le variabili char che danno problemi nel database
 	private Utente cursorsUtente(Cursor cursor) {
 		Utente utente = new Utente();
-		
+
 		utente.setKeyUtente(cursor.getLong(DataBaseStorageUtente.COLUMN_ID_INDEX));
 		utente.setName(cursor.getString(DataBaseStorageUtente.COLUMN_NAME_INDEX));
 		utente.setSurname(cursor.getString(DataBaseStorageUtente.COLUMN_SURNAME_INDEX));

@@ -208,6 +208,7 @@ public class RegisterActivity extends Activity{
 		return null;
 	}
 	private Context getC() {
+		c=this;
 		return c;
 	}
 }

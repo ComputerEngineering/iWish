@@ -43,7 +43,7 @@ import android.widget.Toast;
  * operations and publish results on the UI thread without having to manipulate threads and/or handlers**/
 
 public class NetworkUtente extends AsyncTask<String, Void,  String> {
-	private static final String uri= "http://10.1.25.189/insert/user.php"; 
+	private static final String uri= "http://iwish.suroot.com/insert/user.php"; 
 	/**Describes the state of any Wi-fi connection that is active or is in the process of being set up.*/
 	private NetworkInfo mWifi,mMobile,mEthernet,mBluetooth;
 	/**The POST method is used to request that the origin server accept the entity enclosed in the request 
