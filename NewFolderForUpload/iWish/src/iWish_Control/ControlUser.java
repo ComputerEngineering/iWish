@@ -2,6 +2,7 @@ package iWish_Control;
 
 import java.util.List;
 
+import android.content.Context;
 import iWish_Utente.Utente;
 import iWish_database.UtenteDao;
 
@@ -21,9 +22,9 @@ public class ControlUser {
 	};
 
 
-	public void saveOnDbUtente(Utente mUtente) throws Exception{
+	public void saveOnDbUtente(Utente mUtente, Context context) throws Exception{
 		try {
-			mUtenteDao =  new UtenteDao(mUtente.getC());
+			mUtenteDao =  new UtenteDao(context);
 			mUtenteDao.open();
 			mUtenteDao.insertOnDbUtente(mUtente);
 		} catch (Exception e) {

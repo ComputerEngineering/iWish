@@ -20,10 +20,10 @@ public interface MyUtente {
 	String getPassword();
 	String getQuestion();
 	String getAnswer();
-	Context getC();
+	
 	List<Integer> getListWeight();
 	void setKeyUtente(long keyUtente);
-	void setC(Context c);
+	
 	void setName(String name);
 	void setSurname(String surname);
 	void setCity(String city);

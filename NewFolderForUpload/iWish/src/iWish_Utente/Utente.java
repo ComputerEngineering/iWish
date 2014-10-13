@@ -24,17 +24,15 @@ public class Utente implements MyUtente,Serializable{
 	private String password;
 	private String question;
 	private String answer;
-	private Context c;
+
 	//TODO devo aggiungere l'attributo PHOTO
-	
+
 	public long getKeyUtente(){
 		return keyUtente;
-		
+
 	}
-	public Context getC() {
-		return c;
-	}
-		@Override
+
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -105,17 +103,14 @@ public class Utente implements MyUtente,Serializable{
 	public void setCity(String city) {
 		this.city=city;
 	}
-	
+
 	@Override
 	public void setQuestion(String question) {
-	this.question=question;
+		this.question=question;
 	}
 	@Override
 	public void setAnswer(String answer) {
 		this.answer=answer;
-	}
-	public void setC(Context c) {
-		this.c = c;
 	}
 	@Override
 	public void setSex(String sex) {
@@ -133,7 +128,7 @@ public class Utente implements MyUtente,Serializable{
 	public void setTypeUser(String typeUser) {
 		this.typeUser=typeUser;
 	}
-	
+
 	@Override
 	public void setEmail(String  email) {
 		this.email=email;
@@ -149,8 +144,15 @@ public class Utente implements MyUtente,Serializable{
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "Utente [keyUtente=" + keyUtente + ", name=" + name
+				+ ", surname=" + surname + ", birthday=" + birthday + ", sex="
+				+ sex + ", typeUser=" + typeUser + ", height=" + height
+				+ ", weightFirst=" + weightFirst + ", weight=" + weight
+				+ ", city=" + city + ", email=" + email + ", password="
+				+ password + ", question=" + question + ", answer=" + answer
+				+ "]";
+	}
 }
