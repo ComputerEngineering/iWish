@@ -64,7 +64,6 @@ public class WeightActivity extends Activity{
 				Intent intent2 = new Intent("iWish_Activity.CONGRATULATION");
 				//aggiorniamo i dati utente con il campo "weight"
 				mUser.setWeight(peso.getCurrentItem()+30);
-				
 				//aggiungiamo questa nuova informazione nel nostro intent
 				intent2.putExtra("u", mUser);
 				//prima di far partire la nuova activity salvo sul database

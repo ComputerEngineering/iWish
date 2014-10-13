@@ -65,7 +65,7 @@ public class CongratulationActivity extends Activity {
 			//			scrittaUtente.setImageDrawable(getResources().getDrawable(R.drawable.scritta_attivo));			
 
 		}
-
+//TODO qui alt è 0.0 anche se dentro mUser height != 0.... 
 		alt = mUser.getHeight()/100;
 		pes = mUser.getWeight();
 
