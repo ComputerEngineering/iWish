@@ -60,7 +60,6 @@ public class UtenteDao {
 	public void insertOnDbUtente(Utente mUtente)throws Exception{
 		//Log.d("myapp", mUtente.getKeyUtente());
 		ContentValues values = new ContentValues();
-		values.put(DataBaseStorageUtente.COLUMN_ID,"" + mUtente.getKeyUtente() + "");
 		values.put(DataBaseStorageUtente.COLUMN_NAME,"" + mUtente.getName() + "");
 		values.put(DataBaseStorageUtente.COLUMN_SURNAME, "" + mUtente.getSurname() + "");
 		values.put(DataBaseStorageUtente.COLUMN_BIRTHDAY,""+ mUtente.getBirthday() + "");
