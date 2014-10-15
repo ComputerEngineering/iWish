@@ -1,4 +1,5 @@
 package iWish_Activity;
+/**Rafaella*/
 
 import com.progect.iwish.R;
 
@@ -10,8 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
-/**Rafaella*/
-
 public class WorkingActivity extends Activity{
 	private ImageButton bt_sounds;
 	private ImageButton bt_musics;
@@ -20,29 +19,25 @@ public class WorkingActivity extends Activity{
 	private Image im_typeWorkingMan;
 	private Image im_timeWorking;
 	private Image im_typeWorking;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	    setContentView(R.layout.working);
-	    setUpViews();
-	
-	
-	ImageButton ok = (ImageButton)findViewById(R.id.m_bot_stop);
-	ok.setOnClickListener(new OnClickListener() {
-	
-		@Override
-		public void onClick(View v) {
-			startActivity(new Intent(WorkingActivity.this,ProfileActivity.class ));
-		}
-	});
-	
+		setContentView(R.layout.working);
+		setUpViews();
+
+		ImageButton ok = (ImageButton)findViewById(R.id.m_bot_stop);
+		ok.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(WorkingActivity.this,ProfileActivity.class ));
+			}
+		});
 	}
 
 	private void setUpViews() {
 		// TODO Auto-generated method stub
-		
 	}
-
 }
 

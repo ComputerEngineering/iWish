@@ -1,4 +1,5 @@
 package iWish_Activity;
+/** Raffaella*/
 
 import com.progect.iwish.R;
 
@@ -8,8 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-
-/** Raffaella*/
 
 public class PopUpBadgeVinta1Activity extends Activity{
 	private ImageButton bt_nextPopUpBadgeVinta1;
@@ -26,7 +25,6 @@ public class PopUpBadgeVinta1Activity extends Activity{
 			public void onClick(View v) {
 				startActivity(new Intent(PopUpBadgeVinta1Activity.this,PopUpGenioActivity.class ));
 			}
-		});			
-			
+		});				
 	}
 }

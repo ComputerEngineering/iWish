@@ -58,7 +58,6 @@ public class NetworkFriends extends AsyncTask<String, Void,  String>{
 		
 		return res;
 	}
-	
 	private HashMap<String, MyFriends> takeListFriends() {
 		return obj;
 	}

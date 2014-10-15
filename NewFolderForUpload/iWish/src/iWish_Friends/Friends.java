@@ -8,10 +8,16 @@ import _iWish.MyFriends;
 
 
 public class Friends implements MyFriends,Serializable{
+	/**The serialization runtime associates with each serializable class a version number, 
+	 * called a serialVersionUID, which is used during deserialization to verify that the 
+	 * sender and receiver of a serialized object have loaded classes for that object that
+	 * are compatible with respect to serialization.*/
+	private static final long serialVersionUID = 8098509035921720548L;
 	private String keyFriends;
 	private String name;
 	private String surname;
 	private int point;
+	private String emailUser;
 	private Context c;
 	//TODO manca il campo photo
 	
@@ -27,6 +33,10 @@ public class Friends implements MyFriends,Serializable{
 	}
 	//fine*/
 
+	@Override
+	public String getEmailUser() {
+		return emailUser;
+	}
 	@Override
 	public String getKeyFriend() {
 		return keyFriends;
@@ -48,7 +58,7 @@ public class Friends implements MyFriends,Serializable{
 		return c;
 	}
 	@Override
-	public void setKeyFriend(String keyUtente) {
+	public void setKeyFriend(String keyFriends) {
 		this.keyFriends=keyFriends;
 	}
 	@Override
@@ -62,6 +72,10 @@ public class Friends implements MyFriends,Serializable{
 	@Override
 	public void setPoint(int point) {
 		this.point=point;
+	}
+	@Override
+	public void setEmailUser(String emailUser) {
+		this.emailUser=emailUser;
 	}
 	@Override
 	public String toString() {

@@ -6,7 +6,6 @@ import java.util.List;
 import android.content.Context;
 
 public interface MyUtente {
-
 	long getKeyUtente();
 	String getName();
 	String getSurname();
@@ -20,10 +19,8 @@ public interface MyUtente {
 	String getPassword();
 	String getQuestion();
 	String getAnswer();
-	
 	List<Integer> getListWeight();
 	void setKeyUtente(long keyUtente);
-	
 	void setName(String name);
 	void setSurname(String surname);
 	void setCity(String city);

@@ -1,5 +1,5 @@
 package iWish_Activity;
-//Raffaella
+/**Raffaella**/
 
 import com.progect.iwish.R;
 
@@ -39,7 +39,6 @@ public class ProfileActivity extends Activity{
 		      }
 
 		    });	
-		
 		bt_calendar.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -48,7 +47,6 @@ public class ProfileActivity extends Activity{
 				startActivity(new Intent(ProfileActivity.this, CalendarActivity.class ));
 			}
 		});
-		
 		bt_wishlist.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -57,7 +55,6 @@ public class ProfileActivity extends Activity{
 				startActivity(new Intent(ProfileActivity.this, WishListActivity.class ));
 			}
 		});
-		
 		bt_statics.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -66,7 +63,6 @@ public class ProfileActivity extends Activity{
 				startActivity(new Intent(ProfileActivity.this, StatisticsActivity.class ));
 			}
 		});
-
 		bt_friends.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -75,11 +71,7 @@ public class ProfileActivity extends Activity{
 				startActivity(new Intent(ProfileActivity.this, Friends2Activity.class ));
 			}
 		});
-		
-		
-		
 	}
-
 	private void setUpViews() {
 		bt_statics = (ImageButton)findViewById(R.id.bot_statistics);
 		bt_friends = (ImageButton)findViewById(R.id.bot_friends);

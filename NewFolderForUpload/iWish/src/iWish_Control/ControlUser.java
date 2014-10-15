@@ -67,9 +67,8 @@ public class ControlUser {
 
 	public void ConnectionUtente(){
 		try {
-			//	ControlConnection.getIstanceControlConnection().Utente();
+			//ControlConnection.getIstanceControlConnection().Utente();
 		} catch (Exception e) {
 		}
 	}
-
 }

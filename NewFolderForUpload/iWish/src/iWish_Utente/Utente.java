@@ -2,14 +2,16 @@ package iWish_Utente;
 /**Raffaella*/
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
-import android.content.Context;
 import _iWish.MyUtente;
 
 public class Utente implements MyUtente,Serializable{
-
+	/**The serialization runtime associates with each serializable class a version number, 
+	 * called a serialVersionUID, which is used during deserialization to verify that the 
+	 * sender and receiver of a serialized object have loaded classes for that object that
+	 * are compatible with respect to serialization.*/
+	private static final long serialVersionUID = -5489835939402776928L;
 	private long keyUtente;
 	private String name;
 	private String surname;
@@ -24,14 +26,11 @@ public class Utente implements MyUtente,Serializable{
 	private String password;
 	private String question;
 	private String answer;
-
 	//TODO devo aggiungere l'attributo PHOTO
 
 	public long getKeyUtente(){
 		return keyUtente;
-
 	}
-
 	@Override
 	public String getName() {
 		return name;
@@ -144,7 +143,6 @@ public class Utente implements MyUtente,Serializable{
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-
 	@Override
 	public String toString() {
 		return "Utente [keyUtente=" + keyUtente + ", name=" + name

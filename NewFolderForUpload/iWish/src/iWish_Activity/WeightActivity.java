@@ -25,7 +25,6 @@ public class WeightActivity extends Activity{
 	private ImageView scorciatoia; 
 	private int weight;
 	private Context c;
-	
 	private Utente mUser;
 	private TextView stampaNome;
 
@@ -37,36 +36,29 @@ public class WeightActivity extends Activity{
 		scorciatoia = (ImageView)findViewById(R.id.cerchio);
 		final ImageButton fatto = (ImageButton)findViewById(R.id.done);
 		final AbstractWheel peso = (AbstractWheel) findViewById(R.id.weight_horizontal);
-		
 		stampaNome = (TextView)findViewById(R.id.nomeUtente);
-		// Prendiamo l'intent passato da Gender
-		Intent intent = getIntent();
-		// Prendiamo l'oggetto Utente passato tramite intent
-		mUser = (Utente)intent.getSerializableExtra("u");
-		// Stampiamo il nome dell'utente passato  
-		stampaNome.setText(mUser.getName());
-		
+
+		Intent intent = getIntent();// Prendiamo l'intent passato da Gender
+		mUser = (Utente)intent.getSerializableExtra("u");// Prendiamo l'oggetto Utente passato tramite intent
+		stampaNome.setText(mUser.getName());// Stampiamo il nome dell'utente passato  
+
 		NumericWheelAdapter pesoAdapter = new NumericWheelAdapter(this, 30, 200, "%02d");
 		pesoAdapter.setItemResource(R.xml.wheel_text_centered);
 		pesoAdapter.setItemTextResource(R.id.text);
 		peso.setViewAdapter(pesoAdapter);
-		
 		weight= pesoAdapter.getEmptyItemResource();
 
 		fatto.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				
-				//cambiamo il colore al bottone
-				fatto.setImageResource(R.drawable.botton_done2);
+				fatto.setImageResource(R.drawable.botton_done2);//cambiamo il colore al bottone
 				// Creiamo un nuovo intent passando il nome dell'intent (ma si poteva fare anche passando il nome della classe) 
 				Intent intent2 = new Intent("iWish_Activity.CONGRATULATION");
-				//aggiorniamo i dati utente con il campo "weight"
-				mUser.setWeight(peso.getCurrentItem()+30);
-				//aggiungiamo questa nuova informazione nel nostro intent
-				intent2.putExtra("u", mUser);
-				//prima di far partire la nuova activity salvo sul database
+
+				mUser.setWeight(peso.getCurrentItem()+30);//aggiorniamo i dati utente con il campo "weight"
+
+				intent2.putExtra("u", mUser);//aggiungiamo questa nuova informazione nel nostro intent
 				try {
 					Log.i("WeightActivity", "PRIMA DI INSERIRE NEL DB");
 					ControlUser.getIstanceControlUser().saveOnDbUtente(mUser,getApplicationContext());
@@ -79,8 +71,8 @@ public class WeightActivity extends Activity{
 					e.printStackTrace();
 				}
 				Log.i("WeightActivity", "SALVATAGGIO SUL DB ANDATO A BUON FINE");
-				//facciamo partire l'intent GENDER
-				startActivity(intent2);		
+				//aggiungiamo questa nuova informazione nel nostro intent
+				startActivity(intent2);	//facciamo partire l'intent GENDER	
 			}
 		});
 	}

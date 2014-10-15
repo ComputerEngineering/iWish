@@ -72,23 +72,20 @@ public class RegisterActivity extends Activity{
 				startActivityForResult(Intent.createChooser(intentPhoto,"Select Picture"), SELECT_PICTURE);
 			}
 		});
-
 		bt_go_ok.setOnClickListener(new OnClickListener() {
 
 			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
-
 				if((edt_name.getText().equals(""))||(edt_surname.getText().equals(""))
 						||(edt_birthday.getText().equals(""))||(edt_city.getText().equals(""))
 						||(edt_email.getText().equals(""))||(edt_rp_email.getText().equals(""))
 						||(edt_password.getText().equals(""))||(edt_rp_password.getText().equals(""))
 						||(edt_answer_register.getText().equals(""))){
-
-
+					//TODO controlli
 				}else{
 					if(sp_questions_register.toString().equalsIgnoreCase(firstQuestionsSelected)){
-
+						//TODO controlli
 					}
 					else{
 						// Creiamo un nuovo intent passando il nome dell'intent successivo (ma si poteva fare anche passando il nome della classe) 
@@ -104,7 +101,6 @@ public class RegisterActivity extends Activity{
 			}
 		});
 	}
-
 	private void setUpViews() {
 		bt_change = (ImageButton)findViewById(R.id.bott_modifica);
 		bt_go_ok = (ImageButton)findViewById(R.id.bt_go_ok);
@@ -119,7 +115,6 @@ public class RegisterActivity extends Activity{
 		edt_answer_register = (EditText)findViewById(R.id.editText9);
 		selectPhoto = (ImageView)findViewById(R.id.foto);
 	}
-
 	private Utente createUser() {
 		mUser = new Utente();
 		mUser.setName(edt_name.getText().toString());
@@ -132,14 +127,12 @@ public class RegisterActivity extends Activity{
 		mUser.setQuestion(sp_questions_register.toString());
 		return mUser;
 	}
-
 	private ArrayAdapter<String> createSpinnerAdapter(){
 		data = getResources().getStringArray(R.array.question);
 		arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, data );
 		return arrayAdapter;
 	}
-
-	// metodo per la gestione dell'interazione con la gallery del telefono
+	/**metodo per la gestione dell'interazione con la gallery del telefono**/
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == RESULT_OK) {
 			if (requestCode == SELECT_PICTURE) {
@@ -149,17 +142,13 @@ public class RegisterActivity extends Activity{
 				// affinch� l'immagine non venga deformata viene prima resa quadrata mediante il metodo Ritaglia
 				Bitmap immScelta = Ritaglia(selectedImagePath);               
 				selectPhoto.setImageBitmap(immScelta);
-
 				// se non ci importava della deformazione potevamo fare direttamente:
 				// scegliFoto.setImageURI(selectedImageUri);
 			}
 		}
 	}
-
-	// metodo per la gestione dell'interazione con la gallery del telefono
-	/**
-	 * helper to retrieve the path of an image URI
-	 */
+	/** metodo per la gestione dell'interazione con la gallery del telefono
+	helper to retrieve the path of an image URI*/
 	@SuppressWarnings("deprecation")
 	public String getPath(Uri uri) {
 		// just some safety built in 
@@ -179,10 +168,8 @@ public class RegisterActivity extends Activity{
 		// this is our fallback here
 		return uri.getPath();
 	}
-
-	///////metodi che ho creato io
-
-	//chiama convert e poi ritaglia l'immagine
+	/**metodi che ho creato io
+	 * chiama convert e poi ritaglia l'immagine*/
 	public Bitmap Ritaglia(String s){
 		Bitmap srcBmp = Convert(s);
 		Bitmap dstBmp;
@@ -195,8 +182,7 @@ public class RegisterActivity extends Activity{
 		}
 		return dstBmp;
 	}
-
-	//converte il path bitmap
+	/**converte il path bitmap*/
 	public Bitmap Convert(String ss){
 		File imgFile = new  File(ss);
 		if(imgFile.exists()){

@@ -2,22 +2,19 @@ package iWish_database;
 /**Raffaella*/
 
 import iWish_Utente.Utente;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**This class is our DAO. 
  * It maintains the database connection and supports adding new element.**/
 public class UtenteDao {
-	// Database field
-
 	private SQLiteDatabase database ;
 	private DataBaseStorageUtente dbHelper;
 	private static String[] allColumns={
@@ -35,6 +32,7 @@ public class UtenteDao {
 		DataBaseStorageUtente.COLUMN_QUESTION,
 		DataBaseStorageUtente.COLUMN_ANSWER
 		//DataBaseStorageUtenteCOLUMN_PHOTO
+		//aggiungere elemento bmi
 	};
 
 	public UtenteDao(Context context){

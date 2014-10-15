@@ -10,15 +10,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class SplashActivity extends Activity{
-
-
 	protected static final int TIMER_RUNTIME = 5000; // in ms --> 10s
-
 	protected boolean mbActive;
 	protected ProgressBar mProgressBar;
 	protected TextView loading;
 	protected TextView completato;
-
 	private int percentuale;
 
 	@Override
@@ -61,7 +57,6 @@ public class SplashActivity extends Activity{
 		};
 		timerThread.start();
 	}
-	
 	private void setUpViews() {
 		mProgressBar = (ProgressBar)findViewById(R.id.progress_bar);
 		loading = (TextView) findViewById(R.id.loading);
@@ -71,15 +66,12 @@ public class SplashActivity extends Activity{
 	public void onDestroy() {
 		super.onDestroy();
 	}
-	
 	public void updateProgress(final int timePassed) {
 		if(null != mProgressBar) {
-			// Ignore rounding error here
-			final int progress = mProgressBar.getMax() * timePassed / TIMER_RUNTIME;
+			final int progress = mProgressBar.getMax() * timePassed / TIMER_RUNTIME;// Ignore rounding error here
 			mProgressBar.setProgress(progress);
 		}
 	}
-	
 	public void updateText(){
 		percentuale = percentuale +5;
 		if(percentuale > 96){
@@ -89,7 +81,6 @@ public class SplashActivity extends Activity{
 		loading.setText(bbb);
 
 	}   
-
 	public void onContinue() {
 		// perform any final actions here
 		startActivity(new Intent(SplashActivity.this, LoginRegActivity.class ));

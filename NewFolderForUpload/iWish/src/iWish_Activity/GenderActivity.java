@@ -33,13 +33,9 @@ public class GenderActivity extends Activity{
 		
 		stampaNome = (TextView)findViewById(R.id.nomeUtente);
 		
-		// Prendiamo l'intent passato da Avatar
-		Intent intent = getIntent();
-		// Prendiamo l'oggetto Utente passato tramite intent
-		mUser = (Utente)intent.getSerializableExtra("u");
-		// Stampiamo il nome dell'utente passato  
-		stampaNome.setText(mUser.getName());
-		
+		Intent intent = getIntent();// Prendiamo l'intent passato da Avatar
+		mUser = (Utente)intent.getSerializableExtra("u");// Prendiamo l'oggetto Utente passato tramite intent
+		stampaNome.setText(mUser.getName());// Stampiamo il nome dell'utente passato  
 		ButtonMaschio.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -51,7 +47,6 @@ public class GenderActivity extends Activity{
 				ButtonDone.setTag(true);
 			}    
 		}); 
-
 		ButtonFemmina.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -64,7 +59,6 @@ public class GenderActivity extends Activity{
 				ButtonDone.setTag(true);
 			}    
 		}); 
-
 		ButtonDone.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -81,7 +75,6 @@ public class GenderActivity extends Activity{
 					startActivity(intent2);
 				}  
 			}
-			
 			private void sexUser() {
 				if(sex==0){
 					mUser.setSex(MEN);

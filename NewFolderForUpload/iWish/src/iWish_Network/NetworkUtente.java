@@ -37,11 +37,9 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
-
 /**
  * AsyncTask enables proper and easy use of the UI thread. This class allows to perform background 
  * operations and publish results on the UI thread without having to manipulate threads and/or handlers**/
-
 public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	private static final String uri= "http://iwish.suroot.com/insert/user.php"; 
 	/**Describes the state of any Wi-fi connection that is active or is in the process of being set up.*/
@@ -88,7 +86,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	protected void onPreExecute() {
 		Log.i("AsyncTask", "onPreExecute");
 	}
-
 	//contiene la logica del del task
 	@Override
 	protected String doInBackground(String... params) {
@@ -120,7 +117,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 		}
 		return res;
 	}
-
 	/**I will take the list User that we have insert on db */
 	private HashMap<Long,Utente> takeListUtente() {
 		//Take the file to send at DbUser
@@ -135,7 +131,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 		key=(mUser.get(mUser.size()-1)).getKeyUtente();
 		return obj;
 	}
-
 	/**into this method we send the file User to the server*/
 	private HttpResponse SendUser(HashMap<Long,Utente> obj2) {
 		long s = (obj2.get(key)).getKeyUtente();
@@ -183,7 +178,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			return null;
 		}
 	}
-
 	/**into this method we read the response that Server send to owns Device*/
 	private String readResponseFromServer(HttpResponse re) {
 		try {
@@ -210,7 +204,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			return null;
 		}
 	}
-
 	/**Runs on the UI thread after doInBackground(Params...). The specified result is the value returned
 	 *  by doInBackground(Params...).This method won't be invoked if the task was cancelled.**/
 	//utilizzo del risultato del task
@@ -227,7 +220,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			Toast.makeText(c, "Completed with an Error!Developper haven't receved the registration that you have send ",Toast.LENGTH_LONG).show();
 		}
 	}
-
 	private static Boolean isConnected() {
 		Runnable runnable = new Runnable() {
 			public void run() {
@@ -238,7 +230,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 		runnable.run();
 		return status;
 	}
-
 	private static Handler h = new Handler() {
 
 		@Override
@@ -253,7 +244,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			}
 		}
 	};
-
 	/**ask for message '0' (not connected) or '1' (connected) on 'handler'
 	 * the answer must be send before before within the 'timeout' (in milliseconds)**/
 	public static void isNetworkAvailable(final Handler handler, final int timeout) {
@@ -315,7 +305,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			e.printStackTrace();
 		}
 	}
-
 	private void checkMobile() {
 		mMobile= CheckConnection.getIstanceCheckConnection().mMobileConnection();
 		/* Indicates whether network connectivity exists or is in the process of being established. This is good for applications 
@@ -328,7 +317,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			Toast.makeText(c, "Please connect Mobile or wifi ",Toast.LENGTH_LONG).show();
 		}
 	}
-	
 	private void checkWiFi(){
 		mWifi=CheckConnection.getIstanceCheckConnection().mWiFiConnection();
 		/* Indicates whether network connectivity exists or is in the process of being established. This is good for applications 
@@ -355,7 +343,6 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			Toast.makeText(c, "Please connect Bluetooth ",Toast.LENGTH_LONG).show();
 		}
 	}
-	
 	private void checkEthernet(){
 		/* Indicates whether network connectivity exists or is in the process of being established. This is good for applications 
 		 * that need to do anything related to the network other than read or write data. For the latter, call isConnected() instead,

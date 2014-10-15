@@ -1,4 +1,5 @@
 package iWish_Activity;
+/**Alessandro --> Miki*/
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,14 +10,10 @@ import android.widget.ImageButton;
 
 import com.progect.iwish.R;
 
-/**Alessandro --> Miki*/
-
 public class PopUpBadgeVinta3Activity extends Activity {
-	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.popup_badge_vinta3);
-		
 		
 		ImageButton avanti = (ImageButton)findViewById(R.id.bot_grazie);
 		avanti.setOnClickListener(new OnClickListener() {
@@ -26,6 +23,5 @@ public class PopUpBadgeVinta3Activity extends Activity {
 				startActivity(new Intent(PopUpBadgeVinta3Activity.this,PopUpBadgeVinta1Activity.class ));
 			}
 		});			
-		
 	}
 }

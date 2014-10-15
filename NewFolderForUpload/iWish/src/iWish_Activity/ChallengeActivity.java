@@ -1,7 +1,6 @@
 package iWish_Activity;
 /** Raffaella  - Miki*/
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +20,7 @@ public class ChallengeActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.challenge);
 		setUpViews();
-		
+
 		ButtonDone.setTag(false);
 
 		ButtonVsMyself.setOnClickListener(new OnClickListener() {
@@ -32,8 +31,7 @@ public class ChallengeActivity extends Activity{
 				ButtonDone.setImageResource(R.drawable.botton_done2); 
 				ButtonDone.setTag(true);
 			}    
-		}); 
-
+		});
 		ButtonVsFriends.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -43,7 +41,6 @@ public class ChallengeActivity extends Activity{
 				ButtonDone.setTag(true);
 			}    
 		}); 
-
 		ButtonDone.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -52,15 +49,11 @@ public class ChallengeActivity extends Activity{
 				}  
 			}
 		}); 
-
 	}
-
 	private void setUpViews() {
 		ButtonVsMyself = (ImageButton)findViewById(R.id.vs_myself);
 		ButtonVsFriends = (ImageButton)findViewById(R.id.vs_friends);
 		ButtonDone = (ImageButton)findViewById(R.id.done);
-
 	}
-
 }
 

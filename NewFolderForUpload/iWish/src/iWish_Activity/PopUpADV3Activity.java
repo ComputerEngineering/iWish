@@ -1,4 +1,5 @@
 package iWish_Activity;
+/** Raffaella*/
 
 import com.progect.iwish.R;
 
@@ -8,8 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-
-/** Raffaella*/
 
 public class PopUpADV3Activity extends Activity {
 	private ImageButton bt_nextPopUpADV3;

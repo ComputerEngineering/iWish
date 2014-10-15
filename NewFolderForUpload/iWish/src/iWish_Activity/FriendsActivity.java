@@ -28,39 +28,31 @@ public class FriendsActivity extends ListActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.friends);
-		
+
 		datasource_friends = new FriendsDao(this);
 		datasource_friends.open();
-		
 		mFriends = datasource_friends.getAllFriends();
-		
-		
-		// use the SimpleCursorAdapter to show the elements in a ListView
-	   ArrayAdapter<Friends> adapter = new ArrayAdapter<Friends>(this,android.R.layout.simple_list_item_1);
-	   setListAdapter(adapter);
+
+		ArrayAdapter<Friends> adapter = new ArrayAdapter<Friends>(this,
+				android.R.layout.simple_list_item_1);// use the SimpleCursorAdapter to show the elements in a ListView
+		setListAdapter(adapter);
 	}
-	
-
-
-	// Will be called via the onClick attribute
-	 public void onClick(View view){
-		 ArrayAdapter<Friends> adapter = (ArrayAdapter<Friends>)getListAdapter();
-		 Friends friends = null;
-		 //TODO da finire il click della lista
-		 adapter.notifyDataSetChanged();
-	 }
-
+	/** Will be called via the onClick attribute**/
+	public void onClick(View view){
+		@SuppressWarnings("unchecked")
+		ArrayAdapter<Friends> adapter = (ArrayAdapter<Friends>)getListAdapter();
+		Friends friends = null;
+		//TODO da finire il click della lista
+		adapter.notifyDataSetChanged();
+	}
 	@Override
 	protected void onResume() {
 		datasource_friends.open();
 		super.onResume();
 	}
-
 	@Override
 	protected void onPause() {
 		datasource_friends.close();
 		super.onPause();
 	}
-	 
-	
 }

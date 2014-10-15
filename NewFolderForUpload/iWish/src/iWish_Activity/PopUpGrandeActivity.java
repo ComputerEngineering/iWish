@@ -1,4 +1,5 @@
 package iWish_Activity;
+/**Michela*/
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,14 +10,10 @@ import android.widget.ImageButton;
 
 import com.progect.iwish.R;
 
-/**Michela*/
-
 public class PopUpGrandeActivity extends Activity {
-
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.popup_grande);
-		
 		
 		ImageButton avanti = (ImageButton)findViewById(R.id.bot_grazie);
 		avanti.setOnClickListener(new OnClickListener() {
@@ -25,7 +22,6 @@ public class PopUpGrandeActivity extends Activity {
 			public void onClick(View v) {
 				startActivity(new Intent(PopUpGrandeActivity.this,PopUpADV2Activity.class ));
 			}
-		});		
-		
+		});			
 	}
 }

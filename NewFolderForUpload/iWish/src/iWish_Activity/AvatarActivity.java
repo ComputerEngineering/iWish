@@ -1,7 +1,6 @@
 package iWish_Activity;
 /**Michela*/
 
-
 import iWish_Utente.Utente;
 import android.os.Bundle;
 import android.app.Activity;
@@ -19,17 +18,13 @@ import android.widget.TextView;
 import com.progect.iwish.R;
 import com.viewpagerindicator.CirclePageIndicator;
 
-
 public class AvatarActivity extends Activity {
-
 	private final String LAZY = "lazy";
 	private final String ACTIVE = "active";
 	private ViewPager viewPager2;
 	private ImagePagerAdapter adapter;
-
 	private Utente mUser;
 	private TextView stampaNome;
-
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,41 +36,25 @@ public class AvatarActivity extends Activity {
 		viewPager2.setAdapter(adapter);
 
 		stampaNome = (TextView)findViewById(R.id.nomeUtente);
-
-		// Prendiamo l'intent passato da Register
-		Intent intent = getIntent();
-		// Prendiamo l'oggetto Utente passato tramite intent
-		mUser = (Utente)intent.getSerializableExtra("u");
-		// Stampiamo il nome dell'utente passato  
-		stampaNome.setText(mUser.getName());
-
-		//Bind the title indicator to the adapter
-		CirclePageIndicator titleIndicator = (CirclePageIndicator)findViewById(R.id.indicator2);
+		Intent intent = getIntent();// Prendiamo l'intent passato da Register
+		mUser = (Utente)intent.getSerializableExtra("u");// Prendiamo l'oggetto Utente passato tramite intent
+		stampaNome.setText(mUser.getName());// Stampiamo il nome dell'utente passato  
+		CirclePageIndicator titleIndicator = (CirclePageIndicator)findViewById(R.id.indicator2);//Bind the title indicator to the adapter
 		titleIndicator.setViewPager(viewPager2);
-
 		//		ImageView scorciatoia = (ImageView)findViewById(R.id.cerchio);
-
 		final ImageButton fatto = (ImageButton)findViewById(R.id.done);
 		fatto.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-
-				//cambiamo il colore al bottone
-				fatto.setImageResource(R.drawable.botton_done2);
-				// Creiamo un nuovo intent passando il nome dell'intent (ma si poteva fare anche passando il nome della classe) 
-				Intent intent2 = new Intent("iWish_Activity.GENDER");
-				//aggiorniamo i dati utente con il campo "typeUser"
-				typeUser();
-				//aggiungiamo questa nuova informazione nel nostro intent
-				intent2.putExtra("u", mUser);
-				//facciamo partire l'intent GENDER
-				startActivity(intent2);
+				fatto.setImageResource(R.drawable.botton_done2);//cambiamo il colore al bottone
+				Intent intent2 = new Intent("iWish_Activity.GENDER");// Creiamo un nuovo intent passando il nome dell'intent (ma si poteva fare anche passando il nome della classe) 
+				typeUser();//aggiorniamo i dati utente con il campo "typeUser"
+				intent2.putExtra("u", mUser);//aggiungiamo questa nuova informazione nel nostro intent
+				startActivity(intent2);//facciamo partire l'intent GENDER
 			}
-
 		});
 	}
-
 	private void typeUser() {
 		if(viewPager2.getCurrentItem()==0){
 			mUser.setTypeUser(LAZY);
@@ -83,24 +62,19 @@ public class AvatarActivity extends Activity {
 			mUser.setTypeUser(ACTIVE);
 		}
 	}
-	
 	private class ImagePagerAdapter extends PagerAdapter {
 		private int[] mImages = new int[] {
 				R.drawable.short_lazy_ok,
 				R.drawable.short_active_ok,
-
 		};
-
 		@Override
 		public int getCount() {
 			return mImages.length;
 		}
-
 		@Override
 		public boolean isViewFromObject(View view, Object object) {
 			return view == ((ImageView) object);
 		}
-
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
 			Context context = AvatarActivity.this;
@@ -109,12 +83,9 @@ public class AvatarActivity extends Activity {
 			((ViewPager) container).addView(imageView, 0);
 			return imageView;
 		}
-
 		@Override
 		public void destroyItem(ViewGroup container, int position, Object object) {
 			((ViewPager) container).removeView((ImageView) object);
 		}
 	}
-
-
 } 

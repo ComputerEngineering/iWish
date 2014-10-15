@@ -11,7 +11,6 @@ import android.util.Log;
  * provides methods to open, query, update and close the database.
  * More specifically SQLiteDatabase provides the insert(), update() and delete() methods.
  * In addition it provides the execSQL() method, which allows to execute SQL directly.*/
-
 public class DataBaseStorageUtente extends SQLiteOpenHelper {
 
 	static final String TABLE_UTENTE = "Utente";
@@ -29,7 +28,8 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 	static final String COLUMN_PASSWORD="password";
 	static final String COLUMN_QUESTION="question";
 	static final String COLUMN_ANSWER="answer";
-//	static final String COLUMN_PHOTO="photo";
+	//	static final String COLUMN_PHOTO="photo";
+	//  static final String COLUMN_BMI="bmi";
 
 	// shared index, make sure to match COLUMNS
 	static final int COLUMN_ID_INDEX=0;
@@ -45,11 +45,12 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 	static final int COLUMN_PASSWORD_INDEX=10;
 	static final int COLUMN_QUESTION_INDEX=11;
 	static final int COLUMN_ANSWER_INDEX=12;
-	//static final int COLUMN_ANSWER_PHOTO=13;
+	//static final int COLUMN_PHOTO_INDEX=13;
+	//static final int COLUMN_BMI_INDEX=14;
 
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION =  1;
+	private  static  final  int DATABASE_VERSION =  2;
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Utente.db";
 	/** this 's the query that we use for create the table
@@ -71,6 +72,7 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 			+ COLUMN_ANSWER + " vachar(15) NOT NULL"
 			//TODO vedere come definire l'attributo photo
 		//	+ COLUMN_PHOTO + " ......."
+			// aggiungere la colonna per il bmi
 			+ ");";
 
 	public DataBaseStorageUtente(Context context) {

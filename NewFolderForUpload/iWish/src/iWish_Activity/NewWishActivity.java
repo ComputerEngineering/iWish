@@ -1,4 +1,5 @@
 package iWish_Activity;
+/**Alessandro*/
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +9,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
 import com.progect.iwish.R;
-
-/**Alessandro*/
 
 public class NewWishActivity extends Activity{
 	
@@ -25,7 +24,6 @@ public class NewWishActivity extends Activity{
 			public void onClick(View v) {
 				startActivity(new Intent(NewWishActivity.this, ProgressActivity.class ));
 			}
-		});
-	    
+		});  
 	}
 }

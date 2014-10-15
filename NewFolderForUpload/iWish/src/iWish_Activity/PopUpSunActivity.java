@@ -1,4 +1,5 @@
 package iWish_Activity;
+/**Antonio --> Miki*/
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +9,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
 import com.progect.iwish.R;
-
-/**Antonio --> Miki*/
 
 public class PopUpSunActivity extends Activity {
 
@@ -25,7 +24,5 @@ public class PopUpSunActivity extends Activity {
 				startActivity(new Intent(PopUpSunActivity.this,PopUpOraActivity.class ));
 			}
 		});
-
-		
 	}
 }

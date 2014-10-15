@@ -1,4 +1,5 @@
 package iWish_Activity;
+/**Antonio --> Miki*/
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,10 +10,7 @@ import android.widget.ImageButton;
 
 import com.progect.iwish.R;
 
-/**Antonio --> Miki*/
-
 public class PopUpADV2Activity extends Activity {
-	
 	protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.popup_adv2);
@@ -25,6 +23,5 @@ public class PopUpADV2Activity extends Activity {
 			startActivity(new Intent(PopUpADV2Activity.this,PopUpADV3Activity.class ));
 		}
 	});	
-	
 	}
 }
