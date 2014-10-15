@@ -14,6 +14,18 @@ public class Friends implements MyFriends,Serializable{
 	private int point;
 	private Context c;
 	//TODO manca il campo photo
+	
+	//costruttore prova antonio
+	/*public Friends(String keyFriends, String name,String surname,int point){
+	this.keyFriends=keyFriends;
+	this.name=name;
+	this.surname=surname;
+	this.point=point;
+	}
+	
+	public Friends(){
+	}
+	//fine*/
 
 	@Override
 	public String getKeyFriend() {
