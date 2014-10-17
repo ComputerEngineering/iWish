@@ -2,6 +2,7 @@ package iWish_Utente;
 /**Raffaella*/
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import _iWish.MyUtente;
@@ -15,7 +16,8 @@ public class Utente implements MyUtente,Serializable{
 	private long keyUtente;
 	private String name;
 	private String surname;
-	private String birthday;
+	private String birthday;// da togliere
+	private Date birthdayD;
 	private String sex;
 	private String typeUser;
 	private int height;
@@ -34,6 +36,10 @@ public class Utente implements MyUtente,Serializable{
 	@Override
 	public String getName() {
 		return name;
+	}
+	@Override
+	public Date getBirthdayD() {
+		return birthdayD;
 	}
 	@Override
 	public String getSurname() {
@@ -137,20 +143,21 @@ public class Utente implements MyUtente,Serializable{
 		this.password=password;
 	}
 	@Override
+	public void setBirthdayD(Date birthdayD) {
+		this.birthdayD=birthdayD;
+	}
+	@Override
 	public void setListWeight(int weight) {
 		//TODO DA FARE
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Utente [keyUtente=" + keyUtente + ", name=" + name
-				+ ", surname=" + surname + ", birthday=" + birthday + ", sex="
-				+ sex + ", typeUser=" + typeUser + ", height=" + height
-				+ ", weightFirst=" + weightFirst + ", weight=" + weight
-				+ ", city=" + city + ", email=" + email + ", password="
-				+ password + ", question=" + question + ", answer=" + answer
-				+ "]";
+				+ ", surname=" + surname + ", birthday=" + birthday
+				+ ", birthdayD=" + birthdayD + ", sex=" + sex + ", typeUser="
+				+ typeUser + ", height=" + height + ", weightFirst="
+				+ weightFirst + ", weight=" + weight + ", city=" + city
+				+ ", email=" + email + ", password=" + password + ", question="
+				+ question + ", answer=" + answer + "]";
 	}
 }

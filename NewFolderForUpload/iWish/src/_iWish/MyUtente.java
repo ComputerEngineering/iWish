@@ -1,6 +1,7 @@
 package _iWish;
 /**Raffaella*/
 
+import java.util.Date;
 import java.util.List;
 
 import android.content.Context;
@@ -10,6 +11,7 @@ public interface MyUtente {
 	String getName();
 	String getSurname();
 	String getBirthday();
+	Date getBirthdayD();
 	String getCity();
 	String getSex();
 	String getTypeUser();
@@ -34,5 +36,6 @@ public interface MyUtente {
 	void setAnswer(String answer);
 	void setListWeight(int weight);
 	void setBirthday(String birthday);
+	void setBirthdayD(Date birthdayD);
 	
 }
