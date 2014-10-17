@@ -21,4 +21,5 @@ public interface MyActivities {
 	void setDateStart(int Start);
 	void setDateFinish(int Finish);
 	void setC(Context c);
+	
 }
