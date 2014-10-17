@@ -3,10 +3,13 @@ package iWish_Activity;
 
 import java.math.BigDecimal;
 
+import iWish_Control.ControlConnection;
+import iWish_Control.ControlUser;
 import iWish_Utente.Utente;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -60,6 +63,18 @@ public class CongratulationActivity extends Activity {
 		imgbt_expressWish.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				try {
+					Log.i("WeightActivity", "PRIMA DI INSERIRE NEL DB");
+					ControlUser.getIstanceControlUser().saveOnDbUtente(mUser,getApplicationContext());
+					Log.i("WeightActivity", "DOPO L'INSERIMENTO NEL DB");
+					ControlConnection.getIstanceControlConnection().onInsertUtente();
+					Log.i("WeightActivity", "DOPO L'INSERIMENTO online");
+				} catch (Exception e) {
+					//Toast.makeText(c ,"errore di salvataggio", Toast.LENGTH_LONG).show();
+					Log.i("WeightActivity", "errore INSERIMENTO NEL DB");
+					e.printStackTrace();
+				}
+				Log.i("WeightActivity", "SALVATAGGIO SUL DB ANDATO A BUON FINE");
 				startActivity(new Intent(CongratulationActivity.this,ProfileActivity.class ));
 			}
 		});

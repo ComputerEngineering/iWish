@@ -2,14 +2,11 @@ package iWish_Activity;
 
 /**Alessandro  --- Miki */
 
-import iWish_Control.ControlConnection;
-import iWish_Control.ControlUser;
 import iWish_Utente.Utente;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -55,22 +52,8 @@ public class WeightActivity extends Activity{
 				fatto.setImageResource(R.drawable.botton_done2);//cambiamo il colore al bottone
 				// Creiamo un nuovo intent passando il nome dell'intent (ma si poteva fare anche passando il nome della classe) 
 				Intent intent2 = new Intent("iWish_Activity.CONGRATULATION");
-
 				mUser.setWeight(peso.getCurrentItem()+30);//aggiorniamo i dati utente con il campo "weight"
-
 				intent2.putExtra("u", mUser);//aggiungiamo questa nuova informazione nel nostro intent
-				try {
-					Log.i("WeightActivity", "PRIMA DI INSERIRE NEL DB");
-					ControlUser.getIstanceControlUser().saveOnDbUtente(mUser,getApplicationContext());
-					Log.i("WeightActivity", "DOPO L'INSERIMENTO NEL DB");
-					ControlConnection.getIstanceControlConnection().onInsertUtente();
-					Log.i("WeightActivity", "DOPO L'INSERIMENTO online");
-				} catch (Exception e) {
-					//Toast.makeText(c ,"errore di salvataggio", Toast.LENGTH_LONG).show();
-					Log.i("WeightActivity", "errore INSERIMENTO NEL DB");
-					e.printStackTrace();
-				}
-				Log.i("WeightActivity", "SALVATAGGIO SUL DB ANDATO A BUON FINE");
 				//aggiungiamo questa nuova informazione nel nostro intent
 				startActivity(intent2);	//facciamo partire l'intent GENDER	
 			}
