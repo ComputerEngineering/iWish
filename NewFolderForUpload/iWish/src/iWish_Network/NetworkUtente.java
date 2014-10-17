@@ -144,6 +144,9 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			json.put("city", (obj2.get(key)).getCity());
 			json.put("password", (obj2.get(key)).getPassword());
 			json.put("altezza", (obj.get(key)).getHeight());
+			json.put("peso",(obj.get(key)).getWeight());
+			json.put("bmi",(obj.get(key)).getBmi());
+			//da aggiungere put per la lista dei pesi (se serve)
 			json.put("tipoUser", (obj2.get(key)).getTypeUser());
 			json.put("sex", (obj2.get(key)).getSex());
 			json.put("answar", (obj2.get(key)).getAnswer());
