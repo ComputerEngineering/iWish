@@ -1,7 +1,6 @@
 package iWish_database;
 
 import iWish_Activities.Activities;
-import iWish_Friends.Friends;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 /**This class is our DAO. 
  * It maintains the database connection and supports adding new element.**/
@@ -21,7 +19,10 @@ public class ActivitiesDao {
 	private static String[] allColumns={
 		DataBaseStorageActivities.COLUMN_ID,
 		DataBaseStorageActivities.COLUMN_EMAIL_CHALLENGER,
-		DataBaseStorageActivities.COLUMN_EMAIL_FOE
+		DataBaseStorageActivities.COLUMN_EMAIL_FOE,
+		DataBaseStorageActivities.COLUMN_WIN,
+		DataBaseStorageActivities.COLUMN_START,
+		DataBaseStorageActivities.COLUMN_FINISH
 	};
 	
 	public ActivitiesDao(Context context) {
@@ -41,11 +42,14 @@ public class ActivitiesDao {
 			dbHelper.close();
 		}
 	}
+	@SuppressWarnings("unused")
 	public void insertOnDbActivities(Activities mActivities)throws Exception{
 		ContentValues values = new ContentValues();
 		values.put(DataBaseStorageActivities.COLUMN_EMAIL_CHALLENGER,"" + mActivities.getEmailChallenger() + "");
 		values.put(DataBaseStorageActivities.COLUMN_EMAIL_FOE,"" + mActivities.getEmailFoe() + "");
-		//TODO inserire gli altri elementi
+		values.put(DataBaseStorageActivities.COLUMN_WIN, "" + mActivities.getWinActivities() + "");
+		values.put(DataBaseStorageActivities.COLUMN_START, "" + mActivities.getDateStart() + "");
+		values.put(DataBaseStorageActivities.COLUMN_FINISH, "" + mActivities.getDateFinish());
 		long insertId = database.insert(DataBaseStorageActivities.TABLE_ACTIVITIES, null, values);
 	}
 	public void deleteOnDbAllActivity(){
@@ -82,6 +86,9 @@ public class ActivitiesDao {
 		activities.setKeyActivities(cursor.getLong(DataBaseStorageActivities.COLUMN_ID_INDEX));
 		activities.setEmailChallenger(cursor.getString(DataBaseStorageActivities.COLUMN_EMAIL_CHALLENGER_INDEX));
 		activities.setEmailFoe(cursor.getString(DataBaseStorageActivities.COLUMN_EMAIL_FOE_INDEX));
+		activities.setWinActivities(cursor.getInt(DataBaseStorageActivities.COLUMN_WIN_INDEX));
+	//	activities.setDateStart(cursor.getInt(DataBaseStorageActivities.COLUMN_START_INDEX));
+	//	activities.setDateFinish(cursor.getInt(DataBaseStorageActivities.COLUMN_FINISH_INDEX));	
 		return activities;
 	}
 	/**Invoked when the garbage collector has detected that this instance is no longer 

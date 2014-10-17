@@ -2,7 +2,6 @@ package iWish_Utente;
 /**Raffaella*/
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import _iWish.MyUtente;
@@ -16,12 +15,13 @@ public class Utente implements MyUtente,Serializable{
 	private long keyUtente;
 	private String name;
 	private String surname;
-	private String birthday;// da togliere
-	private Date birthdayD;
+	private String birthday;
+	//private Date birthdayD;
 	private String sex;
 	private String typeUser;
 	private int height;
 	private int weightFirst;
+	private double bmi;
 	private List<Integer> weight;
 	private String city;
 	private String email;
@@ -38,10 +38,9 @@ public class Utente implements MyUtente,Serializable{
 		return name;
 	}
 	@Override
-	public Date getBirthdayD() {
+/*	public Date getBirthdayD() {
 		return birthdayD;
-	}
-	@Override
+	}*/
 	public String getSurname() {
 		return surname;
 	}
@@ -60,6 +59,11 @@ public class Utente implements MyUtente,Serializable{
 	@Override
 	public String getPassword() {
 		return password;
+	}
+
+	@Override
+	public double getBmi() {
+		return bmi;
 	}
 	@Override
 	public String getQuestion() {
@@ -142,22 +146,26 @@ public class Utente implements MyUtente,Serializable{
 	public void setPassword(String  password) {
 		this.password=password;
 	}
-	@Override
+/*	@Override
 	public void setBirthdayD(Date birthdayD) {
 		this.birthdayD=birthdayD;
-	}
+	}*/
 	@Override
 	public void setListWeight(int weight) {
 		//TODO DA FARE
 	}
 	@Override
+	public void setBmi(double bmi) {
+		this.bmi=bmi;
+	}
+	@Override
 	public String toString() {
 		return "Utente [keyUtente=" + keyUtente + ", name=" + name
-				+ ", surname=" + surname + ", birthday=" + birthday
-				+ ", birthdayD=" + birthdayD + ", sex=" + sex + ", typeUser="
-				+ typeUser + ", height=" + height + ", weightFirst="
-				+ weightFirst + ", weight=" + weight + ", city=" + city
-				+ ", email=" + email + ", password=" + password + ", question="
-				+ question + ", answer=" + answer + "]";
+				+ ", surname=" + surname + ", birthday=" + birthday + ", sex="
+				+ sex + ", typeUser=" + typeUser + ", height=" + height
+				+ ", weightFirst=" + weightFirst + ", bmi=" + bmi + ", weight="
+				+ weight + ", city=" + city + ", email=" + email
+				+ ", password=" + password + ", question=" + question
+				+ ", answer=" + answer + "]";
 	}
 }

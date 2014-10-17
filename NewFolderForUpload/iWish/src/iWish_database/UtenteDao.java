@@ -30,16 +30,14 @@ public class UtenteDao {
 		DataBaseStorageUtente.COLUMN_EMAIL,
 		DataBaseStorageUtente.COLUMN_PASSWORD,
 		DataBaseStorageUtente.COLUMN_QUESTION,
-		DataBaseStorageUtente.COLUMN_ANSWER
+		DataBaseStorageUtente.COLUMN_ANSWER,
+		DataBaseStorageUtente.COLUME_BMI
 		//DataBaseStorageUtenteCOLUMN_PHOTO
 		//aggiungere elemento bmi
 	};
-
 	public UtenteDao(Context context){
 		dbHelper = new DataBaseStorageUtente(context);
 	}
-
-
 	public void open() throws SQLException{
 		// if the database is already open return directly
 		if((database != null) && (database.isOpen())){
@@ -49,15 +47,13 @@ public class UtenteDao {
 			database = dbHelper.getWritableDatabase();
 		}
 	}
-
 	public void close(){
 		if(database.isOpen()){
 			dbHelper.close();
 		}
 	}
-
+	@SuppressWarnings("unused")
 	public void insertOnDbUtente(Utente mUtente)throws Exception{
-		//Log.d("myapp", mUtente.getKeyUtente());
 		ContentValues values = new ContentValues();
 		values.put(DataBaseStorageUtente.COLUMN_NAME,"" + mUtente.getName() + "");
 		values.put(DataBaseStorageUtente.COLUMN_SURNAME, "" + mUtente.getSurname() + "");
@@ -71,6 +67,7 @@ public class UtenteDao {
 		values.put(DataBaseStorageUtente.COLUMN_PASSWORD,""+ mUtente.getPassword() + "");
 		values.put(DataBaseStorageUtente.COLUMN_QUESTION,""+ mUtente.getQuestion() + "");
 		values.put(DataBaseStorageUtente.COLUMN_ANSWER,""+ mUtente.getAnswer() + "");
+		values.put(DataBaseStorageUtente.COLUME_BMI, "" + mUtente.getBmi() +"");
 		long insertId = database.insert(DataBaseStorageUtente.TABLE_UTENTE, null, values);
 	}
 
@@ -124,9 +121,9 @@ public class UtenteDao {
 		utente.setPassword(cursor.getString(DataBaseStorageUtente.COLUMN_PASSWORD_INDEX));
 		utente.setQuestion(cursor.getString(DataBaseStorageUtente.COLUMN_QUESTION_INDEX));
 		utente.setAnswer(cursor.getString(DataBaseStorageUtente.COLUMN_ANSWER_INDEX));
+		utente.setBmi(cursor.getDouble(DataBaseStorageUtente.COLUMN_BMI_INDEX));
 		return  utente;
 	}
-
 	/**Invoked when the garbage collector has detected that this instance is no longer 
 	 * reachable. The default implementation does nothing, but this method can be overridden 
 	 * to free resources */

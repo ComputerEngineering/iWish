@@ -17,27 +17,38 @@ public class DataBaseStorageActivities extends SQLiteOpenHelper {
 	static final String COLUMN_ID="id";
 	static final String COLUMN_EMAIL_CHALLENGER="EmailChallenger";
 	static final String COLUMN_EMAIL_FOE="EmailFoe";
-//	static final String COLUMN_WIN="WinActivities";
-	//TODO inserire start e finish
+	static final String COLUMN_WIN="WinActivities";
+	static final String COLUMN_START="Start";
+	static final String COLUMN_FINISH="Finish";
 	
 	static final int COLUMN_ID_INDEX=0;
 	static final int COLUMN_EMAIL_CHALLENGER_INDEX=1;
 	static final int COLUMN_EMAIL_FOE_INDEX=2;
-//	static final int COLUMN_WIN_INDEX=3;
+	static final int COLUMN_WIN_INDEX=3;
+	static final int COLUMN_START_INDEX=4;
+	static final int COLUMN_FINISH_INDEX=5;
 	
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION =  1;
+	private  static  final  int DATABASE_VERSION =  2;
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Activities.db";
 	/** this 's the query that we use for create the table
 	 *  Android use the _id  for identify the element's key **/
-	
 	private static final String DATABASE_CREATE  = "create table " + TABLE_ACTIVITIES + "("
 			+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
 			+ COLUMN_EMAIL_CHALLENGER + " vachar(15) NOT NULL,"
 			+ COLUMN_EMAIL_FOE + " vachar(30) NOT NULL,"
-		//	+ COLUMN_WIN + " vachar(15) NOT NULL"
+			+ COLUMN_WIN + " numeric(1) NOT NULL,"
+			/*SQLite does not have a storage class set aside for storing dates and/or times. 
+				Instead, the built-in Date And Time Functions of SQLite are capable of storing 
+				dates and times as TEXT, REAL, or INTEGER values:
+					TEXT as ISO8601 strings ("YYYY-MM-DD HH:MM:SS.SSS").
+					REAL as Julian day numbers, the number of days since noon in Greenwich on 
+						November 24, 4714 B.C. according to the proleptic Gregorian calendar.
+					INTEGER as Unix Time, the number of seconds since 1970-01-01 00:00:00 UTC.*/
+			+ COLUMN_START + "numeric(8) NOT NULL,"
+			+ COLUMN_FINISH + "numeric(8) NOT NULL "
 			+ ");";
 	
 	public DataBaseStorageActivities(Context context) {

@@ -2,6 +2,7 @@ package iWish_Activities;
 /**Raffaella*/
 
 import java.io.Serializable;
+import java.util.Date;
 
 import android.content.Context;
 import _iWish.MyActivities;
@@ -13,19 +14,19 @@ public class Activities implements MyActivities,Serializable {
 	 * are compatible with respect to serialization.*/
 	private static final long serialVersionUID = -7102900290656728874L;
 	private Long KeyActivities;
-	private Boolean WinActivities;
+	private Integer WinActivities;//in SQLite non abbiamo i boolean quindi con gli INTEGER 0(false) and 1(true).
 	private String EmailFoe;
 	private String EmailChallenger;
 	private Context c;
-	//TODO inserire campo data Start --> private String Start;
-	//TODO inserire campo data Finish --> private String Finish;
+	private Date Start; // da controllare per il database SQLite
+	private Date Finish;
 	
 	@Override
 	public Long getKeyActivities() {
 		return KeyActivities;
 	}
 	@Override
-	public boolean getWinActivities() {
+	public Integer getWinActivities() {
 		return WinActivities;
 	}
 	@Override
@@ -37,6 +38,14 @@ public class Activities implements MyActivities,Serializable {
 		return EmailFoe;
 	}
 	@Override
+	public Date getDateStart() {
+		return Start;
+	}
+	@Override
+	public Date getDateFinish() {
+		return Finish;
+	}
+	@Override
 	public Context getC() {
 		return c;
 	}
@@ -45,20 +54,34 @@ public class Activities implements MyActivities,Serializable {
 		this.KeyActivities=KeyActivities;
 	}
 	@Override
-	public void setWinActivities(Boolean WinActivities) {
+	public void setWinActivities(Integer WinActivities) {
 		this.WinActivities=WinActivities;
 	}
 	@Override
 	public void setEmailChallenger(String EmailChallenger) {
 		this.EmailChallenger=EmailChallenger;
 	}
-	
 	@Override
 	public void setEmailFoe(String EmailFoe) {
 		this.EmailFoe=EmailFoe;
 	}
 	@Override
+	public void setDateStart(Date Start) {
+		this.Start=Start;
+	}
+	@Override
+	public void setDateFinish(Date Finish) {
+		this.Finish=Finish;
+	}
+	@Override
 	public void setC(Context c) {
 		this.c=c;
 	}
+	@Override
+	public String toString() {
+		return "Activities [KeyActivities=" + KeyActivities
+				+ ", WinActivities=" + WinActivities + ", EmailFoe=" + EmailFoe
+				+ ", EmailChallenger=" + EmailChallenger + ", c=" + c
+				+ ", Start=" + Start + ", Finish=" + Finish + "]";
+	}	
 }
