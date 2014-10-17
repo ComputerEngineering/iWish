@@ -13,9 +13,10 @@ public class Friends implements MyFriends,Serializable{
 	 * sender and receiver of a serialized object have loaded classes for that object that
 	 * are compatible with respect to serialization.*/
 	private static final long serialVersionUID = 8098509035921720548L;
-	private String keyFriends;
+	private Long keyFriends;
 	private String name;
 	private String surname;
+	private String emailFriends;
 	private int point;
 	private String emailUser;
 	private Context c;
@@ -38,7 +39,7 @@ public class Friends implements MyFriends,Serializable{
 		return emailUser;
 	}
 	@Override
-	public String getKeyFriend() {
+	public Long getKeyFriend() {
 		return keyFriends;
 	}
 	@Override
@@ -54,11 +55,15 @@ public class Friends implements MyFriends,Serializable{
 		return point;
 	}
 	@Override
+	public String getEmailFriends() {
+		return emailFriends;
+	}
+	@Override
 	public Context getC() {
 		return c;
 	}
 	@Override
-	public void setKeyFriend(String keyFriends) {
+	public void setKeyFriend(Long keyFriends) {
 		this.keyFriends=keyFriends;
 	}
 	@Override
@@ -78,12 +83,17 @@ public class Friends implements MyFriends,Serializable{
 		this.emailUser=emailUser;
 	}
 	@Override
-	public String toString() {
-		return "Friends [keyFriends=" + keyFriends + ", name=" + name
-				+ ", surname=" + surname + ", point=" + point + "]";
+	public void setEmailFriends(String emailFriends) {
+		this.emailFriends=emailFriends;
 	}
 	@Override
 	public void setC(Context C) {
 		this.c=c;
+	}
+	@Override
+	public String toString() {
+		return "Friends [keyFriends=" + keyFriends + ", name=" + name
+				+ ", surname=" + surname + ", emailFriends=" + emailFriends
+				+ ", point=" + point + ", emailUser=" + emailUser + "]";
 	}
 }

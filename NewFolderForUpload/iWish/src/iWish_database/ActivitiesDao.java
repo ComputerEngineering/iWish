@@ -87,8 +87,8 @@ public class ActivitiesDao {
 		activities.setEmailChallenger(cursor.getString(DataBaseStorageActivities.COLUMN_EMAIL_CHALLENGER_INDEX));
 		activities.setEmailFoe(cursor.getString(DataBaseStorageActivities.COLUMN_EMAIL_FOE_INDEX));
 		activities.setWinActivities(cursor.getInt(DataBaseStorageActivities.COLUMN_WIN_INDEX));
-	//	activities.setDateStart(cursor.getInt(DataBaseStorageActivities.COLUMN_START_INDEX));
-	//	activities.setDateFinish(cursor.getInt(DataBaseStorageActivities.COLUMN_FINISH_INDEX));	
+		activities.setDateStart(cursor.getInt(DataBaseStorageActivities.COLUMN_START_INDEX));
+		activities.setDateFinish(cursor.getInt(DataBaseStorageActivities.COLUMN_FINISH_INDEX));	
 		return activities;
 	}
 	/**Invoked when the garbage collector has detected that this instance is no longer 

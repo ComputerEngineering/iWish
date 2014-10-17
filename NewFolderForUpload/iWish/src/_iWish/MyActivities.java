@@ -11,14 +11,14 @@ public interface MyActivities {
 	Integer getWinActivities();
 	String getEmailChallenger();
 	String getEmailFoe();
-	Date getDateStart();
-	Date getDateFinish();
+	int getDateStart();
+	int getDateFinish();
 	Context getC();
 	void setKeyActivities(Long KeyActivities);
 	void setWinActivities(Integer WinActivities);
 	void setEmailChallenger(String EmailChallenger);
 	void setEmailFoe(String EmailFoe);
-	void setDateStart(Date Start);
-	void setDateFinish(Date Finish);
+	void setDateStart(int Start);
+	void setDateFinish(int Finish);
 	void setC(Context c);
 }

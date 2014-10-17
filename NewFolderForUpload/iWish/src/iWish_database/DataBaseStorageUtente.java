@@ -15,11 +15,12 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 
 	static final String TABLE_UTENTE = "Utente";
 
-	static final String COLUMN_ID="id";
+	static final String COLUMN_ID="_id";
 	static final String COLUMN_NAME="nome";
 	static final String COLUMN_SURNAME="surname";
 	static final String COLUMN_BIRTHDAY="birthday";
 	static final String COLUMN_SEX="sex";
+	static final String COLUMN_POINT="point";
 	static final String COLUMN_TYPEUSER="type";
 	static final String COLUMN_HEIGHT="height";
 	static final String COLUMN_WEIGHT="weight";
@@ -46,11 +47,12 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 	static final int COLUMN_QUESTION_INDEX=11;
 	static final int COLUMN_ANSWER_INDEX=12;
 	static final int COLUMN_BMI_INDEX=13;
-	//static final int COLUMN_PHOTO_INDEX=14;
+	static final int COLUMN_POINT_INDEX=14;
+	//static final int COLUMN_PHOTO_INDEX=15;
 
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION =  3;
+	private  static  final  int DATABASE_VERSION =  4;
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Utente.db";
 	/** this 's the query that we use for create the table
@@ -63,12 +65,13 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 			+ COLUMN_SEX + " vachar(2) NOT NULL,"
 			+ COLUMN_TYPEUSER + " vachar(25) NOT NULL,"
 			+ COLUMN_HEIGHT + " numeric(6) NOT NULL,"
+			+ COLUMN_POINT+ " numeric(4) NOT NULL,"
 			+ COLUMN_WEIGHT + " numeric(6) NOT NULL,"
 			+ COLUMN_CITY + " vachar(15) NOT NULL,"
 			+ COLUMN_EMAIL + " vachar(15) NOT NULL,"
 			+ COLUMN_PASSWORD + " vachar(15) NOT NULL,"
 			+ COLUMN_QUESTION + " vachar(30) NOT NULL,"
-			+ COLUME_BMI + " real(5) NOT NULL"
+			+ COLUME_BMI + " real(5,2) NOT NULL"
 			+ COLUMN_ANSWER + " vachar(15) NOT NULL"
 			//TODO vedere come definire l'attributo photo
 		//	+ COLUMN_PHOTO + " ......."

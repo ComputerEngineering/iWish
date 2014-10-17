@@ -2,10 +2,9 @@ package iWish_Activities;
 /**Raffaella*/
 
 import java.io.Serializable;
-import java.util.Date;
 
-import android.content.Context;
 import _iWish.MyActivities;
+import android.content.Context;
 
 public class Activities implements MyActivities,Serializable {
 	/**The serialization runtime associates with each serializable class a version number, 
@@ -17,9 +16,9 @@ public class Activities implements MyActivities,Serializable {
 	private Integer WinActivities;//in SQLite non abbiamo i boolean quindi con gli INTEGER 0(false) and 1(true).
 	private String EmailFoe;
 	private String EmailChallenger;
+	private int Start; // da controllare per il database SQLite
+	private int Finish;
 	private Context c;
-	private Date Start; // da controllare per il database SQLite
-	private Date Finish;
 	
 	@Override
 	public Long getKeyActivities() {
@@ -38,11 +37,11 @@ public class Activities implements MyActivities,Serializable {
 		return EmailFoe;
 	}
 	@Override
-	public Date getDateStart() {
+	public int getDateStart() {
 		return Start;
 	}
 	@Override
-	public Date getDateFinish() {
+	public int getDateFinish() {
 		return Finish;
 	}
 	@Override
@@ -66,11 +65,11 @@ public class Activities implements MyActivities,Serializable {
 		this.EmailFoe=EmailFoe;
 	}
 	@Override
-	public void setDateStart(Date Start) {
+	public void setDateStart(int Start) {
 		this.Start=Start;
 	}
 	@Override
-	public void setDateFinish(Date Finish) {
+	public void setDateFinish(int Finish) {
 		this.Finish=Finish;
 	}
 	@Override

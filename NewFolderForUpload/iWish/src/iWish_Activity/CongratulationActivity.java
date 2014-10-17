@@ -59,6 +59,7 @@ public class CongratulationActivity extends Activity {
 		pes = mUser.getWeight();
 		bmi = pes/(Math.pow(alt, 2));
 		bmi2 = new BigDecimal(bmi).setScale(1 , BigDecimal.ROUND_UP).doubleValue();
+		mUser.setBmi(bmi2);
 		valoreBmi.setText(""+bmi2+"");//da fare invio di tutti i dati al db
 		imgbt_expressWish.setOnClickListener(new OnClickListener() {
 			@Override

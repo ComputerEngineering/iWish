@@ -11,8 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-/**Alessandro - Raffaella*/
-import android.util.Log;
+
 
 /**This class is our DAO. 
  * It maintains the database connection and supports adding new element.**/
@@ -24,9 +23,12 @@ public class FriendsDao {
 	private static String[] allColumns={
 		DataBaseStorageFriends.COLUMN_ID,
 		DataBaseStorageFriends.COLUMN_NAME,
+		DataBaseStorageFriends.COLUMN_EMAIL_FRIENDS,
+		DataBaseStorageFriends.COLUMN_EMAIL_USER,
 		DataBaseStorageFriends.COLUMN_SURNAME,
 		DataBaseStorageFriends.COLUMN_POINT
-		//DataBaseStorageFriends.COLUMN_POINT
+		
+		//DataBaseStorageFriends.COLUMN_PHOTO
 	};
 	
 	public FriendsDao(Context context){
@@ -49,13 +51,15 @@ public class FriendsDao {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	public void insertOnDbFriends(Friends mFriends)throws Exception{
-		Log.d("myapp", mFriends.getKeyFriend());
 		ContentValues values = new ContentValues();
 		values.put(DataBaseStorageFriends.COLUMN_ID,"" + mFriends.getKeyFriend() + "");
 		values.put(DataBaseStorageFriends.COLUMN_NAME,"" + mFriends.getName() + "");
 		values.put(DataBaseStorageFriends.COLUMN_SURNAME,"" + mFriends.getSurname() + "");
 		values.put(DataBaseStorageFriends.COLUMN_POINT,"" + mFriends.getPoint() + "");
+		values.put(DataBaseStorageFriends.COLUMN_EMAIL_FRIENDS, "" + mFriends.getEmailFriends() + "");
+		values.put(DataBaseStorageFriends.COLUMN_EMAIL_USER, "" + mFriends.getEmailUser() + "");
 		long insertId = database.insert(DataBaseStorageFriends.TABLE_FRIENDS, null, values);
 	}
 	
@@ -64,13 +68,13 @@ public class FriendsDao {
 	}
 	
 	public void deleteOnDbOneFriends(Friends mFriends){
-		String guid = mFriends.getKeyFriend();
+		Long guid = mFriends.getKeyFriend();
 		System.out.print("Key Friends that we have delete is : " + guid);
 		database.delete(DataBaseStorageFriends.TABLE_FRIENDS, DataBaseStorageFriends.COLUMN_ID+"='" + guid+ "'" , null);
 	}
 	
 	public int deleteOnDbSomeFriends(List<Friends> mFriends){
-		String guid=null;
+		Long guid=null;
 		int db=-1;
 		for(Friends friends: mFriends){
 			guid=friends.getKeyFriend();
@@ -96,10 +100,12 @@ public class FriendsDao {
 	
 	private Friends cursorsFriends(Cursor cursor) {
 		Friends friends = new Friends();
-		friends.setKeyFriend(cursor.getString(DataBaseStorageFriends.COLUMN_ID_INDEX));
+		friends.setKeyFriend(cursor.getLong(DataBaseStorageFriends.COLUMN_ID_INDEX));
 		friends.setName(cursor.getString(DataBaseStorageFriends.COLUMN_NAME_INDEX));
 		friends.setSurname(cursor.getString(DataBaseStorageFriends.COLUMN_SURNAME_INDEX));
 		friends.setPoint(cursor.getInt(DataBaseStorageFriends.COLUMN_POINT_INDEX));
+		friends.setEmailFriends(cursor.getString(DataBaseStorageFriends.COLUMN_EMAIL_FRIENDS_INDEX));
+		friends.setEmailUser(cursor.getString(DataBaseStorageFriends.COLUMN_EMAIL_USER_INDEX));
 		return friends;
 	}
 	

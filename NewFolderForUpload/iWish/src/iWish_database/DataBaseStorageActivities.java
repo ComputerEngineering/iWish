@@ -14,7 +14,7 @@ public class DataBaseStorageActivities extends SQLiteOpenHelper {
 	 * In addition it provides the execSQL() method, which allows to execute SQL directly.*/
 	static final String TABLE_ACTIVITIES = "Activities";
 	
-	static final String COLUMN_ID="id";
+	static final String COLUMN_ID="_id";
 	static final String COLUMN_EMAIL_CHALLENGER="EmailChallenger";
 	static final String COLUMN_EMAIL_FOE="EmailFoe";
 	static final String COLUMN_WIN="WinActivities";
@@ -30,7 +30,7 @@ public class DataBaseStorageActivities extends SQLiteOpenHelper {
 	
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION =  2;
+	private  static  final  int DATABASE_VERSION = 3;
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Activities.db";
 	/** this 's the query that we use for create the table
