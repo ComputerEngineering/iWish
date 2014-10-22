@@ -10,7 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class SplashActivity extends Activity{
-	protected static final int TIMER_RUNTIME = 5000; // in ms --> 10s
+	protected static final int TIMER_RUNTIME = 1000; // in ms --> 10s
 	protected boolean mbActive;
 	protected ProgressBar mProgressBar;
 	protected TextView loading;
