@@ -17,15 +17,18 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.progect.iwish.R;
 
-public class RegisterActivity extends Activity{
+public class RegisterActivity extends Activity implements OnItemSelectedListener{
 	public Context c;
 	private ImageButton bt_change=null;
 	private ImageButton bt_go_ok=null;
@@ -39,14 +42,14 @@ public class RegisterActivity extends Activity{
 	private EditText edt_rp_password=null;
 	private EditText edt_answer_register=null;
 	private Spinner sp_questions_register=null;
-	private ArrayAdapter<String> adapter=null;
-	private ArrayAdapter<String> arrayAdapter=null;
+	private String question;
+	private ArrayAdapter<CharSequence> adapter=null;
+	//private ArrayAdapter<String> arrayAdapter=null;
 	private String[] data=null;
 	private ImageView selectPhoto=null;
 	private static final int SELECT_PICTURE = 1;
 	private String selectedImagePath=null;
 	private AlertDialog alertDialog;
-	private String firstQuestionsSelected="Select Question";
 	private Utente mUser ;
 
 	@Override
@@ -55,10 +58,11 @@ public class RegisterActivity extends Activity{
 		setContentView(R.layout.register);
 		setUpViews();
 
-		adapter = createSpinnerAdapter();
+		sp_questions_register  =(Spinner) findViewById(R.id.spinner1);
+		adapter = ArrayAdapter.createFromResource(this, R.array.question, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		sp_questions_register = (Spinner)findViewById(R.id.spinner1);
 		sp_questions_register.setAdapter(adapter);
+		sp_questions_register.setOnItemSelectedListener(this);
 
 		//cliccando sul cerchietto si sceglie la propria immagine di profilo tra le foto in memoria nel cel
 		selectPhoto.setOnClickListener(new OnClickListener() {
@@ -77,30 +81,41 @@ public class RegisterActivity extends Activity{
 			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
-				if((edt_name.getText().equals(""))||(edt_surname.getText().equals(""))
-						||(edt_birthday.getText().equals(""))||(edt_city.getText().equals(""))
-						||(edt_email.getText().equals(""))||(edt_rp_email.getText().equals(""))
-						||(edt_password.getText().equals(""))||(edt_rp_password.getText().equals(""))
-						||(edt_answer_register.getText().equals(""))){
+				if((edt_name.getText().toString().equals(""))||(edt_surname.getText().toString().equals(""))
+						||(edt_birthday.getText().toString().equals(""))||(edt_city.getText().toString().equals(""))
+						||(edt_email.getText().toString().equals(""))||(edt_rp_email.getText().toString().equals(""))
+						||(edt_password.getText().toString().equals(""))||(edt_rp_password.getText().toString().equals(""))
+						||(edt_answer_register.getText().toString().equals(""))){
 					//TODO controlli
+					CharSequence eMail= "Registration is not complete";
+					Toast.makeText(getApplicationContext(), eMail, Toast.LENGTH_SHORT).show();
 				}else{
-					if(sp_questions_register.toString().equalsIgnoreCase(firstQuestionsSelected)){
-						//TODO controlli
-					}
-					else{
-						// Creiamo un nuovo intent passando il nome dell'intent successivo (ma si poteva fare anche passando il nome della classe) 
-						Intent intent = new Intent("iWish_Activity.AVATAR");
-						//creiamo un utente u con tutte le info inserite
-						Utente u = createUser();
-						//aggiungiamo il tutto al nostro intent
-						intent.putExtra("u", u);
-						//facciamo partire l'intent AVATAR
-						startActivity(intent);
-					}
+
+					// Creiamo un nuovo intent passando il nome dell'intent successivo (ma si poteva fare anche passando il nome della classe) 
+					Intent intent = new Intent("iWish_Activity.AVATAR");
+					//creiamo un utente u con tutte le info inserite
+					Utente u = createUser();
+					//aggiungiamo il tutto al nostro intent
+					intent.putExtra("u", u);
+					//facciamo partire l'intent AVATAR
+					startActivity(intent);
 				}
 			}
 		});
 	}
+
+	//utilizzato per prendere il dato dello spinner
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+		//prendo il valore dell'elemento selezionato
+		question = parent.getItemAtPosition(pos).toString();
+
+		//visualizzo l'elemento selezionato
+		//  Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG).show();
+	}
+	public void onNothingSelected(AdapterView<?> parent) {
+		// Another interface callback
+	}
+
 	private void setUpViews() {
 		bt_change = (ImageButton)findViewById(R.id.bott_modifica);
 		bt_go_ok = (ImageButton)findViewById(R.id.bt_go_ok);
@@ -124,14 +139,10 @@ public class RegisterActivity extends Activity{
 		mUser.setEmail(edt_email.getText().toString());
 		mUser.setPassword(edt_password.getText().toString());
 		mUser.setAnswer(edt_answer_register.getText().toString());
-		mUser.setQuestion(sp_questions_register.toString());
+		mUser.setQuestion(question);
 		return mUser;
 	}
-	private ArrayAdapter<String> createSpinnerAdapter(){
-		data = getResources().getStringArray(R.array.question);
-		arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, data );
-		return arrayAdapter;
-	}
+
 	/**metodo per la gestione dell'interazione con la gallery del telefono**/
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == RESULT_OK) {

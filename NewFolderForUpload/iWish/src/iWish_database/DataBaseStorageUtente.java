@@ -52,7 +52,7 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION =  4;
+	private  static  final  int DATABASE_VERSION =  5;
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Utente.db";
 	/** this 's the query that we use for create the table
@@ -65,13 +65,13 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 			+ COLUMN_SEX + " vachar(2) NOT NULL,"
 			+ COLUMN_TYPEUSER + " vachar(25) NOT NULL,"
 			+ COLUMN_HEIGHT + " numeric(6) NOT NULL,"
-			+ COLUMN_POINT+ " numeric(4) NOT NULL,"
+			+ COLUMN_POINT+ " numeric(4) DEFAULT 0,"
 			+ COLUMN_WEIGHT + " numeric(6) NOT NULL,"
 			+ COLUMN_CITY + " vachar(15) NOT NULL,"
-			+ COLUMN_EMAIL + " vachar(15) NOT NULL,"
+			+ COLUMN_EMAIL + " vachar(15) NOT NULL UNIQUE,"
 			+ COLUMN_PASSWORD + " vachar(15) NOT NULL,"
 			+ COLUMN_QUESTION + " vachar(30) NOT NULL,"
-			+ COLUME_BMI + " real(5,2) NOT NULL"
+			+ COLUME_BMI + " real(5,2) NOT NULL,"
 			+ COLUMN_ANSWER + " vachar(15) NOT NULL"
 			//TODO vedere come definire l'attributo photo
 		//	+ COLUMN_PHOTO + " ......."

@@ -56,7 +56,6 @@ public class ForgotPswActivity extends Activity implements OnItemSelectedListene
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.forgotpsw);
 	    
-	    
 	    sp_questions =(Spinner) findViewById(R.id.spinnerQuestion);
 	    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.question, android.R.layout.simple_spinner_item);
 	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

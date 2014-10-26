@@ -41,7 +41,7 @@ import android.widget.Toast;
  * AsyncTask enables proper and easy use of the UI thread. This class allows to perform background 
  * operations and publish results on the UI thread without having to manipulate threads and/or handlers**/
 public class NetworkUtente extends AsyncTask<String, Void,  String> {
-	private static final String uri= "http://iwish.suroot.com/insert/user.php"; 
+	private static final String uri= "http://iwish.suroot.com/iwishapp/user.php"; 
 	/**Describes the state of any Wi-fi connection that is active or is in the process of being set up.*/
 	private NetworkInfo mWifi,mMobile,mEthernet,mBluetooth;
 	/**The POST method is used to request that the origin server accept the entity enclosed in the request 
@@ -149,7 +149,7 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			//da aggiungere put per la lista dei pesi (se serve)
 			json.put("tipoUser", (obj2.get(key)).getTypeUser());
 			json.put("sex", (obj2.get(key)).getSex());
-			json.put("answar", (obj2.get(key)).getAnswer());
+			json.put("answer", (obj2.get(key)).getAnswer());
 			json.put("question", (obj2.get(key)).getQuestion());
 			//TODO inserire i point
 			Map<String, String> user = new HashMap<String, String>();
