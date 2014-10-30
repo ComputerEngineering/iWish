@@ -1,7 +1,9 @@
 package iWish_Control;
 /**Raffaella*/
 
+import iWish_Network.NetworkActivities;
 import iWish_Network.NetworkFriends;
+import iWish_Network.NetworkSession;
 import iWish_Network.NetworkUtente;
 
 /** The Singleton is a special kind of class that ensures that only one instance of that class can be 
@@ -31,6 +33,14 @@ public class ControlConnection {
 	
 	public void onInsertFriends(){
 		new NetworkFriends().execute();
+	}
+	
+	public void onInsertSession(){
+	//	new NetworkSession().execute();
+	}
+	
+	public void onInsertActivities(){
+		new NetworkActivities().execute();
 	}
 
 

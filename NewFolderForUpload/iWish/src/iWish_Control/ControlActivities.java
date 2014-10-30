@@ -50,7 +50,7 @@ public class ControlActivities{
 		}
 	}
 	
-	public List<Activities> getOnDbAllUtente(){
+	public List<Activities> getOnDbAllActvities(){
 		try {
 			return mActivitiesDao.getAllActvities();
 		} catch (Exception e) {

@@ -2,9 +2,9 @@ package iWish_Network;
 /**Raffaella*/
 
 import iWish_Context.ContextiWish;
-import iWish_Control.ControlUser;
+import iWish_Control.ControlActivities;
 import iWish_ControlServer.CheckConnection;
-import iWish_Utente.Utente;
+import iWish_Activities.Activities;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,8 +40,8 @@ import android.widget.Toast;
 /**
  * AsyncTask enables proper and easy use of the UI thread. This class allows to perform background 
  * operations and publish results on the UI thread without having to manipulate threads and/or handlers**/
-public class NetworkUtente extends AsyncTask<String, Void,  String> {
-	private static final String uri= "http://iwish.suroot.com/iwishapp/user.php"; 
+public class NetworkActivities extends AsyncTask<String, Void,  String> {
+	private static final String uri= "http://iwish.suroot.com/iwishapp/activities.php"; 
 	/**Describes the state of any Wi-fi connection that is active or is in the process of being set up.*/
 	private NetworkInfo mWifi,mMobile,mEthernet,mBluetooth;
 	/**The POST method is used to request that the origin server accept the entity enclosed in the request 
@@ -54,7 +54,7 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	private HttpClient httpclient;
 	/**This class comforms to the generic grammar and formatting rules */
 	private List<NameValuePair> nameValuePairs;
-	private HashMap<Long, Utente> obj;
+	private HashMap<Long, Activities> obj;
 	private long key;
 	/**A JSONObject is an unordered collection of name/value pairs. A JSONObject constructor can be used 
 	 * to convert an external form JSON text into an internal form whose values can be retrieved with 
@@ -95,12 +95,12 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			httppost = new HttpPost(uri); // creiamo un oggetto di tipo HttpPost
 			resonseHandler = new BasicResponseHandler();
 			json = new JSONObject();
-			obj=new HashMap<Long, Utente>();
+			obj=new HashMap<Long, Activities>();
 
-			takeListUtente();
+			takeListActivities();
 
 			if(count==0){
-				re=SendUser(obj);
+				re=SendActivities(obj);
 				res=readResponseFromServer(re);
 			}else{
 				do{
@@ -117,49 +117,44 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 		}
 		return res;
 	}
-	/**I will take the list User that we have insert on db */
-	private HashMap<Long,Utente> takeListUtente() {
+	/**I will take the list Actrivities that we have insert on db */
+	private HashMap<Long,Activities> takeListActivities() {
 		//Take the file to send at DbUser
-		List<Utente> mUser = ControlUser.getIstanceControlUser().getOnDbAllUtente();
-		if(mUser!=null){
+		List<Activities> mActivities = ControlActivities.getIstanceControlActivities().getOnDbAllActvities();
+		if(mActivities!=null){
 			Long k;
-			for (Utente user : mUser){
-				k = user.getKeyUtente();
-				obj.put(k, user);
+			for (Activities activities : mActivities){
+				k = activities.getKeyActivities();
+				obj.put(k, activities);
 			}
 		}
-		key=(mUser.get(mUser.size()-1)).getKeyUtente();
+		key=(mActivities.get(mActivities.size()-1)).getKeyActivities();
 		return obj;
 	}
 	/**into this method we send the file User to the server*/
-	private HttpResponse SendUser(HashMap<Long,Utente> obj2) {
-		long s = (obj2.get(key)).getKeyUtente();
+	private HttpResponse SendActivities(HashMap<Long,Activities> obj2) {
+		long s = (obj2.get(key)).getKeyActivities();
 		//First we create a JsonObject
 		try {
-			json.put("eMail", (obj2.get(key)).getEmail());
-			json.put("id", (obj2.get(key)).getKeyUtente());
-			json.put("name", (obj2.get(key)).getName());
-			json.put("surname", (obj2.get(key)).getSurname());
-			json.put("birthday",(obj2.get(key)).getBirthday());
-			json.put("city", (obj2.get(key)).getCity());
-			json.put("password", (obj2.get(key)).getPassword());
-			json.put("altezza", (obj.get(key)).getHeight());
-			json.put("peso",(obj.get(key)).getWeight());
-			json.put("bmi",(obj.get(key)).getBmi());
-			//da aggiungere put per la lista dei pesi (se serve)
-			json.put("tipoUser", (obj2.get(key)).getTypeUser());
-			json.put("sex", (obj2.get(key)).getSex());
-			json.put("answer", (obj2.get(key)).getAnswer());
-			json.put("question", (obj2.get(key)).getQuestion());
-			//TODO inserire i point
-			Map<String, String> user = new HashMap<String, String>();
-			user.put("user", json.toString());
-			nameValuePairs= new ArrayList<NameValuePair>(user.size());
+			json.put("id", (obj2.get(key)).getKeyActivities());
+			json.put("eMail", (obj2.get(key)).getEmailChallenger());
+			json.put("idSfidato", (obj2.get(key)).getIdSfidato());
+			json.put("startDate", (obj2.get(key)).getStartDate());
+			json.put("endDate",(obj2.get(key)).getEndDate());
+			json.put("win", (obj2.get(key)).getWin());
+			json.put("kmObbiettivo", (obj2.get(key)).getKmObbiettivo());
+			json.put("kmPercorsi", (obj.get(key)).getKmPercorsi());
+			json.put("tipoAttivita",(obj.get(key)).getTipoAttivita());
+			json.put("emailFoe",(obj.get(key)).getEmailFoe());
+
+			Map<String, String> activities = new HashMap<String, String>();
+			activities.put("Attivita", json.toString());
+			nameValuePairs= new ArrayList<NameValuePair>(activities.size());
 			String k,v;
-			Iterator<String> itKeys= user.keySet().iterator();
+			Iterator<String> itKeys= activities.keySet().iterator();
 			while (itKeys.hasNext()){
 				k=itKeys.next();
-				v=user.get(k);
+				v=activities.get(k);
 				nameValuePairs.add(new BasicNameValuePair(k,v));
 			}
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -214,19 +209,18 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	protected void onPostExecute(String result) {
 		if (result != null){
 			Log.i("AsyncTask", "onPostExecute: Completed.");
-			Toast.makeText(c, "Completed!We have done your registration thank you! ",Toast.LENGTH_LONG).show();
+			Toast.makeText(c, "Completed!We have save your activities ! ",Toast.LENGTH_LONG).show();
 			//TODO finire
 			obj.remove(key);
 		}else {
 			// error occurred
 			Log.i("AsyncTask", "onPostExecute: Completed with an Error.");
-			Toast.makeText(c, "Completed with an Error!Developper haven't receved the registration that you have send ",Toast.LENGTH_LONG).show();
+			Toast.makeText(c, "Completed with an Error!Developper haven't receved your activities !",Toast.LENGTH_LONG).show();
 		}
 	}
 	private static Boolean isConnected() {
 		Runnable runnable = new Runnable() {
 			public void run() {
-
 				isNetworkAvailable(h,2000);             
 			}           
 		};
@@ -294,14 +288,14 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	}
 	private void connection(){
 		try {
-			if(NetworkUtente.isConnected()){
+			if(NetworkActivities.isConnected()){
 				Toast.makeText(c, "The server is connected ",Toast.LENGTH_LONG).show();
-				re= SendUser(obj);
+				re= SendActivities(obj);
 				res=readResponseFromServer(re);
 			}else{
 				Toast.makeText(c, "The server isn't connected ",Toast.LENGTH_LONG).show();
 				checkMobile();
-				re= SendUser(obj);
+				re= SendActivities(obj);
 				res=readResponseFromServer(re);
 			}
 		} catch (Exception e) {
@@ -333,7 +327,7 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			Toast.makeText(c, "Please connect wi-fi ",Toast.LENGTH_LONG).show();
 		}
 	}
-	
+
 	private void checkBluetooth(){
 		/* Indicates whether network connectivity exists or is in the process of being established. This is good for applications 
 		 * that need to do anything related to the network other than read or write data. For the latter, call isConnected() instead,

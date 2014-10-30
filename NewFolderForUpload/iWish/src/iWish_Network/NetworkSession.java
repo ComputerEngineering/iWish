@@ -2,9 +2,9 @@ package iWish_Network;
 /**Raffaella*/
 
 import iWish_Context.ContextiWish;
-import iWish_Control.ControlUser;
+import iWish_Control.ControlSession;
 import iWish_ControlServer.CheckConnection;
-import iWish_Utente.Utente;
+import iWish_Session.Session;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,8 +40,8 @@ import android.widget.Toast;
 /**
  * AsyncTask enables proper and easy use of the UI thread. This class allows to perform background 
  * operations and publish results on the UI thread without having to manipulate threads and/or handlers**/
-public class NetworkUtente extends AsyncTask<String, Void,  String> {
-	private static final String uri= "http://iwish.suroot.com/iwishapp/user.php"; 
+public class NetworkSession extends AsyncTask<String, Void,  String> {
+	private static final String uri= "http://iwish.suroot.com/iwishapp/session.php"; 
 	/**Describes the state of any Wi-fi connection that is active or is in the process of being set up.*/
 	private NetworkInfo mWifi,mMobile,mEthernet,mBluetooth;
 	/**The POST method is used to request that the origin server accept the entity enclosed in the request 
@@ -54,7 +54,7 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	private HttpClient httpclient;
 	/**This class comforms to the generic grammar and formatting rules */
 	private List<NameValuePair> nameValuePairs;
-	private HashMap<Long, Utente> obj;
+	private HashMap<Long, Session> obj;
 	private long key;
 	/**A JSONObject is an unordered collection of name/value pairs. A JSONObject constructor can be used 
 	 * to convert an external form JSON text into an internal form whose values can be retrieved with 
@@ -74,7 +74,7 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	private ResponseHandler <String> resonseHandler; //Handler that encapsulates the process of generating a response object from a HttpResponse.
 	private Context c;
 	private static Boolean status =  true;
-	private final String a="The server is connected but the Device not send registration";
+	private final String a="The server is connected but the Device not send Session";
 	private final String b="The server isn't connected";
 	private int count=0;
 	private HttpResponse re;
@@ -95,12 +95,12 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 			httppost = new HttpPost(uri); // creiamo un oggetto di tipo HttpPost
 			resonseHandler = new BasicResponseHandler();
 			json = new JSONObject();
-			obj=new HashMap<Long, Utente>();
+			obj=new HashMap<Long, Session>();
 
-			takeListUtente();
+			takeListSession();
 
 			if(count==0){
-				re=SendUser(obj);
+				re=SendSession(obj);
 				res=readResponseFromServer(re);
 			}else{
 				do{
@@ -117,49 +117,42 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 		}
 		return res;
 	}
-	/**I will take the list User that we have insert on db */
-	private HashMap<Long,Utente> takeListUtente() {
+	/**I will take the list Session that we have insert on db */
+	private HashMap<Long,Session> takeListSession() {
 		//Take the file to send at DbUser
-		List<Utente> mUser = ControlUser.getIstanceControlUser().getOnDbAllUtente();
-		if(mUser!=null){
+		List<Session> mSession = ControlSession.getIstanceControlSession().getOnDbAllSession();
+		if(mSession!=null){
 			Long k;
-			for (Utente user : mUser){
-				k = user.getKeyUtente();
-				obj.put(k, user);
+			for (Session session : mSession){
+				k = session.getKeySession();
+				obj.put(k, session);
 			}
 		}
-		key=(mUser.get(mUser.size()-1)).getKeyUtente();
+		key=(mSession.get(mSession.size()-1)).getKeySession();
 		return obj;
 	}
 	/**into this method we send the file User to the server*/
-	private HttpResponse SendUser(HashMap<Long,Utente> obj2) {
-		long s = (obj2.get(key)).getKeyUtente();
+	private HttpResponse SendSession(HashMap<Long,Session> obj2) {
+		long s = (obj2.get(key)).getKeySession();
 		//First we create a JsonObject
 		try {
-			json.put("eMail", (obj2.get(key)).getEmail());
-			json.put("id", (obj2.get(key)).getKeyUtente());
-			json.put("name", (obj2.get(key)).getName());
-			json.put("surname", (obj2.get(key)).getSurname());
-			json.put("birthday",(obj2.get(key)).getBirthday());
-			json.put("city", (obj2.get(key)).getCity());
-			json.put("password", (obj2.get(key)).getPassword());
-			json.put("altezza", (obj.get(key)).getHeight());
-			json.put("peso",(obj.get(key)).getWeight());
-			json.put("bmi",(obj.get(key)).getBmi());
-			//da aggiungere put per la lista dei pesi (se serve)
-			json.put("tipoUser", (obj2.get(key)).getTypeUser());
-			json.put("sex", (obj2.get(key)).getSex());
-			json.put("answer", (obj2.get(key)).getAnswer());
-			json.put("question", (obj2.get(key)).getQuestion());
-			//TODO inserire i point
-			Map<String, String> user = new HashMap<String, String>();
-			user.put("user", json.toString());
-			nameValuePairs= new ArrayList<NameValuePair>(user.size());
+			json.put("idAttivita", (obj2.get(key)).getKeyActivities());
+			json.put("durataTempo", (obj2.get(key)).getDurataTempo());
+			json.put("battitiMax", (obj2.get(key)).getBattitiMax());
+			json.put("battitiMin",(obj2.get(key)).getBattitiMin());
+			json.put("battitiMed", (obj2.get(key)).getBattitiMed());
+			json.put("altezzaMax", (obj2.get(key)).getAltezzaMax());
+			json.put("altezzaMin", (obj.get(key)).getAltezzaMin());
+			json.put("altezzaMed",(obj.get(key)).getAltezzaMed());
+			
+			Map<String, String> session = new HashMap<String, String>();
+			session.put("sessioni", json.toString());
+			nameValuePairs= new ArrayList<NameValuePair>(session.size());
 			String k,v;
-			Iterator<String> itKeys= user.keySet().iterator();
+			Iterator<String> itKeys= session.keySet().iterator();
 			while (itKeys.hasNext()){
 				k=itKeys.next();
-				v=user.get(k);
+				v=session.get(k);
 				nameValuePairs.add(new BasicNameValuePair(k,v));
 			}
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -214,19 +207,18 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	protected void onPostExecute(String result) {
 		if (result != null){
 			Log.i("AsyncTask", "onPostExecute: Completed.");
-			Toast.makeText(c, "Completed!We have done your registration thank you! ",Toast.LENGTH_LONG).show();
+			Toast.makeText(c, "Completed!We have done your session! ",Toast.LENGTH_LONG).show();
 			//TODO finire
 			obj.remove(key);
 		}else {
 			// error occurred
 			Log.i("AsyncTask", "onPostExecute: Completed with an Error.");
-			Toast.makeText(c, "Completed with an Error!Developper haven't receved the registration that you have send ",Toast.LENGTH_LONG).show();
+			Toast.makeText(c, "Completed with an Error!Developper haven't receved your session that you have send ",Toast.LENGTH_LONG).show();
 		}
 	}
 	private static Boolean isConnected() {
 		Runnable runnable = new Runnable() {
 			public void run() {
-
 				isNetworkAvailable(h,2000);             
 			}           
 		};
@@ -294,14 +286,14 @@ public class NetworkUtente extends AsyncTask<String, Void,  String> {
 	}
 	private void connection(){
 		try {
-			if(NetworkUtente.isConnected()){
+			if(NetworkSession.isConnected()){
 				Toast.makeText(c, "The server is connected ",Toast.LENGTH_LONG).show();
-				re= SendUser(obj);
+				re= SendSession(obj);
 				res=readResponseFromServer(re);
 			}else{
 				Toast.makeText(c, "The server isn't connected ",Toast.LENGTH_LONG).show();
 				checkMobile();
-				re= SendUser(obj);
+				re= SendSession(obj);
 				res=readResponseFromServer(re);
 			}
 		} catch (Exception e) {
