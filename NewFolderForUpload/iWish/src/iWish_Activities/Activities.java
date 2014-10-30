@@ -13,11 +13,17 @@ public class Activities implements MyActivities,Serializable {
 	 * are compatible with respect to serialization.*/
 	private static final long serialVersionUID = -7102900290656728874L;
 	private Long KeyActivities;
-	private Integer WinActivities;//in SQLite non abbiamo i boolean quindi con gli INTEGER 0(false) and 1(true).
-	private String EmailFoe;
 	private String EmailChallenger;
-	private int Start; // da controllare per il database SQLite
-	private int Finish;
+	private Long IdSfidato;
+	private int StartDate; // da controllare per il database SQLite
+	private int EndDate;
+	private int Win;//in SQLite non abbiamo i boolean quindi con gli INTEGER 0(false) and 1(true).
+	private int KmObbiettivo;
+	private int KmPercorsi;
+	private String TipoAttivita;
+	private String EmailFoe;
+	
+	
 	private Context c;
 	
 	@Override
@@ -25,8 +31,12 @@ public class Activities implements MyActivities,Serializable {
 		return KeyActivities;
 	}
 	@Override
-	public Integer getWinActivities() {
-		return WinActivities;
+	public int getWin() {
+		return Win;
+	}
+	@Override
+	public Long getIdSfidato() {
+		return IdSfidato;
 	}
 	@Override
 	public String getEmailChallenger() {
@@ -37,12 +47,22 @@ public class Activities implements MyActivities,Serializable {
 		return EmailFoe;
 	}
 	@Override
-	public int getDateStart() {
-		return Start;
+	public int getStartDate() {
+		return StartDate;
 	}
 	@Override
-	public int getDateFinish() {
-		return Finish;
+	public int getEndDate() {
+		return EndDate;
+	}
+	@Override
+	public int getKmObbiettivo() {
+		return KmObbiettivo;
+	}
+	public int getKmPercorsi() {
+		return KmPercorsi;
+	}
+	public String getTipoAttivita() {
+		return TipoAttivita;
 	}
 	@Override
 	public Context getC() {
@@ -53,8 +73,19 @@ public class Activities implements MyActivities,Serializable {
 		this.KeyActivities=KeyActivities;
 	}
 	@Override
-	public void setWinActivities(Integer WinActivities) {
-		this.WinActivities=WinActivities;
+	public void setWin(int Win) {
+		this.Win=Win;
+	}
+	@Override
+	public void setIdSfidato(Long IdSfidato) {
+		this.IdSfidato=IdSfidato;
+	}
+	@Override
+	public void setKmObbiettivo(int KmObbiettivo) {
+		this.KmObbiettivo=KmObbiettivo;
+	}
+	public void setKmPercorsi(int KmPercorsi) {
+		this.KmPercorsi=KmPercorsi;
 	}
 	@Override
 	public void setEmailChallenger(String EmailChallenger) {
@@ -65,12 +96,15 @@ public class Activities implements MyActivities,Serializable {
 		this.EmailFoe=EmailFoe;
 	}
 	@Override
-	public void setDateStart(int Start) {
-		this.Start=Start;
+	public void setStartDate(int StartDate) {
+		this.StartDate=StartDate;
+	}
+	public void setTipoAttivita(String TipoAttivita) {
+		this.TipoAttivita=TipoAttivita;
 	}
 	@Override
-	public void setDateFinish(int Finish) {
-		this.Finish=Finish;
+	public void setEndDate(int EndDate) {
+		this.EndDate=EndDate;
 	}
 	@Override
 	public void setC(Context c) {
@@ -79,8 +113,12 @@ public class Activities implements MyActivities,Serializable {
 	@Override
 	public String toString() {
 		return "Activities [KeyActivities=" + KeyActivities
-				+ ", WinActivities=" + WinActivities + ", EmailFoe=" + EmailFoe
-				+ ", EmailChallenger=" + EmailChallenger + ", c=" + c
-				+ ", Start=" + Start + ", Finish=" + Finish + "]";
+				+ ", EmailChallenger=" + EmailChallenger + ", IdSfidato=" + IdSfidato
+				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate
+				+ ", Win=" + Win + ", KmObbiettivo=" + KmObbiettivo  
+				+ ", KmPercorsi=" + KmPercorsi 
+				+ ", TipoAttivita=" + TipoAttivita 
+				+ ", EmailFoe=" + EmailFoe
+				+ ", c=" + c + "]";
 	}	
 }

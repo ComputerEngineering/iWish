@@ -15,14 +15,19 @@ import android.database.sqlite.SQLiteDatabase;
  * It maintains the database connection and supports adding new element.**/
 public class ActivitiesDao {
 	private SQLiteDatabase database ;
-	private DataBaseStorageActivities dbHelper;;
+	private DataBaseStorageActivities dbHelper;
 	private static String[] allColumns={
 		DataBaseStorageActivities.COLUMN_ID,
-		DataBaseStorageActivities.COLUMN_EMAIL_CHALLENGER,
-		DataBaseStorageActivities.COLUMN_EMAIL_FOE,
+		DataBaseStorageActivities.COLUMN_EMAIL,
+		DataBaseStorageActivities.COLUMN_IDSFIDATO,
+		DataBaseStorageActivities.COLUMN_STARTDATE,
+		DataBaseStorageActivities.COLUMN_ENDDATE,
 		DataBaseStorageActivities.COLUMN_WIN,
-		DataBaseStorageActivities.COLUMN_START,
-		DataBaseStorageActivities.COLUMN_FINISH
+		DataBaseStorageActivities.COLUMN_KMOBBIETTIVO,
+		DataBaseStorageActivities.COLUMN_KMPERCORSI,
+		DataBaseStorageActivities.COLUMN_TIPOATTIVITA,
+		DataBaseStorageActivities.COLUMN_EMAIL_FOE
+		
 	};
 	
 	public ActivitiesDao(Context context) {
@@ -45,11 +50,15 @@ public class ActivitiesDao {
 	@SuppressWarnings("unused")
 	public void insertOnDbActivities(Activities mActivities)throws Exception{
 		ContentValues values = new ContentValues();
-		values.put(DataBaseStorageActivities.COLUMN_EMAIL_CHALLENGER,"" + mActivities.getEmailChallenger() + "");
-		values.put(DataBaseStorageActivities.COLUMN_EMAIL_FOE,"" + mActivities.getEmailFoe() + "");
-		values.put(DataBaseStorageActivities.COLUMN_WIN, "" + mActivities.getWinActivities() + "");
-		values.put(DataBaseStorageActivities.COLUMN_START, "" + mActivities.getDateStart() + "");
-		values.put(DataBaseStorageActivities.COLUMN_FINISH, "" + mActivities.getDateFinish());
+		values.put(DataBaseStorageActivities.COLUMN_EMAIL,"" + mActivities.getEmailChallenger() + "");
+		values.put(DataBaseStorageActivities.COLUMN_IDSFIDATO,"" + mActivities.getIdSfidato() + "");
+		values.put(DataBaseStorageActivities.COLUMN_STARTDATE, "" + mActivities.getStartDate() + "");
+		values.put(DataBaseStorageActivities.COLUMN_ENDDATE, "" + mActivities.getEndDate() + "");
+		values.put(DataBaseStorageActivities.COLUMN_WIN, "" + mActivities.getWin() + "");
+		values.put(DataBaseStorageActivities.COLUMN_KMOBBIETTIVO, "" + mActivities.getKmObbiettivo() + "");
+		values.put(DataBaseStorageActivities.COLUMN_KMPERCORSI, "" + mActivities.getKmPercorsi() + "");
+		values.put(DataBaseStorageActivities.COLUMN_TIPOATTIVITA, "" + mActivities.getTipoAttivita());
+		values.put(DataBaseStorageActivities.COLUMN_EMAIL_FOE, "" + mActivities.getEmailFoe() + "");
 		long insertId = database.insert(DataBaseStorageActivities.TABLE_ACTIVITIES, null, values);
 	}
 	public void deleteOnDbAllActivity(){
@@ -84,11 +93,15 @@ public class ActivitiesDao {
 	private Activities cursorsActivities(Cursor cursor) {
 		Activities activities = new Activities();
 		activities.setKeyActivities(cursor.getLong(DataBaseStorageActivities.COLUMN_ID_INDEX));
-		activities.setEmailChallenger(cursor.getString(DataBaseStorageActivities.COLUMN_EMAIL_CHALLENGER_INDEX));
+		activities.setEmailChallenger(cursor.getString(DataBaseStorageActivities.COLUMN_EMAIL_INDEX));
+		activities.setIdSfidato(cursor.getLong(DataBaseStorageActivities.COLUMN_IDSFIDATO_INDEX));
+		activities.setStartDate(cursor.getInt(DataBaseStorageActivities.COLUMN_STARTDATE_INDEX));
+		activities.setEndDate(cursor.getInt(DataBaseStorageActivities.COLUMN_ENDDATE_INDEX));
+		activities.setWin(cursor.getInt(DataBaseStorageActivities.COLUMN_WIN_INDEX));
+		activities.setKmObbiettivo(cursor.getInt(DataBaseStorageActivities.COLUMN_KMOBBIETTIVO_INDEX));
+		activities.setKmPercorsi(cursor.getInt(DataBaseStorageActivities.COLUMN_KMPERCORSI_INDEX));
+		activities.setTipoAttivita(cursor.getString(DataBaseStorageActivities.COLUMN_TIPOATTIVITA_INDEX));
 		activities.setEmailFoe(cursor.getString(DataBaseStorageActivities.COLUMN_EMAIL_FOE_INDEX));
-		activities.setWinActivities(cursor.getInt(DataBaseStorageActivities.COLUMN_WIN_INDEX));
-		activities.setDateStart(cursor.getInt(DataBaseStorageActivities.COLUMN_START_INDEX));
-		activities.setDateFinish(cursor.getInt(DataBaseStorageActivities.COLUMN_FINISH_INDEX));	
 		return activities;
 	}
 	/**Invoked when the garbage collector has detected that this instance is no longer 

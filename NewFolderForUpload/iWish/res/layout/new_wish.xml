@@ -20,10 +20,13 @@
    android:src="@drawable/omino_ride"
    android:src="@drawable/omino_rise"
    android:src="@drawable/omino_swim"
+   omino_run
+   omino_avatar_attivo
+   
     -->
         
    <TextView
-        android:id="@+id/scritta_attivita"
+        android:id="@+id/KmAttivita"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="295dp"
@@ -34,7 +37,7 @@
     
     
    <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/cerchio"
+        android:id="@+id/ImmagineFriend"
         android:layout_width="84dp"
         android:layout_height="84dp"
         android:layout_marginTop="443dp"
@@ -45,40 +48,67 @@
         app:shadow="false" />
    
    <TextView
-        android:id="@+id/scritta_utente"
+        android:id="@+id/nomeFriend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="430dp"
         android:layout_marginLeft="111dp"
-        android:text="Hysen"
+        android:text="NameFriend"
         android:textSize="30sp"
         android:textColor="@color/verde_scuro"/>
    
     <TextView
-        android:id="@+id/scritta_punti"
+        android:id="@+id/scrittaPunti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="469dp"
+        android:layout_marginLeft="113dp"
+        android:text="Points"
+        android:textSize="17sp"
+        android:textColor="@color/placeholder"/>
+    <TextView
+        android:id="@+id/punti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="489dp"
         android:layout_marginLeft="125dp"
-        android:text="99"
+        android:text="0"
         android:textSize="20sp"
         android:textColor="@color/placeholder"/>   
      <TextView
-        android:id="@+id/scritta_winner"
+        android:id="@+id/scrittaWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="469dp"
+        android:layout_marginLeft="178dp"
+        android:text="Winner"
+        android:textSize="17sp"
+        android:textColor="@color/placeholder"/>
+     <TextView
+        android:id="@+id/winner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="489dp"
         android:layout_marginLeft="192dp"
-        android:text="60"
+        android:text="0%"
         android:textSize="20sp"
         android:textColor="@color/placeholder"/>   
      <TextView
-        android:id="@+id/scritta_loser"
+        android:id="@+id/scrittaLoser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="469dp"
+        android:layout_marginLeft="253dp"
+        android:text="Loser"
+        android:textSize="17sp"
+        android:textColor="@color/placeholder"/>
+     <TextView
+        android:id="@+id/loser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="489dp"
         android:layout_marginLeft="261dp"
-        android:text="40"
+        android:text="0%"
         android:textSize="20sp"
         android:textColor="@color/placeholder"/>                 
     
