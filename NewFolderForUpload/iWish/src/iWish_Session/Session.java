@@ -5,8 +5,8 @@ import java.io.Serializable;
 import _iWish.MySession;
 
 public class Session implements MySession, Serializable {
-	private Long KeySession;
-	private Long KeyActivities;
+	private long KeySession;
+	private long KeyActivities;
 	private int DurataTempo;
 	private int BattitiMax;
 	private int BattitiMin;
@@ -16,13 +16,13 @@ public class Session implements MySession, Serializable {
 	private int AltezzaMed;
 
 	@Override
-	public Long getKeySession() {
+	public long getKeySession() {
 		
 		return KeySession;
 	}
 
 	@Override
-	public Long getKeyActivities() {
+	public long getKeyActivities() {
 		
 		return KeyActivities;
 	}
@@ -70,13 +70,13 @@ public class Session implements MySession, Serializable {
 	}
 
 	@Override
-	public void setKeySession(Long KeySession) {
+	public void setKeySession(long KeySession) {
 		// TODO Auto-generated method stub
 		this.KeySession = KeySession;
 	}
 
 	@Override
-	public void setKeyActivities(Long KeyActivities) {
+	public void setKeyActivities(long KeyActivities) {
 		// TODO Auto-generated method stub
 		this.KeyActivities = KeyActivities;
 	}

@@ -2,8 +2,8 @@ package _iWish;
 
 
 public interface MySession {
-	Long getKeySession();
-	Long getKeyActivities();
+	long getKeySession();
+	long getKeyActivities();
 	int getDurataTempo();
 	int getBattitiMax();
 	int getBattitiMin();
@@ -11,8 +11,8 @@ public interface MySession {
 	int getAltezzaMax();
 	int getAltezzaMin();
 	int getAltezzaMed();
-	void setKeySession(Long KeySession);
-	void setKeyActivities(Long KeyActivities);
+	void setKeySession(long KeySession);
+	void setKeyActivities(long KeyActivities);
 	void setDurataTempo(int DurataTempo);
 	void setBattitiMax(int BattitiMax);
 	void setBattitiMin(int BattitiMin);

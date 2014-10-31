@@ -12,7 +12,7 @@ public class Friends implements MyFriends,Serializable{
 	 * sender and receiver of a serialized object have loaded classes for that object that
 	 * are compatible with respect to serialization.*/
 	private static final long serialVersionUID = 8098509035921720548L;
-	private Long keyFriends;
+	private long keyFriends;
 	private String name;
 	private String surname;
 	private String emailFriends;
@@ -37,7 +37,7 @@ public class Friends implements MyFriends,Serializable{
 		return emailUser;
 	}
 	@Override
-	public Long getKeyFriend() {
+	public long getKeyFriend() {
 		return keyFriends;
 	}
 	@Override
@@ -57,7 +57,7 @@ public class Friends implements MyFriends,Serializable{
 		return emailFriends;
 	}
 	@Override
-	public void setKeyFriend(Long keyFriends) {
+	public void setKeyFriend(long keyFriends) {
 		this.keyFriends=keyFriends;
 	}
 	@Override

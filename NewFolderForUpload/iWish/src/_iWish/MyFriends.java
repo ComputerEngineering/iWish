@@ -1,17 +1,16 @@
 package _iWish;
 
-import android.content.Context;
 
 /**Raffaella*/
 
 public interface MyFriends {
-	Long getKeyFriend();
+	long getKeyFriend();
 	String getName();
 	String getSurname();
 	String getEmailUser();
 	String getEmailFriends();
 	int getPoint();
-	void setKeyFriend(Long keyUtente);
+	void setKeyFriend(long keyUtente);
 	void setName(String name);
 	void setSurname(String surname);
 	void setPoint(int point);

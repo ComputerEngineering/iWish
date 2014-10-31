@@ -1,18 +1,13 @@
 package _iWish;
 
-import iWish_database.DataBaseStorageActivities;
-
-import java.util.Date;
-
-import android.content.Context;
 
 /**Raffaella*/
 
 public interface MyActivities {
 	
-	Long getKeyActivities();
+	long getKeyActivities();
 	String getEmailChallenger();
-	Long getIdSfidato();
+	long getIdSfidato();
 	int getStartDate();
 	int getEndDate();
 	int getWin();
@@ -20,9 +15,9 @@ public interface MyActivities {
 	int getKmPercorsi();
 	String getTipoAttivita();
 	String getEmailFoe();
-	void setKeyActivities(Long KeyActivities);
+	void setKeyActivities(long KeyActivities);
 	void setEmailChallenger(String EmailChallenger);
-	void setIdSfidato(Long IdSfidato);
+	void setIdSfidato(long IdSfidato);
 	void setStartDate(int StartDate);
 	void setEndDate(int EndDate);
 	void setWin(int Win);

@@ -24,7 +24,7 @@ public class Activities implements MyActivities,Serializable {
 	
 	
 	@Override
-	public Long getKeyActivities() {
+	public long getKeyActivities() {
 		return KeyActivities;
 	}
 	@Override
@@ -32,7 +32,7 @@ public class Activities implements MyActivities,Serializable {
 		return Win;
 	}
 	@Override
-	public Long getIdSfidato() {
+	public long getIdSfidato() {
 		return IdSfidato;
 	}
 	@Override
@@ -62,7 +62,7 @@ public class Activities implements MyActivities,Serializable {
 		return TipoAttivita;
 	}
 	@Override
-	public void setKeyActivities(Long KeyActivities) {
+	public void setKeyActivities(long KeyActivities) {
 		this.KeyActivities=KeyActivities;
 	}
 	@Override
@@ -70,7 +70,7 @@ public class Activities implements MyActivities,Serializable {
 		this.Win=Win;
 	}
 	@Override
-	public void setIdSfidato(Long IdSfidato) {
+	public void setIdSfidato(long IdSfidato) {
 		this.IdSfidato=IdSfidato;
 	}
 	@Override
