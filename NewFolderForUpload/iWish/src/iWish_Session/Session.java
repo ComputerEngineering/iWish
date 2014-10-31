@@ -5,6 +5,7 @@ import java.io.Serializable;
 import _iWish.MySession;
 
 public class Session implements MySession, Serializable {
+	private static final long serialVersionUID = -1907227924554553866L;
 	private long KeySession;
 	private long KeyActivities;
 	private int DurataTempo;
