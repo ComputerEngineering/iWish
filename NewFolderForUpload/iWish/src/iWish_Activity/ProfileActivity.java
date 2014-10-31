@@ -1,6 +1,9 @@
 package iWish_Activity;
 /**Raffaella**/
 
+import iWish_Utente.UserIstance;
+import iWish_Utente.Utente;
+
 import com.progect.iwish.R;
 
 import android.app.Activity;
@@ -23,11 +26,33 @@ public class ProfileActivity extends Activity{
 	private TextView tv_level;
 	private TextView tv_userName;
 	
+	private Utente mUser;
+	private UserIstance mUserIstance;
+	private Intent intent;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profile);
 		setUpViews();
+		intent = getIntent();
+		mUser = (Utente) intent.getSerializableExtra("u");
+		
+		//setIstanceSession();
+		//utente fittizzio
+		
+		UserIstance.getIstanceUserIstance().setTypeUser("active");
+		UserIstance.getIstanceUserIstance().setEmailUser("alexxsera@hotmail.com");
+		UserIstance.getIstanceUserIstance().setName("Alessandro");
+		UserIstance.getIstanceUserIstance().setCity("Velletri");
+		UserIstance.getIstanceUserIstance().setSex("m");
+		UserIstance.getIstanceUserIstance().setAnswer("Matrix");
+		UserIstance.getIstanceUserIstance().setHeight(173);
+		UserIstance.getIstanceUserIstance().setBirthday("19021986");
+		UserIstance.getIstanceUserIstance().setSurname("Serafini");
+		UserIstance.getIstanceUserIstance().setPassword("provain");
+		UserIstance.getIstanceUserIstance().setQuestion("Favorite Movies");
+		//fine utente fittizzio
 		
 		bt_make_new_wish_profile.setOnClickListener(new View.OnClickListener() {
 
@@ -84,6 +109,21 @@ public class ProfileActivity extends Activity{
 		tv_wishes = (TextView)findViewById(R.id.textView_wishes_profile);
 		tv_points = (TextView)findViewById(R.id.textView_points_profile);
 		tv_level = (TextView)findViewById(R.id.textView_level_profile);
+	}
+	
+	//mantiene i dati(un'istanza della classe) dell'utente per accedervi da altre activity
+	private void setIstanceSession(){
+		UserIstance.getIstanceUserIstance().setTypeUser(mUser.getTypeUser());
+		UserIstance.getIstanceUserIstance().setEmailUser(mUser.getEmail());
+		UserIstance.getIstanceUserIstance().setName(mUser.getName());
+		UserIstance.getIstanceUserIstance().setCity(mUser.getCity());
+		UserIstance.getIstanceUserIstance().setSex(mUser.getSex());
+		UserIstance.getIstanceUserIstance().setAnswer(mUser.getAnswer());
+		UserIstance.getIstanceUserIstance().setHeight(mUser.getHeight());
+		UserIstance.getIstanceUserIstance().setBirthday(mUser.getBirthday());
+		UserIstance.getIstanceUserIstance().setSurname(mUser.getSurname());
+		UserIstance.getIstanceUserIstance().setPassword(mUser.getPassword());
+		UserIstance.getIstanceUserIstance().setQuestion(mUser.getQuestion());
 	}
 }
 

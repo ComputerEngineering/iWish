@@ -16,6 +16,7 @@ public class ChallengeActivity extends Activity{
 	private ImageButton ButtonVsFriends;
 	private ImageButton ButtonDone;
 	private boolean daSolo = true;
+	private String dataStart;
 	
 	private Activities mActivities;
 
@@ -29,6 +30,7 @@ public class ChallengeActivity extends Activity{
 		
 		Intent intent = getIntent();
 		mActivities = (Activities) intent.getSerializableExtra("a");
+		dataStart = (String) intent.getSerializableExtra("starting");
 
 		ButtonVsMyself.setOnClickListener(new OnClickListener() {
 			@Override
@@ -50,9 +52,9 @@ public class ChallengeActivity extends Activity{
 				daSolo = false;
 			}    
 		}); 
-		mActivities = new Activities();
-		mActivities.setKmObbiettivo(7); //momentaneo per provare l'activity successiva
-		mActivities.setTipoAttivita("ride"); //momentaneo per provare l'activity successiva
+		//mActivities = new Activities();
+		//mActivities.setKmObbiettivo(7); //momentaneo per provare l'activity successiva
+		//mActivities.setTipoAttivita("ride"); //momentaneo per provare l'activity successiva
 		ButtonDone.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -62,12 +64,14 @@ public class ChallengeActivity extends Activity{
 						intent2 = new Intent(ChallengeActivity.this, NewWishActivity.class);
 						intent2.putExtra("a", mActivities);
 						intent2.putExtra("Activity", "ChallengeActivity");
+						intent2.putExtra("starting", dataStart);
 						startActivity(intent2);
 					}
 					else{
 						intent2 = new Intent(ChallengeActivity.this, Friends2Activity.class);
 						intent2.putExtra("a", mActivities);
 						intent2.putExtra("Activity", "ChallengeActivity");
+						intent2.putExtra("starting", dataStart);
 						startActivity(intent2);
 					}
 				}  

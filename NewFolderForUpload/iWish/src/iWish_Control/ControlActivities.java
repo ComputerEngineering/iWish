@@ -5,6 +5,7 @@ import iWish_database.ActivitiesDao;
 
 import java.util.List;
 
+import android.content.Context;
 import android.database.SQLException;
 
 public class ControlActivities{
@@ -19,9 +20,9 @@ public class ControlActivities{
 		}
 		return instance;
 	};
-	public void saveOnDbActivities(Activities mActivities)throws Exception{
+	public void saveOnDbActivities(Activities mActivities, Context context)throws Exception{
 		try {
-			mActivitiesDao= new ActivitiesDao(mActivities.getC());
+			mActivitiesDao= new ActivitiesDao(context);
 			mActivitiesDao.open();
 			mActivitiesDao.insertOnDbActivities(mActivities);
 		} catch (SQLException e) {

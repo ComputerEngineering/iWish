@@ -1,11 +1,11 @@
 package iWish_Control;
 
+import iWish_Session.Session;
+import iWish_database.SessionDao;
+
 import java.util.List;
 
 import android.content.Context;
-import iWish_Session.Session;
-import iWish_Utente.Utente;
-import iWish_database.SessionDao;
 
 public class ControlSession {
 

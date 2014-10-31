@@ -53,8 +53,8 @@ public class SessionDao {
 		values.put(DataBaseStorageSession.COLUMN_ID_ACTIVITIES,"" + mSession.getKeyActivities() + "");
 		values.put(DataBaseStorageSession.COLUMN_DURATA_TEMPO, "" + mSession.getDurataTempo() + "");
 		values.put(DataBaseStorageSession.COLUMN_BATTITI_MAX,""+ mSession.getBattitiMax() + "");
-		values.put(DataBaseStorageSession.COLUMN_BATTITI_MED,""+ mSession.getBattitiMed() + "");
 		values.put(DataBaseStorageSession.COLUMN_BATTITI_MIN,""+ mSession.getBattitiMin() + "");
+		values.put(DataBaseStorageSession.COLUMN_BATTITI_MED,""+ mSession.getBattitiMed() + "");
 		values.put(DataBaseStorageSession.COLUMN_ALTEZZA_MAX,""+ mSession.getAltezzaMax() + "");
 		values.put(DataBaseStorageSession.COLUMN_ALTEZZA_MIN,""+ mSession.getAltezzaMin() + "");
 		values.put(DataBaseStorageSession.COLUMN_ALTEZZA_MED,""+ mSession.getAltezzaMed() + "");

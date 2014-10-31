@@ -18,25 +18,27 @@ public class DataBaseStorageFriends extends SQLiteOpenHelper {
 	static final String TABLE_FRIENDS= "Friends";
 	
 	static final String COLUMN_ID="_id";
+	static final String COLUMN_EMAIL_FRIENDS="emailFirends";
+	static final String COLUMN_EMAIL_USER="emailUser";
 	static final String COLUMN_NAME="nome";
 	static final String COLUMN_SURNAME="surname";
-	static final String COLUMN_EMAIL_FRIENDS="emailFirends";
 	static final String COLUMN_POINT="point";
-	static final String COLUMN_EMAIL_USER="emailUser";
+	
 //	static final String COLUMN_PHOTO="photo";
 	
 	// shared index, make sure to match COLUMNS
 	static final int COLUMN_ID_INDEX=0;
-	static final int COLUMN_NAME_INDEX=1;
-	static final int COLUMN_SURNAME_INDEX=2;
-	static final int COLUMN_POINT_INDEX=3;
-	static final int COLUMN_EMAIL_FRIENDS_INDEX=4;
-	static final int COLUMN_EMAIL_USER_INDEX=5;
+	static final int COLUMN_EMAIL_FRIENDS_INDEX=1;
+	static final int COLUMN_EMAIL_USER_INDEX=2;
+	static final int COLUMN_NAME_INDEX=3;
+	static final int COLUMN_SURNAME_INDEX=4;
+	static final int COLUMN_POINT_INDEX=5;
+	
 //  static final int COLUMN_PHOTO_INDEX=4;
 	
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION =  2;
+	private  static  final  int DATABASE_VERSION =  3;
 	
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Friends.db";
@@ -45,11 +47,12 @@ public class DataBaseStorageFriends extends SQLiteOpenHelper {
 	 *  Android use the _id  for identify the element's key **/
 	private static final String DATABASE_CREATE = "create table" + TABLE_FRIENDS + "("
 			+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-			+ COLUMN_NAME + " vachar(15) NOT NULL,"
-			+ COLUMN_SURNAME + " vachar(15) NOT NULL,"
-			+ COLUMN_POINT + " numeric(6) NOT NULL,"
-			+ COLUMN_EMAIL_FRIENDS + " vachar(15) NOT NULL,"
-			+ COLUMN_EMAIL_USER + " vachar(15) NOT NULL"
+			+ COLUMN_EMAIL_FRIENDS + " vachar(25) NOT NULL, "
+			+ COLUMN_EMAIL_USER + " vachar(25) NOT NULL, "
+			+ COLUMN_NAME + " vachar(15) NOT NULL, "
+			+ COLUMN_SURNAME + " vachar(15) NOT NULL, "
+			+ COLUMN_POINT + " numeric(4) NOT NULL "
+			
 			//TODO vedere come definire l'attributo photo
 		//	+ COLUMN_PHOTO + " ......."
 			+ ");";

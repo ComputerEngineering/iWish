@@ -2,7 +2,6 @@ package iWish_Session;
 
 import java.io.Serializable;
 
-import android.content.Context;
 import _iWish.MySession;
 
 public class Session implements MySession, Serializable {
@@ -15,7 +14,6 @@ public class Session implements MySession, Serializable {
 	private int AltezzaMax;
 	private int AltezzaMin;
 	private int AltezzaMed;
-	private Context C;
 
 	@Override
 	public Long getKeySession() {
@@ -69,12 +67,6 @@ public class Session implements MySession, Serializable {
 	public int getAltezzaMed() {
 		// TODO Auto-generated method stub
 		return AltezzaMed;
-	}
-
-	@Override
-	public Context getC() {
-		// TODO Auto-generated method stub
-		return C;
 	}
 
 	@Override
@@ -132,19 +124,13 @@ public class Session implements MySession, Serializable {
 	}
 
 	@Override
-	public void setC(Context C) {
-		// TODO Auto-generated method stub
-		this.C = C;
-	}
-
-	@Override
 	public String toString() {
 		return "Session [KeySession=" + KeySession + ", KeyActivities="
 				+ KeyActivities + ", DurataTempo=" + DurataTempo
 				+ ", BattitiMax=" + BattitiMax + ", BattitiMin=" + BattitiMin
 				+ ", BattitiMed=" + BattitiMed + ", AltezzaMax=" + AltezzaMax
 				+ ", AltezzaMin=" + AltezzaMin + ", AltezzaMed=" + AltezzaMed
-				+ ", C=" + C + "]";
+				+ "]";
 	}
 
 }

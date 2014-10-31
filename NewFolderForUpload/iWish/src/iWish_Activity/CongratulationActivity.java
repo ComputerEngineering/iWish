@@ -65,17 +65,17 @@ public class CongratulationActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					Log.i("WeightActivity", "PRIMA DI INSERIRE NEL DB");
+					Log.i("CongratulationActivity", "PRIMA DI INSERIRE NEL DB");
 					ControlUser.getIstanceControlUser().saveOnDbUtente(mUser,getApplicationContext());
-					Log.i("WeightActivity", "DOPO L'INSERIMENTO NEL DB");
+					Log.i("CongratulationActivity", "DOPO L'INSERIMENTO NEL DB");
 					ControlConnection.getIstanceControlConnection().onInsertUtente();
-					Log.i("WeightActivity", "DOPO L'INSERIMENTO online");
+					Log.i("CongratulationActivity", "DOPO L'INSERIMENTO online");
 				} catch (Exception e) {
 					//Toast.makeText(c ,"errore di salvataggio", Toast.LENGTH_LONG).show();
-					Log.i("WeightActivity", "errore INSERIMENTO NEL DB");
+					Log.i("CongratulationActivity", "errore INSERIMENTO NEL DB");
 					e.printStackTrace();
 				}
-				Log.i("WeightActivity", "SALVATAGGIO SUL DB ANDATO A BUON FINE");
+				Log.i("CongratulationActivity", "SALVATAGGIO SUL DB ANDATO A BUON FINE");
 				startActivity(new Intent(CongratulationActivity.this,ProfileActivity.class ));
 			}
 		});

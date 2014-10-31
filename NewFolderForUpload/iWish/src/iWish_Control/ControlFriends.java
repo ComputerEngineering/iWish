@@ -2,6 +2,7 @@ package iWish_Control;
 
 import java.util.List;
 
+import android.content.Context;
 import android.database.SQLException;
 import iWish_Friends.Friends;
 import iWish_database.FriendsDao;
@@ -21,9 +22,9 @@ public class ControlFriends {
 		return instance;
 	};
 
-	public void saveOnDbFriends(Friends mFriends)throws Exception{
+	public void saveOnDbFriends(Friends mFriends, Context context)throws Exception{
 		try {
-			mFriendsDao= new FriendsDao(mFriends.getC());
+			mFriendsDao= new FriendsDao(context);
 			mFriendsDao.open();
 			mFriendsDao.insertOnDbFriends(mFriends);
 		} catch (SQLException e) {

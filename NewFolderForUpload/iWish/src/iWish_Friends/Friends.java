@@ -3,7 +3,6 @@ package iWish_Friends;
 
 import java.io.Serializable;
 
-import android.content.Context;
 import _iWish.MyFriends;
 
 
@@ -19,7 +18,6 @@ public class Friends implements MyFriends,Serializable{
 	private String emailFriends;
 	private int point;
 	private String emailUser;
-	private Context c;
 	//TODO manca il campo photo
 	
 	//costruttore prova antonio
@@ -59,10 +57,6 @@ public class Friends implements MyFriends,Serializable{
 		return emailFriends;
 	}
 	@Override
-	public Context getC() {
-		return c;
-	}
-	@Override
 	public void setKeyFriend(Long keyFriends) {
 		this.keyFriends=keyFriends;
 	}
@@ -87,13 +81,10 @@ public class Friends implements MyFriends,Serializable{
 		this.emailFriends=emailFriends;
 	}
 	@Override
-	public void setC(Context C) {
-		this.c=c;
-	}
-	@Override
 	public String toString() {
 		return "Friends [keyFriends=" + keyFriends + ", name=" + name
 				+ ", surname=" + surname + ", emailFriends=" + emailFriends
 				+ ", point=" + point + ", emailUser=" + emailUser + "]";
 	}
+	
 }

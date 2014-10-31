@@ -20,7 +20,6 @@ public interface MyActivities {
 	int getKmPercorsi();
 	String getTipoAttivita();
 	String getEmailFoe();
-	Context getC();
 	void setKeyActivities(Long KeyActivities);
 	void setEmailChallenger(String EmailChallenger);
 	void setIdSfidato(Long IdSfidato);
@@ -31,6 +30,6 @@ public interface MyActivities {
 	void setKmPercorsi(int KmPercorsi);
 	void setTipoAttivita(String TipoAttivita);
 	void setEmailFoe(String EmailFoe);
-	void setC(Context c);
+
 	
 }

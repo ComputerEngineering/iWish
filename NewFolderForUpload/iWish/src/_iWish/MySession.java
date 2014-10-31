@@ -1,6 +1,5 @@
 package _iWish;
 
-import android.content.Context;
 
 public interface MySession {
 	Long getKeySession();
@@ -12,7 +11,6 @@ public interface MySession {
 	int getAltezzaMax();
 	int getAltezzaMin();
 	int getAltezzaMed();
-	Context getC();
 	void setKeySession(Long KeySession);
 	void setKeyActivities(Long KeyActivities);
 	void setDurataTempo(int DurataTempo);
@@ -22,6 +20,4 @@ public interface MySession {
 	void setAltezzaMax(int AltezzaMax);
 	void setAltezzaMin(int AltezzaMin);
 	void setAltezzaMed(int AltezzaMed);
-	void setC(Context C);
-
 }

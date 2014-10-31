@@ -22,9 +22,9 @@ public class FriendsDao {
 	private DataBaseStorageFriends dbHelper;
 	private static String[] allColumns={
 		DataBaseStorageFriends.COLUMN_ID,
-		DataBaseStorageFriends.COLUMN_NAME,
 		DataBaseStorageFriends.COLUMN_EMAIL_FRIENDS,
 		DataBaseStorageFriends.COLUMN_EMAIL_USER,
+		DataBaseStorageFriends.COLUMN_NAME,
 		DataBaseStorageFriends.COLUMN_SURNAME,
 		DataBaseStorageFriends.COLUMN_POINT
 		
@@ -54,12 +54,11 @@ public class FriendsDao {
 	@SuppressWarnings("unused")
 	public void insertOnDbFriends(Friends mFriends)throws Exception{
 		ContentValues values = new ContentValues();
-		values.put(DataBaseStorageFriends.COLUMN_ID,"" + mFriends.getKeyFriend() + "");
+		values.put(DataBaseStorageFriends.COLUMN_EMAIL_FRIENDS, "" + mFriends.getEmailFriends() + "");
+		values.put(DataBaseStorageFriends.COLUMN_EMAIL_USER, "" + mFriends.getEmailUser() + "");
 		values.put(DataBaseStorageFriends.COLUMN_NAME,"" + mFriends.getName() + "");
 		values.put(DataBaseStorageFriends.COLUMN_SURNAME,"" + mFriends.getSurname() + "");
 		values.put(DataBaseStorageFriends.COLUMN_POINT,"" + mFriends.getPoint() + "");
-		values.put(DataBaseStorageFriends.COLUMN_EMAIL_FRIENDS, "" + mFriends.getEmailFriends() + "");
-		values.put(DataBaseStorageFriends.COLUMN_EMAIL_USER, "" + mFriends.getEmailUser() + "");
 		long insertId = database.insert(DataBaseStorageFriends.TABLE_FRIENDS, null, values);
 	}
 	
@@ -101,11 +100,12 @@ public class FriendsDao {
 	private Friends cursorsFriends(Cursor cursor) {
 		Friends friends = new Friends();
 		friends.setKeyFriend(cursor.getLong(DataBaseStorageFriends.COLUMN_ID_INDEX));
+		friends.setEmailFriends(cursor.getString(DataBaseStorageFriends.COLUMN_EMAIL_FRIENDS_INDEX));
+		friends.setEmailUser(cursor.getString(DataBaseStorageFriends.COLUMN_EMAIL_USER_INDEX));
 		friends.setName(cursor.getString(DataBaseStorageFriends.COLUMN_NAME_INDEX));
 		friends.setSurname(cursor.getString(DataBaseStorageFriends.COLUMN_SURNAME_INDEX));
 		friends.setPoint(cursor.getInt(DataBaseStorageFriends.COLUMN_POINT_INDEX));
-		friends.setEmailFriends(cursor.getString(DataBaseStorageFriends.COLUMN_EMAIL_FRIENDS_INDEX));
-		friends.setEmailUser(cursor.getString(DataBaseStorageFriends.COLUMN_EMAIL_USER_INDEX));
+	
 		return friends;
 	}
 	

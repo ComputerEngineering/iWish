@@ -38,7 +38,7 @@ public class DataBaseStorageActivities extends SQLiteOpenHelper {
 	
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION = 4;
+	private  static  final  int DATABASE_VERSION = 5;
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Activities.db";
 	/** this 's the query that we use for create the table
@@ -54,11 +54,12 @@ public class DataBaseStorageActivities extends SQLiteOpenHelper {
 					REAL as Julian day numbers, the number of days since noon in Greenwich on 
 						November 24, 4714 B.C. according to the proleptic Gregorian calendar.
 					INTEGER as Unix Time, the number of seconds since 1970-01-01 00:00:00 UTC.*/
-			+ COLUMN_STARTDATE + " numeric(8) NOT NULL,"
-			+ COLUMN_ENDDATE + " numeric(8) NOT NULL,"
+			+ COLUMN_STARTDATE + " integer NOT NULL,"
+			+ COLUMN_ENDDATE + " integer NOT NULL,"
 			+ COLUMN_WIN + " numeric(1) DEFAULT 0,"
 			+ COLUMN_KMOBBIETTIVO + " numeric(2) NOT NULL,"
 			+ COLUMN_KMPERCORSI + " numeric(2) DEFAULT 0,"
+			+ COLUMN_TIPOATTIVITA + " vachar(15) NOT NULL,"
 			+ COLUMN_EMAIL_FOE + " vachar(25) DEFAULT 0"
 			+ ");";
 	

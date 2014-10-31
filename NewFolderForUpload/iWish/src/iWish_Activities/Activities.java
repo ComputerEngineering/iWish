@@ -4,7 +4,6 @@ package iWish_Activities;
 import java.io.Serializable;
 
 import _iWish.MyActivities;
-import android.content.Context;
 
 public class Activities implements MyActivities,Serializable {
 	/**The serialization runtime associates with each serializable class a version number, 
@@ -12,19 +11,17 @@ public class Activities implements MyActivities,Serializable {
 	 * sender and receiver of a serialized object have loaded classes for that object that
 	 * are compatible with respect to serialization.*/
 	private static final long serialVersionUID = -7102900290656728874L;
-	private Long KeyActivities;
+	private long KeyActivities;
 	private String EmailChallenger;
-	private Long IdSfidato;
+	private long IdSfidato = 0;
 	private int StartDate; // da controllare per il database SQLite
 	private int EndDate;
-	private int Win;//in SQLite non abbiamo i boolean quindi con gli INTEGER 0(false) and 1(true).
-	private int KmObbiettivo;
-	private int KmPercorsi;
+	private int Win = 0;//in SQLite non abbiamo i boolean quindi con gli INTEGER 0(false) and 1(true).
+	private int KmObbiettivo = 0;
+	private int KmPercorsi = 0;
 	private String TipoAttivita;
-	private String EmailFoe;
+	private String EmailFoe = "0";
 	
-	
-	private Context c;
 	
 	@Override
 	public Long getKeyActivities() {
@@ -65,10 +62,6 @@ public class Activities implements MyActivities,Serializable {
 		return TipoAttivita;
 	}
 	@Override
-	public Context getC() {
-		return c;
-	}
-	@Override
 	public void setKeyActivities(Long KeyActivities) {
 		this.KeyActivities=KeyActivities;
 	}
@@ -107,18 +100,14 @@ public class Activities implements MyActivities,Serializable {
 		this.EndDate=EndDate;
 	}
 	@Override
-	public void setC(Context c) {
-		this.c=c;
-	}
-	@Override
 	public String toString() {
 		return "Activities [KeyActivities=" + KeyActivities
-				+ ", EmailChallenger=" + EmailChallenger + ", IdSfidato=" + IdSfidato
-				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate
-				+ ", Win=" + Win + ", KmObbiettivo=" + KmObbiettivo  
-				+ ", KmPercorsi=" + KmPercorsi 
-				+ ", TipoAttivita=" + TipoAttivita 
-				+ ", EmailFoe=" + EmailFoe
-				+ ", c=" + c + "]";
-	}	
+				+ ", EmailChallenger=" + EmailChallenger + ", IdSfidato="
+				+ IdSfidato + ", StartDate=" + StartDate + ", EndDate="
+				+ EndDate + ", Win=" + Win + ", KmObbiettivo=" + KmObbiettivo
+				+ ", KmPercorsi=" + KmPercorsi + ", TipoAttivita="
+				+ TipoAttivita + ", EmailFoe=" + EmailFoe + "]";
+	}
+	
+	
 }

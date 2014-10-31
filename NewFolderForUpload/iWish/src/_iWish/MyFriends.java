@@ -10,7 +10,6 @@ public interface MyFriends {
 	String getSurname();
 	String getEmailUser();
 	String getEmailFriends();
-	Context getC();
 	int getPoint();
 	void setKeyFriend(Long keyUtente);
 	void setName(String name);
@@ -18,5 +17,4 @@ public interface MyFriends {
 	void setPoint(int point);
 	void setEmailUser(String emailUser);
 	void setEmailFriends(String emailFriends);
-	void setC(Context C);
 }
