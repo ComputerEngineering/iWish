@@ -142,8 +142,8 @@ public class NetworkActivities extends AsyncTask<String, Void,  String> {
 			json.put("startDate", (obj2.get(key)).getStartDate());
 			json.put("endDate",(obj2.get(key)).getEndDate());
 			json.put("win", (obj2.get(key)).getWin());
-			json.put("kmObbiettivo", (obj2.get(key)).getKmObbiettivo());
-			json.put("kmPercorsi", (obj.get(key)).getKmPercorsi());
+			json.put("KmObbiettivo", (obj2.get(key)).getKmObbiettivo());
+			json.put("KmPercorsi", (obj.get(key)).getKmPercorsi());
 			json.put("tipoAttivita",(obj.get(key)).getTipoAttivita());
 			json.put("emailFoe",(obj.get(key)).getEmailFoe());
 

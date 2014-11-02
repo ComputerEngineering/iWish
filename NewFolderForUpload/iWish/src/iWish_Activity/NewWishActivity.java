@@ -55,7 +55,7 @@ public class NewWishActivity extends Activity{
 			Log.i("NewWishActivity", "PRIMA DI INSERIRE NEL DB ACTIVITIES");
 			ControlActivities.getIstanceControlActivities().saveOnDbActivities(mActivities, getApplicationContext());;
 			Log.i("NewWishActivity", "DOPO L'INSERIMENTO NEL DB ACTIVITIES");
-			//ControlConnection.getIstanceControlConnection().onInsertActivities();
+			ControlConnection.getIstanceControlConnection().onInsertActivities();
 			Log.i("NewWishActivity", "DOPO L'INSERIMENTO online");
 		} catch (Exception e) {
 			//Toast.makeText(c ,"errore di salvataggio", Toast.LENGTH_LONG).show();

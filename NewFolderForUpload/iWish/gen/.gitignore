@@ -1,2 +1,3 @@
-/com
-/antistatic
+/antistatic/
+/com/
+/.gitignore
