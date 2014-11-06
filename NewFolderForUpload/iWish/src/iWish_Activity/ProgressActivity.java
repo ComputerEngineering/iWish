@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.progect.iwish.R;
 
 public class ProgressActivity extends Activity{
+	Button heartRate;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,14 @@ public class ProgressActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(ProgressActivity.this, WorkingActivity.class ));
+			}
+		});
+		heartRate = (Button)findViewById(R.id.heart_rate);
+		heartRate.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Stub di metodo generato automaticamente
+				startActivity(new Intent(ProgressActivity.this, BluetoothActivity.class ));			
 			}
 		});
 	}

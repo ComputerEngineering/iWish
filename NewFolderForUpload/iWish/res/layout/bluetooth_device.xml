@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sfondo_iwish"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="463dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/bluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:src="@drawable/bluetooth" />
+
+        <TextView
+            android:id="@+id/device_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Bluetooth HeartRate"
+            android:textColor="@color/bianco"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/bluetooth_progress"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center" />
+
+        <ListView
+            android:id="@+id/bluetooth_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="33dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" >
+
+        <Button
+            android:id="@+id/scanButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight=".5"
+            android:background="@drawable/sfondo_verde"
+            android:text="Scan"
+            android:textColor="@color/bianco"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight=".5"
+            android:background="@drawable/sfondo_verde"
+            android:text="Stop"
+            android:textColor="@color/bianco"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

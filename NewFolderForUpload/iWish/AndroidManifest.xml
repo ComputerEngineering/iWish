@@ -4,7 +4,7 @@
     android:versionName="1.0" >
     
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="18"
         android:targetSdkVersion="21" />
     
     <permission android:name="android.permission.READ_PHONE_STATE"></permission>
@@ -17,6 +17,9 @@
     <permission android:name="android.permission.DELETE_CACHE_FILES"></permission>
     <permission android:name="android.permission.HARDWARE_TEST"></permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
 
     <application
         android:allowBackup="true"
@@ -36,6 +39,10 @@
             </intent-filter>
             
         </activity>
+        
+        <activity 
+            android:name="iWish_Activity.BluetoothActivity"
+            android:screenOrientation="portrait"/>
         
         <activity 
             android:name="iWish_Activity.CalendarActivity"

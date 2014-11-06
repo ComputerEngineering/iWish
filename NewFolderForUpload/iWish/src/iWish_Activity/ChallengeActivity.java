@@ -70,7 +70,7 @@ public class ChallengeActivity extends Activity{
 					else{
 						intent2 = new Intent(ChallengeActivity.this, Friends2Activity.class);
 						intent2.putExtra("a", mActivities);
-						intent2.putExtra("Activity", "ChallengeActivity");
+						intent2.putExtra("Activity", "Friends2Activity");
 						intent2.putExtra("starting", dataStart);
 						startActivity(intent2);
 					}
