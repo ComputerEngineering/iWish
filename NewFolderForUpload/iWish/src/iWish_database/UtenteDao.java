@@ -11,6 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**This class is our DAO. 
  * It maintains the database connection and supports adding new element.**/
@@ -80,6 +81,8 @@ public class UtenteDao {
 		System.out.print("Key Utente that we have delete is : " + guid);
 		database.delete(DataBaseStorageUtente.TABLE_UTENTE, DataBaseStorageUtente.COLUMN_ID +"='" + guid+ "'" , null);
 	}
+	
+	
 
 	public int deleteOnDbSomeUtente(List<Utente> mUtente){
 		String guid=null;
@@ -88,6 +91,18 @@ public class UtenteDao {
 			guid=utente.getEmail();
 			db=database.delete(DataBaseStorageUtente.TABLE_UTENTE, DataBaseStorageUtente.COLUMN_ID+ "='" + guid+ "'", null);
 		}return db;
+	}
+	
+	public boolean checkRegistrationOnDbOneUtente(String eMail){
+		boolean i= true;//there is email
+		String where = DataBaseStorageUtente.COLUMN_EMAIL + " = '"+eMail+"'";
+		Cursor cursor = database.query(DataBaseStorageUtente.TABLE_UTENTE, new String[] {DataBaseStorageUtente.COLUMN_EMAIL}, where, null, null, null, null);
+		String app= String.valueOf(cursor.getCount());
+		//Log.i("UtenteDao",app);
+		if(cursor.getCount()==0){
+			i=false;//there isn't email
+		}
+		return i;
 	}
 
 	public List<Utente> getAllUtente(){

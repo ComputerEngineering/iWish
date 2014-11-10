@@ -90,7 +90,7 @@ public class BluetoothActivity extends Activity{
 				if (device == null){
 					return;
 				}
-				intent.putExtra(EXTRAS_DEVICE_NAME, device.getName());
+				//intent.putExtra(EXTRAS_DEVICE_NAME, device.getName());
 				intent.putExtra(EXTRAS_DEVICE_ADDRESS, device.getAddress());
 				if (mScanning) {
 					mBluetoothAdapter.stopLeScan(mLeScanCallback);

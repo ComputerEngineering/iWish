@@ -37,6 +37,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class ForgotPswActivity extends Activity implements OnItemSelectedListene
 	private Button oksend;
 	private String jsonResult;
 	private String url = "http://iwish.suroot.com/iwishapp/forgot.php";
+	private ProgressBar attPass;
 
 	@Override
 	  public void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,8 @@ public class ForgotPswActivity extends Activity implements OnItemSelectedListene
 	    
 		edt_eMail = (EditText) findViewById(R.id.editTextForgotMail);
 		edt_answer =(EditText) findViewById(R.id.editTextForgotAnswer);
-	    
+	    attPass = (ProgressBar) findViewById(R.id.att_pass);
+	    attPass.setVisibility(View.INVISIBLE);
 	    oksend = (Button)findViewById(R.id.bt_oksend);
 		oksend.setOnClickListener(new OnClickListener() {
 		
@@ -102,6 +105,10 @@ public class ForgotPswActivity extends Activity implements OnItemSelectedListene
     
  // Async Task to access the web
  	private class JsonReadTask extends AsyncTask<String, Void, String> {
+ 		@Override
+ 		protected void onPreExecute(){
+ 			attPass.setVisibility(View.VISIBLE);
+ 		}
  		@Override
  		protected String doInBackground(String... params) {
  			HttpClient httpclient = new DefaultHttpClient();
@@ -167,6 +174,7 @@ public class ForgotPswActivity extends Activity implements OnItemSelectedListene
  		
  		protected void onCancelled(){
  			super.onCancelled();
+ 			attPass.setVisibility(View.INVISIBLE);
  			CharSequence pass= "Not connected to the internet or server error";
 			Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();
  		}
@@ -174,6 +182,7 @@ public class ForgotPswActivity extends Activity implements OnItemSelectedListene
  		@Override
  		protected void onPostExecute(String result) {
  			System.out.println(jsonResult);
+ 			attPass.setVisibility(View.INVISIBLE);
  			if(jsonResult.equals("[]")){
  				CharSequence pass= "eMail or answer error";
  				Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();

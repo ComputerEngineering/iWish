@@ -56,7 +56,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="577dp"
-	    android:background="@drawable/m_bot_send_psw2"/>   
+	    android:background="@drawable/m_bot_send_psw2"/>
+
+   <ProgressBar
+       android:id="@+id/att_pass"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/editTextForgotAnswer"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="14dp" />
     
 </RelativeLayout>
 

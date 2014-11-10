@@ -1,5 +1,6 @@
 package iWish_Activity;
 /** Raffaella*/
+import iWish_Control.ControlUser;
 import iWish_Utente.Utente;
 
 import java.io.File;
@@ -89,16 +90,28 @@ public class RegisterActivity extends Activity implements OnItemSelectedListener
 					//TODO controlli
 					CharSequence eMail= "Registration is not complete";
 					Toast.makeText(getApplicationContext(), eMail, Toast.LENGTH_SHORT).show();
+				} else if(!edt_email.getText().toString().equals(edt_rp_email.getText().toString())){
+					CharSequence eMail= "The email that you have write is different please  retype your email";
+					Toast.makeText(getApplicationContext(), eMail, Toast.LENGTH_SHORT).show();
+				}else if(!edt_password.getText().toString().equals(edt_rp_password.getText().toString())){
+					CharSequence password= "The password that you have write is different please  retype your password";
+					Toast.makeText(getApplicationContext(), password, Toast.LENGTH_SHORT).show();
 				}else{
+					Boolean eMailExist = ControlUser.getIstanceControlUser().checkRegistrationOnDbOneUtente(edt_email.getText().toString(),getApplicationContext());
+					if (eMailExist){
+						CharSequence eMail= "Your email is already exist";
+						Toast.makeText(getApplicationContext(), eMail, Toast.LENGTH_SHORT).show();
+					}else{
 
-					// Creiamo un nuovo intent passando il nome dell'intent successivo (ma si poteva fare anche passando il nome della classe) 
-					Intent intent = new Intent("iWish_Activity.AVATAR");
-					//creiamo un utente u con tutte le info inserite
-					Utente u = createUser();
-					//aggiungiamo il tutto al nostro intent
-					intent.putExtra("u", u);
-					//facciamo partire l'intent AVATAR
-					startActivity(intent);
+						// Creiamo un nuovo intent passando il nome dell'intent successivo (ma si poteva fare anche passando il nome della classe) 
+						Intent intent = new Intent("iWish_Activity.AVATAR");
+						//creiamo un utente u con tutte le info inserite
+						Utente u = createUser();
+						//aggiungiamo il tutto al nostro intent
+						intent.putExtra("u", u);
+						//facciamo partire l'intent AVATAR
+						startActivity(intent);
+					}
 				}
 			}
 		});

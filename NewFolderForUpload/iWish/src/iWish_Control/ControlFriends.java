@@ -15,7 +15,7 @@ public class ControlFriends {
 
 	private ControlFriends(){}
 
-	public static synchronized ControlFriends getIstanceControlUser(){
+	public static synchronized ControlFriends getIstanceControlFriends(){
 		if(instance==null){
 			instance = new ControlFriends();
 		}

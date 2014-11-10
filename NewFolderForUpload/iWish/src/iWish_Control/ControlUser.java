@@ -3,6 +3,7 @@ package iWish_Control;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import iWish_Utente.Utente;
 import iWish_database.UtenteDao;
 
@@ -28,7 +29,8 @@ public class ControlUser {
 			mUtenteDao.open();
 			mUtenteDao.insertOnDbUtente(mUtente);
 		} catch (Exception e) {
-
+			Log.i("insertOnDbUtente", "abbiamo un errore nella query ");
+			System.out.println("errore nella query");
 		}
 	}
 
@@ -36,7 +38,8 @@ public class ControlUser {
 		try {
 			mUtenteDao.deleteOnDbAllUtente();
 		} catch (Exception e) {
-
+			Log.i("deleteOnDbUtenteAll", "abbiamo un errore nella query ");
+			System.out.println("errore nella query");
 		}
 	}
 
@@ -44,7 +47,8 @@ public class ControlUser {
 		try {
 			mUtenteDao.deleteOnDbOneUtente(mUtente);
 		} catch (Exception e) {
-
+			Log.i("deleteOnDbOneUtente", "abbiamo un errore nella query ");
+			System.out.println("errore nella query");
 		}
 	}
 
@@ -52,15 +56,30 @@ public class ControlUser {
 		try {
 			mUtenteDao.deleteOnDbSomeUtente(mUtente);
 		} catch (Exception e) {
-
+			Log.i("deleteOnDbSomeUtente", "abbiamo un errore nella query ");
+			System.out.println("errore nella query");
 		}
+	}
+	
+	public boolean checkRegistrationOnDbOneUtente(String eMail, Context context){
+		try {
+			mUtenteDao =  new UtenteDao(context);
+			mUtenteDao.open();
+			return mUtenteDao.checkRegistrationOnDbOneUtente(eMail);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.i("checkRegistrationOnDbOneUtente", "abbiamo un errore nella query di check dell'email");
+			System.out.println("errore nella query");
+		}
+		return true;
 	}
 
 	public List<Utente> getOnDbAllUtente(){
 		try {
 			return mUtenteDao.getAllUtente();
 		} catch (Exception e) {
-
+			Log.i("getOnDbAllUtente", "abbiamo un errore nella query ");
+			System.out.println("errore nella query");
 		}
 		return null;
 	}
@@ -69,6 +88,8 @@ public class ControlUser {
 		try {
 			//ControlConnection.getIstanceControlConnection().Utente();
 		} catch (Exception e) {
+			Log.i("cConnectionUtente", "abbiamo un errore nella query");
+			System.out.println("errore nella query");
 		}
 	}
 }

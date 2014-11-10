@@ -97,13 +97,13 @@
         android:layout_height="220dp"
         android:layout_marginTop="280dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/going_ride" /> 
+        android:src="@drawable/going_run" /> 
 
    <!--   
         android:src="@drawable/going_run"
         android:src="@drawable/going_ride"
         android:src="@drawable/going_rise" 
-   -->
+   
      
   <TextView
         android:id="@+id/scritta_minutes"
@@ -115,7 +115,7 @@
         android:textSize="35sp"
         android:textStyle="bold"
         android:textColor="@color/placeholder"/>     
-     
+   -->  
 
     <ImageButton
        android:id="@+id/m_lets_start"

@@ -20,6 +20,7 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import com.progect.iwish.R;
 
 public class NewWishActivity extends Activity{
+	private ImageButton ok;
 	private ImageView ImageOminoAttivita;
 	private TextView TextKmAttivita;
 	private TextView TextNomeFriend;
@@ -32,6 +33,7 @@ public class NewWishActivity extends Activity{
 	private CircularImageView CircularImmagineFriend;
 	private String dataStart;
 	private int Km =0;
+	private Intent intent2;
 	
 	private long tempo = 0; 
 	private int timeStart = 1414752545;//data 31/10/14
@@ -44,11 +46,13 @@ public class NewWishActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.new_wish);
 		setUpViews();
-
 		Intent intent = getIntent();
 		mActivities = (Activities) intent.getSerializableExtra("a");
 		mActivities.setEmailChallenger(UserIstance.getIstanceUserIstance().getEmailUser());
 		dataStart = (String) intent.getSerializableExtra("starting");
+		if(dataStart.equals("otherDay")){
+			ok.setImageResource(R.drawable.botton_done2);
+		}
 		Km = mActivities.getKmObbiettivo();
 		setTime();
 		try {
@@ -87,12 +91,19 @@ public class NewWishActivity extends Activity{
 			TextLoser.setVisibility(View.INVISIBLE);
 		}  
 
-		ImageButton ok = (ImageButton)findViewById(R.id.m_letsgo);
+		
 		ok.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(NewWishActivity.this, ProgressActivity.class ));
+				if(dataStart.equals("otherDay")){
+					startActivity(new Intent(NewWishActivity.this, ProfileActivity.class ));
+				}
+				else{
+					intent2 = new Intent(NewWishActivity.this, ProgressActivity.class );
+					intent2.putExtra("a", mActivities);
+					startActivity(intent2);
+				}
 			}
 		});  
 	}
@@ -108,7 +119,7 @@ public class NewWishActivity extends Activity{
 		TextScrittaLoser = (TextView) findViewById(R.id.scrittaLoser);
 		TextLoser = (TextView) findViewById(R.id.loser);
 		CircularImmagineFriend = (CircularImageView) findViewById(R.id.ImmagineFriend);
-
+		ok = (ImageButton)findViewById(R.id.m_letsgo);
 	}
 
 	private void setTime(){

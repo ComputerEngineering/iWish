@@ -45,7 +45,7 @@ public class DataBaseStorageFriends extends SQLiteOpenHelper {
 	
 	/** this 's the query that we use for create the table
 	 *  Android use the _id  for identify the element's key **/
-	private static final String DATABASE_CREATE = "create table" + TABLE_FRIENDS + "("
+	private static final String DATABASE_CREATE = "create table " + TABLE_FRIENDS + "("
 			+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ COLUMN_EMAIL_FRIENDS + " vachar(25) NOT NULL, "
 			+ COLUMN_EMAIL_USER + " vachar(25) NOT NULL, "
