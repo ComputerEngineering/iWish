@@ -1,82 +1,104 @@
- <RelativeLayout
-    
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sfondo_friends2"
->
-      
-  <ImageButton 
+    android:background="@drawable/sfondo_friends2" >
+
+    <ImageButton
         android:id="@+id/bott_omino"
-        android:src="@drawable/omino"
-        android:background="#39E565"
-        android:layout_marginTop="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-  
-  <ImageButton 
-        android:id="@+id/bot_cerca"
-        android:src="@drawable/bot_cerca"
+        android:layout_marginTop="27dp"
         android:background="#39E565"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="290dp"
+        android:src="@drawable/omino" />
+
+    <ImageButton
+        android:id="@+id/bot_cerca"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />    
-     
-     <TextView
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="25dp"
+        android:background="#39E565"
+        android:src="@drawable/bot_cerca" />
+
+    <TextView
         android:id="@+id/byname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="225dp"
         android:text="sort by name"
-        android:textSize="16sp"
-        android:textColor="@color/placeholder" />
-      
-     <TextView
-        android:id="@+id/bylatest"
+        android:textColor="@color/placeholder"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/bysurname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="225dp"
-        android:text="sort by latest"
-        android:textSize="16sp"
-        android:textColor="@color/placeholder" />
-     
-     <TextView
-        android:id="@+id/bypoints"
+        android:text="sort by surname"
+        android:textColor="@color/placeholder"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/addfriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="248dp"
         android:layout_marginTop="225dp"
-        android:text="sort by points"
-        android:textSize="16sp"
-        android:textColor="@color/placeholder" />
-      
-   
-<LinearLayout 
-    android:id="@+id/layoutfriends2_list"
- android:layout_marginTop="273dp"
- android:layout_width="match_parent"
- android:layout_height="match_parent"
- android:orientation="vertical"
- android:visibility="visible" >
- 
-<ListView
- android:id="@+id/listfriends2"
- android:layout_width="fill_parent"
- android:layout_height="wrap_content"
- android:layout_gravity="center"
- android:divider="#DDDDDD"
- android:dividerHeight="3dip"
- android:background="@color/bianco" />
- 
-</LinearLayout>
+        android:text="add friends"
+        android:textColor="@color/placeholder"
+        android:textSize="16sp" />
 
- 
-     
-     
+    <LinearLayout
+        android:id="@+id/layoutfriends2_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="273dp"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <ListView
+            android:id="@+id/listfriends2"
+            android:layout_width="fill_parent"
+            android:layout_height="264dp"
+            android:layout_gravity="center"
+            android:layout_weight="6.35"
+            android:background="@color/bianco"
+            android:divider="#DDDDDD"
+            android:dividerHeight="3dip" />
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.87"
+            android:background="@drawable/sfondo_verde"
+            android:text="Search"
+            android:textColor="@color/bianco"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/emailfriends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/layoutfriends2_list"
+        android:ems="10"
+        android:hint="insert email friends"
+        android:inputType="textEmailAddress" />
+
+    <ProgressBar
+        android:id="@+id/waitfriends"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailfriends"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

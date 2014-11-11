@@ -97,7 +97,7 @@ public class UtenteDao {
 		boolean i= true;//there is email
 		String where = DataBaseStorageUtente.COLUMN_EMAIL + " = '"+eMail+"'";
 		Cursor cursor = database.query(DataBaseStorageUtente.TABLE_UTENTE, new String[] {DataBaseStorageUtente.COLUMN_EMAIL}, where, null, null, null, null);
-		String app= String.valueOf(cursor.getCount());
+		//String app= String.valueOf(cursor.getCount());
 		//Log.i("UtenteDao",app);
 		if(cursor.getCount()==0){
 			i=false;//there isn't email

@@ -1,23 +1,52 @@
 package iWish_Activity;
 
-import iWish_Friends.Friends;
 
+import iWish_Control.ControlFriends;
+import iWish_Control.ControlUser;
+import iWish_Friends.Friends;
+import iWish_database.FriendsDao;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 //import sottostante utile per effettuare comparazione e ordinamenti //
 import java.util.Comparator;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
+import android.app.ListActivity;
 
 import com.progect.iwish.R;
 
@@ -25,112 +54,229 @@ import com.progect.iwish.R;
 
 public class Friends2Activity extends Activity {
 
-	/*	Friends amico1 = new Friends("1","antonio","rossi",43);
-	Friends amico2 = new Friends("2","mario","bianchi",46);
-	Friends amico3 = new Friends("3","giovanni","verdi",49);
-	Friends amico4 = new Friends("4","andrea","gialli",89);*/
+	private TextView ButtonByName;
+	private TextView ButtonBySurname;
+	private TextView Buttonaddfriends;
+	private FriendsDao datasource;  
+	private List<Friends> values = null;
+	private Friends mFriends;
 	private ListView mListView;
-
-	//List<Friends>lista_amici = new List<Frin>
+	private EditText emailFriends;
+	private String jsonResult;
+	private String url = "http://iwish.suroot.com/iwishapp/addfriend.php";
+	private ProgressBar waitfriends;
+	private String eMail;
+	private Button search;
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.friends2);
-
-		final TextView ButtonByName = (TextView)findViewById(R.id.byname);
-		final TextView ButtonByLatest = (TextView)findViewById(R.id.bylatest);
-		final TextView ButtonByPoints = (TextView)findViewById(R.id.bypoints);
-
-		ButtonByName.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				ButtonByName.setTextColor(getResources().getColor(R.color.verde_scuro));
-				ButtonByLatest.setTextColor(getResources().getColor(R.color.placeholder));
-				ButtonByPoints.setTextColor(getResources().getColor(R.color.placeholder));
-			}    
-		}); 
-		ButtonByLatest.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				ButtonByName.setTextColor(getResources().getColor(R.color.placeholder));
-				ButtonByLatest.setTextColor(getResources().getColor(R.color.verde_scuro));
-				ButtonByPoints.setTextColor(getResources().getColor(R.color.placeholder));
-			}    
-		}); 
-		ButtonByPoints.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				ButtonByName.setTextColor(getResources().getColor(R.color.placeholder));
-				ButtonByLatest.setTextColor(getResources().getColor(R.color.placeholder));
-				ButtonByPoints.setTextColor(getResources().getColor(R.color.verde_scuro));
-			}
-		}); 	
-		ImageButton avanti = (ImageButton)findViewById(R.id.bott_omino);
-		avanti.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(Friends2Activity.this,ProfileActivity.class ));
-			}
-		});
-		//LIST ACTIVITY		
-		mListView = (ListView)findViewById(R.id.listfriends2); 
-		List<Map> data = GetSampleData();
-		SimpleAdapter adapter = new SimpleAdapter(this, (List<? extends Map<String, ?>>) 
-				data, R.xml.friends2item, new String[] { "foto", "nome", "punti" }, new int[] { 
-			R.id.foto, R.id.nome, R.id.punti });
+		emailFriends=(EditText)findViewById(R.id.emailfriends);
+		emailFriends.setVisibility(View.INVISIBLE);
+		search=(Button)findViewById(R.id.search);
+		search.setVisibility(View.INVISIBLE);
+		waitfriends=(ProgressBar)findViewById(R.id.waitfriends);
+		waitfriends.setVisibility(View.INVISIBLE);
+		datasource = new FriendsDao(this);
+		datasource.open();
+		values = datasource.getAllFriends();
+		mListView = (ListView)findViewById(R.id.listfriends2);
+        List<Map> data = getFriendsData(values);
+        SimpleAdapter adapter = new SimpleAdapter(this, (List<? extends Map<String, ?>>) data, R.xml.friends2item, new String[] { "nome", "cognome", "email" }, new int[] { R.id.nome, R.id.cognome, R.id.email });
 		mListView.setAdapter(adapter);
+        
+		//datasource = new FriendsDao(this);
+		//datasource.open();
+		//mFriends = new Friends();
+		//mFriends.setName("antonio");
+		//mFriends.setSurname("torcasio");
+		//mFriends.setPoint(0);
+		//mFriends.setEmailFriends("antonio@libero.it");
+		//mFriends.setEmailUser("amico@libero.it");
+
+		//metodo per mandare dati al db//
+		//try{
+		//ControlFriends.getIstanceControlFriends().saveOnDbFriends(mFriends,getApplicationContext());
+		//}catch  (Exception e) {
+		//	Log.i("Friends2Activity", "errore query");
+		//}
+		
+
+
+		//uso il simplecursoradapter per mostrare gli elementi della listview
+      
+		//ArrayAdapter<Friends> adapter= new ArrayAdapter<Friends>(this,android.R.layout.simple_list_item_1,values);
+
+
+		ButtonByName = (TextView)findViewById(R.id.byname); 
+		ButtonBySurname = (TextView)findViewById(R.id.bysurname);
+		Buttonaddfriends = (TextView)findViewById(R.id.addfriends);
+        
+		ButtonByName.setOnClickListener(myListener);
+		ButtonBySurname.setOnClickListener(myListener);
+		search.setOnClickListener(myListener);
+		Buttonaddfriends.setOnClickListener(myListener);
 	}
-	List<Map> GetSampleData() {
-		List<Map> list = new ArrayList<Map>();
+	OnClickListener myListener=new View.OnClickListener(){
+
+		public void onClick(View v) {
+			@SuppressWarnings("unchecked")
+			//	ArrayAdapter<Friends> adapter = (ArrayAdapter<Friends>)getListAdapter();
+			Friends friends = null;
+			if (v==ButtonByName)   finish();//mettere nome sorting 
+			if (v==ButtonBySurname) finish();//mettere nome sorting
+			if (v==Buttonaddfriends) {
+				mListView.setVisibility(View.INVISIBLE);
+				emailFriends.setVisibility(View.VISIBLE);
+				search.setVisibility(View.VISIBLE);
+			}
+			if(v==search){
+				if(emailFriends.getText().toString().equals("")){
+					CharSequence eMail= "eMail or answer missing!!!";
+					Toast.makeText(getApplicationContext(), eMail, Toast.LENGTH_LONG).show();
+				}
+				else{
+					eMail = emailFriends.getText().toString();
+					accessWebService();
+				}
+				
+			}
+			
+			//	adapter.notifyDataSetChanged();
+		}
+	};
+
+	@Override
+	protected void onResume() {
+		datasource.open();
+		super.onResume();
+	}
+	@Override
+	protected void onPause() {
+		datasource.close();
+		super.onPause();
+	}
+
+	private List<Map> getFriendsData(List<Friends> mFriends ) {
+		List<Map>list = new ArrayList<Map>();
 		Map map = new HashMap();
-		map.put("foto", R.drawable.hysen);
-		map.put("nome", "Hysen Drogu");
-		map.put("punti", "34");
-		list.add(map);
-		map = new HashMap();
-		map.put("foto", R.drawable.hysen);
-		map.put("nome", "andrea bellizzi");
-		map.put("punti", "54");
-		list.add(map);
-		map = new HashMap();
-		map.put("foto", R.drawable.hysen);
-		map.put("nome", "paola centamore");
-		map.put("punti", "95");
-		list.add(map);
-		map = new HashMap();
-		map.put("foto", R.drawable.hysen);
-		map.put("nome", "giulia leone");
-		map.put("punti", "100");
-		list.add(map);
-		map = new HashMap();
-		map.put("foto", R.drawable.hysen);
-		map.put("nome", "silvia bertossi");
-		map.put("punti", "69");
-		list.add(map);
-		map = new HashMap();
-		map.put("foto", R.drawable.hysen);
-		map.put("nome", "mario rossi");
-		map.put("punti", "69");
-		list.add(map);
-		map = new HashMap();
-		map.put("foto", R.drawable.hysen);
-		map.put("nome", "marco bianchi");
-		map.put("punti", "69");
-		list.add(map);
-		map = new HashMap();
-		map.put("foto", R.drawable.hysen);
-		map.put("nome", "luigi rossi");
-		map.put("punti", "69");
-		list.add(map); 
+		Iterator<Friends> it= mFriends.iterator(); 
+		while(it.hasNext()){
+			Friends amico = it.next(); 
+			map.put("nome", amico.getName());
+			map.put("cognome", amico.getSurname());
+			map.put("email", amico.getEmailFriends());
+			list.add(map);
+		}
 		return list;
 	}
+	// Async Task to access the web
+		private class JsonReadTask extends AsyncTask<String, Void, String> {
+			@Override
+			protected void onPreExecute(){
+				waitfriends.setVisibility(View.VISIBLE);
+			}
+			
+			@Override
+			protected String doInBackground(String... params) {
+				HttpClient httpclient = new DefaultHttpClient();
+				HttpPost httppost = new HttpPost(params[0]);
+				
+				try {
+					JSONObject json = new JSONObject();;
+					json.put("eMail", params[1]);
+					
+					List<NameValuePair> nameValuePairs;
+					Map<String, String> user = new HashMap<String, String>();
+					user.put("User", json.toString());
+					nameValuePairs= new ArrayList<NameValuePair>(user.size());
+					String k,v;
+					Iterator<String> itKeys= user.keySet().iterator();
+					while (itKeys.hasNext()){
+						k=itKeys.next();
+						v=user.get(k);
+						nameValuePairs.add(new BasicNameValuePair(k,v));
+					}
+					httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+					System.out.println(nameValuePairs);
+					
+					HttpResponse response = httpclient.execute(httppost);
+					jsonResult = inputStreamToString(
+							response.getEntity().getContent()).toString();
+				}
+
+				catch (ClientProtocolException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+					cancel(true);
+					return null;
+				}
+				catch (JSONException e) {
+					e.printStackTrace();
+					return null;
+				}
+				return null;
+			}
+
+			private StringBuilder inputStreamToString(InputStream is) {
+				String rLine = "";
+				StringBuilder answer = new StringBuilder();
+				BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+
+				try {
+					while ((rLine = rd.readLine()) != null) {
+						answer.append(rLine);
+					}
+				}
+
+				catch (IOException e) {
+					// e.printStackTrace();
+					Toast.makeText(getApplicationContext(),
+							"Error..." + e.toString(), Toast.LENGTH_LONG).show();
+				}
+				return answer;
+			}
+			
+			protected void onCancelled(){
+				super.onCancelled();
+				waitfriends.setVisibility(View.INVISIBLE);
+				CharSequence pass= "Not connected to the internet or server error";
+			Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				System.out.println(jsonResult);
+				waitfriends.setVisibility(View.INVISIBLE);
+				if(jsonResult.equals("[]")){
+					CharSequence pass= "eMail friends no found";
+					Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();
+				}
+				else{
+					try {
+		 				JSONObject jsonResponse = new JSONObject(jsonResult);
+		 				JSONArray jsonMainNode = jsonResponse.optJSONArray("User");
+		 				JSONObject jsonChildNode = jsonMainNode.getJSONObject(0);
+		 				String password = jsonChildNode.optString("password");
+		 				CharSequence pass= "Your Password is: " + password;
+		 				Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();
+		 			} 
+		 			catch (JSONException e) {
+		 				Toast.makeText(getApplicationContext(), "Error" + e.toString(),Toast.LENGTH_SHORT).show();
+		 			}
+				}
+			}
+		}// end async task
+
+	public void accessWebService(){
+		JsonReadTask task = new JsonReadTask();
+		// passes values for the urls string array
+		task.execute(new String[] { url, eMail});
+	}
 }
+
+
 
