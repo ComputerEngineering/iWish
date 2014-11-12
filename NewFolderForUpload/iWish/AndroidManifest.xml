@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false"/>
 
     <application
         android:allowBackup="true"
@@ -248,6 +248,9 @@
         <activity
             android:name="iWish_Activity.WorkingActivity"
             android:screenOrientation="portrait"/>  
+        <service
+            android:name="iWish_Bluetooth.BluetoothLeService"
+            android:enabled="true" />
         
     </application>
 
