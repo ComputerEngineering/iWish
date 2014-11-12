@@ -50,7 +50,7 @@ public class ForgotPswActivity extends Activity implements OnItemSelectedListene
 	private String question;
 	private Button oksend;
 	private String jsonResult;
-	private String url = "http://iwish.suroot.com/iwishapp/forgot.php";
+	private String url = "http://www.iwishapp.eu/iwishapp/forgot.php";
 	private ProgressBar attPass;
 
 	@Override

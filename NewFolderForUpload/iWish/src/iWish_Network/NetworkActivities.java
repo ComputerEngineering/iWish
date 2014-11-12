@@ -41,7 +41,7 @@ import android.widget.Toast;
  * AsyncTask enables proper and easy use of the UI thread. This class allows to perform background 
  * operations and publish results on the UI thread without having to manipulate threads and/or handlers**/
 public class NetworkActivities extends AsyncTask<String, Void,  String> {
-	private static final String uri= "http://iwish.suroot.com/iwishapp/activities.php"; 
+	private static final String uri= "http://www.iwishapp.eu/iwishapp/activities.php"; 
 	/**Describes the state of any Wi-fi connection that is active or is in the process of being set up.*/
 	private NetworkInfo mWifi,mMobile,mEthernet,mBluetooth;
 	/**The POST method is used to request that the origin server accept the entity enclosed in the request 

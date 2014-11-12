@@ -25,7 +25,7 @@ import android.util.Log;
  * operations and publish results on the UI thread without having to manipulate threads and/or handlers**/
 //TODO DA TERMINARE
 public class NetworkFriends extends AsyncTask<String, Void,  String>{
-	private static final String uri= "http://....."; //devo sapere l'uri
+	private static final String uri= "http://www.iwishapp.eu/iwishapp/friends.php"; //devo sapere l'uri
 	private NetworkInfo mWifi,mMobile,mEthernet,mBluetooth;
 	private HttpPost httppost;
 	private HttpClient httpclient;

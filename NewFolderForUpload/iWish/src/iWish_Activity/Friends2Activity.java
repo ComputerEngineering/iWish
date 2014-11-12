@@ -63,7 +63,7 @@ public class Friends2Activity extends Activity {
 	private ListView mListView;
 	private EditText emailFriends;
 	private String jsonResult;
-	private String url = "http://iwish.suroot.com/iwishapp/addfriend.php";
+	private String url = "http://www.iwishapp.eu/iwishapp/addfriend.php";
 	private ProgressBar waitfriends;
 	private String eMail;
 	private Button search;
