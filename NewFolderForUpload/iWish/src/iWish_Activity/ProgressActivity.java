@@ -1,6 +1,10 @@
 package iWish_Activity;
 //**Alessandro*//
 
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
+import iWish_Activities.Activities;
 import iWish_Bluetooth.BluetoothLeService;
 import android.widget.ImageButton;
 import android.app.Activity;
@@ -16,11 +20,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Chronometer.OnChronometerTickListener;
 
 import com.progect.iwish.R;
 
@@ -34,12 +42,18 @@ public class ProgressActivity extends Activity{
 	private final static String TAG = ProgressActivity.class.getSimpleName();
 	public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
 	public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
-	private static final long START_HEART = 1500; //Start heart
+	private static final long START_HEART = 3000; //Start heart
 	private String mDeviceAddress;
 	private BluetoothLeService mBluetoothLeService;
 	private boolean mConnected = false;
 	private BluetoothGattCharacteristic mNotifyCharacteristic;
 	private Handler mHandler;
+	private Activities mActivities;
+	private ImageView going;
+	private Chronometer ch;
+	private long milliseconds;
+	private SimpleDateFormat timeFormat;
+	private String hmmss;
 
 	// Code to manage Service lifecycle.
 	private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -103,14 +117,24 @@ public class ProgressActivity extends Activity{
 		mHandler = new Handler();
 		final Intent intent = getIntent();
 		mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
+		mActivities = (Activities) intent.getSerializableExtra("a");
+		going = (ImageView)findViewById(R.id.going);
 		menu = (ImageButton)findViewById(R.id.bott_omino);
 		ok = (ImageButton)findViewById(R.id.m_lets_start);
 		heartRate = (Button)findViewById(R.id.heart_rate);
-		setOnClickButton();
 		if(mDeviceAddress != null){
 			Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
 			bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
 		}
+		milliseconds =0;
+		ch = (Chronometer) findViewById(R.id.chronometer);
+		timeFormat = new SimpleDateFormat("H:mm:ss");
+		timeFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+		hmmss = timeFormat.format(milliseconds);	
+		ch.setText(hmmss);
+		setOnClickButton();
+		setOnChronometer();
+		setImage();
 		// Start heartRate.
 		mHandler.postDelayed(new Runnable() {
 			@Override
@@ -179,7 +203,9 @@ public class ProgressActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				//da controllare come ritornare al menu
-				//startActivity(new Intent(ProgressActivity.this, ProfileActivity.class ));		
+				//startActivity(new Intent(ProgressActivity.this, ProfileActivity.class ));	
+				milliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+				ch.stop();
 
 			}
 		});
@@ -189,6 +215,8 @@ public class ProgressActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				//da definire cosa fa allo start Let's Start
+				ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
+				ch.start();
 			}
 		});
 
@@ -196,10 +224,39 @@ public class ProgressActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// selezione del dispositivo bluetooth
-				startActivity(new Intent(ProgressActivity.this, BluetoothActivity.class ));			
+				Intent intent2 = new Intent(ProgressActivity.this, BluetoothActivity.class );
+				intent2.putExtra("a", mActivities);
+				startActivity(intent2);			
 			}
 		});
 
+	}
+
+	private void setOnChronometer(){
+
+		ch.setOnChronometerTickListener(new OnChronometerTickListener() {
+			@Override
+			public void onChronometerTick(Chronometer chronometer) {
+				long aux = SystemClock.elapsedRealtime() - chronometer.getBase();
+				hmmss = timeFormat.format(aux);	
+				chronometer.setText(hmmss);
+			}
+		});
+
+	}
+
+	private void setImage(){
+		if(mActivities!=null){
+			if(mActivities.getTipoAttivita().equals("run")){
+				going.setImageResource(R.drawable.going_run);
+			}
+			if(mActivities.getTipoAttivita().equals("ride")){
+				going.setImageResource(R.drawable.going_ride);
+			}
+			if(mActivities.getTipoAttivita().equals("gym")){
+				going.setImageResource(R.drawable.going_gym);
+			}
+		}
 	}
 
 	private void startHeart() {

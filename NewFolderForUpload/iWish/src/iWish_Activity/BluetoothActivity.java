@@ -22,8 +22,10 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import iWish_Activities.Activities;
 
 import java.util.ArrayList;
+
 import com.progect.iwish.R;
 
 /**
@@ -42,11 +44,15 @@ public class BluetoothActivity extends Activity{
 	private Button scan;
 	private Button stop;
 	private ProgressBar progress;
+	private Activities mActivities;
+	private Intent intent2;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bluetooth_device);
+		intent2 = getIntent();
+		mActivities = (Activities) intent2.getSerializableExtra("a");
 		scan = (Button) findViewById(R.id.scanButton);
 		stop = (Button) findViewById(R.id.stopButton);
 		progress = (ProgressBar) findViewById(R.id.bluetooth_progress);
@@ -95,6 +101,9 @@ public class BluetoothActivity extends Activity{
 				if (mScanning) {
 					mBluetoothAdapter.stopLeScan(mLeScanCallback);
 					mScanning = false;
+				}
+				if(mActivities != null){
+					intent.putExtra("a", mActivities);
 				}
 				startActivity(intent);
 			}   
