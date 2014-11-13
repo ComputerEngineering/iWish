@@ -51,7 +51,7 @@ public class DataBaseStorageFriends extends SQLiteOpenHelper {
 			+ COLUMN_EMAIL_USER + " vachar(25) NOT NULL, "
 			+ COLUMN_NAME + " vachar(15) NOT NULL, "
 			+ COLUMN_SURNAME + " vachar(15) NOT NULL, "
-			+ COLUMN_POINT + " numeric(4) NOT NULL "
+			+ COLUMN_POINT + " numeric(4) NOT NULL DEFAULT 0 "
 			
 			//TODO vedere come definire l'attributo photo
 		//	+ COLUMN_PHOTO + " ......."

@@ -16,7 +16,7 @@ public class Friends implements MyFriends,Serializable{
 	private String name;
 	private String surname;
 	private String emailFriends;
-	private int point;
+	private int point=0;
 	private String emailUser;
 	//TODO manca il campo photo
 	

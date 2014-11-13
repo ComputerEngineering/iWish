@@ -4,6 +4,7 @@ package iWish_Activity;
 import iWish_Control.ControlFriends;
 import iWish_Control.ControlUser;
 import iWish_Friends.Friends;
+import iWish_Utente.UserIstance;
 import iWish_database.FriendsDao;
 
 import java.io.BufferedReader;
@@ -65,7 +66,8 @@ public class Friends2Activity extends Activity {
 	private String jsonResult;
 	private String url = "http://www.iwishapp.eu/iwishapp/addfriend.php";
 	private ProgressBar waitfriends;
-	private String eMail;
+	private String eMailFriends;
+    private String eMailUser;
 	private Button search;
 	
 
@@ -73,6 +75,7 @@ public class Friends2Activity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.friends2);
+		eMailUser = UserIstance.getIstanceUserIstance().getEmailUser();
 		emailFriends=(EditText)findViewById(R.id.emailfriends);
 		emailFriends.setVisibility(View.INVISIBLE);
 		search=(Button)findViewById(R.id.search);
@@ -138,7 +141,7 @@ public class Friends2Activity extends Activity {
 					Toast.makeText(getApplicationContext(), eMail, Toast.LENGTH_LONG).show();
 				}
 				else{
-					eMail = emailFriends.getText().toString();
+					eMailFriends = emailFriends.getText().toString();
 					accessWebService();
 				}
 				
@@ -168,6 +171,7 @@ public class Friends2Activity extends Activity {
 			map.put("nome", amico.getName());
 			map.put("cognome", amico.getSurname());
 			map.put("email", amico.getEmailFriends());
+			map=new HashMap();
 			list.add(map);
 		}
 		return list;
@@ -186,7 +190,8 @@ public class Friends2Activity extends Activity {
 				
 				try {
 					JSONObject json = new JSONObject();;
-					json.put("eMail", params[1]);
+					json.put("eMailFriends", params[1]);
+					json.put("eMailUser", params[2]);
 					
 					List<NameValuePair> nameValuePairs;
 					Map<String, String> user = new HashMap<String, String>();
@@ -221,7 +226,8 @@ public class Friends2Activity extends Activity {
 				return null;
 			}
 
-			private StringBuilder inputStreamToString(InputStream is) {
+			private StringBuilder inputStreamToString(InputStream is) { 
+				System.out.println(is);
 				String rLine = "";
 				StringBuilder answer = new StringBuilder();
 				BufferedReader rd = new BufferedReader(new InputStreamReader(is));
@@ -274,7 +280,7 @@ public class Friends2Activity extends Activity {
 	public void accessWebService(){
 		JsonReadTask task = new JsonReadTask();
 		// passes values for the urls string array
-		task.execute(new String[] { url, eMail});
+		task.execute(new String[] { url, eMailFriends,eMailUser});
 	}
 }
 
