@@ -4,9 +4,8 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.     
     -->
-    
-	<style name="AppBaseTheme" parent="android:Theme.Light">
-	    
+
+    <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -18,31 +17,16 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    
-     <style name="ProgressBarStyle" parent="@android:style/Widget.ProgressBar.Horizontal">
+
+    <style name="ProgressBarStyle" parent="@android:style/Widget.ProgressBar.Horizontal">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">10dip</item>
         <item name="android:max">100</item>
         <item name="android:progressDrawable">@xml/color_bar</item>
     </style>
-    
-    <style name="DatePickerStyle" parent="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen">
-		
-		<item name="android:gravity">center_vertical</item>
-        <item name="android:background">@color/sfondo</item>
-        <item name="android:shadowColor">@color/verde_scuro</item>
 
+    <style name="DatePickerStyle" parent="@android:style/Theme.DeviceDefault.Light.Dialog">
+        <item name="android:background">@color/sfondo</item>
     </style>
-    
 
 </resources>
-
-<!-- 
-@android:style/Theme.Holo.NoActionBar.Fullscreen
-    Theme.DeviceDefault.Light.Dialog.
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">50dp</item>
-        		<item name="android:dividerPadding">0dp</item>
-        		        <item name="android:format">dd-mmmmm-yyyy</item>
-
- -->

@@ -23,35 +23,7 @@
         android:background="#39E565"
         android:src="@drawable/bot_cerca" />
 
-    <TextView
-        android:id="@+id/byname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="225dp"
-        android:text="sort by name"
-        android:textColor="@color/placeholder"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/bysurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="225dp"
-        android:text="sort by surname"
-        android:textColor="@color/placeholder"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/addfriends"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="248dp"
-        android:layout_marginTop="225dp"
-        android:text="add friends"
-        android:textColor="@color/placeholder"
-        android:textSize="16sp" />
+    
 
     <LinearLayout
         android:id="@+id/layoutfriends2_list"
@@ -100,5 +72,29 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/emailfriends"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/friendslist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/emailfriends"
+        android:layout_alignLeft="@+id/bott_omino"
+        android:layout_marginBottom="26dp"
+        android:layout_marginLeft="26dp"
+        android:text="Friends"
+        android:textColor="@color/placeholder"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/deletefriends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/friendslist"
+        android:layout_alignBottom="@+id/friendslist"
+        android:layout_marginLeft="42dp"
+        android:layout_toRightOf="@+id/waitfriends"
+        android:text="Delete"
+        android:textColor="@color/placeholder"
+        android:textSize="20sp" />
 
 </RelativeLayout>

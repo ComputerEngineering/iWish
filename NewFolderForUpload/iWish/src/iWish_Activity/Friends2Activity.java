@@ -1,6 +1,7 @@
 package iWish_Activity;
 
 
+import iWish_Activities.Activities;
 import iWish_Control.ControlFriends;
 import iWish_Control.ControlUser;
 import iWish_Friends.Friends;
@@ -55,9 +56,8 @@ import com.progect.iwish.R;
 
 public class Friends2Activity extends Activity {
 
-	private TextView ButtonByName;
-	private TextView ButtonBySurname;
-	private TextView Buttonaddfriends;
+	private TextView FriendsList;
+	private TextView DeleteFriends;
 	private FriendsDao datasource;  
 	private List<Friends> values = null;
 	private Friends mFriends;
@@ -67,16 +67,26 @@ public class Friends2Activity extends Activity {
 	private String url = "http://www.iwishapp.eu/iwishapp/addfriend.php";
 	private ProgressBar waitfriends;
 	private String eMailFriends;
-    private String eMailUser;
-    private String name;
-    private String surname;
+	private String eMailUser;
+	private String name;
+	private String surname;
 	private Button search;
+	private ImageButton botcerca;
+	private List<Map> data;
+	private SimpleAdapter adapter;
+	private ImageButton bottomino;
+	private String challengeProfile;
+	private Intent intent;
+	private Activities mActivities;
 	
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.friends2);
+		// quando arriva un intent e voglio prendere qualcosa//
+		intent = getIntent();
+		challengeProfile =(String)intent.getSerializableExtra("Activity");
+
 		eMailUser = UserIstance.getIstanceUserIstance().getEmailUser();
 		name = UserIstance.getIstanceUserIstance().getName();
 		surname = UserIstance.getIstanceUserIstance().getSurname();
@@ -90,10 +100,11 @@ public class Friends2Activity extends Activity {
 		datasource.open();
 		values = datasource.getAllFriends();
 		mListView = (ListView)findViewById(R.id.listfriends2);
-        List<Map> data = getFriendsData(values);
-        SimpleAdapter adapter = new SimpleAdapter(this, (List<? extends Map<String, ?>>) data, R.xml.friends2item, new String[] { "nome", "cognome", "email" }, new int[] { R.id.nome, R.id.cognome, R.id.email });
+		data = getFriendsData(values);
+		adapter = new SimpleAdapter(this, (List<? extends Map<String, ?>>) data, R.xml.friends2item, new String[] { "nome", "cognome", "email" }, new int[] { R.id.nome, R.id.cognome, R.id.email });
 		mListView.setAdapter(adapter);
-        
+
+
 		//datasource = new FriendsDao(this);
 		//datasource.open();
 		//mFriends = new Friends();
@@ -109,22 +120,32 @@ public class Friends2Activity extends Activity {
 		//}catch  (Exception e) {
 		//	Log.i("Friends2Activity", "errore query");
 		//}
-		
+
 
 
 		//uso il simplecursoradapter per mostrare gli elementi della listview
-      
+
 		//ArrayAdapter<Friends> adapter= new ArrayAdapter<Friends>(this,android.R.layout.simple_list_item_1,values);
 
 
-		ButtonByName = (TextView)findViewById(R.id.byname); 
-		ButtonBySurname = (TextView)findViewById(R.id.bysurname);
-		Buttonaddfriends = (TextView)findViewById(R.id.addfriends);
-        
-		ButtonByName.setOnClickListener(myListener);
-		ButtonBySurname.setOnClickListener(myListener);
+		FriendsList = (TextView)findViewById(R.id.friendslist); 
+		DeleteFriends = (TextView)findViewById(R.id.deletefriends);
+		botcerca = (ImageButton)findViewById(R.id.bot_cerca);
+		bottomino =(ImageButton)findViewById(R.id.bott_omino);
+		if(challengeProfile!=null){
+			bottomino.setVisibility(View.INVISIBLE);
+			botcerca.setVisibility(View.INVISIBLE);
+			FriendsList.setVisibility(View.INVISIBLE);
+			DeleteFriends.setVisibility(View.INVISIBLE);
+			//per ritornare attività di challenger//
+			mActivities = (Activities)intent.getSerializableExtra("a");
+		}
+
+		FriendsList.setOnClickListener(myListener);
+		DeleteFriends.setOnClickListener(myListener);
 		search.setOnClickListener(myListener);
-		Buttonaddfriends.setOnClickListener(myListener);
+		botcerca.setOnClickListener(myListener);
+		bottomino.setOnClickListener(myListener);
 	}
 	OnClickListener myListener=new View.OnClickListener(){
 
@@ -132,9 +153,24 @@ public class Friends2Activity extends Activity {
 			@SuppressWarnings("unchecked")
 			//	ArrayAdapter<Friends> adapter = (ArrayAdapter<Friends>)getListAdapter();
 			Friends friends = null;
-			if (v==ButtonByName)   finish();//mettere nome sorting 
-			if (v==ButtonBySurname) finish();//mettere nome sorting
-			if (v==Buttonaddfriends) {
+			if(v==bottomino){
+				Intent intent3 = new Intent(Friends2Activity.this, ProfileActivity.class );
+				startActivity(intent3);
+			}
+			if (v==FriendsList)   {
+				values = datasource.getAllFriends();
+				data = getFriendsData(values);
+				adapter=setAdapter();
+				mListView.setAdapter(adapter);
+				emailFriends.setVisibility(View.INVISIBLE);
+				search.setVisibility(View.INVISIBLE);
+				mListView.setVisibility(View.VISIBLE);
+
+			}
+			if (v==DeleteFriends) {
+			}
+
+			if (v==botcerca) {
 				mListView.setVisibility(View.INVISIBLE);
 				emailFriends.setVisibility(View.VISIBLE);
 				search.setVisibility(View.VISIBLE);
@@ -148,13 +184,16 @@ public class Friends2Activity extends Activity {
 					eMailFriends = emailFriends.getText().toString();
 					accessWebService();
 				}
-				
+
 			}
-			
+
 			//	adapter.notifyDataSetChanged();
 		}
 	};
-
+	protected SimpleAdapter setAdapter(){
+		adapter = new SimpleAdapter(this, (List<? extends Map<String, ?>>) data, R.xml.friends2item, new String[] { "nome", "cognome", "email" }, new int[] { R.id.nome, R.id.cognome, R.id.email });
+		return adapter;
+	}
 	@Override
 	protected void onResume() {
 		datasource.open();
@@ -175,119 +214,157 @@ public class Friends2Activity extends Activity {
 			map.put("nome", amico.getName());
 			map.put("cognome", amico.getSurname());
 			map.put("email", amico.getEmailFriends());
-			map=new HashMap();
 			list.add(map);
+			map=new HashMap();
 		}
 		return list;
 	}
 	// Async Task to access the web
-		private class JsonReadTask extends AsyncTask<String, Void, String> {
-			@Override
-			protected void onPreExecute(){
-				waitfriends.setVisibility(View.VISIBLE);
-			}
-			
-			@Override
-			protected String doInBackground(String... params) {
-				HttpClient httpclient = new DefaultHttpClient();
-				HttpPost httppost = new HttpPost(params[0]);
-				
-				try {
-					JSONObject json = new JSONObject();;
-					json.put("eMailFriends", params[1]);
-					json.put("eMailUser", params[2]);
-					json.put("name", params[3]);
-					json.put("surname", params[4]);
-					
-					List<NameValuePair> nameValuePairs;
-					Map<String, String> user = new HashMap<String, String>();
-					user.put("User", json.toString());
-					nameValuePairs= new ArrayList<NameValuePair>(user.size());
-					String k,v;
-					Iterator<String> itKeys= user.keySet().iterator();
-					while (itKeys.hasNext()){
-						k=itKeys.next();
-						v=user.get(k);
-						nameValuePairs.add(new BasicNameValuePair(k,v));
-					}
-					httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-					System.out.println(nameValuePairs);
-					
-					HttpResponse response = httpclient.execute(httppost);
-					jsonResult = inputStreamToString(
-							response.getEntity().getContent()).toString();
-				}
+	private class JsonReadTask extends AsyncTask<String, Void, String> {
+		@Override
+		protected void onPreExecute(){
+			waitfriends.setVisibility(View.VISIBLE);
+		}
 
-				catch (ClientProtocolException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-					cancel(true);
-					return null;
+		@Override
+		protected String doInBackground(String... params) {
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(params[0]);
+
+			try {
+				JSONObject json = new JSONObject();;
+				json.put("eMailFriends", params[1]);
+				json.put("eMailUser", params[2]);
+				json.put("name", params[3]);
+				json.put("surname", params[4]);
+
+				List<NameValuePair> nameValuePairs;
+				Map<String, String> user = new HashMap<String, String>();
+				user.put("User", json.toString());
+				nameValuePairs= new ArrayList<NameValuePair>(user.size());
+				String k,v;
+				Iterator<String> itKeys= user.keySet().iterator();
+				while (itKeys.hasNext()){
+					k=itKeys.next();
+					v=user.get(k);
+					nameValuePairs.add(new BasicNameValuePair(k,v));
 				}
-				catch (JSONException e) {
-					e.printStackTrace();
-					return null;
-				}
+				httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+				System.out.println(nameValuePairs);
+
+				HttpResponse response = httpclient.execute(httppost);
+				jsonResult = inputStreamToString(
+						response.getEntity().getContent()).toString();
+			}
+
+			catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+				cancel(true);
 				return null;
 			}
-
-			private StringBuilder inputStreamToString(InputStream is) { 
-				System.out.println(is);
-				String rLine = "";
-				StringBuilder answer = new StringBuilder();
-				BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-
-				try {
-					while ((rLine = rd.readLine()) != null) {
-						answer.append(rLine);
-					}
-				}
-
-				catch (IOException e) {
-					// e.printStackTrace();
-					Toast.makeText(getApplicationContext(),
-							"Error..." + e.toString(), Toast.LENGTH_LONG).show();
-				}
-				return answer;
+			catch (JSONException e) {
+				e.printStackTrace();
+				return null;
 			}
-			
-			protected void onCancelled(){
-				super.onCancelled();
-				waitfriends.setVisibility(View.INVISIBLE);
-				CharSequence pass= "Not connected to the internet or server error";
+			return null;
+		}
+
+		private StringBuilder inputStreamToString(InputStream is) { 
+			System.out.println(is);
+			String rLine = "";
+			StringBuilder answer = new StringBuilder();
+			BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+
+			try {
+				while ((rLine = rd.readLine()) != null) {
+					answer.append(rLine);
+				}
+			}
+
+			catch (IOException e) {
+				// e.printStackTrace();
+				Toast.makeText(getApplicationContext(),
+						"Error..." + e.toString(), Toast.LENGTH_LONG).show();
+			}
+			return answer;
+		}
+
+		protected void onCancelled(){
+			super.onCancelled();
+			waitfriends.setVisibility(View.INVISIBLE);
+			CharSequence pass= "Not connected to the internet or server error";
 			Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();
-			}
+		}
 
-			@Override
-			protected void onPostExecute(String result) {
-				System.out.println(jsonResult);
-				waitfriends.setVisibility(View.INVISIBLE);
-				if(jsonResult.equals("[]")){
-					CharSequence pass= "eMail friends no found";
-					Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();
-				}
-				else{
+		@Override
+		protected void onPostExecute(String result) {
+			System.out.println(jsonResult);
+			waitfriends.setVisibility(View.INVISIBLE);
+			if(jsonResult.equals("[]")){
+				CharSequence pass= "eMail friends no found";
+				Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();
+			}
+			else{
+				try {
+					JSONObject jsonResponse = new JSONObject(jsonResult);
+					JSONArray jsonMainNode = jsonResponse.optJSONArray("User");
+					System.out.println(jsonResponse);
+					System.out.println(jsonMainNode);
+					JSONObject jsonChildNode = jsonMainNode.getJSONObject(0);
+					//quello che ricevo dal db online//
+					String name = jsonChildNode.optString("name");
+					String surname = jsonChildNode.optString("surname");
+					String point = jsonChildNode.optString("point");
+					//una volta ricevuti gli amici creo un oggetto friends e lo passo al db locale//
+					Friends amico = new Friends();
+					amico.setName(name);
+					amico.setSurname(surname);
+					//faccio il cast di punti a int //
+					int punti = 0 ;
 					try {
-		 				JSONObject jsonResponse = new JSONObject(jsonResult);
-		 				JSONArray jsonMainNode = jsonResponse.optJSONArray("User");
-		 				JSONObject jsonChildNode = jsonMainNode.getJSONObject(0);
-		 				String password = jsonChildNode.optString("password");
-		 				CharSequence pass= "Your Password is: " + password;
-		 				Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();
-		 			} 
-		 			catch (JSONException e) {
-		 				Toast.makeText(getApplicationContext(), "Error" + e.toString(),Toast.LENGTH_SHORT).show();
-		 			}
+						punti = Integer.parseInt(point);
+					} 
+					catch (Exception e){ 
+						e.printStackTrace();
+
+					}
+					amico.setPoint(punti);
+					amico.setEmailFriends(eMailFriends);
+					amico.setEmailUser(eMailUser);
+
+
+					//metodo per mandare dati al db locale//
+					try{
+						ControlFriends.getIstanceControlFriends().saveOnDbFriends(amico,getApplicationContext());
+					}catch  (Exception e) {
+						Log.i("Friends2Activity", "errore query");
+					}
+
+					CharSequence amico2= "Friend added" ;
+					Toast.makeText(getApplicationContext(), amico2, Toast.LENGTH_LONG).show();
+				} 
+				catch (JSONException e) {
+					Toast.makeText(getApplicationContext(), "Error" + e.toString(),Toast.LENGTH_SHORT).show();
 				}
 			}
-		}// end async task
+		}
+	}// end async task
 
 	public void accessWebService(){
 		JsonReadTask task = new JsonReadTask();
 		// passes values for the urls string array
 		task.execute(new String[] { url, eMailFriends,eMailUser, name, surname});
 	}
+
+	//@Override
+	//public void onBackPressed() {
+	//Intent intent3 = new Intent(Friends2Activity.this, ProfileActivity.class );
+	//startActivity(intent3);
+
+	//}
+
 }
 
 

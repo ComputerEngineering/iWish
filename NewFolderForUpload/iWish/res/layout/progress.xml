@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"   
     android:background="@drawable/sfondo_progress">
-        
+<!--        
    <ImageView
         android:id="@+id/cerchio_grigio"
         android:layout_width="99dp"
@@ -13,7 +13,7 @@
         android:layout_marginTop="72dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/cerchio_grigio" /> 
-        
+          
       <ImageView
         android:id="@+id/cerchio_attivita"
         android:layout_width="90dp"
@@ -51,7 +51,7 @@
         android:background="@color/sfondo"
         android:src="@drawable/bot_prog1" />
 
-  <!--   
+   
    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/cerchio"
         android:layout_width="65dp"
@@ -64,30 +64,30 @@
         app:shadow="false" />
    --> 
     <TextView
-        android:id="@+id/scritta_week"
+        android:id="@+id/heart_max"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="214dp"
-        android:layout_marginLeft="128dp"
-        android:text="4"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="122dp"
+        android:text=" --"
         android:textSize="20sp"
         android:textColor="@color/bianco"/>   
      <TextView
-        android:id="@+id/scritta_session"
+        android:id="@+id/heart_min"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="214dp"
-        android:layout_marginLeft="205dp"
-        android:text="60"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="204dp"
+        android:text=" --"
         android:textSize="20sp"
         android:textColor="@color/bianco"/>   
      <TextView
-        android:id="@+id/scritta_perc_done"
+        android:id="@+id/heart_med"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="214dp"
-        android:layout_marginLeft="288dp"
-        android:text="98"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="284dp"
+        android:text=" --"
         android:textSize="20sp"
         android:textColor="@color/bianco"/>                 
    
@@ -124,19 +124,6 @@
        android:layout_marginTop="585dp"  
 	   android:src="@drawable/m_bot_lets_start"/>
 
-    <Button
-        android:id="@+id/heart_rate"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/bot_programma"
-        android:layout_alignTop="@+id/going"
-        android:background="@drawable/heart_rate"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="@color/bianco"
-        android:text="--" />
-
     <Chronometer
         android:id="@+id/chronometer"
         android:layout_width="wrap_content"
@@ -147,6 +134,19 @@
         android:text="Chronometer"
         android:textColor="@color/verde_scuro"
         android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/heart_rate"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/scritta_perc_done"
+        android:layout_centerVertical="true"
+        android:background="@drawable/heart_rate"
+        android:text="--"
+        android:textColor="@color/bianco"
+        android:textSize="15sp"
         android:textStyle="bold" />
     
 </RelativeLayout>

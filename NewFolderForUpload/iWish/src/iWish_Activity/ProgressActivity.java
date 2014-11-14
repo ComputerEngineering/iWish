@@ -37,7 +37,7 @@ import com.progect.iwish.R;
 
 public class ProgressActivity extends Activity{
 	private Button heartRate;
-	private ImageButton menu;
+	//private ImageButton menu;
 	private ImageButton ok;
 	private final static String TAG = ProgressActivity.class.getSimpleName();
 	public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
@@ -54,6 +54,10 @@ public class ProgressActivity extends Activity{
 	private long milliseconds;
 	private SimpleDateFormat timeFormat;
 	private String hmmss;
+	private TextView heartMax;
+	private TextView heartMin;
+	private TextView heartMed;
+
 
 	// Code to manage Service lifecycle.
 	private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -119,7 +123,10 @@ public class ProgressActivity extends Activity{
 		mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 		mActivities = (Activities) intent.getSerializableExtra("a");
 		going = (ImageView)findViewById(R.id.going);
-		menu = (ImageButton)findViewById(R.id.bott_omino);
+		heartMax =(TextView)findViewById(R.id.heart_max);
+		heartMin =(TextView)findViewById(R.id.heart_min);
+		heartMed =(TextView)findViewById(R.id.heart_med);
+		//menu = (ImageButton)findViewById(R.id.bott_omino);
 		ok = (ImageButton)findViewById(R.id.m_lets_start);
 		heartRate = (Button)findViewById(R.id.heart_rate);
 		if(mDeviceAddress != null){
@@ -135,6 +142,7 @@ public class ProgressActivity extends Activity{
 		setOnClickButton();
 		setOnChronometer();
 		setImage();
+
 		// Start heartRate.
 		mHandler.postDelayed(new Runnable() {
 			@Override
@@ -167,10 +175,10 @@ public class ProgressActivity extends Activity{
 		unbindService(mServiceConnection);
 		mBluetoothLeService = null;
 	}
-	
+
 	@Override
 	public void onBackPressed() {
-	    // your code.
+		// your code.
 		Intent intent3 = new Intent(ProgressActivity.this, ProfileActivity.class );
 		//eventuale uso adesso non serve
 		//intent3.putExtra("a", mActivities);
@@ -194,6 +202,7 @@ public class ProgressActivity extends Activity{
 			//vecchi dato che aggiornava i battiti adesso heartRate
 			//mDataField.setText(data);
 			heartRate.setText(data);
+			MinMaxMed(data);
 		}
 	}
 
@@ -208,7 +217,7 @@ public class ProgressActivity extends Activity{
 
 	private void setOnClickButton(){
 
-		menu.setOnClickListener(new OnClickListener() {
+		/*	menu.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -218,7 +227,7 @@ public class ProgressActivity extends Activity{
 				ch.stop();
 
 			}
-		});
+		});*/
 
 		ok.setOnClickListener(new OnClickListener() {
 
@@ -290,6 +299,24 @@ public class ProgressActivity extends Activity{
 				mNotifyCharacteristic = characteristic;
 				mBluetoothLeService.setCharacteristicNotification(characteristic, true);
 			}
+		}
+
+	}
+
+	private void MinMaxMed(String data){
+		int dato;
+		int min;
+		int max;
+		boolean excep=false;
+		try {
+			dato = Integer.parseInt(data);
+		} 
+		catch (Exception e){ 
+			e.printStackTrace();
+			excep = true;
+		}
+		if(!excep){
+			
 		}
 
 	}

@@ -4,9 +4,14 @@ import iWish_Control.ControlUser;
 import iWish_Utente.Utente;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,20 +21,24 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.progect.iwish.R;
 
-public class RegisterActivity extends Activity implements OnItemSelectedListener{
+public class RegisterActivity extends Activity implements OnItemSelectedListener, OnFocusChangeListener{
 	public Context c;
 	private ImageButton bt_change=null;
 	private ImageButton bt_go_ok=null;
@@ -53,11 +62,20 @@ public class RegisterActivity extends Activity implements OnItemSelectedListener
 	private AlertDialog alertDialog;
 	private Utente mUser ;
 
+	//gestioneDatapicker per compleanno
+	private DatePickerDialog BirthdayDatePickerDialog;
+	private SimpleDateFormat dateFormatter;
+	//
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
 		setUpViews();
+
+		dateFormatter = new SimpleDateFormat( "dd-MM-yyyy", Locale.ITALY);  
+		edt_birthday.setInputType(InputType.TYPE_NULL);
+		setDateTimeField();
 
 		sp_questions_register  =(Spinner) findViewById(R.id.spinner1);
 		adapter = ArrayAdapter.createFromResource(this, R.array.question, android.R.layout.simple_spinner_item);
@@ -77,6 +95,10 @@ public class RegisterActivity extends Activity implements OnItemSelectedListener
 				startActivityForResult(Intent.createChooser(intentPhoto,"Select Picture"), SELECT_PICTURE);
 			}
 		});
+
+
+
+
 		bt_go_ok.setOnClickListener(new OnClickListener() {
 
 			@SuppressWarnings("deprecation")
@@ -102,7 +124,8 @@ public class RegisterActivity extends Activity implements OnItemSelectedListener
 						CharSequence eMail= "Your email is already exist";
 						Toast.makeText(getApplicationContext(), eMail, Toast.LENGTH_SHORT).show();
 					}else{
-
+						String dataNascita = edt_birthday.getText().toString();
+						edt_birthday.setText(levaTrattini(dataNascita));
 						// Creiamo un nuovo intent passando il nome dell'intent successivo (ma si poteva fare anche passando il nome della classe) 
 						Intent intent = new Intent("iWish_Activity.AVATAR");
 						//creiamo un utente u con tutte le info inserite
@@ -163,7 +186,7 @@ public class RegisterActivity extends Activity implements OnItemSelectedListener
 				Uri selectedImageUri = data.getData();
 				selectedImagePath = getPath(selectedImageUri);
 
-				// affinch� l'immagine non venga deformata viene prima resa quadrata mediante il metodo Ritaglia
+				// affinche l'immagine non venga deformata viene prima resa quadrata mediante il metodo Ritaglia
 				Bitmap immScelta = Ritaglia(selectedImagePath);               
 				selectPhoto.setImageBitmap(immScelta);
 				// se non ci importava della deformazione potevamo fare direttamente:
@@ -215,5 +238,50 @@ public class RegisterActivity extends Activity implements OnItemSelectedListener
 		}
 		return null;
 	}
-}
 
+
+
+
+
+	//gestioneDatepicker
+
+	private void setDateTimeField() {
+		edt_birthday.setOnFocusChangeListener(this);
+
+		Calendar newCalendar = Calendar.getInstance();
+		BirthdayDatePickerDialog = new DatePickerDialog(this, R.style.DatePickerStyle, new OnDateSetListener() {
+			//     BirthdayDatePickerDialog = new DatePickerDialog(this, new OnDateSetListener() {
+
+			public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+				Calendar newDate = Calendar.getInstance();
+				newDate.set(year, monthOfYear, dayOfMonth);
+				edt_birthday.setText(dateFormatter.format(newDate.getTime()));
+			}
+
+		},newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.WEEK_OF_MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+		BirthdayDatePickerDialog.setTitle("");
+
+	}
+
+	private String levaTrattini (String x){
+
+		StringBuffer ris = new StringBuffer("");
+
+		for(int i=0; i<x.length();i++){
+			if(x.charAt(i)!= '-') ris=ris.append(x.charAt(i));
+		}
+		String risinv = ris.toString();
+		String inv = risinv.substring(4, 8) + risinv.substring(2, 4) + risinv.substring(0, 2);
+		return inv;
+	}
+
+	////gestioneDatepicker
+
+	@Override
+	public void onFocusChange(View v, boolean hasFocus) {
+		// TODO Stub di metodo generato automaticamente
+		if(hasFocus)
+			BirthdayDatePickerDialog.show();
+	}
+}
