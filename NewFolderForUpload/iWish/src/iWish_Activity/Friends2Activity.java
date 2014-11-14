@@ -68,6 +68,8 @@ public class Friends2Activity extends Activity {
 	private ProgressBar waitfriends;
 	private String eMailFriends;
     private String eMailUser;
+    private String name;
+    private String surname;
 	private Button search;
 	
 
@@ -76,6 +78,8 @@ public class Friends2Activity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.friends2);
 		eMailUser = UserIstance.getIstanceUserIstance().getEmailUser();
+		name = UserIstance.getIstanceUserIstance().getName();
+		surname = UserIstance.getIstanceUserIstance().getSurname();
 		emailFriends=(EditText)findViewById(R.id.emailfriends);
 		emailFriends.setVisibility(View.INVISIBLE);
 		search=(Button)findViewById(R.id.search);
@@ -192,6 +196,8 @@ public class Friends2Activity extends Activity {
 					JSONObject json = new JSONObject();;
 					json.put("eMailFriends", params[1]);
 					json.put("eMailUser", params[2]);
+					json.put("name", params[3]);
+					json.put("surname", params[4]);
 					
 					List<NameValuePair> nameValuePairs;
 					Map<String, String> user = new HashMap<String, String>();
@@ -280,7 +286,7 @@ public class Friends2Activity extends Activity {
 	public void accessWebService(){
 		JsonReadTask task = new JsonReadTask();
 		// passes values for the urls string array
-		task.execute(new String[] { url, eMailFriends,eMailUser});
+		task.execute(new String[] { url, eMailFriends,eMailUser, name, surname});
 	}
 }
 

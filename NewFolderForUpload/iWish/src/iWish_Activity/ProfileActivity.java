@@ -97,6 +97,20 @@ public class ProfileActivity extends Activity{
 			}
 		});
 	}
+	
+	public void onBackPressed() {
+	    // your code.
+		//Intent intent3 = new Intent(ProgressActivity.this, ProfileActivity.class );
+		//eventuale uso adesso non serve
+		//intent3.putExtra("a", mActivities);
+		//startActivity(intent3);
+		//finish();
+		Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
+	}
+	
 	private void setUpViews() {
 		bt_statics = (ImageButton)findViewById(R.id.bot_statistics);
 		bt_friends = (ImageButton)findViewById(R.id.bot_friends);

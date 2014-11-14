@@ -167,6 +167,16 @@ public class ProgressActivity extends Activity{
 		unbindService(mServiceConnection);
 		mBluetoothLeService = null;
 	}
+	
+	@Override
+	public void onBackPressed() {
+	    // your code.
+		Intent intent3 = new Intent(ProgressActivity.this, ProfileActivity.class );
+		//eventuale uso adesso non serve
+		//intent3.putExtra("a", mActivities);
+		startActivity(intent3);
+		//finish();
+	}
 
 	private void updateConnectionState(final int resourceId) {
 		runOnUiThread(new Runnable() {
