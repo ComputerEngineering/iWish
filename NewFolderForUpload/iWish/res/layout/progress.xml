@@ -124,29 +124,29 @@
        android:layout_marginTop="585dp"  
 	   android:src="@drawable/m_bot_lets_start"/>
 
-    <Chronometer
-        android:id="@+id/chronometer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/scritta_perc_done"
-        android:layout_marginBottom="78dp"
-        android:text="Chronometer"
-        android:textColor="@color/verde_scuro"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
     <Button
         android:id="@+id/heart_rate"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/scritta_perc_done"
+        android:layout_alignLeft="@+id/heart_med"
         android:layout_centerVertical="true"
         android:background="@drawable/heart_rate"
         android:text="--"
         android:textColor="@color/bianco"
         android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/heart_rate"
+        android:layout_marginBottom="71dp"
+        android:text="Chronometer"
+        android:textColor="@color/verde_scuro"
+        android:textSize="50sp"
         android:textStyle="bold" />
     
 </RelativeLayout>

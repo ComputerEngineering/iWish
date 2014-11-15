@@ -142,8 +142,9 @@ public class NetworkSession extends AsyncTask<String, Void,  String> {
 			json.put("battitiMin",(obj2.get(key)).getBattitiMin());
 			json.put("battitiMed", (obj2.get(key)).getBattitiMed());
 			json.put("altezzaMax", (obj2.get(key)).getAltezzaMax());
-			json.put("altezzaMin", (obj.get(key)).getAltezzaMin());
-			json.put("altezzaMed",(obj.get(key)).getAltezzaMed());
+			json.put("altezzaMin", (obj2.get(key)).getAltezzaMin());
+			json.put("altezzaMed",(obj2.get(key)).getAltezzaMed());
+			json.put("StartDate",(obj2.get(key)).getStartDate());
 			
 			Map<String, String> session = new HashMap<String, String>();
 			session.put("sessioni", json.toString());

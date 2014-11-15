@@ -42,7 +42,7 @@ public class ProgressActivity extends Activity{
 	private final static String TAG = ProgressActivity.class.getSimpleName();
 	public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
 	public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
-	private static final long START_HEART = 3000; //Start heart
+	private static final long START_HEART = 5000; //Start heart
 	private String mDeviceAddress;
 	private BluetoothLeService mBluetoothLeService;
 	private boolean mConnected = false;
@@ -57,6 +57,11 @@ public class ProgressActivity extends Activity{
 	private TextView heartMax;
 	private TextView heartMin;
 	private TextView heartMed;
+	private boolean mStarting;
+	private int sommaMed;
+	private int divisoreMedia;
+	private int hMin;
+	private int hMax;
 
 
 	// Code to manage Service lifecycle.
@@ -119,6 +124,11 @@ public class ProgressActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.progress);
 		mHandler = new Handler();
+		mStarting = false;
+		sommaMed = 0;
+		divisoreMedia = 0;
+		hMin = 300;
+		hMax = 30;
 		final Intent intent = getIntent();
 		mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 		mActivities = (Activities) intent.getSerializableExtra("a");
@@ -202,7 +212,9 @@ public class ProgressActivity extends Activity{
 			//vecchi dato che aggiornava i battiti adesso heartRate
 			//mDataField.setText(data);
 			heartRate.setText(data);
-			MinMaxMed(data);
+			if(mStarting){
+				MinMaxMed(data);
+			}
 		}
 	}
 
@@ -234,6 +246,7 @@ public class ProgressActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				//da definire cosa fa allo start Let's Start
+				mStarting = true;
 				ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
 				ch.start();
 			}
@@ -305,19 +318,29 @@ public class ProgressActivity extends Activity{
 
 	private void MinMaxMed(String data){
 		int dato;
-		int min;
-		int max;
-		boolean excep=false;
+		int med;
 		try {
 			dato = Integer.parseInt(data);
+			divisoreMedia++;
+			sommaMed += dato;
+			if(dato < hMin){
+				hMin = dato;
+				if(hMax == 30){
+					hMax = dato;
+				}
+			}
+			else{
+				if(dato > hMax){
+					hMax = dato;
+				}
+			}
+			med = sommaMed / divisoreMedia;
+			heartMax.setText(""+hMax);
+			heartMin.setText(""+hMin);
+			heartMed.setText(""+med);
 		} 
 		catch (Exception e){ 
 			e.printStackTrace();
-			excep = true;
 		}
-		if(!excep){
-			
-		}
-
 	}
 }

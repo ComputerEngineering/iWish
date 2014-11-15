@@ -24,6 +24,7 @@ public class DataBaseStorageSession extends SQLiteOpenHelper {
 	static final String COLUMN_ALTEZZA_MAX="altezzaMax";
 	static final String COLUMN_ALTEZZA_MIN="altezzaMin";
 	static final String COLUMN_ALTEZZA_MED="altezzaMed";
+	static final String COLUMN_START_DATE="startDate";
 	
 	
 	// shared index, make sure to match COLUMNS
@@ -36,11 +37,12 @@ public class DataBaseStorageSession extends SQLiteOpenHelper {
 	static final int COLUMN_ALTEZZA_MAX_INDEX=6;
 	static final int COLUMN_ALTEZZA_MIN_INDEX=7;
 	static final int COLUMN_ALTEZZA_MED_INDEX=8;
+	static final int COLUMN_START_DATE_INDEX=9;
 	
 
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION =  1;
+	private  static  final  int DATABASE_VERSION =  2;
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Session.db";
 	/** this 's the query that we use for create the table
@@ -48,13 +50,14 @@ public class DataBaseStorageSession extends SQLiteOpenHelper {
 	private static final String DATABASE_CREATE = "create table " + TABLE_SESSION + "("
 			+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
 			+ COLUMN_ID_ACTIVITIES + " INTEGER NOT NULL,"
-			+ COLUMN_DURATA_TEMPO + " NUMERIC(5) DEFAULT 0,"
+			+ COLUMN_DURATA_TEMPO + " INTEGER DEFAULT 0,"
 			+ COLUMN_BATTITI_MAX + " NUMERIC(3) DEFAULT 0,"
 			+ COLUMN_BATTITI_MIN + " NUMERIC(3) DEFAULT 0,"
 			+ COLUMN_BATTITI_MED + " NUMERIC(3) DEFAULT 0,"
 			+ COLUMN_ALTEZZA_MAX + " NUMERIC(5) DEFAULT 0,"
 			+ COLUMN_ALTEZZA_MIN + " NUMERIC(5) DEFAULT 0,"
-			+ COLUMN_ALTEZZA_MED + " NUMERIC(5) DEFAULT 0 "
+			+ COLUMN_ALTEZZA_MED + " NUMERIC(5) DEFAULT 0,"
+			+ COLUMN_START_DATE + " INTEGER NOT NULL "
 			+ ");";
 
 	public DataBaseStorageSession(Context context) {

@@ -8,13 +8,14 @@ public class Session implements MySession, Serializable {
 	private static final long serialVersionUID = -1907227924554553866L;
 	private long KeySession;
 	private long KeyActivities;
-	private int DurataTempo;
+	private long DurataTempo;
 	private int BattitiMax;
 	private int BattitiMin;
 	private int BattitiMed;
 	private int AltezzaMax;
 	private int AltezzaMin;
 	private int AltezzaMed;
+	private long StartDate;
 
 	@Override
 	public long getKeySession() {
@@ -29,7 +30,7 @@ public class Session implements MySession, Serializable {
 	}
 
 	@Override
-	public int getDurataTempo() {
+	public long getDurataTempo() {
 		
 		return DurataTempo;
 	}
@@ -69,6 +70,12 @@ public class Session implements MySession, Serializable {
 		// TODO Auto-generated method stub
 		return AltezzaMed;
 	}
+	
+	@Override
+	public long getStartDate() {
+		
+		return StartDate;
+	}
 
 	@Override
 	public void setKeySession(long KeySession) {
@@ -83,7 +90,7 @@ public class Session implements MySession, Serializable {
 	}
 
 	@Override
-	public void setDurataTempo(int DurataTempo) {
+	public void setDurataTempo(long DurataTempo) {
 		// TODO Auto-generated method stub
 		this.DurataTempo = DurataTempo;
 	}
@@ -123,6 +130,12 @@ public class Session implements MySession, Serializable {
 		// TODO Auto-generated method stub
 		this.AltezzaMed = AltezzaMed;
 	}
+	
+	@Override
+	public void setStartDate(long StartDate) {
+		// TODO Auto-generated method stub
+		this.StartDate = StartDate;
+	}
 
 	@Override
 	public String toString() {
@@ -131,7 +144,7 @@ public class Session implements MySession, Serializable {
 				+ ", BattitiMax=" + BattitiMax + ", BattitiMin=" + BattitiMin
 				+ ", BattitiMed=" + BattitiMed + ", AltezzaMax=" + AltezzaMax
 				+ ", AltezzaMin=" + AltezzaMin + ", AltezzaMed=" + AltezzaMed
-				+ "]";
+				+ ", StartDate=" + StartDate + "]";
 	}
 
 }
