@@ -8,14 +8,15 @@ public class Session implements MySession, Serializable {
 	private static final long serialVersionUID = -1907227924554553866L;
 	private long KeySession;
 	private long KeyActivities;
-	private long DurataTempo;
-	private int BattitiMax;
-	private int BattitiMin;
-	private int BattitiMed;
-	private int AltezzaMax;
-	private int AltezzaMin;
-	private int AltezzaMed;
-	private long StartDate;
+	private int DurataTempo = 0;
+	private int BattitiMax = 0;
+	private int BattitiMin = 0;
+	private int BattitiMed = 0;
+	private int AltezzaMax = 0;
+	private int AltezzaMin = 0;
+	private int AltezzaMed = 0;
+	private int StartDate;
+	private int StartDateActivities;
 
 	@Override
 	public long getKeySession() {
@@ -30,7 +31,7 @@ public class Session implements MySession, Serializable {
 	}
 
 	@Override
-	public long getDurataTempo() {
+	public int getDurataTempo() {
 		
 		return DurataTempo;
 	}
@@ -72,9 +73,15 @@ public class Session implements MySession, Serializable {
 	}
 	
 	@Override
-	public long getStartDate() {
+	public int getStartDate() {
 		
 		return StartDate;
+	}
+	
+	@Override
+	public int getStartDateActivities() {
+		
+		return StartDateActivities;
 	}
 
 	@Override
@@ -90,7 +97,7 @@ public class Session implements MySession, Serializable {
 	}
 
 	@Override
-	public void setDurataTempo(long DurataTempo) {
+	public void setDurataTempo(int DurataTempo) {
 		// TODO Auto-generated method stub
 		this.DurataTempo = DurataTempo;
 	}
@@ -132,9 +139,15 @@ public class Session implements MySession, Serializable {
 	}
 	
 	@Override
-	public void setStartDate(long StartDate) {
+	public void setStartDate(int StartDate) {
 		// TODO Auto-generated method stub
 		this.StartDate = StartDate;
+	}
+	
+	@Override
+	public void setStartDateActivities(int StartDateActivities) {
+		// TODO Auto-generated method stub
+		this.StartDateActivities = StartDateActivities;
 	}
 
 	@Override
@@ -144,7 +157,7 @@ public class Session implements MySession, Serializable {
 				+ ", BattitiMax=" + BattitiMax + ", BattitiMin=" + BattitiMin
 				+ ", BattitiMed=" + BattitiMed + ", AltezzaMax=" + AltezzaMax
 				+ ", AltezzaMin=" + AltezzaMin + ", AltezzaMed=" + AltezzaMed
-				+ ", StartDate=" + StartDate + "]";
+				+ ", StartDate=" + StartDate + ", StartDateActivities=" + StartDateActivities + "]";
 	}
 
 }

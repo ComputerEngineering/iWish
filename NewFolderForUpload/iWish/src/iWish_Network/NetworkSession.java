@@ -5,6 +5,7 @@ import iWish_Context.ContextiWish;
 import iWish_Control.ControlSession;
 import iWish_ControlServer.CheckConnection;
 import iWish_Session.Session;
+import iWish_Utente.UserIstance;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -96,7 +97,10 @@ public class NetworkSession extends AsyncTask<String, Void,  String> {
 			resonseHandler = new BasicResponseHandler();
 			json = new JSONObject();
 			obj=new HashMap<Long, Session>();
-
+			
+			json.put("battiti", params[0]);
+			json.put("eMail", UserIstance.getIstanceUserIstance().getEmailUser());
+			
 			takeListSession();
 
 			if(count==0){
@@ -144,7 +148,8 @@ public class NetworkSession extends AsyncTask<String, Void,  String> {
 			json.put("altezzaMax", (obj2.get(key)).getAltezzaMax());
 			json.put("altezzaMin", (obj2.get(key)).getAltezzaMin());
 			json.put("altezzaMed",(obj2.get(key)).getAltezzaMed());
-			json.put("StartDate",(obj2.get(key)).getStartDate());
+			json.put("startDate",(obj2.get(key)).getStartDate());
+			json.put("startDateActivities",(obj2.get(key)).getStartDateActivities());
 			
 			Map<String, String> session = new HashMap<String, String>();
 			session.put("sessioni", json.toString());

@@ -15,6 +15,11 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+import iWish_Activities.Activities;
+import iWish_Control.ControlActivities;
+import iWish_Control.ControlConnection;
+import iWish_Control.ControlSession;
+import iWish_Session.Session;
 
 import java.util.UUID;
 /**
@@ -43,8 +48,25 @@ public class BluetoothLeService extends Service {
 	public final static String ACTION_DATA_AVAILABLE = "iWish_Activity.ACTION_DATA_AVAILABLE";
 	public final static String ACTION_DATA_ALL = "iWish_Activity.ACTION_DATA_ALL";     //lo utilizzo per inviare tutti i dati al grafico da definire
 	public final static String EXTRA_DATA = "iWish_Activity.EXTRA_DATA";
+	public final static String EXTRA_MAX = "iWish_Activity.EXTRA_MAX";
+	public final static String EXTRA_MIN = "iWish_Activity.EXTRA_MIN";
+	public final static String EXTRA_MED = "iWish_Activity.EXTRA_MED";
 	public final static UUID UUID_HEART_RATE_MEASUREMENT = UUID.fromString(BluetoothLeService.HEART_RATE_MEASUREMENT);
 	public final static UUID UUID_HEART_RATE_SERVICE = UUID.fromString(BluetoothLeService.HEART_RATE_SERVICE);
+
+	private Activities mActivities;
+	private Session mSession;
+	private int sommaMed;
+	private int divisoreMedia;
+	private int hMin;
+	private int hMax;
+	private int hMed;
+	private boolean mStarting;
+	private long tempo;
+	private int startDateTime;
+	private int stopDateTime;
+	private int durataTempo;
+	private String totBeats;
 
 	// Implements callback methods for GATT events that the app cares about.
 	// For example, connection change and services discovered.
@@ -112,7 +134,18 @@ public class BluetoothLeService extends Service {
 			}
 			final int heartRate = characteristic.getIntValue(format, 1);
 			Log.d(TAG, String.format("Received heart rate: %d", heartRate));
+			//passo il battito attuale
 			intent.putExtra(EXTRA_DATA, String.valueOf(heartRate));
+			//imposto max min e med
+
+			if(mStarting){
+				MinMaxMed(String.valueOf(heartRate));
+				setBeatsTot(String.valueOf(heartRate));
+			}
+			intent.putExtra(EXTRA_MAX, ""+hMax);
+			intent.putExtra(EXTRA_MIN, ""+hMin);
+			intent.putExtra(EXTRA_MED, ""+hMed);
+
 		} else {
 			// For all other profiles, writes the data formatted in HEX.
 			final byte[] data = characteristic.getValue();
@@ -154,6 +187,15 @@ public class BluetoothLeService extends Service {
 	 * @return Return true if the initialization is successful.
 	 */
 	public boolean initialize() {
+		//dati per la media il max e il min
+		sommaMed = 0;
+		divisoreMedia = 0;
+		hMin = 300;
+		hMax = 30;
+		hMed = 30;
+		totBeats = "";
+		mStarting=false;
+
 		// For API level 18 and above, get a reference to BluetoothAdapter through
 		// BluetoothManager.
 		if (mBluetoothManager == null) {
@@ -278,4 +320,81 @@ public class BluetoothLeService extends Service {
 		}
 		return mBluetoothGatt.getService(UUID_HEART_RATE_SERVICE);
 	}
+
+	public void setActivitiesAndSession(Activities attivita){
+		mActivities = attivita;
+		mSession = new Session();
+		mSession.setKeyActivities(mActivities.getKeyActivities());
+		mSession.setStartDateActivities(mActivities.getStartDate());
+		tempo = System.currentTimeMillis();
+		startDateTime = (int) (tempo/1000); 
+		mSession.setStartDate(startDateTime);
+		
+	}
+
+	public void onStart(){
+		mStarting = true;
+	}
+
+	public void onStop(){
+		mStarting = false;
+		mSession.setBattitiMax(hMax);
+		mSession.setBattitiMin(hMin);
+		mSession.setBattitiMed(hMed);
+		long fine = System.currentTimeMillis();
+		int fineTime = (int) (fine/1000);
+		int durataTempo = fineTime - startDateTime;
+		mSession.setDurataTempo(durataTempo);
+		try {
+			Log.i("BluetoothLeService", "PRIMA DI INSERIRE NEL DB SESSION");
+			ControlSession.getIstanceControlSession().saveOnDbSession(mSession, getApplicationContext());
+			Log.i("BluetoothLeService", "DOPO L'INSERIMENTO NEL DB SESSION");
+			ControlConnection.getIstanceControlConnection().onInsertSession(totBeats);
+			Log.i("BluetoothLeService", "DOPO L'INSERIMENTO online");
+		} catch (Exception e) {
+			//Toast.makeText(c ,"errore di salvataggio", Toast.LENGTH_LONG).show();
+			Log.i("BluetoothLeService", "errore INSERIMENTO NEL DB SESSION");
+			e.printStackTrace();
+		}
+		Log.i("WeightActivity", "SALVATAGGIO SUL DB ANDATO A BUON FINE");
+	}
+	
+	public void onPause(){
+		mStarting = false;
+	}
+
+	private void MinMaxMed(String data){
+		int dato;
+
+		try {
+			dato = Integer.parseInt(data);
+			if(dato != 0){
+				divisoreMedia++;
+				sommaMed += dato;
+			}
+			if(dato < hMin && dato!=0){
+				hMin = dato;
+				if(hMax == 30){
+					hMax = dato;
+				}
+			}
+			else{
+				if(dato > hMax){
+					hMax = dato;
+				}
+			}
+			hMed = sommaMed / divisoreMedia;
+		} 
+		catch (Exception e){ 
+			e.printStackTrace();
+		}
+	}
+	
+	private void setBeatsTot(String beat){
+		if(!beat.equals("0")){
+			totBeats = totBeats + beat + ",";
+		}
+	}
+	
+	
 }

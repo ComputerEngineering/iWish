@@ -35,8 +35,8 @@ public class ControlConnection {
 		new NetworkFriends().execute();
 	}
 	
-	public void onInsertSession(){
-	//	new NetworkSession().execute();
+	public void onInsertSession(String beats){
+		new NetworkSession().execute(beats);
 	}
 	
 	public void onInsertActivities(){

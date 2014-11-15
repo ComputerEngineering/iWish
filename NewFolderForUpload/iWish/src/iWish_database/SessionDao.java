@@ -27,7 +27,8 @@ public class SessionDao {
 		DataBaseStorageSession.COLUMN_ALTEZZA_MAX,
 		DataBaseStorageSession.COLUMN_ALTEZZA_MIN,
 		DataBaseStorageSession.COLUMN_ALTEZZA_MED,
-		DataBaseStorageSession.COLUMN_START_DATE
+		DataBaseStorageSession.COLUMN_START_DATE,
+		DataBaseStorageSession.COLUMN_START_DATE_ACTIVITIES
 
 	};
 
@@ -60,6 +61,7 @@ public class SessionDao {
 		values.put(DataBaseStorageSession.COLUMN_ALTEZZA_MIN,""+ mSession.getAltezzaMin() + "");
 		values.put(DataBaseStorageSession.COLUMN_ALTEZZA_MED,""+ mSession.getAltezzaMed() + "");
 		values.put(DataBaseStorageSession.COLUMN_START_DATE,""+ mSession.getStartDate() + "");
+		values.put(DataBaseStorageSession.COLUMN_START_DATE_ACTIVITIES,""+ mSession.getStartDateActivities() + "");
 		long insertId = database.insert(DataBaseStorageSession.TABLE_SESSION, null, values);
 	}
 
@@ -103,14 +105,15 @@ public class SessionDao {
 
 		session.setKeySession(cursor.getLong(DataBaseStorageSession.COLUMN_ID_INDEX));
 		session.setKeyActivities(cursor.getLong(DataBaseStorageSession.COLUMN_ID_ACTIVITIES_INDEX));
-		session.setDurataTempo(cursor.getLong(DataBaseStorageSession.COLUMN_DURATA_TEMPO_INDEX));
+		session.setDurataTempo(cursor.getInt(DataBaseStorageSession.COLUMN_DURATA_TEMPO_INDEX));
 		session.setBattitiMax(cursor.getInt(DataBaseStorageSession.COLUMN_BATTITI_MAX_INDEX));
 		session.setBattitiMin(cursor.getInt(DataBaseStorageSession.COLUMN_BATTITI_MIN_INDEX));
 		session.setBattitiMed(cursor.getInt(DataBaseStorageSession.COLUMN_BATTITI_MED_INDEX));
 		session.setAltezzaMax(cursor.getInt(DataBaseStorageSession.COLUMN_ALTEZZA_MAX_INDEX));
 		session.setAltezzaMin(cursor.getInt(DataBaseStorageSession.COLUMN_ALTEZZA_MIN_INDEX));
 		session.setAltezzaMed(cursor.getInt(DataBaseStorageSession.COLUMN_ALTEZZA_MED_INDEX));
-		session.setStartDate(cursor.getLong(DataBaseStorageSession.COLUMN_START_DATE_INDEX));
+		session.setStartDate(cursor.getInt(DataBaseStorageSession.COLUMN_START_DATE_INDEX));
+		session.setStartDateActivities(cursor.getInt(DataBaseStorageSession.COLUMN_START_DATE_ACTIVITIES_INDEX));
 		return  session;
 	}
 	/**Invoked when the garbage collector has detected that this instance is no longer 

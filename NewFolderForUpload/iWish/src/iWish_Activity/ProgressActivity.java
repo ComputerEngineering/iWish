@@ -39,6 +39,8 @@ public class ProgressActivity extends Activity{
 	private Button heartRate;
 	//private ImageButton menu;
 	private ImageButton ok;
+	private ImageButton stop;
+	private Button pause;
 	private final static String TAG = ProgressActivity.class.getSimpleName();
 	public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
 	public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
@@ -58,10 +60,6 @@ public class ProgressActivity extends Activity{
 	private TextView heartMin;
 	private TextView heartMed;
 	private boolean mStarting;
-	private int sommaMed;
-	private int divisoreMedia;
-	private int hMin;
-	private int hMax;
 
 
 	// Code to manage Service lifecycle.
@@ -114,7 +112,9 @@ public class ProgressActivity extends Activity{
 			} 
 			else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
 				//qui viene inviato alla TextView il dato aggiornato dei battiti cardiaci che ora si chiama heartRate
-				displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+				displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA),intent.getStringExtra(BluetoothLeService.EXTRA_MAX),
+						    intent.getStringExtra(BluetoothLeService.EXTRA_MIN),
+						    intent.getStringExtra(BluetoothLeService.EXTRA_MED));
 			}
 		}
 	};
@@ -125,10 +125,6 @@ public class ProgressActivity extends Activity{
 		setContentView(R.layout.progress);
 		mHandler = new Handler();
 		mStarting = false;
-		sommaMed = 0;
-		divisoreMedia = 0;
-		hMin = 300;
-		hMax = 30;
 		final Intent intent = getIntent();
 		mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 		mActivities = (Activities) intent.getSerializableExtra("a");
@@ -138,6 +134,10 @@ public class ProgressActivity extends Activity{
 		heartMed =(TextView)findViewById(R.id.heart_med);
 		//menu = (ImageButton)findViewById(R.id.bott_omino);
 		ok = (ImageButton)findViewById(R.id.m_lets_start);
+		stop = (ImageButton) findViewById(R.id.m_stop);
+		pause = (Button) findViewById(R.id.pause);
+		stop.setVisibility(View.INVISIBLE);
+		pause.setVisibility(View.INVISIBLE);
 		heartRate = (Button)findViewById(R.id.heart_rate);
 		if(mDeviceAddress != null){
 			Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
@@ -207,13 +207,16 @@ public class ProgressActivity extends Activity{
 	}
 
 	//aggiorna i battiti cardiaci
-	private void displayData(String data) {
+	private void displayData(String data, String max, String min, String med) {
 		if (data != null) {
 			//vecchi dato che aggiornava i battiti adesso heartRate
 			//mDataField.setText(data);
 			heartRate.setText(data);
 			if(mStarting){
-				MinMaxMed(data);
+			//	MinMaxMed(data);
+				heartMax.setText(max);
+				heartMin.setText(min);
+				heartMed.setText(med);
 			}
 		}
 	}
@@ -246,19 +249,54 @@ public class ProgressActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				//da definire cosa fa allo start Let's Start
+				if(mBluetoothLeService!=null){
+					mBluetoothLeService.setActivitiesAndSession(mActivities);
+					mBluetoothLeService.onStart();
+				}
+				else{
+					//gestire il caso senza bluetooth di session e di activities
+				}
 				mStarting = true;
+				ok.setVisibility(View.INVISIBLE);
+				stop.setVisibility(View.VISIBLE);
+				pause.setVisibility(View.VISIBLE);
 				ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
 				ch.start();
 			}
 		});
+		
+		stop.setOnClickListener(new OnClickListener() {
 
-		heartRate.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// selezione del dispositivo bluetooth
-				Intent intent2 = new Intent(ProgressActivity.this, BluetoothActivity.class );
-				intent2.putExtra("a", mActivities);
-				startActivity(intent2);			
+				//da definire cosa fa stop
+				if(mBluetoothLeService!=null){
+					mBluetoothLeService.onStop();
+				}
+				ch.stop();
+				pause.setVisibility(View.INVISIBLE);
+			}
+		});
+		
+		pause.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				//da definire cosa fa pause
+				
+			}
+		});
+
+		heartRate.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(!mStarting){
+					// selezione del dispositivo bluetooth
+					Intent intent2 = new Intent(ProgressActivity.this, BluetoothActivity.class );
+					intent2.putExtra("a", mActivities);
+					startActivity(intent2);
+				}
 			}
 		});
 
@@ -316,31 +354,4 @@ public class ProgressActivity extends Activity{
 
 	}
 
-	private void MinMaxMed(String data){
-		int dato;
-		int med;
-		try {
-			dato = Integer.parseInt(data);
-			divisoreMedia++;
-			sommaMed += dato;
-			if(dato < hMin){
-				hMin = dato;
-				if(hMax == 30){
-					hMax = dato;
-				}
-			}
-			else{
-				if(dato > hMax){
-					hMax = dato;
-				}
-			}
-			med = sommaMed / divisoreMedia;
-			heartMax.setText(""+hMax);
-			heartMin.setText(""+hMin);
-			heartMed.setText(""+med);
-		} 
-		catch (Exception e){ 
-			e.printStackTrace();
-		}
-	}
 }
