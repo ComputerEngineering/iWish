@@ -65,8 +65,10 @@ public class Friends2Activity extends Activity {
 	private EditText emailFriends;
 	private String jsonResult;
 	private String url = "http://www.iwishapp.eu/iwishapp/addfriend.php";
+	private String url2 = "http://www.iwishapp.eu/iwishapp/deletefriends.php";
 	private ProgressBar waitfriends;
 	private String eMailFriends;
+	private String deleteEmailFriends;
 	private String eMailUser;
 	private String name;
 	private String surname;
@@ -78,7 +80,9 @@ public class Friends2Activity extends Activity {
 	private String challengeProfile;
 	private Intent intent;
 	private Activities mActivities;
-	
+	private Button delete;
+	private EditText deleteemailfriends;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,6 +91,10 @@ public class Friends2Activity extends Activity {
 		intent = getIntent();
 		challengeProfile =(String)intent.getSerializableExtra("Activity");
 
+		delete = (Button)findViewById(R.id.deletemail);
+		delete.setVisibility(View.INVISIBLE);
+		deleteemailfriends = (EditText)findViewById(R.id.deleteemailfriends);
+		deleteemailfriends.setVisibility(View.INVISIBLE);
 		eMailUser = UserIstance.getIstanceUserIstance().getEmailUser();
 		name = UserIstance.getIstanceUserIstance().getName();
 		surname = UserIstance.getIstanceUserIstance().getSurname();
@@ -146,6 +154,7 @@ public class Friends2Activity extends Activity {
 		search.setOnClickListener(myListener);
 		botcerca.setOnClickListener(myListener);
 		bottomino.setOnClickListener(myListener);
+		delete.setOnClickListener(myListener);
 	}
 	OnClickListener myListener=new View.OnClickListener(){
 
@@ -158,6 +167,8 @@ public class Friends2Activity extends Activity {
 				startActivity(intent3);
 			}
 			if (v==FriendsList)   {
+				delete.setVisibility(View.INVISIBLE);
+				deleteemailfriends.setVisibility(View.INVISIBLE);
 				values = datasource.getAllFriends();
 				data = getFriendsData(values);
 				adapter=setAdapter();
@@ -168,9 +179,17 @@ public class Friends2Activity extends Activity {
 
 			}
 			if (v==DeleteFriends) {
+				mListView.setVisibility(View.INVISIBLE);
+				emailFriends.setVisibility(View.INVISIBLE);
+				search.setVisibility(View.INVISIBLE);
+				delete.setVisibility(View.VISIBLE);
+				deleteemailfriends.setVisibility(View.VISIBLE);
+				
 			}
 
 			if (v==botcerca) {
+				delete.setVisibility(View.INVISIBLE);
+				deleteemailfriends.setVisibility(View.INVISIBLE);
 				mListView.setVisibility(View.INVISIBLE);
 				emailFriends.setVisibility(View.VISIBLE);
 				search.setVisibility(View.VISIBLE);
@@ -182,7 +201,18 @@ public class Friends2Activity extends Activity {
 				}
 				else{
 					eMailFriends = emailFriends.getText().toString();
-					accessWebService();
+					accessWebService(); //inserire amico//
+				}
+
+			}
+			if(v==delete){
+				if(deleteemailfriends.getText().toString().equals("")){
+					CharSequence eMailMissing= "eMail or answer missing!!!";
+					Toast.makeText(getApplicationContext(), eMailMissing, Toast.LENGTH_LONG).show();
+				}
+				else{
+					deleteEmailFriends = deleteemailfriends.getText().toString();
+					accessWebServiceDelete();
 				}
 
 			}
@@ -357,6 +387,144 @@ public class Friends2Activity extends Activity {
 		// passes values for the urls string array
 		task.execute(new String[] { url, eMailFriends,eMailUser, name, surname});
 	}
+	
+	// Async Task to delete from the web
+		private class JsonDeleteTask extends AsyncTask<String, Void, String> {
+			@Override
+			protected void onPreExecute(){
+				waitfriends.setVisibility(View.VISIBLE);
+			}
+
+			@Override
+			protected String doInBackground(String... params) {
+				HttpClient httpclient = new DefaultHttpClient();
+				HttpPost httppost = new HttpPost(params[0]);
+
+				try {
+					JSONObject json = new JSONObject();;
+					json.put("eMailFriends", params[1]);
+					json.put("eMailUser", params[2]);
+					
+                    List<NameValuePair> nameValuePairs;
+					Map<String, String> user = new HashMap<String, String>();
+					//"Friends2" lo ritrovo nel php online//
+					user.put("Friends", json.toString());
+					nameValuePairs= new ArrayList<NameValuePair>(user.size());
+					String k,v;
+					Iterator<String> itKeys= user.keySet().iterator();
+					while (itKeys.hasNext()){
+						k=itKeys.next();
+						v=user.get(k);
+						nameValuePairs.add(new BasicNameValuePair(k,v));
+					}
+					httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+					System.out.println(nameValuePairs);
+
+					HttpResponse response = httpclient.execute(httppost);
+					jsonResult = inputStreamToString(
+							response.getEntity().getContent()).toString();
+				}
+
+				catch (ClientProtocolException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+					cancel(true);
+					return null;
+				}
+				catch (JSONException e) {
+					e.printStackTrace();
+					return null;
+				}
+				return null;
+			}
+
+			private StringBuilder inputStreamToString(InputStream is) { 
+				System.out.println(is);
+				String rLine = "";
+				StringBuilder answer = new StringBuilder();
+				BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+
+				try {
+					while ((rLine = rd.readLine()) != null) {
+						answer.append(rLine);
+					}
+				}
+
+				catch (IOException e) {
+					// e.printStackTrace();
+					Toast.makeText(getApplicationContext(),
+							"Error..." + e.toString(), Toast.LENGTH_LONG).show();
+				}
+				return answer;
+			}
+
+			protected void onCancelled(){
+				super.onCancelled();
+				waitfriends.setVisibility(View.INVISIBLE);
+				CharSequence pass= "Not connected to the internet or server error";
+				Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				System.out.println(jsonResult);
+				waitfriends.setVisibility(View.INVISIBLE);
+				if(jsonResult.equals("[]")){
+					CharSequence pass= "eMail friends no found";
+					Toast.makeText(getApplicationContext(), pass, Toast.LENGTH_LONG).show();
+				}
+				else{
+					try {
+						JSONObject jsonResponse = new JSONObject(jsonResult);
+						JSONArray jsonMainNode = jsonResponse.optJSONArray("User");
+						System.out.println(jsonResponse);
+						System.out.println(jsonMainNode);
+						JSONObject jsonChildNode = jsonMainNode.getJSONObject(0);
+						//quello che ricevo dal db online//
+						//String name = jsonChildNode.optString("name");
+						//String surname = jsonChildNode.optString("surname");
+						//String point = jsonChildNode.optString("point");
+						//una volta ricevuti gli amici creo un oggetto friends e lo passo al db locale//
+						//Friends amico = new Friends();
+						//amico.setName(name);
+						//amico.setSurname(surname);
+						//faccio il cast di punti a int //
+						//int punti = 0 ;
+						//try {
+					    //		punti = Integer.parseInt(point);
+						//} 
+						//catch (Exception e){ 
+					    //		e.printStackTrace();
+
+						//}
+						//amico.setPoint(punti);
+						//amico.setEmailFriends(eMailFriends);
+						//amico.setEmailUser(eMailUser);
+
+
+						//metodo per mandare dati al db locale//
+						try{
+							ControlFriends.getIstanceControlFriends().deleteOnDBOneFriends(deleteEmailFriends);
+						}catch  (Exception e) {
+							Log.i("Friends2Activity", "errore query");
+						}
+
+						CharSequence amico2= "Friend added" ;
+						Toast.makeText(getApplicationContext(), amico2, Toast.LENGTH_LONG).show();
+					} 
+					catch (JSONException e) {
+						Toast.makeText(getApplicationContext(), "Error" + e.toString(),Toast.LENGTH_SHORT).show();
+					}
+				}
+			}
+		}// end async task
+
+		public void accessWebServiceDelete(){
+			JsonDeleteTask task = new JsonDeleteTask();
+			// passes values for the urls string array
+			task.execute(new String[] { url2, deleteEmailFriends,eMailUser});
+		}
 
 	//@Override
 	//public void onBackPressed() {

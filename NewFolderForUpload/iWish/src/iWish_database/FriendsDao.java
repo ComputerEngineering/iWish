@@ -66,10 +66,10 @@ public class FriendsDao {
 		database.delete(DataBaseStorageFriends.TABLE_FRIENDS, null,null);
 	}
 	
-	public void deleteOnDbOneFriends(Friends mFriends){
-		Long guid = mFriends.getKeyFriend();
-		System.out.print("Key Friends that we have delete is : " + guid);
-		database.delete(DataBaseStorageFriends.TABLE_FRIENDS, DataBaseStorageFriends.COLUMN_ID+"='" + guid+ "'" , null);
+	public void deleteOnDbOneFriends(String meMail){
+		String email = meMail;
+		System.out.print("Key Friends that we have delete is : " + email);
+		database.delete(DataBaseStorageFriends.TABLE_FRIENDS, DataBaseStorageFriends.COLUMN_EMAIL_FRIENDS+"='" + email+ "'" , null);
 	}
 	
 	public int deleteOnDbSomeFriends(List<Friends> mFriends){

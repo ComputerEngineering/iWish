@@ -53,6 +53,17 @@
             android:textColor="@color/bianco"
             android:textSize="24dp"
             android:textStyle="bold" />
+        
+        <Button
+            android:id="@+id/deletemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.87"
+            android:background="@drawable/sfondo_verde"
+            android:text="Delete"
+            android:textColor="@color/bianco"
+            android:textSize="24dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <EditText
@@ -63,6 +74,16 @@
         android:layout_alignTop="@+id/layoutfriends2_list"
         android:ems="10"
         android:hint="insert email friends"
+        android:inputType="textEmailAddress" />
+    
+    <EditText
+        android:id="@+id/deleteemailfriends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/layoutfriends2_list"
+        android:ems="10"
+        android:hint="insert email friends delete"
         android:inputType="textEmailAddress" />
 
     <ProgressBar

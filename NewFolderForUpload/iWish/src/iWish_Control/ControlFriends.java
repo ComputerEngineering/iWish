@@ -40,9 +40,9 @@ public class ControlFriends {
 		}
 	}
 
-	public void deleteOnDBOneFriends(Friends mFriends){
+	public void deleteOnDBOneFriends(String meMail){
 		try {
-			mFriendsDao.deleteOnDbOneFriends(mFriends);
+			mFriendsDao.deleteOnDbOneFriends(meMail);
 		} catch (Exception e) {
 
 		}

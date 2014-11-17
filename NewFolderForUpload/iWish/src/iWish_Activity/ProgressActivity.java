@@ -60,6 +60,7 @@ public class ProgressActivity extends Activity{
 	private TextView heartMin;
 	private TextView heartMed;
 	private boolean mStarting;
+	private Button mGraphic;
 
 
 	// Code to manage Service lifecycle.
@@ -133,6 +134,7 @@ public class ProgressActivity extends Activity{
 		heartMin =(TextView)findViewById(R.id.heart_min);
 		heartMed =(TextView)findViewById(R.id.heart_med);
 		//menu = (ImageButton)findViewById(R.id.bott_omino);
+		mGraphic = (Button) findViewById(R.id.graphic);
 		ok = (ImageButton)findViewById(R.id.m_lets_start);
 		stop = (ImageButton) findViewById(R.id.m_stop);
 		pause = (Button) findViewById(R.id.pause);
@@ -297,6 +299,20 @@ public class ProgressActivity extends Activity{
 					intent2.putExtra("a", mActivities);
 					startActivity(intent2);
 				}
+			}
+		});
+		
+		mGraphic.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//if(!mStarting && mBluetoothLeService!=null){
+					// visualizza grafico
+					Intent intent3 = new Intent(ProgressActivity.this, GraphicActivity.class );
+					intent3.putExtra("a", mActivities);
+					intent3.putExtra(EXTRAS_DEVICE_ADDRESS, mDeviceAddress);
+					startActivity(intent3);
+				//}
 			}
 		});
 

@@ -161,10 +161,17 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/chronometer"
-        android:layout_alignBottom="@+id/chronometer"
-        android:layout_alignRight="@+id/heart_max"
-        android:layout_marginRight="45dp"
+        android:layout_marginTop="535dp"
+        android:layout_marginLeft="60dp"
         android:background="@drawable/pause" />
+
+    <Button
+        android:id="@+id/graphic"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginLeft="27dp"
+        android:background="@android:color/transparent"
+         />
     
 </RelativeLayout>

@@ -89,6 +89,10 @@
         <activity 
             android:name="iWish_Activity.GoalActivity"
             android:screenOrientation="portrait"/>
+        
+        <activity 
+            android:name="iWish_Activity.GraphicActivity"
+            android:screenOrientation="landscape"/>
 
         <activity 
             android:name="iWish_Activity.HeightActivity"

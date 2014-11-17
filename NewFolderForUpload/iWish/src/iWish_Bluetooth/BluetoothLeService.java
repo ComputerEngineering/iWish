@@ -67,6 +67,7 @@ public class BluetoothLeService extends Service {
 	private int stopDateTime;
 	private int durataTempo;
 	private String totBeats;
+	private int beatsSelect;
 
 	// Implements callback methods for GATT events that the app cares about.
 	// For example, connection change and services discovered.
@@ -140,7 +141,10 @@ public class BluetoothLeService extends Service {
 
 			if(mStarting){
 				MinMaxMed(String.valueOf(heartRate));
-				setBeatsTot(String.valueOf(heartRate));
+				if(beatsSelect%5==0){
+					setBeatsTot(String.valueOf(heartRate));
+				}
+				beatsSelect++;
 			}
 			intent.putExtra(EXTRA_MAX, ""+hMax);
 			intent.putExtra(EXTRA_MIN, ""+hMin);
@@ -195,6 +199,7 @@ public class BluetoothLeService extends Service {
 		hMed = 30;
 		totBeats = "";
 		mStarting=false;
+		beatsSelect=0;
 
 		// For API level 18 and above, get a reference to BluetoothAdapter through
 		// BluetoothManager.
