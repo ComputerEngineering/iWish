@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="example.grafica.MainActivity" >
+
+    <com.androidplot.xy.XYPlot
+        android:id="@+id/graphic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        androidPlot.title="Heartbeats"
+        androidPlot.titleWidget.labelPaint.textSize="20dp"
+        androidPlot.domainLabelWidget.labelPaint.textSize="15dp"
+        androidPlot.rangeLabelWidget.labelPaint.textSize="15dp"
+        androidPlot.graphWidget.marginTop="20dp"
+        androidPlot.graphWidget.marginLeft="15dp"
+        androidPlot.graphWidget.marginBottom="25dp"
+        androidPlot.graphWidget.marginRight="5dp"
+        androidPlot.graphWidget.rangeLabelPaint.textSize="15dp"
+        androidPlot.graphWidget.rangeOriginLabelPaint.textSize="15dp"
+        androidPlot.graphWidget.domainLabelPaint.textSize="15dp"
+        androidPlot.graphWidget.domainOriginLabelPaint.textSize="15dp"
+        androidPlot.legendWidget.textPaint.textSize="15dp"
+        androidPlot.legendWidget.iconSizeMetrics.heightMetric.value="15dp"
+        androidPlot.legendWidget.iconSizeMetrics.widthMetric.value="15dp"
+        androidPlot.legendWidget.heightMetric.value="25dp"
+        androidPlot.legendWidget.positionMetrics.xPositionMetric.value="0"
+        androidPlot.legendWidget.positionMetrics.anchor="right_bottom"
+        android:layout_centerVertical="true"
+        android:onClick="onGraphStyleToggle"/>
+    
+    
+
+</RelativeLayout>

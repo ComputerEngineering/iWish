@@ -114,8 +114,8 @@ public class ProgressActivity extends Activity{
 			else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
 				//qui viene inviato alla TextView il dato aggiornato dei battiti cardiaci che ora si chiama heartRate
 				displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA),intent.getStringExtra(BluetoothLeService.EXTRA_MAX),
-						    intent.getStringExtra(BluetoothLeService.EXTRA_MIN),
-						    intent.getStringExtra(BluetoothLeService.EXTRA_MED));
+						intent.getStringExtra(BluetoothLeService.EXTRA_MIN),
+						intent.getStringExtra(BluetoothLeService.EXTRA_MED));
 			}
 		}
 	};
@@ -191,10 +191,10 @@ public class ProgressActivity extends Activity{
 	@Override
 	public void onBackPressed() {
 		// your code.
-		Intent intent3 = new Intent(ProgressActivity.this, ProfileActivity.class );
+		//Intent intent3 = new Intent(ProgressActivity.this, ProfileActivity.class );------------
 		//eventuale uso adesso non serve
 		//intent3.putExtra("a", mActivities);
-		startActivity(intent3);
+		//startActivity(intent3);----------------
 		//finish();
 	}
 
@@ -215,7 +215,7 @@ public class ProgressActivity extends Activity{
 			//mDataField.setText(data);
 			heartRate.setText(data);
 			if(mStarting){
-			//	MinMaxMed(data);
+				//	MinMaxMed(data);
 				heartMax.setText(max);
 				heartMin.setText(min);
 				heartMed.setText(med);
@@ -266,7 +266,7 @@ public class ProgressActivity extends Activity{
 				ch.start();
 			}
 		});
-		
+
 		stop.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -279,18 +279,18 @@ public class ProgressActivity extends Activity{
 				pause.setVisibility(View.INVISIBLE);
 			}
 		});
-		
+
 		pause.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				//da definire cosa fa pause
-				
+
 			}
 		});
 
 		heartRate.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				if(!mStarting){
@@ -301,18 +301,18 @@ public class ProgressActivity extends Activity{
 				}
 			}
 		});
-		
+
 		mGraphic.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				//if(!mStarting && mBluetoothLeService!=null){
+				if(mStarting && mBluetoothLeService!=null){
 					// visualizza grafico
 					Intent intent3 = new Intent(ProgressActivity.this, GraphicActivity.class );
-					intent3.putExtra("a", mActivities);
-					intent3.putExtra(EXTRAS_DEVICE_ADDRESS, mDeviceAddress);
+					intent3.putExtra("beats", mBluetoothLeService.getBeatsTotLocal());//mBluetoothLeService.getBeatsTot()
+					//intent3.putExtra(EXTRAS_DEVICE_ADDRESS, mDeviceAddress);
 					startActivity(intent3);
-				//}
+				}
 			}
 		});
 

@@ -477,10 +477,10 @@ public class Friends2Activity extends Activity {
 				else{
 					try {
 						JSONObject jsonResponse = new JSONObject(jsonResult);
-						JSONArray jsonMainNode = jsonResponse.optJSONArray("User");
+						JSONArray jsonMainNode = jsonResponse.optJSONArray("Friends1");
 						System.out.println(jsonResponse);
 						System.out.println(jsonMainNode);
-						JSONObject jsonChildNode = jsonMainNode.getJSONObject(0);
+						//JSONObject jsonChildNode = jsonMainNode.getJSONObject(0);
 						//quello che ricevo dal db online//
 						//String name = jsonChildNode.optString("name");
 						//String surname = jsonChildNode.optString("surname");
@@ -510,7 +510,7 @@ public class Friends2Activity extends Activity {
 							Log.i("Friends2Activity", "errore query");
 						}
 
-						CharSequence amico2= "Friend added" ;
+						CharSequence amico2= "Friend deleted" ;
 						Toast.makeText(getApplicationContext(), amico2, Toast.LENGTH_LONG).show();
 					} 
 					catch (JSONException e) {

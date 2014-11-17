@@ -67,6 +67,7 @@ public class BluetoothLeService extends Service {
 	private int stopDateTime;
 	private int durataTempo;
 	private String totBeats;
+	private String totBeatsLocal;
 	private int beatsSelect;
 
 	// Implements callback methods for GATT events that the app cares about.
@@ -145,6 +146,7 @@ public class BluetoothLeService extends Service {
 					setBeatsTot(String.valueOf(heartRate));
 				}
 				beatsSelect++;
+				setBeatsTotLocal(String.valueOf(heartRate));
 			}
 			intent.putExtra(EXTRA_MAX, ""+hMax);
 			intent.putExtra(EXTRA_MIN, ""+hMin);
@@ -198,6 +200,7 @@ public class BluetoothLeService extends Service {
 		hMax = 30;
 		hMed = 30;
 		totBeats = "";
+		totBeatsLocal = "";
 		mStarting=false;
 		beatsSelect=0;
 
@@ -401,5 +404,14 @@ public class BluetoothLeService extends Service {
 		}
 	}
 	
+	private void setBeatsTotLocal(String beat){
+		if(!beat.equals("0")){
+			totBeatsLocal = totBeatsLocal + beat + ",";
+		}
+	}
+	
+	public String getBeatsTotLocal(){
+		return totBeatsLocal;
+	}
 	
 }
