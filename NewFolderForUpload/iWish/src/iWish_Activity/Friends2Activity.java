@@ -509,8 +509,8 @@ public class Friends2Activity extends Activity {
 						}catch  (Exception e) {
 							Log.i("Friends2Activity", "errore query");
 						}
-
-						CharSequence amico2= "Friend deleted" ;
+                         //piccola modifica//
+						CharSequence amico2= "Friend not present " ;
 						Toast.makeText(getApplicationContext(), amico2, Toast.LENGTH_LONG).show();
 					} 
 					catch (JSONException e) {
