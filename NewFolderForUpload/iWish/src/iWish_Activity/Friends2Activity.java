@@ -145,7 +145,7 @@ public class Friends2Activity extends Activity {
 			botcerca.setVisibility(View.INVISIBLE);
 			FriendsList.setVisibility(View.INVISIBLE);
 			DeleteFriends.setVisibility(View.INVISIBLE);
-			//per ritornare attivit‡ di challenger//
+			//per ritornare attivit√† di challenger//
 			mActivities = (Activities)intent.getSerializableExtra("a");
 		}
 
@@ -509,8 +509,8 @@ public class Friends2Activity extends Activity {
 						}catch  (Exception e) {
 							Log.i("Friends2Activity", "errore query");
 						}
-                         //piccola modifica//
-						CharSequence amico2= "Friend not present " ;
+
+						CharSequence amico2= "Friend deleted" ;
 						Toast.makeText(getApplicationContext(), amico2, Toast.LENGTH_LONG).show();
 					} 
 					catch (JSONException e) {

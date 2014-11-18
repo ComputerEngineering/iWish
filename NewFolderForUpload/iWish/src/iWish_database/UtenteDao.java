@@ -105,6 +105,14 @@ public class UtenteDao {
 		return i;
 	}
 
+	public Utente getOneUtente(String eMail){
+		String where = DataBaseStorageUtente.COLUMN_EMAIL + " = '"+eMail+"'";
+		Cursor cursor = database.query(DataBaseStorageUtente.TABLE_UTENTE, allColumns, where, null, null, null, null);
+		cursor.moveToFirst();
+		Utente utente=cursorsUtente(cursor);
+		return utente;
+		
+	}
 	public List<Utente> getAllUtente(){
 		List<Utente> listUtente = new ArrayList<Utente>();
 		Cursor cursor = database.query(DataBaseStorageUtente.TABLE_UTENTE, allColumns, null, null, null, null, null);

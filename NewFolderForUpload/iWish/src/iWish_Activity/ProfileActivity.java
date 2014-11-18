@@ -38,9 +38,9 @@ public class ProfileActivity extends Activity{
 		intent = getIntent();
 		mUser = (Utente) intent.getSerializableExtra("u");
 		
-		//setIstanceSession();
+		setIstanceSession();
 		//utente fittizzio
-		
+		/*
 		UserIstance.getIstanceUserIstance().setTypeUser("active");
 		UserIstance.getIstanceUserIstance().setEmailUser("alexxsera@hotmail.com");
 		UserIstance.getIstanceUserIstance().setName("Alessandro");
@@ -53,7 +53,7 @@ public class ProfileActivity extends Activity{
 		UserIstance.getIstanceUserIstance().setPassword("provain");
 		UserIstance.getIstanceUserIstance().setQuestion("Favorite Movies");
 		//fine utente fittizzio
-		
+		*/
 		bt_make_new_wish_profile.setOnClickListener(new View.OnClickListener() {
 
 		      @Override

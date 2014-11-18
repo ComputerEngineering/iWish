@@ -73,6 +73,19 @@ public class ControlUser {
 		}
 		return true;
 	}
+	
+	 public Utente getOneUtente(String eMail,Context context){
+		 try {
+				mUtenteDao =  new UtenteDao(context);
+				mUtenteDao.open();
+				return mUtenteDao.getOneUtente(eMail);
+			} catch (Exception e) {
+				e.printStackTrace();
+				Log.i("getOneUtente", "abbiamo un errore nel ritorno dell'utente");
+				System.out.println("errore nel ritorno dell'utente");
+			}
+			return null;
+		}
 
 	public List<Utente> getOnDbAllUtente(){
 		try {
