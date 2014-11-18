@@ -76,7 +76,9 @@ public class CongratulationActivity extends Activity {
 					e.printStackTrace();
 				}
 				Log.i("CongratulationActivity", "SALVATAGGIO SUL DB ANDATO A BUON FINE");
-				startActivity(new Intent(CongratulationActivity.this,ProfileActivity.class ));
+				Intent intent = new Intent(CongratulationActivity.this,ProfileActivity.class );
+				intent.putExtra("u",mUser);
+				startActivity(intent);
 			}
 		});
 	}
