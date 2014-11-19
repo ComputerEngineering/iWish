@@ -37,8 +37,9 @@ public class ProfileActivity extends Activity{
 		setUpViews();
 		intent = getIntent();
 		mUser = (Utente) intent.getSerializableExtra("u");
-		
-		setIstanceSession();
+		if(UserIstance.getIstanceUserIstance().getEmailUser()==null && mUser != null){
+			setIstanceSession();
+		}
 		//utente fittizzio
 		/*
 		UserIstance.getIstanceUserIstance().setTypeUser("active");

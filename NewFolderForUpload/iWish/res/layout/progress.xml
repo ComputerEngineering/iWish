@@ -130,6 +130,13 @@
        android:layout_height="wrap_content"
        android:layout_marginTop="585dp"  
 	   android:src="@drawable/m_bot_stop"/>
+    
+    <ImageButton
+       android:id="@+id/m_done_prog"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="585dp"  
+	   android:src="@drawable/botton_done2"/>
 
     <Button
         android:id="@+id/heart_rate"

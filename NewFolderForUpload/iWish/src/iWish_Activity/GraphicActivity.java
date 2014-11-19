@@ -45,6 +45,7 @@ public class GraphicActivity extends Activity{
 	private boolean finitoBeatPassati;
 	private int cominciaDa;
 	private int y;
+	private boolean mStarting;
 
 	// Handles various events fired by the Service.
 	// ACTION_GATT_CONNECTED: connected to a GATT server.
@@ -80,7 +81,10 @@ public class GraphicActivity extends Activity{
 			} 
 			else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
 				//qui viene inviato alla TextView il dato aggiornato dei battiti cardiaci che ora si chiama heartRate
-				displayDataGraphic(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+				if(mStarting){
+					
+					displayDataGraphic(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+				}	
 			}
 		}
 	};
@@ -93,6 +97,7 @@ public class GraphicActivity extends Activity{
 		//mStarting = false;
 		final Intent intent = getIntent();
 		totBeats = intent.getStringExtra("beats");
+		mStarting = intent.getBooleanExtra("run", true);
 		finitoBeatPassati = false;
 		cominciaDa = 0;
 		y=0;
@@ -104,7 +109,7 @@ public class GraphicActivity extends Activity{
 
 		// Start heartRate.
 		plot = (XYPlot) findViewById(R.id.graphic);
-		
+
 		styleOn = true;
 		//distanza tra righe verticali
 		//plot.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 10);
@@ -178,7 +183,7 @@ public class GraphicActivity extends Activity{
 		//qui devo aggiornare il grafico
 		if(finitoBeatPassati){
 			try{
-				
+
 
 				if(cominciaDa>60){
 					y++;
@@ -215,7 +220,7 @@ public class GraphicActivity extends Activity{
 	}
 
 	private void getArrayListBeats(String totBeat){
-		
+
 		String[] beatStr = totBeat.split(",");
 
 		try{	
@@ -226,7 +231,7 @@ public class GraphicActivity extends Activity{
 					X = beatStr.length - 60 -2;
 					y = beatStr.length - 60 -1;
 				}
-				
+
 				if(i==0){
 					X = 0;
 				}

@@ -40,6 +40,7 @@ public class ProgressActivity extends Activity{
 	//private ImageButton menu;
 	private ImageButton ok;
 	private ImageButton stop;
+	private ImageButton done;
 	private Button pause;
 	private final static String TAG = ProgressActivity.class.getSimpleName();
 	public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
@@ -61,6 +62,7 @@ public class ProgressActivity extends Activity{
 	private TextView heartMed;
 	private boolean mStarting;
 	private Button mGraphic;
+	private boolean staticGraphic;
 
 
 	// Code to manage Service lifecycle.
@@ -126,6 +128,7 @@ public class ProgressActivity extends Activity{
 		setContentView(R.layout.progress);
 		mHandler = new Handler();
 		mStarting = false;
+		staticGraphic = false;
 		final Intent intent = getIntent();
 		mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 		mActivities = (Activities) intent.getSerializableExtra("a");
@@ -138,8 +141,10 @@ public class ProgressActivity extends Activity{
 		ok = (ImageButton)findViewById(R.id.m_lets_start);
 		stop = (ImageButton) findViewById(R.id.m_stop);
 		pause = (Button) findViewById(R.id.pause);
+		done = (ImageButton) findViewById(R.id.m_done_prog);
 		stop.setVisibility(View.INVISIBLE);
 		pause.setVisibility(View.INVISIBLE);
+		done.setVisibility(View.INVISIBLE);
 		heartRate = (Button)findViewById(R.id.heart_rate);
 		if(mDeviceAddress != null){
 			Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
@@ -277,6 +282,10 @@ public class ProgressActivity extends Activity{
 				}
 				ch.stop();
 				pause.setVisibility(View.INVISIBLE);
+				stop.setVisibility(View.INVISIBLE);
+				done.setVisibility(View.VISIBLE);
+				mStarting = false;
+				staticGraphic = true;
 			}
 		});
 
@@ -286,6 +295,22 @@ public class ProgressActivity extends Activity{
 			public void onClick(View v) {
 				//da definire cosa fa pause
 
+			}
+		});
+		
+		done.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				//da definire cosa fa pause
+				if(mBluetoothLeService!=null){
+					mBluetoothLeService.disconnect();
+				}
+				Intent intent3 = new Intent(ProgressActivity.this, ProfileActivity.class );
+				//eventuale uso adesso non serve
+				//intent3.putExtra("a", mActivities);
+				startActivity(intent3);
+				//finish();
 			}
 		});
 
@@ -306,10 +331,11 @@ public class ProgressActivity extends Activity{
 
 			@Override
 			public void onClick(View v) {
-				if(mStarting && mBluetoothLeService!=null){
+				if(staticGraphic||(mStarting && mBluetoothLeService!=null)){
 					// visualizza grafico
 					Intent intent3 = new Intent(ProgressActivity.this, GraphicActivity.class );
 					intent3.putExtra("beats", mBluetoothLeService.getBeatsTotLocal());//mBluetoothLeService.getBeatsTot()
+					intent3.putExtra("run", mStarting);
 					//intent3.putExtra(EXTRAS_DEVICE_ADDRESS, mDeviceAddress);
 					startActivity(intent3);
 				}
