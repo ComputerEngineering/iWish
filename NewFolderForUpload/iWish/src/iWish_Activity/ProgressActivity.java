@@ -333,9 +333,12 @@ public class ProgressActivity extends Activity{
 			public void onClick(View v) {
 				if(staticGraphic||(mStarting && mBluetoothLeService!=null)){
 					// visualizza grafico
+					int tempoPassato =(int) (SystemClock.elapsedRealtime() - ch.getBase())/1000;
+					//System.out.println(tempoPassato);
 					Intent intent3 = new Intent(ProgressActivity.this, GraphicActivity.class );
 					intent3.putExtra("beats", mBluetoothLeService.getBeatsTotLocal());//mBluetoothLeService.getBeatsTot()
 					intent3.putExtra("run", mStarting);
+					intent3.putExtra("tempo", tempoPassato);
 					//intent3.putExtra(EXTRAS_DEVICE_ADDRESS, mDeviceAddress);
 					startActivity(intent3);
 				}

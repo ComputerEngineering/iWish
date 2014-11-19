@@ -21,6 +21,7 @@ import iWish_Control.ControlConnection;
 import iWish_Control.ControlSession;
 import iWish_Session.Session;
 
+import java.util.ArrayList;
 import java.util.UUID;
 /**
  * Service for managing connection and data communication with a GATT server hosted on a
@@ -67,8 +68,9 @@ public class BluetoothLeService extends Service {
 	private int stopDateTime;
 	private int durataTempo;
 	private String totBeats;
-	private String totBeatsLocal;
+	//private String totBeatsLocal;
 	private int beatsSelect;
+	private ArrayList<String> totBeatsLocal;
 
 	// Implements callback methods for GATT events that the app cares about.
 	// For example, connection change and services discovered.
@@ -200,9 +202,10 @@ public class BluetoothLeService extends Service {
 		hMax = 30;
 		hMed = 30;
 		totBeats = "";
-		totBeatsLocal = "";
+		//totBeatsLocal = "";
 		mStarting=false;
 		beatsSelect=0;
+		totBeatsLocal = new ArrayList<String>();
 
 		// For API level 18 and above, get a reference to BluetoothAdapter through
 		// BluetoothManager.
@@ -406,11 +409,18 @@ public class BluetoothLeService extends Service {
 	
 	private void setBeatsTotLocal(String beat){
 		if(!beat.equals("0")){
-			totBeatsLocal = totBeatsLocal + beat + ",";
+			if(totBeatsLocal.size() < 62){
+				totBeatsLocal.add(beat);
+			}
+			else{
+				totBeatsLocal.add(beat);
+				totBeatsLocal.remove(0);
+			}
+			//totBeatsLocal = totBeatsLocal + beat + ",";
 		}
 	}
 	
-	public String getBeatsTotLocal(){
+	public ArrayList<String> getBeatsTotLocal(){
 		return totBeatsLocal;
 	}
 	

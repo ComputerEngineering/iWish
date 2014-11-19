@@ -16,7 +16,7 @@
         androidPlot.graphWidget.marginTop="20dp"
         androidPlot.graphWidget.marginLeft="15dp"
         androidPlot.graphWidget.marginBottom="25dp"
-        androidPlot.graphWidget.marginRight="5dp"
+        androidPlot.graphWidget.marginRight="10dp"
         androidPlot.graphWidget.rangeLabelPaint.textSize="15dp"
         androidPlot.graphWidget.rangeOriginLabelPaint.textSize="15dp"
         androidPlot.graphWidget.domainLabelPaint.textSize="15dp"

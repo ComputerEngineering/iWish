@@ -41,7 +41,8 @@ public class GraphicActivity extends Activity{
 	private XYPlot plot;
 	private Shader WHITE_SHADER = new LinearGradient(1, 1, 1, 1, Color.WHITE, Color.WHITE, Shader.TileMode.REPEAT);
 	private boolean styleOn;
-	private String totBeats;
+	//private String totBeats;
+	private ArrayList<String> totBeats2;
 	private boolean finitoBeatPassati;
 	private int cominciaDa;
 	private int y;
@@ -96,13 +97,15 @@ public class GraphicActivity extends Activity{
 		//mHandler = new Handler();
 		//mStarting = false;
 		final Intent intent = getIntent();
-		totBeats = intent.getStringExtra("beats");
+		//totBeats = intent.getStringExtra("beats");
+		totBeats2 = (ArrayList<String>) intent.getSerializableExtra("beats");
+		
 		mStarting = intent.getBooleanExtra("run", true);
 		finitoBeatPassati = false;
-		cominciaDa = 0;
-		y=0;
-		if(totBeats!=null){
-			getArrayListBeats(totBeats);
+		cominciaDa = (int) intent.getIntExtra("tempo", 0);
+		y = 0;//(int) intent.getIntExtra("tempo", 0);
+		if(totBeats2!=null){
+			getArrayListBeats(totBeats2);
 		}
 		//mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 		//mActivities = (Activities) intent.getSerializableExtra("a");
@@ -127,7 +130,13 @@ public class GraphicActivity extends Activity{
 		//valori numerici della y 
 		plot.setRangeBoundaries(30, 210, BoundaryMode.FIXED);
 		//valori numerici della x
-		plot.setDomainBoundaries(0, 60, BoundaryMode.FIXED);
+		if(cominciaDa<60){
+			plot.setDomainBoundaries(0, 60, BoundaryMode.FIXED);
+		}
+		else{
+			plot.setDomainBoundaries(cominciaDa-60, cominciaDa, BoundaryMode.FIXED);
+		}
+		
 
 		// scala dei numeri del grafico in decimale
 		plot.setRangeValueFormat(new DecimalFormat("0"));
@@ -219,20 +228,20 @@ public class GraphicActivity extends Activity{
 		}
 	}
 
-	private void getArrayListBeats(String totBeat){
+	private void getArrayListBeats(ArrayList<String> totBeat){
 
-		String[] beatStr = totBeat.split(",");
+		String[] beatStr = totBeat.toArray(new String[totBeat.size()]);
 
 		try{	
 			for(int i=0; i<beatStr.length; i++){
-				cominciaDa++;
-				if(i==0 && beatStr.length>60){
-					i = beatStr.length - 60 -1;
-					X = beatStr.length - 60 -2;
-					y = beatStr.length - 60 -1;
+				//cominciaDa++;
+				if(i==0 && cominciaDa>60){
+					//i = beatStr.length - 60 -1;
+					X = cominciaDa - 60 -2; //- 50 -2;
+					y = cominciaDa - 60 -1;// beatStr.length - 60 -1;
 				}
 
-				if(i==0){
+				if(i==0 && cominciaDa<60){
 					X = 0;
 				}
 				else{
