@@ -17,6 +17,7 @@ public class Session implements MySession, Serializable {
 	private int AltezzaMed = 0;
 	private int StartDate;
 	private int StartDateActivities;
+	private String Battiti = "0,0";
 
 	@Override
 	public long getKeySession() {
@@ -82,6 +83,12 @@ public class Session implements MySession, Serializable {
 	public int getStartDateActivities() {
 		
 		return StartDateActivities;
+	}
+	
+	@Override
+	public String getBattiti() {
+		
+		return Battiti;
 	}
 
 	@Override
@@ -149,6 +156,12 @@ public class Session implements MySession, Serializable {
 		// TODO Auto-generated method stub
 		this.StartDateActivities = StartDateActivities;
 	}
+	
+	@Override
+	public void setBattiti(String Battiti) {
+		// TODO Auto-generated method stub
+		this.Battiti = Battiti;
+	}
 
 	@Override
 	public String toString() {
@@ -157,7 +170,8 @@ public class Session implements MySession, Serializable {
 				+ ", BattitiMax=" + BattitiMax + ", BattitiMin=" + BattitiMin
 				+ ", BattitiMed=" + BattitiMed + ", AltezzaMax=" + AltezzaMax
 				+ ", AltezzaMin=" + AltezzaMin + ", AltezzaMed=" + AltezzaMed
-				+ ", StartDate=" + StartDate + ", StartDateActivities=" + StartDateActivities + "]";
+				+ ", StartDate=" + StartDate + ", StartDateActivities=" + StartDateActivities 
+				+ ", Battiti=" + Battiti + "]";
 	}
 
 }

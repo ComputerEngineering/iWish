@@ -1,6 +1,8 @@
 package iWish_Activity;
 /** Raffaella*/
 
+import iWish_Context.ContextiWish;
+
 import com.progect.iwish.R;
 
 import android.app.Activity;
@@ -22,6 +24,7 @@ public class SplashActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash);
 		setUpViews();
+		
 
 		completato.setText("  loading...");
 		loading.setText("0");

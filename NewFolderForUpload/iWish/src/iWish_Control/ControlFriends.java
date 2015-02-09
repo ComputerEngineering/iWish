@@ -40,11 +40,13 @@ public class ControlFriends {
 		}
 	}
 
-	public void deleteOnDBOneFriends(String meMail){
+	public void deleteOnDBOneFriends(String meMail, Context context){
 		try {
+			mFriendsDao= new FriendsDao(context);
+			mFriendsDao.open();
 			mFriendsDao.deleteOnDbOneFriends(meMail);
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 
 	}

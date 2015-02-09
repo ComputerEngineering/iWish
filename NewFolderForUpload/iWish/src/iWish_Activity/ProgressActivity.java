@@ -6,6 +6,9 @@ import java.util.TimeZone;
 
 import iWish_Activities.Activities;
 import iWish_Bluetooth.BluetoothLeService;
+import iWish_Control.ControlConnection;
+import iWish_Control.ControlSession;
+import iWish_Session.Session;
 import android.widget.ImageButton;
 import android.app.Activity;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -45,7 +48,7 @@ public class ProgressActivity extends Activity{
 	private final static String TAG = ProgressActivity.class.getSimpleName();
 	public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
 	public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
-	private static final long START_HEART = 5000; //Start heart
+	private static final long START_HEART = 2000; //Start heart
 	private String mDeviceAddress;
 	private BluetoothLeService mBluetoothLeService;
 	private boolean mConnected = false;
@@ -63,6 +66,9 @@ public class ProgressActivity extends Activity{
 	private boolean mStarting;
 	private Button mGraphic;
 	private boolean staticGraphic;
+	private int tempoStatico;
+	private boolean setBLE;
+	private Session mSession;
 
 
 	// Code to manage Service lifecycle.
@@ -128,7 +134,9 @@ public class ProgressActivity extends Activity{
 		setContentView(R.layout.progress);
 		mHandler = new Handler();
 		mStarting = false;
+		setBLE = false;
 		staticGraphic = false;
+		tempoStatico =0;
 		final Intent intent = getIntent();
 		mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 		mActivities = (Activities) intent.getSerializableExtra("a");
@@ -262,8 +270,15 @@ public class ProgressActivity extends Activity{
 				}
 				else{
 					//gestire il caso senza bluetooth di session e di activities
+					mSession = new Session();
+					mSession.setKeyActivities(mActivities.getKeyActivities());
+					mSession.setStartDateActivities(mActivities.getStartDate());
+					long tempo = System.currentTimeMillis();
+					int startDateTime = (int) (tempo/1000); 
+					mSession.setStartDate(startDateTime);
 				}
 				mStarting = true;
+				setBLE = true;
 				ok.setVisibility(View.INVISIBLE);
 				stop.setVisibility(View.VISIBLE);
 				pause.setVisibility(View.VISIBLE);
@@ -279,13 +294,36 @@ public class ProgressActivity extends Activity{
 				//da definire cosa fa stop
 				if(mBluetoothLeService!=null){
 					mBluetoothLeService.onStop();
+					staticGraphic = true;
+				}
+				else{
+					int durataTempo = (int) (SystemClock.elapsedRealtime() - ch.getBase())/1000;
+					if(!mStarting){
+						ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
+						durataTempo =(int) (SystemClock.elapsedRealtime() - ch.getBase())/1000;
+						ch.start();
+						ch.stop();
+					}
+					mSession.setDurataTempo(durataTempo);
+					try {
+						Log.i("BluetoothLeService", "PRIMA DI INSERIRE NEL DB SESSION");
+						ControlSession.getIstanceControlSession().saveOnDbSession(mSession, getApplicationContext());
+						Log.i("BluetoothLeService", "DOPO L'INSERIMENTO NEL DB SESSION");
+						ControlConnection.getIstanceControlConnection().onInsertSession("0,0");
+						Log.i("BluetoothLeService", "DOPO L'INSERIMENTO online");
+					} catch (Exception e) {
+						//Toast.makeText(c ,"errore di salvataggio", Toast.LENGTH_LONG).show();
+						Log.i("BluetoothLeService", "errore INSERIMENTO NEL DB SESSION");
+						e.printStackTrace();
+					}
+					Log.i("WeightActivity", "SALVATAGGIO SUL DB ANDATO A BUON FINE");
 				}
 				ch.stop();
 				pause.setVisibility(View.INVISIBLE);
 				stop.setVisibility(View.INVISIBLE);
 				done.setVisibility(View.VISIBLE);
 				mStarting = false;
-				staticGraphic = true;
+				tempoStatico =(int) (SystemClock.elapsedRealtime() - ch.getBase())/1000;
 			}
 		});
 
@@ -294,10 +332,29 @@ public class ProgressActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				//da definire cosa fa pause
+				if(mStarting){
+					milliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+					ch.stop();
+					mStarting= false;
+					tempoStatico =(int) (SystemClock.elapsedRealtime() - ch.getBase())/1000;
+					if(mBluetoothLeService!=null){
+						mBluetoothLeService.onPause();
+						staticGraphic = true;
+					}
+				}
+				else{
+					ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
+					ch.start();
+					mStarting = true;
+					if(mBluetoothLeService!=null){
+						mBluetoothLeService.onPause();
+						staticGraphic = false;
+					}
+				}
 
 			}
 		});
-		
+
 		done.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -318,7 +375,7 @@ public class ProgressActivity extends Activity{
 
 			@Override
 			public void onClick(View v) {
-				if(!mStarting){
+				if(!mStarting && !setBLE){
 					// selezione del dispositivo bluetooth
 					Intent intent2 = new Intent(ProgressActivity.this, BluetoothActivity.class );
 					intent2.putExtra("a", mActivities);
@@ -334,7 +391,12 @@ public class ProgressActivity extends Activity{
 				if(staticGraphic||(mStarting && mBluetoothLeService!=null)){
 					// visualizza grafico
 					int tempoPassato =(int) (SystemClock.elapsedRealtime() - ch.getBase())/1000;
-					//System.out.println(tempoPassato);
+					System.out.println(tempoPassato);
+					//setto tempo bloccato
+					if(staticGraphic){
+						tempoPassato = tempoStatico;
+					}
+					System.out.println(tempoPassato);
 					Intent intent3 = new Intent(ProgressActivity.this, GraphicActivity.class );
 					intent3.putExtra("beats", mBluetoothLeService.getBeatsTotLocal());//mBluetoothLeService.getBeatsTot()
 					intent3.putExtra("run", mStarting);
@@ -375,8 +437,9 @@ public class ProgressActivity extends Activity{
 	}
 
 	private void startHeart() {
+		Log.e(TAG, "chiamato StartHeart");
 		//nuovo if che sostituisce il bottone connect quindi connessione in automatico
-		if(mDeviceAddress != null){
+		if(mDeviceAddress != null && mBluetoothLeService!=null && mBluetoothLeService.getSupportedGattService()!=null){
 			//ritorna il servizio Heart Rate
 			BluetoothGattService mBluetoothGattService = mBluetoothLeService.getSupportedGattService();
 			//richiede la characteristic Heart Rate Measurement caratteristica dei battiti cardiaci
@@ -394,6 +457,17 @@ public class ProgressActivity extends Activity{
 			if ((charaProp | BluetoothGattCharacteristic.PROPERTY_NOTIFY) > 0) {
 				mNotifyCharacteristic = characteristic;
 				mBluetoothLeService.setCharacteristicNotification(characteristic, true);
+			}
+		}
+		else{
+			if(mDeviceAddress != null){
+				// Start heartRate.
+				mHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						startHeart();
+					}
+				}, START_HEART);
 			}
 		}
 

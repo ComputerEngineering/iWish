@@ -29,7 +29,7 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 	static final String COLUMN_PASSWORD="password";
 	static final String COLUMN_QUESTION="question";
 	static final String COLUMN_ANSWER="answer";
-	static final String COLUME_BMI="bmi";
+	static final String COLUMN_BMI="bmi";
 	//	static final String COLUMN_PHOTO="photo";
 
 	// shared index, make sure to match COLUMNS
@@ -52,7 +52,7 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION =  5;
+	private  static  final  int DATABASE_VERSION =  6;
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Utente.db";
 	/** this 's the query that we use for create the table
@@ -68,10 +68,10 @@ public class DataBaseStorageUtente extends SQLiteOpenHelper {
 			+ COLUMN_POINT+ " numeric(4) DEFAULT 0,"
 			+ COLUMN_WEIGHT + " numeric(6) NOT NULL,"
 			+ COLUMN_CITY + " vachar(15) NOT NULL,"
-			+ COLUMN_EMAIL + " vachar(15) NOT NULL UNIQUE,"
+			+ COLUMN_EMAIL + " vachar(30) NOT NULL UNIQUE,"
 			+ COLUMN_PASSWORD + " vachar(15) NOT NULL,"
 			+ COLUMN_QUESTION + " vachar(30) NOT NULL,"
-			+ COLUME_BMI + " real(5,2) NOT NULL,"
+			+ COLUMN_BMI + " real(5,2) NOT NULL,"
 			+ COLUMN_ANSWER + " vachar(15) NOT NULL"
 			//TODO vedere come definire l'attributo photo
 		//	+ COLUMN_PHOTO + " ......."

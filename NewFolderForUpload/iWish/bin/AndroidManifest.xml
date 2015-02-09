@@ -9,6 +9,7 @@
     
     <permission android:name="android.permission.READ_PHONE_STATE"></permission>
     <permission android:name="android.permission.ACCESS_NETWORK_STATE"></permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <permission android:name="android.permission.ACCESS_WIFI_STATE"></permission>
     <permission android:name="android.permission.INTERNET"></permission>
     <permission android:name="android.permission.BLUETOOTH"></permission>

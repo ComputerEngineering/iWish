@@ -505,7 +505,7 @@ public class Friends2Activity extends Activity {
 
 						//metodo per mandare dati al db locale//
 						try{
-							ControlFriends.getIstanceControlFriends().deleteOnDBOneFriends(deleteEmailFriends);
+							ControlFriends.getIstanceControlFriends().deleteOnDBOneFriends(deleteEmailFriends, getApplicationContext());
 						}catch  (Exception e) {
 							Log.i("Friends2Activity", "errore query");
 						}

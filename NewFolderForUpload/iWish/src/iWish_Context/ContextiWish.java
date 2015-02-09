@@ -9,10 +9,10 @@ import android.content.Context;
  * use a static method that allows access to the only instance of class*/
 
 public class ContextiWish {
-	
+
 	private static ContextiWish istanz=null;
 	private Context c;
-	
+
 	private ContextiWish(){}
 
 	/**the only access point to the class to the outside world comes through the static method getInstance ().
@@ -24,13 +24,13 @@ public class ContextiWish {
 		}
 		return istanz;
 	}
-	
+
 	public Context getContext(){
 		return c;
 	}
-	
+
 	public void setContext(Context c){
 		this.c=c;
 	}
-	
+
 }

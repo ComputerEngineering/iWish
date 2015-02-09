@@ -164,15 +164,6 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/pause"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="535dp"
-        android:layout_marginLeft="60dp"
-        android:background="@drawable/pause" />
-
-    <Button
         android:id="@+id/graphic"
         android:layout_width="65dp"
         android:layout_height="65dp"
@@ -180,5 +171,15 @@
         android:layout_marginLeft="27dp"
         android:background="@android:color/transparent"
          />
+
+    <Button
+        android:id="@+id/pause"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/going"
+        android:layout_marginBottom="41dp"
+        android:layout_toLeftOf="@+id/going"
+        android:background="@drawable/pause" />
     
 </RelativeLayout>

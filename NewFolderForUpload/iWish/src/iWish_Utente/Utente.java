@@ -16,7 +16,6 @@ public class Utente implements MyUtente,Serializable{
 	private String name;
 	private String surname;
 	private String birthday;
-	//private Date birthdayD;
 	private String sex;
 	private String typeUser;
 	private int height;
@@ -28,7 +27,7 @@ public class Utente implements MyUtente,Serializable{
 	private String password;
 	private String question;
 	private String answer;
-	//TODO devo aggiungere l'attributo PHOTO
+	private int point =0;
 
 	public long getKeyUtente(){
 		return keyUtente;
@@ -38,9 +37,9 @@ public class Utente implements MyUtente,Serializable{
 		return name;
 	}
 	@Override
-/*	public Date getBirthdayD() {
-		return birthdayD;
-	}*/
+	public int getPoint() {
+		return point;
+	}
 	public String getSurname() {
 		return surname;
 	}
@@ -146,10 +145,10 @@ public class Utente implements MyUtente,Serializable{
 	public void setPassword(String  password) {
 		this.password=password;
 	}
-/*	@Override
-	public void setBirthdayD(Date birthdayD) {
-		this.birthdayD=birthdayD;
-	}*/
+	@Override
+	public void setPoint(int point) {
+		this.point=point;
+	}
 	@Override
 	public void setListWeight(int weight) {
 		//TODO DA FARE
@@ -166,6 +165,7 @@ public class Utente implements MyUtente,Serializable{
 				+ ", weightFirst=" + weightFirst + ", bmi=" + bmi + ", weight="
 				+ weight + ", city=" + city + ", email=" + email
 				+ ", password=" + password + ", question=" + question
-				+ ", answer=" + answer + "]";
+				+ ", answer=" + answer + ", point=" + point + "]";
 	}
+	
 }

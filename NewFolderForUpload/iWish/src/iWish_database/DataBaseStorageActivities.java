@@ -38,14 +38,14 @@ public class DataBaseStorageActivities extends SQLiteOpenHelper {
 	
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION = 5;
+	private  static  final  int DATABASE_VERSION = 6;
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Activities.db";
 	/** this 's the query that we use for create the table
 	 *  Android use the _id  for identify the element's key **/
 	private static final String DATABASE_CREATE  = "create table " + TABLE_ACTIVITIES + "("
 			+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-			+ COLUMN_EMAIL + " vachar(25) NOT NULL,"
+			+ COLUMN_EMAIL + " vachar(30) NOT NULL,"
 			+ COLUMN_IDSFIDATO + " INTEGER DEFAULT 0,"
 			/*SQLite does not have a storage class set aside for storing dates and/or times. 
 				Instead, the built-in Date And Time Functions of SQLite are capable of storing 
@@ -60,7 +60,7 @@ public class DataBaseStorageActivities extends SQLiteOpenHelper {
 			+ COLUMN_KMOBBIETTIVO + " numeric(2) NOT NULL,"
 			+ COLUMN_KMPERCORSI + " numeric(2) DEFAULT 0,"
 			+ COLUMN_TIPOATTIVITA + " vachar(15) NOT NULL,"
-			+ COLUMN_EMAIL_FOE + " vachar(25) DEFAULT 0"
+			+ COLUMN_EMAIL_FOE + " vachar(30) DEFAULT 0"
 			+ ");";
 	
 	public DataBaseStorageActivities(Context context) {

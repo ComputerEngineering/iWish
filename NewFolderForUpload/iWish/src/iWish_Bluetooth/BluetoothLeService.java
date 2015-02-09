@@ -68,6 +68,8 @@ public class BluetoothLeService extends Service {
 	private int stopDateTime;
 	private int durataTempo;
 	private String totBeats;
+	private int tempoInPausa;
+	private int inizioPausa;
 	//private String totBeatsLocal;
 	private int beatsSelect;
 	private ArrayList<String> totBeatsLocal;
@@ -202,6 +204,8 @@ public class BluetoothLeService extends Service {
 		hMax = 30;
 		hMed = 30;
 		totBeats = "";
+		tempoInPausa =0;
+		inizioPausa =0;
 		//totBeatsLocal = "";
 		mStarting=false;
 		beatsSelect=0;
@@ -348,13 +352,17 @@ public class BluetoothLeService extends Service {
 	}
 
 	public void onStop(){
+		if(!mStarting){
+			tempoInPausa = tempoInPausa + ((int) (System.currentTimeMillis()/1000) - inizioPausa);
+		}
 		mStarting = false;
 		mSession.setBattitiMax(hMax);
 		mSession.setBattitiMin(hMin);
 		mSession.setBattitiMed(hMed);
+		mSession.setBattiti(totBeats);
 		long fine = System.currentTimeMillis();
 		int fineTime = (int) (fine/1000);
-		int durataTempo = fineTime - startDateTime;
+		int durataTempo = fineTime - startDateTime - tempoInPausa;
 		mSession.setDurataTempo(durataTempo);
 		try {
 			Log.i("BluetoothLeService", "PRIMA DI INSERIRE NEL DB SESSION");
@@ -371,7 +379,14 @@ public class BluetoothLeService extends Service {
 	}
 	
 	public void onPause(){
-		mStarting = false;
+		if(mStarting){
+			mStarting = false;
+			inizioPausa =(int) (System.currentTimeMillis()/1000);
+		}
+		else{
+			mStarting = true;
+			tempoInPausa = tempoInPausa + ((int) (System.currentTimeMillis()/1000) - inizioPausa);
+		}
 	}
 
 	private void MinMaxMed(String data){

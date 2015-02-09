@@ -12,6 +12,7 @@ public class UserIstance {
 	private String password;
 	private String question;
 	private String answer;
+	private int point =0;
 
 	private UserIstance(){}
 
@@ -79,6 +80,14 @@ public class UserIstance {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+	
+	public int getPoint() {
+		return point;
+	}
+	
+	public void setPoint(int point) {
+		this.point = point;
 	}
 
 	public String getCity() {

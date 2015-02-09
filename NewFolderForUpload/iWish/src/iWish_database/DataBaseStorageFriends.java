@@ -38,7 +38,7 @@ public class DataBaseStorageFriends extends SQLiteOpenHelper {
 	
 	/** this is the version of DB. 
 	 *  we must increase this number when the DB  is change **/
-	private  static  final  int DATABASE_VERSION =  3;
+	private  static  final  int DATABASE_VERSION =  4;
 	
 	/** this's the DB's name**/
 	private static final String DATABASE_NAME= "Friends.db";
@@ -47,8 +47,8 @@ public class DataBaseStorageFriends extends SQLiteOpenHelper {
 	 *  Android use the _id  for identify the element's key **/
 	private static final String DATABASE_CREATE = "create table " + TABLE_FRIENDS + "("
 			+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-			+ COLUMN_EMAIL_FRIENDS + " vachar(25) NOT NULL, "
-			+ COLUMN_EMAIL_USER + " vachar(25) NOT NULL, "
+			+ COLUMN_EMAIL_FRIENDS + " vachar(30) NOT NULL, "
+			+ COLUMN_EMAIL_USER + " vachar(30) NOT NULL, "
 			+ COLUMN_NAME + " vachar(15) NOT NULL, "
 			+ COLUMN_SURNAME + " vachar(15) NOT NULL, "
 			+ COLUMN_POINT + " numeric(4) NOT NULL DEFAULT 0 "

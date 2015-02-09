@@ -32,7 +32,8 @@ public class UtenteDao {
 		DataBaseStorageUtente.COLUMN_PASSWORD,
 		DataBaseStorageUtente.COLUMN_QUESTION,
 		DataBaseStorageUtente.COLUMN_ANSWER,
-		DataBaseStorageUtente.COLUME_BMI
+		DataBaseStorageUtente.COLUMN_BMI,
+		DataBaseStorageUtente.COLUMN_POINT
 		//DataBaseStorageUtenteCOLUMN_PHOTO
 		//aggiungere elemento bmi
 	};
@@ -68,7 +69,8 @@ public class UtenteDao {
 		values.put(DataBaseStorageUtente.COLUMN_PASSWORD,""+ mUtente.getPassword() + "");
 		values.put(DataBaseStorageUtente.COLUMN_QUESTION,""+ mUtente.getQuestion() + "");
 		values.put(DataBaseStorageUtente.COLUMN_ANSWER,""+ mUtente.getAnswer() + "");
-		values.put(DataBaseStorageUtente.COLUME_BMI, "" + mUtente.getBmi() +"");
+		values.put(DataBaseStorageUtente.COLUMN_BMI, "" + mUtente.getBmi() +"");
+		values.put(DataBaseStorageUtente.COLUMN_POINT, "" + mUtente.getPoint() +"");
 		long insertId = database.insert(DataBaseStorageUtente.TABLE_UTENTE, null, values);
 	}
 
@@ -145,6 +147,7 @@ public class UtenteDao {
 		utente.setQuestion(cursor.getString(DataBaseStorageUtente.COLUMN_QUESTION_INDEX));
 		utente.setAnswer(cursor.getString(DataBaseStorageUtente.COLUMN_ANSWER_INDEX));
 		utente.setBmi(cursor.getDouble(DataBaseStorageUtente.COLUMN_BMI_INDEX));
+		utente.setPoint(cursor.getInt(DataBaseStorageUtente.COLUMN_POINT_INDEX));
 		return  utente;
 	}
 	/**Invoked when the garbage collector has detected that this instance is no longer 

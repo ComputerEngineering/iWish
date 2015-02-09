@@ -90,6 +90,20 @@ public class ActivitiesDao {
 		cursor.close();
 		return listActivities;
 	}
+	
+	public int getHowManyActvitiesUser(String eMail){
+		int i=0;
+		String where = DataBaseStorageActivities.COLUMN_EMAIL + " = '"+eMail+"'";
+		Cursor cursor = database.query(DataBaseStorageActivities.TABLE_ACTIVITIES, allColumns, where, null, null, null, null);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			i++;
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return i;
+	}
+	
 	private Activities cursorsActivities(Cursor cursor) {
 		Activities activities = new Activities();
 		activities.setKeyActivities(cursor.getLong(DataBaseStorageActivities.COLUMN_ID_INDEX));

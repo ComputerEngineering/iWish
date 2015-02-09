@@ -57,7 +57,7 @@ public class NewWishActivity extends Activity{
 		setTime();
 		try {
 			Log.i("NewWishActivity", "PRIMA DI INSERIRE NEL DB ACTIVITIES");
-			ControlActivities.getIstanceControlActivities().saveOnDbActivities(mActivities, getApplicationContext());;
+			ControlActivities.getIstanceControlActivities().saveOnDbActivities(mActivities, getApplicationContext());
 			Log.i("NewWishActivity", "DOPO L'INSERIMENTO NEL DB ACTIVITIES");
 			ControlConnection.getIstanceControlConnection().onInsertActivities();
 			Log.i("NewWishActivity", "DOPO L'INSERIMENTO online");

@@ -50,8 +50,10 @@ public class ControlSession {
 		return null;
 	}
 	
-	public List<Session> getOnDbAllSession(){
+	public List<Session> getOnDbAllSession(Context context){
 		try {
+			mSessionDao =  new SessionDao(context);
+			mSessionDao.open();
 			return mSessionDao.getAllSession();
 		} catch (Exception e) {
 

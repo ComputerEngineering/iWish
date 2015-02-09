@@ -8,7 +8,6 @@ public interface MyUtente {
 	String getName();
 	String getSurname();
 	String getBirthday();
-	//Date getBirthdayD();
 	String getCity();
 	String getSex();
 	String getTypeUser();
@@ -20,6 +19,7 @@ public interface MyUtente {
 	String getQuestion();
 	String getAnswer();
 	List<Integer> getListWeight();
+	int getPoint();
 	void setKeyUtente(long keyUtente);
 	void setName(String name);
 	void setSurname(String surname);
@@ -35,6 +35,6 @@ public interface MyUtente {
 	void setAnswer(String answer);
 	void setListWeight(int weight);
 	void setBirthday(String birthday);
-	//void setBirthdayD(Date birthdayD);
+	void setPoint(int point);
 	
 }

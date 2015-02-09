@@ -120,7 +120,7 @@ public class NetworkActivities extends AsyncTask<String, Void,  String> {
 	/**I will take the list Actrivities that we have insert on db */
 	private HashMap<Long,Activities> takeListActivities() {
 		//Take the file to send at DbUser
-		List<Activities> mActivities = ControlActivities.getIstanceControlActivities().getOnDbAllActvities();
+		List<Activities> mActivities = ControlActivities.getIstanceControlActivities().getOnDbAllActvities(c);
 		if(mActivities!=null){
 			Long k;
 			for (Activities activities : mActivities){

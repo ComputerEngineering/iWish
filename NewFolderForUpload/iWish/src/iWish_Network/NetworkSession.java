@@ -124,7 +124,7 @@ public class NetworkSession extends AsyncTask<String, Void,  String> {
 	/**I will take the list Session that we have insert on db */
 	private HashMap<Long,Session> takeListSession() {
 		//Take the file to send at DbUser
-		List<Session> mSession = ControlSession.getIstanceControlSession().getOnDbAllSession();
+		List<Session> mSession = ControlSession.getIstanceControlSession().getOnDbAllSession(c);
 		if(mSession!=null){
 			Long k;
 			for (Session session : mSession){

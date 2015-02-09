@@ -29,7 +29,7 @@ public class CongratulationActivity extends Activity {
 	private double pes;
 	private double bmi;
 	private double bmi2;
-	private TextView stampaNome;
+	//private TextView stampaNome;
 	private Utente mUser;
 
 	@Override
@@ -42,7 +42,7 @@ public class CongratulationActivity extends Activity {
 		//verifica typeUser
 		//		int prova = (int)mUser.getHeight();
 		String tipologiaUtente = mUser.getTypeUser();
-		stampaNome.setText(tipologiaUtente); //per testare che fin qua ci arriva il tipo di utente
+		//stampaNome.setText(tipologiaUtente); //per testare che fin qua ci arriva il tipo di utente
 		if(tipologiaUtente=="lazy") {
 			ominoUtentePigro.setVisibility(0);
 			scrittaUtentePigro.setVisibility(0);
@@ -89,7 +89,7 @@ public class CongratulationActivity extends Activity {
 		ominoUtenteAttivo = (ImageView)findViewById(R.id.omino_avatar2);
 		scrittaUtentePigro = (ImageView)findViewById(R.id.scritta_omino);
 		scrittaUtenteAttivo = (ImageView)findViewById(R.id.scritta_omino2);
-		stampaNome = (TextView)findViewById(R.id.nomeUtente);
+		//stampaNome = (TextView)findViewById(R.id.nomeUtente);
 		valoreBmi = (TextView)findViewById(R.id.bmi);
 	}
 }

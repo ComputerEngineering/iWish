@@ -13,6 +13,7 @@ public interface MySession {
 	int getAltezzaMed();
 	int getStartDate();
 	int getStartDateActivities();
+	String getBattiti();
 	void setKeySession(long KeySession);
 	void setKeyActivities(long KeyActivities);
 	void setDurataTempo(int DurataTempo);
@@ -24,4 +25,5 @@ public interface MySession {
 	void setAltezzaMed(int AltezzaMed);
 	void setStartDate(int StartDate);
 	void setStartDateActivities(int StartDateActivities);
+	void setBattiti(String Battiti);
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.database.SQLException;
+import android.util.Log;
 
 public class ControlActivities{
 	private ActivitiesDao mActivitiesDao;
@@ -25,6 +26,7 @@ public class ControlActivities{
 			mActivitiesDao= new ActivitiesDao(context);
 			mActivitiesDao.open();
 			mActivitiesDao.insertOnDbActivities(mActivities);
+			//mActivitiesDao.close();
 		} catch (SQLException e) {
 
 		}
@@ -51,13 +53,30 @@ public class ControlActivities{
 		}
 	}
 	
-	public List<Activities> getOnDbAllActvities(){
+	public List<Activities> getOnDbAllActvities(Context context){
 		try {
+			mActivitiesDao= new ActivitiesDao(context);
+			mActivitiesDao.open();
 			return mActivitiesDao.getAllActvities();
 		} catch (Exception e) {
 
 		}
 		return null;
+	}
+	
+	public int getOnDbHowManyActvitiesUser(String eMail, Context context){
+		
+		try {
+			mActivitiesDao= new ActivitiesDao(context);
+			mActivitiesDao.open();
+			int numAtt = mActivitiesDao.getHowManyActvitiesUser(eMail);
+			//mActivitiesDao.close();
+			return numAtt;
+		} catch (SQLException e) {
+			Log.i("getOnDbHowManyActvitiesUser", "abbiamo un errore nella query di check delle activities");
+			e.printStackTrace();
+		}
+		return -1;
 	}
 	public void ConnectionActivities(){
 		try {
